@@ -122,3 +122,162 @@ export const ReferralSourceType = {
 } as const
 
 export type ReferralSourceType = (typeof ReferralSourceType)[keyof typeof ReferralSourceType]
+
+
+export const OnboardingStatus = {
+  NOT_STARTED: 'NOT_STARTED',
+  IN_PROGRESS: 'IN_PROGRESS',
+  COMPLETED: 'COMPLETED'
+} as const
+
+export type OnboardingStatus = (typeof OnboardingStatus)[keyof typeof OnboardingStatus]
+
+
+export const ProjectHealth = {
+  ON_TRACK: 'ON_TRACK',
+  AT_RISK: 'AT_RISK',
+  BLOCKED: 'BLOCKED'
+} as const
+
+export type ProjectHealth = (typeof ProjectHealth)[keyof typeof ProjectHealth]
+
+
+export const ProjectPhase = {
+  DISCOVERY: 'DISCOVERY',
+  DESIGN: 'DESIGN',
+  BUILD: 'BUILD',
+  REVIEW: 'REVIEW',
+  LAUNCH: 'LAUNCH',
+  MAINTENANCE: 'MAINTENANCE'
+} as const
+
+export type ProjectPhase = (typeof ProjectPhase)[keyof typeof ProjectPhase]
+
+
+export const ApprovalStatus = {
+  PENDING: 'PENDING',
+  APPROVED: 'APPROVED',
+  CHANGES_REQUESTED: 'CHANGES_REQUESTED',
+  EXPIRED: 'EXPIRED',
+  CANCELLED: 'CANCELLED'
+} as const
+
+export type ApprovalStatus = (typeof ApprovalStatus)[keyof typeof ApprovalStatus]
+
+
+export const InvoiceStatus = {
+  DRAFT: 'DRAFT',
+  SENT: 'SENT',
+  PARTIALLY_PAID: 'PARTIALLY_PAID',
+  PAID: 'PAID',
+  OVERDUE: 'OVERDUE',
+  VOID: 'VOID'
+} as const
+
+export type InvoiceStatus = (typeof InvoiceStatus)[keyof typeof InvoiceStatus]
+
+
+export const MaintenanceCadence = {
+  MONTHLY: 'MONTHLY',
+  QUARTERLY: 'QUARTERLY',
+  ANNUAL: 'ANNUAL'
+} as const
+
+export type MaintenanceCadence = (typeof MaintenanceCadence)[keyof typeof MaintenanceCadence]
+
+
+export const MaintenanceSubscriptionStatus = {
+  ACTIVE: 'ACTIVE',
+  PAUSED: 'PAUSED',
+  CANCELLED: 'CANCELLED',
+  EXPIRED: 'EXPIRED'
+} as const
+
+export type MaintenanceSubscriptionStatus = (typeof MaintenanceSubscriptionStatus)[keyof typeof MaintenanceSubscriptionStatus]
+
+
+export const MaintenanceRequestType = {
+  UPDATE: 'UPDATE',
+  BUG_FIX: 'BUG_FIX',
+  CONTENT_EDIT: 'CONTENT_EDIT',
+  PERFORMANCE: 'PERFORMANCE',
+  SECURITY: 'SECURITY',
+  BACKUP_RESTORE: 'BACKUP_RESTORE',
+  CONSULT: 'CONSULT'
+} as const
+
+export type MaintenanceRequestType = (typeof MaintenanceRequestType)[keyof typeof MaintenanceRequestType]
+
+
+export const TicketPriority = {
+  LOW: 'LOW',
+  NORMAL: 'NORMAL',
+  HIGH: 'HIGH',
+  URGENT: 'URGENT'
+} as const
+
+export type TicketPriority = (typeof TicketPriority)[keyof typeof TicketPriority]
+
+
+export const TicketStatus = {
+  OPEN: 'OPEN',
+  PENDING_CUSTOMER: 'PENDING_CUSTOMER',
+  PENDING_STAFF: 'PENDING_STAFF',
+  RESOLVED: 'RESOLVED',
+  CLOSED: 'CLOSED'
+} as const
+
+export type TicketStatus = (typeof TicketStatus)[keyof typeof TicketStatus]
+
+
+export const TicketMessageVisibility = {
+  CUSTOMER: 'CUSTOMER',
+  INTERNAL: 'INTERNAL'
+} as const
+
+export type TicketMessageVisibility = (typeof TicketMessageVisibility)[keyof typeof TicketMessageVisibility]
+
+
+export const NotificationKind = {
+  PROJECT: 'PROJECT',
+  APPROVAL: 'APPROVAL',
+  INVOICE: 'INVOICE',
+  MAINTENANCE: 'MAINTENANCE',
+  SUPPORT: 'SUPPORT',
+  SECURITY: 'SECURITY',
+  ACCOUNT: 'ACCOUNT'
+} as const
+
+export type NotificationKind = (typeof NotificationKind)[keyof typeof NotificationKind]
+
+
+export const DataExportStatus = {
+  QUEUED: 'QUEUED',
+  RUNNING: 'RUNNING',
+  READY: 'READY',
+  FAILED: 'FAILED',
+  EXPIRED: 'EXPIRED'
+} as const
+
+export type DataExportStatus = (typeof DataExportStatus)[keyof typeof DataExportStatus]
+
+
+export const CommunicationPreference = {
+  EMAIL: 'EMAIL',
+  PHONE: 'PHONE',
+  SLACK: 'SLACK',
+  TEAMS: 'TEAMS'
+} as const
+
+export type CommunicationPreference = (typeof CommunicationPreference)[keyof typeof CommunicationPreference]
+
+
+export const FileAssetStatus = {
+  PENDING: 'PENDING',
+  READY: 'READY',
+  SCANNING: 'SCANNING',
+  INFECTED: 'INFECTED',
+  ARCHIVED: 'ARCHIVED'
+} as const
+
+export type FileAssetStatus = (typeof FileAssetStatus)[keyof typeof FileAssetStatus]

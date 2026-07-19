@@ -184,3 +184,136 @@ export type LegalDocumentVersion = Prisma.LegalDocumentVersionModel
  * 
  */
 export type UserConsent = Prisma.UserConsentModel
+/**
+ * Model OnboardingProfile
+ * Captures the wizard progress + finalised payload. One per user.
+ */
+export type OnboardingProfile = Prisma.OnboardingProfileModel
+/**
+ * Model BrandProfile
+ * Brand assets uploaded during onboarding (logo, fonts, palette). Public
+ * `secureUrl` is a short-lived signed URL — never persist the raw path.
+ */
+export type BrandProfile = Prisma.BrandProfileModel
+/**
+ * Model FileAsset
+ * Private file uploaded by the customer (brand assets, contracts, etc.).
+ * `checksum` is SHA-256; `status` transitions PENDING → READY after scan.
+ */
+export type FileAsset = Prisma.FileAssetModel
+/**
+ * Model ProjectMilestone
+ * Per-project milestone surfaced to the customer workspace.
+ */
+export type ProjectMilestone = Prisma.ProjectMilestoneModel
+/**
+ * Model ApprovalRequest
+ * Approval request sent to the customer. Each `respond` becomes an
+ * `ApprovalResponse` row for auditability.
+ */
+export type ApprovalRequest = Prisma.ApprovalRequestModel
+/**
+ * Model ApprovalResponse
+ * 
+ */
+export type ApprovalResponse = Prisma.ApprovalResponseModel
+/**
+ * Model ChangeRequest
+ * Change request initiated by the customer, including projected impact.
+ */
+export type ChangeRequest = Prisma.ChangeRequestModel
+/**
+ * Model ProjectComment
+ * Comment on a project workspace.
+ */
+export type ProjectComment = Prisma.ProjectCommentModel
+/**
+ * Model ProjectFile
+ * Versioned project file (deliverable artifact).
+ */
+export type ProjectFile = Prisma.ProjectFileModel
+/**
+ * Model MaintenancePlan
+ * 
+ */
+export type MaintenancePlan = Prisma.MaintenancePlanModel
+/**
+ * Model MaintenanceSubscription
+ * 
+ */
+export type MaintenanceSubscription = Prisma.MaintenanceSubscriptionModel
+/**
+ * Model MaintenanceRequest
+ * 
+ */
+export type MaintenanceRequest = Prisma.MaintenanceRequestModel
+/**
+ * Model MaintenanceReport
+ * 
+ */
+export type MaintenanceReport = Prisma.MaintenanceReportModel
+/**
+ * Model BillingProfile
+ * 
+ */
+export type BillingProfile = Prisma.BillingProfileModel
+/**
+ * Model Quote
+ * 
+ */
+export type Quote = Prisma.QuoteModel
+/**
+ * Model Contract
+ * 
+ */
+export type Contract = Prisma.ContractModel
+/**
+ * Model Invoice
+ * 
+ */
+export type Invoice = Prisma.InvoiceModel
+/**
+ * Model InvoiceItem
+ * 
+ */
+export type InvoiceItem = Prisma.InvoiceItemModel
+/**
+ * Model Payment
+ * 
+ */
+export type Payment = Prisma.PaymentModel
+/**
+ * Model PaymentAttempt
+ * 
+ */
+export type PaymentAttempt = Prisma.PaymentAttemptModel
+/**
+ * Model SupportTicket
+ * 
+ */
+export type SupportTicket = Prisma.SupportTicketModel
+/**
+ * Model TicketMessage
+ * 
+ */
+export type TicketMessage = Prisma.TicketMessageModel
+/**
+ * Model TicketAttachment
+ * 
+ */
+export type TicketAttachment = Prisma.TicketAttachmentModel
+/**
+ * Model HelpArticle
+ * 
+ */
+export type HelpArticle = Prisma.HelpArticleModel
+/**
+ * Model NotificationPreference
+ * 
+ */
+export type NotificationPreference = Prisma.NotificationPreferenceModel
+/**
+ * Model DataExportJob
+ * 
+ */
+export type DataExportJob = Prisma.DataExportJobModel

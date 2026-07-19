@@ -35,6 +35,12 @@ model Project {
   members         ProjectMember[]
   deliverables    Deliverable[]
   activity        ActivityEvent[]
+  milestones      ProjectMilestone[]
+  approvalRequests ApprovalRequest[]
+  changeRequests  ChangeRequest[]
+  comments        ProjectComment[]
+  files           ProjectFile[]
+  supportTickets  SupportTicket[]
 
   @@index([status])
   @@index([ownerId])

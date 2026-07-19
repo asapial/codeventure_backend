@@ -6,6 +6,7 @@ import { authTwoFactorRouter } from "./modules/auth-2fa/auth-2fa.route.js";
 import { authRegisterRouter } from "./modules/auth-register/auth-register.route.js";
 import { authVerifyEmailRouter } from "./modules/auth-verify-email/auth-verify-email.route.js";
 import { publicLegalRouter } from "./modules/public-legal/public-legal.route.js";
+import { portalRouter } from "./modules/portal/portal.route.js";
 
 const router = Router();
 
@@ -21,7 +22,9 @@ router.use("/auth/register", authRegisterRouter);
 router.use("/auth/verify-email", authVerifyEmailRouter);
 router.use("/account", accountRouter);
 router.use("/projects", projectsRouter);
-// Public legal document endpoint — intentionally unauthenticated.
+// Customer portal (C1â€"C10) â€” mounts every authenticated workspace endpoint.
+router.use("/customer", portalRouter);
+// Public legal document endpoint â€" intentionally unauthenticated.
 router.use("/public/legal", publicLegalRouter);
 
 export const indexRouter = router;

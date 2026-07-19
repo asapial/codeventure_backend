@@ -1,0 +1,522 @@
+// ----------------------------------------------------------------------------
+// Customer portal models (C1–C10).
+//
+// Each section is tagged so reviewers can map a model back to its user
+// story in the spec. Indexes are tuned for the hot list queries:
+//   - dashboard roll-ups   → indexed by (userId|organizationId, createdAt)
+//   - list/filter queries  → indexed by (status, dueAt|createdAt)
+//   - permission lookups   → scoped to userId or organizationId on every read
+// ----------------------------------------------------------------------------
+
+// ── C2: Onboarding ──────────────────────────────────────────────────────────
+
+/// Captures the wizard progress + finalised payload. One per user.
+model OnboardingProfile {
+  id          String   @id @default(uuid())
+  userId      String   @unique
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  status      OnboardingStatus @default(NOT_STARTED)
+  currentStep Int              @default(0)
+
+  companyName      String?
+  businessType     String?
+  websiteUrl       String?
+  billingAddress   Json?
+  primaryContact   Json?
+  brandAssetIds    String[]      @default([])
+  timezone         String?
+  locale           String?
+  communication    CommunicationPreference @default(EMAIL)
+  completedAt      DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("onboarding_profile")
+}
+
+/// Brand assets uploaded during onboarding (logo, fonts, palette). Public
+/// `secureUrl` is a short-lived signed URL — never persist the raw path.
+model BrandProfile {
+  id              String   @id @default(uuid())
+  organizationId  String
+  organization    Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  logoAssetId     String?
+  primaryColor    String?
+  secondaryColor  String?
+  fontFamily      String?
+  voiceNotes      String?
+  updatedAt       DateTime @updatedAt
+  createdAt       DateTime @default(now())
+
+  @@index([organizationId])
+  @@map("brand_profile")
+}
+
+/// Private file uploaded by the customer (brand assets, contracts, etc.).
+/// `checksum` is SHA-256; `status` transitions PENDING → READY after scan.
+model FileAsset {
+  id           String   @id @default(uuid())
+  ownerId      String
+  owner        User     @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  organizationId String?
+  organization Organization? @relation(fields: [organizationId], references: [id], onDelete: SetNull)
+
+  fileName     String
+  mimeType     String
+  sizeBytes    Int
+  checksum     String
+  storageKey   String
+  secureUrl    String?
+  status       FileAssetStatus @default(PENDING)
+  scanResult   Json?
+
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@index([ownerId, createdAt])
+  @@index([organizationId])
+  @@map("file_asset")
+}
+
+// ── C1/C3/C4: Projects, milestones, activity, approvals ────────────────────
+
+/// Per-project milestone surfaced to the customer workspace.
+model ProjectMilestone {
+  id          String   @id @default(uuid())
+  projectId   String
+  project     Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  title       String
+  description String?
+  phase       ProjectPhase
+  orderIndex  Int      @default(0)
+  dueAt       DateTime?
+  completedAt DateTime?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([projectId, orderIndex])
+  @@index([dueAt])
+  @@map("project_milestone")
+}
+
+/// Approval request sent to the customer. Each `respond` becomes an
+/// `ApprovalResponse` row for auditability.
+model ApprovalRequest {
+  id              String   @id @default(uuid())
+  projectId       String
+  project         Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  /// The exact artifact (or version) the customer is approving.
+  artifactRef     String
+  artifactVersion Int
+  title           String
+  summary         String?
+  status          ApprovalStatus @default(PENDING)
+  dueAt           DateTime?
+  respondedAt     DateTime?
+
+  responses       ApprovalResponse[]
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@index([projectId, status])
+  @@index([status, dueAt])
+  @@map("approval_request")
+}
+
+model ApprovalResponse {
+  id              String   @id @default(uuid())
+  approvalId      String
+  approval        ApprovalRequest @relation(fields: [approvalId], references: [id], onDelete: Cascade)
+
+  responderId     String
+  responder       User     @relation(fields: [responderId], references: [id], onDelete: Cascade)
+
+  decision        ApprovalStatus
+  comment         String?
+  createdAt       DateTime @default(now())
+
+  @@index([approvalId])
+  @@map("approval_response")
+}
+
+/// Change request initiated by the customer, including projected impact.
+model ChangeRequest {
+  id              String   @id @default(uuid())
+  projectId       String
+  project         Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  title           String
+  description     String
+  estimatedCost   Decimal? @db.Decimal(12, 2)
+  estimatedDays   Int?
+  status          ApprovalStatus @default(PENDING)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@index([projectId, status])
+  @@map("change_request")
+}
+
+/// Comment on a project workspace.
+model ProjectComment {
+  id           String   @id @default(uuid())
+  projectId    String
+  project      Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  authorId     String
+  author       User     @relation("projectCommentAuthor", fields: [authorId], references: [id], onDelete: Cascade)
+
+  body         String
+  createdAt    DateTime @default(now())
+
+  @@index([projectId, createdAt])
+  @@map("project_comment")
+}
+
+/// Versioned project file (deliverable artifact).
+model ProjectFile {
+  id           String   @id @default(uuid())
+  projectId    String
+  project      Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  uploaderId   String
+  uploader     User     @relation(fields: [uploaderId], references: [id], onDelete: Cascade)
+
+  fileName     String
+  mimeType     String
+  sizeBytes    Int
+  version      Int      @default(1)
+  storageKey   String
+  secureUrl    String?
+  createdAt    DateTime @default(now())
+
+  @@index([projectId, createdAt])
+  @@map("project_file")
+}
+
+// ── C5: Maintenance & care ─────────────────────────────────────────────────
+
+model MaintenancePlan {
+  id              String   @id @default(uuid())
+  name            String
+  description     String?
+  priceMonthly    Decimal  @db.Decimal(12, 2)
+  currency        String   @default("USD")
+  includedHours   Decimal  @db.Decimal(8, 2)
+  isActive        Boolean  @default(true)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  subscriptions   MaintenanceSubscription[]
+  @@map("maintenance_plan")
+}
+
+model MaintenanceSubscription {
+  id            String   @id @default(uuid())
+  organizationId String
+  organization  Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  planId        String
+  plan          MaintenancePlan @relation(fields: [planId], references: [id])
+  websiteUrl    String
+  cadence       MaintenanceCadence
+  status        MaintenanceSubscriptionStatus @default(ACTIVE)
+  periodStart   DateTime
+  periodEnd     DateTime?
+  includedHours Decimal  @db.Decimal(8, 2)
+  usedHours     Decimal  @db.Decimal(8, 2) @default(0)
+
+  requests      MaintenanceRequest[]
+  reports       MaintenanceReport[]
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@index([organizationId, status])
+  @@map("maintenance_subscription")
+}
+
+model MaintenanceRequest {
+  id              String   @id @default(uuid())
+  subscriptionId  String
+  subscription    MaintenanceSubscription @relation(fields: [subscriptionId], references: [id], onDelete: Cascade)
+  requesterId     String
+  requester       User     @relation(fields: [requesterId], references: [id], onDelete: Cascade)
+
+  requestType     MaintenanceRequestType
+  priority        TicketPriority @default(NORMAL)
+  title           String
+  description     String
+  status          TicketStatus @default(OPEN)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@index([subscriptionId, status])
+  @@index([requesterId, createdAt])
+  @@map("maintenance_request")
+}
+
+model MaintenanceReport {
+  id              String   @id @default(uuid())
+  subscriptionId  String
+  subscription    MaintenanceSubscription @relation(fields: [subscriptionId], references: [id], onDelete: Cascade)
+  periodStart     DateTime
+  periodEnd       DateTime
+  summary         String
+  workCompleted   Json
+  backupsVerified Boolean  @default(false)
+  securityChecks  Json
+  createdAt       DateTime @default(now())
+
+  @@index([subscriptionId, periodStart])
+  @@map("maintenance_report")
+}
+
+// ── C6: Billing ────────────────────────────────────────────────────────────
+
+model BillingProfile {
+  id              String   @id @default(uuid())
+  organizationId  String   @unique
+  organization    Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  legalName       String?
+  taxId           String?
+  billingEmail    String?
+  paymentProvider String?
+  paymentMethodMasked String?
+  currency        String   @default("USD")
+
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@map("billing_profile")
+}
+
+model Quote {
+  id              String   @id @default(uuid())
+  organizationId  String
+  organization    Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  quoteNumber     String   @unique
+  title           String
+  amount          Decimal  @db.Decimal(12, 2)
+  currency        String   @default("USD")
+  validUntil      DateTime
+  status          ApprovalStatus @default(PENDING)
+  signedAt        DateTime?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@index([organizationId, status])
+  @@map("quote")
+}
+
+model Contract {
+  id              String   @id @default(uuid())
+  organizationId  String
+  organization    Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  contractNumber  String   @unique
+  title           String
+  status          ApprovalStatus @default(PENDING)
+  signedAt        DateTime?
+  storageKey      String
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@index([organizationId, status])
+  @@map("contract")
+}
+
+model Invoice {
+  id              String   @id @default(uuid())
+  organizationId  String
+  organization    Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  invoiceNumber   String   @unique
+  status          InvoiceStatus @default(DRAFT)
+  currency        String   @default("USD")
+  subtotal        Decimal  @db.Decimal(12, 2)
+  tax             Decimal  @db.Decimal(12, 2) @default(0)
+  discount        Decimal  @db.Decimal(12, 2) @default(0)
+  total           Decimal  @db.Decimal(12, 2)
+  balance         Decimal  @db.Decimal(12, 2)
+  dueAt           DateTime
+  paidAt          DateTime?
+  storageKey      String?
+
+  items           InvoiceItem[]
+  payments        Payment[]
+
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@index([organizationId, status])
+  @@index([dueAt])
+  @@map("invoice")
+}
+
+model InvoiceItem {
+  id          String   @id @default(uuid())
+  invoiceId   String
+  invoice     Invoice  @relation(fields: [invoiceId], references: [id], onDelete: Cascade)
+
+  description String
+  quantity    Int
+  unitPrice   Decimal  @db.Decimal(12, 2)
+  amount      Decimal  @db.Decimal(12, 2)
+  orderIndex  Int      @default(0)
+
+  @@index([invoiceId, orderIndex])
+  @@map("invoice_item")
+}
+
+model Payment {
+  id            String   @id @default(uuid())
+  invoiceId     String
+  invoice       Invoice  @relation(fields: [invoiceId], references: [id], onDelete: Cascade)
+
+  /// Idempotency key from the client to prevent duplicate charges.
+  idempotencyKey String  @unique
+  amount        Decimal  @db.Decimal(12, 2)
+  currency      String   @default("USD")
+  status        String
+  provider      String
+  providerRef   String?
+  createdAt     DateTime @default(now())
+
+  attempts      PaymentAttempt[]
+  @@index([invoiceId])
+  @@map("payment")
+}
+
+model PaymentAttempt {
+  id          String   @id @default(uuid())
+  paymentId   String
+  payment     Payment  @relation(fields: [paymentId], references: [id], onDelete: Cascade)
+
+  status      String
+  errorCode   String?
+  errorMessage String?
+  metadata    Json?
+  createdAt   DateTime @default(now())
+
+  @@index([paymentId])
+  @@map("payment_attempt")
+}
+
+// ── C7/C8: Support ─────────────────────────────────────────────────────────
+
+model SupportTicket {
+  id              String   @id @default(uuid())
+  organizationId  String
+  organization    Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  requesterId     String
+  requester       User     @relation(fields: [requesterId], references: [id], onDelete: Cascade)
+  projectId       String?
+  project         Project? @relation(fields: [projectId], references: [id], onDelete: SetNull)
+
+  ticketNumber    String   @unique
+  subject         String
+  category        String
+  priority        TicketPriority @default(NORMAL)
+  status          TicketStatus @default(OPEN)
+  resolvedAt      DateTime?
+  slaDueAt        DateTime?
+
+  messages        TicketMessage[]
+  attachments     TicketAttachment[]
+
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@index([organizationId, status])
+  @@index([requesterId, createdAt])
+  @@map("support_ticket")
+}
+
+model TicketMessage {
+  id          String   @id @default(uuid())
+  ticketId    String
+  ticket      SupportTicket @relation(fields: [ticketId], references: [id], onDelete: Cascade)
+  authorId    String
+  author      User     @relation(fields: [authorId], references: [id], onDelete: Cascade)
+
+  body        String
+  visibility  TicketMessageVisibility @default(CUSTOMER)
+  createdAt   DateTime @default(now())
+
+  @@index([ticketId, createdAt])
+  @@map("ticket_message")
+}
+
+model TicketAttachment {
+  id          String   @id @default(uuid())
+  ticketId    String
+  ticket      SupportTicket @relation(fields: [ticketId], references: [id], onDelete: Cascade)
+  uploaderId  String
+  uploader    User     @relation(fields: [uploaderId], references: [id], onDelete: Cascade)
+
+  fileName    String
+  mimeType    String
+  sizeBytes   Int
+  storageKey  String
+  createdAt   DateTime @default(now())
+
+  @@index([ticketId])
+  @@map("ticket_attachment")
+}
+
+model HelpArticle {
+  id          String   @id @default(uuid())
+  slug        String   @unique
+  title       String
+  excerpt     String?
+  body        String
+  category    String
+  searchTokens String  // precomputed lowercased haystack
+  publishedAt DateTime?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([category])
+  @@map("help_article")
+}
+
+// ── C9: Notifications (extending the existing Notification model) ───────────
+
+model NotificationPreference {
+  id          String   @id @default(uuid())
+  userId      String   @unique
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  emailProject    Boolean @default(true)
+  emailApproval   Boolean @default(true)
+  emailInvoice    Boolean @default(true)
+  emailSupport    Boolean @default(true)
+  emailMaintenance Boolean @default(true)
+  emailSecurity   Boolean @default(true)
+
+  updatedAt   DateTime @updatedAt
+  createdAt   DateTime @default(now())
+
+  @@map("notification_preference")
+}
+
+// ── C10: Settings (sessions + data export + 2FA) ────────────────────────────
+
+model DataExportJob {
+  id              String   @id @default(uuid())
+  userId          String
+  user            User     @relation("dataExportJobs", fields: [userId], references: [id], onDelete: Cascade)
+
+  status          DataExportStatus @default(QUEUED)
+  storageKey      String?
+  requestedAt     DateTime @default(now())
+  readyAt         DateTime?
+  expiresAt       DateTime?
+
+  @@index([userId, requestedAt])
+  @@map("data_export_job")
+}

@@ -97,3 +97,136 @@ enum ReferralSourceType {
   EMAIL_CAMPAIGN
   OTHER
 }
+
+// ----------------------------------------------------------------------------
+// Customer portal enums (C1–C10)
+// ----------------------------------------------------------------------------
+
+/// Onboarding step completion state.
+enum OnboardingStatus {
+  NOT_STARTED
+  IN_PROGRESS
+  COMPLETED
+}
+
+/// High-level health flag on a customer project.
+enum ProjectHealth {
+  ON_TRACK
+  AT_RISK
+  BLOCKED
+}
+
+/// Phase of a customer-facing project.
+enum ProjectPhase {
+  DISCOVERY
+  DESIGN
+  BUILD
+  REVIEW
+  LAUNCH
+  MAINTENANCE
+}
+
+/// Approval lifecycle states.
+enum ApprovalStatus {
+  PENDING
+  APPROVED
+  CHANGES_REQUESTED
+  EXPIRED
+  CANCELLED
+}
+
+/// Invoice lifecycle (mirrors the standard customer-billing pipeline).
+enum InvoiceStatus {
+  DRAFT
+  SENT
+  PARTIALLY_PAID
+  PAID
+  OVERDUE
+  VOID
+}
+
+/// Subscription cadence.
+enum MaintenanceCadence {
+  MONTHLY
+  QUARTERLY
+  ANNUAL
+}
+
+/// Status of a maintenance subscription.
+enum MaintenanceSubscriptionStatus {
+  ACTIVE
+  PAUSED
+  CANCELLED
+  EXPIRED
+}
+
+/// Type of maintenance request the customer submits.
+enum MaintenanceRequestType {
+  UPDATE
+  BUG_FIX
+  CONTENT_EDIT
+  PERFORMANCE
+  SECURITY
+  BACKUP_RESTORE
+  CONSULT
+}
+
+/// Ticket priority used by both customer and staff sides.
+enum TicketPriority {
+  LOW
+  NORMAL
+  HIGH
+  URGENT
+}
+
+/// Ticket lifecycle.
+enum TicketStatus {
+  OPEN
+  PENDING_CUSTOMER
+  PENDING_STAFF
+  RESOLVED
+  CLOSED
+}
+
+/// Visibility flag for ticket messages — INTERNAL never leaves staff.
+enum TicketMessageVisibility {
+  CUSTOMER
+  INTERNAL
+}
+
+/// Notification category (drives grouping in the centre page).
+enum NotificationKind {
+  PROJECT
+  APPROVAL
+  INVOICE
+  MAINTENANCE
+  SUPPORT
+  SECURITY
+  ACCOUNT
+}
+
+/// Status of an async data-export job.
+enum DataExportStatus {
+  QUEUED
+  RUNNING
+  READY
+  FAILED
+  EXPIRED
+}
+
+/// Communication preference.
+enum CommunicationPreference {
+  EMAIL
+  PHONE
+  SLACK
+  TEAMS
+}
+
+/// Storage state for a private uploaded file asset.
+enum FileAssetStatus {
+  PENDING
+  READY
+  SCANNING
+  INFECTED
+  ARCHIVED
+}

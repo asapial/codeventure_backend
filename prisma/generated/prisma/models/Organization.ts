@@ -185,6 +185,14 @@ export type OrganizationWhereInput = {
   members?: Prisma.OrganizationMemberListRelationFilter
   profiles?: Prisma.CustomerProfileListRelationFilter
   invitations?: Prisma.InvitationListRelationFilter
+  brandProfiles?: Prisma.BrandProfileListRelationFilter
+  fileAssets?: Prisma.FileAssetListRelationFilter
+  maintenanceSubs?: Prisma.MaintenanceSubscriptionListRelationFilter
+  billingProfile?: Prisma.XOR<Prisma.BillingProfileNullableScalarRelationFilter, Prisma.BillingProfileWhereInput> | null
+  quotes?: Prisma.QuoteListRelationFilter
+  contracts?: Prisma.ContractListRelationFilter
+  invoices?: Prisma.InvoiceListRelationFilter
+  supportTickets?: Prisma.SupportTicketListRelationFilter
 }
 
 export type OrganizationOrderByWithRelationInput = {
@@ -196,6 +204,14 @@ export type OrganizationOrderByWithRelationInput = {
   members?: Prisma.OrganizationMemberOrderByRelationAggregateInput
   profiles?: Prisma.CustomerProfileOrderByRelationAggregateInput
   invitations?: Prisma.InvitationOrderByRelationAggregateInput
+  brandProfiles?: Prisma.BrandProfileOrderByRelationAggregateInput
+  fileAssets?: Prisma.FileAssetOrderByRelationAggregateInput
+  maintenanceSubs?: Prisma.MaintenanceSubscriptionOrderByRelationAggregateInput
+  billingProfile?: Prisma.BillingProfileOrderByWithRelationInput
+  quotes?: Prisma.QuoteOrderByRelationAggregateInput
+  contracts?: Prisma.ContractOrderByRelationAggregateInput
+  invoices?: Prisma.InvoiceOrderByRelationAggregateInput
+  supportTickets?: Prisma.SupportTicketOrderByRelationAggregateInput
 }
 
 export type OrganizationWhereUniqueInput = Prisma.AtLeast<{
@@ -210,6 +226,14 @@ export type OrganizationWhereUniqueInput = Prisma.AtLeast<{
   members?: Prisma.OrganizationMemberListRelationFilter
   profiles?: Prisma.CustomerProfileListRelationFilter
   invitations?: Prisma.InvitationListRelationFilter
+  brandProfiles?: Prisma.BrandProfileListRelationFilter
+  fileAssets?: Prisma.FileAssetListRelationFilter
+  maintenanceSubs?: Prisma.MaintenanceSubscriptionListRelationFilter
+  billingProfile?: Prisma.XOR<Prisma.BillingProfileNullableScalarRelationFilter, Prisma.BillingProfileWhereInput> | null
+  quotes?: Prisma.QuoteListRelationFilter
+  contracts?: Prisma.ContractListRelationFilter
+  invoices?: Prisma.InvoiceListRelationFilter
+  supportTickets?: Prisma.SupportTicketListRelationFilter
 }, "id" | "slug">
 
 export type OrganizationOrderByWithAggregationInput = {
@@ -243,6 +267,14 @@ export type OrganizationCreateInput = {
   members?: Prisma.OrganizationMemberCreateNestedManyWithoutOrganizationInput
   profiles?: Prisma.CustomerProfileCreateNestedManyWithoutOrganizationInput
   invitations?: Prisma.InvitationCreateNestedManyWithoutOrganizationInput
+  brandProfiles?: Prisma.BrandProfileCreateNestedManyWithoutOrganizationInput
+  fileAssets?: Prisma.FileAssetCreateNestedManyWithoutOrganizationInput
+  maintenanceSubs?: Prisma.MaintenanceSubscriptionCreateNestedManyWithoutOrganizationInput
+  billingProfile?: Prisma.BillingProfileCreateNestedOneWithoutOrganizationInput
+  quotes?: Prisma.QuoteCreateNestedManyWithoutOrganizationInput
+  contracts?: Prisma.ContractCreateNestedManyWithoutOrganizationInput
+  invoices?: Prisma.InvoiceCreateNestedManyWithoutOrganizationInput
+  supportTickets?: Prisma.SupportTicketCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationUncheckedCreateInput = {
@@ -254,6 +286,14 @@ export type OrganizationUncheckedCreateInput = {
   members?: Prisma.OrganizationMemberUncheckedCreateNestedManyWithoutOrganizationInput
   profiles?: Prisma.CustomerProfileUncheckedCreateNestedManyWithoutOrganizationInput
   invitations?: Prisma.InvitationUncheckedCreateNestedManyWithoutOrganizationInput
+  brandProfiles?: Prisma.BrandProfileUncheckedCreateNestedManyWithoutOrganizationInput
+  fileAssets?: Prisma.FileAssetUncheckedCreateNestedManyWithoutOrganizationInput
+  maintenanceSubs?: Prisma.MaintenanceSubscriptionUncheckedCreateNestedManyWithoutOrganizationInput
+  billingProfile?: Prisma.BillingProfileUncheckedCreateNestedOneWithoutOrganizationInput
+  quotes?: Prisma.QuoteUncheckedCreateNestedManyWithoutOrganizationInput
+  contracts?: Prisma.ContractUncheckedCreateNestedManyWithoutOrganizationInput
+  invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutOrganizationInput
+  supportTickets?: Prisma.SupportTicketUncheckedCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationUpdateInput = {
@@ -265,6 +305,14 @@ export type OrganizationUpdateInput = {
   members?: Prisma.OrganizationMemberUpdateManyWithoutOrganizationNestedInput
   profiles?: Prisma.CustomerProfileUpdateManyWithoutOrganizationNestedInput
   invitations?: Prisma.InvitationUpdateManyWithoutOrganizationNestedInput
+  brandProfiles?: Prisma.BrandProfileUpdateManyWithoutOrganizationNestedInput
+  fileAssets?: Prisma.FileAssetUpdateManyWithoutOrganizationNestedInput
+  maintenanceSubs?: Prisma.MaintenanceSubscriptionUpdateManyWithoutOrganizationNestedInput
+  billingProfile?: Prisma.BillingProfileUpdateOneWithoutOrganizationNestedInput
+  quotes?: Prisma.QuoteUpdateManyWithoutOrganizationNestedInput
+  contracts?: Prisma.ContractUpdateManyWithoutOrganizationNestedInput
+  invoices?: Prisma.InvoiceUpdateManyWithoutOrganizationNestedInput
+  supportTickets?: Prisma.SupportTicketUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationUncheckedUpdateInput = {
@@ -276,6 +324,14 @@ export type OrganizationUncheckedUpdateInput = {
   members?: Prisma.OrganizationMemberUncheckedUpdateManyWithoutOrganizationNestedInput
   profiles?: Prisma.CustomerProfileUncheckedUpdateManyWithoutOrganizationNestedInput
   invitations?: Prisma.InvitationUncheckedUpdateManyWithoutOrganizationNestedInput
+  brandProfiles?: Prisma.BrandProfileUncheckedUpdateManyWithoutOrganizationNestedInput
+  fileAssets?: Prisma.FileAssetUncheckedUpdateManyWithoutOrganizationNestedInput
+  maintenanceSubs?: Prisma.MaintenanceSubscriptionUncheckedUpdateManyWithoutOrganizationNestedInput
+  billingProfile?: Prisma.BillingProfileUncheckedUpdateOneWithoutOrganizationNestedInput
+  quotes?: Prisma.QuoteUncheckedUpdateManyWithoutOrganizationNestedInput
+  contracts?: Prisma.ContractUncheckedUpdateManyWithoutOrganizationNestedInput
+  invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutOrganizationNestedInput
+  supportTickets?: Prisma.SupportTicketUncheckedUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationCreateManyInput = {
@@ -380,6 +436,120 @@ export type OrganizationUpdateOneRequiredWithoutInvitationsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.OrganizationUpdateToOneWithWhereWithoutInvitationsInput, Prisma.OrganizationUpdateWithoutInvitationsInput>, Prisma.OrganizationUncheckedUpdateWithoutInvitationsInput>
 }
 
+export type OrganizationCreateNestedOneWithoutBrandProfilesInput = {
+  create?: Prisma.XOR<Prisma.OrganizationCreateWithoutBrandProfilesInput, Prisma.OrganizationUncheckedCreateWithoutBrandProfilesInput>
+  connectOrCreate?: Prisma.OrganizationCreateOrConnectWithoutBrandProfilesInput
+  connect?: Prisma.OrganizationWhereUniqueInput
+}
+
+export type OrganizationUpdateOneRequiredWithoutBrandProfilesNestedInput = {
+  create?: Prisma.XOR<Prisma.OrganizationCreateWithoutBrandProfilesInput, Prisma.OrganizationUncheckedCreateWithoutBrandProfilesInput>
+  connectOrCreate?: Prisma.OrganizationCreateOrConnectWithoutBrandProfilesInput
+  upsert?: Prisma.OrganizationUpsertWithoutBrandProfilesInput
+  connect?: Prisma.OrganizationWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.OrganizationUpdateToOneWithWhereWithoutBrandProfilesInput, Prisma.OrganizationUpdateWithoutBrandProfilesInput>, Prisma.OrganizationUncheckedUpdateWithoutBrandProfilesInput>
+}
+
+export type OrganizationCreateNestedOneWithoutFileAssetsInput = {
+  create?: Prisma.XOR<Prisma.OrganizationCreateWithoutFileAssetsInput, Prisma.OrganizationUncheckedCreateWithoutFileAssetsInput>
+  connectOrCreate?: Prisma.OrganizationCreateOrConnectWithoutFileAssetsInput
+  connect?: Prisma.OrganizationWhereUniqueInput
+}
+
+export type OrganizationUpdateOneWithoutFileAssetsNestedInput = {
+  create?: Prisma.XOR<Prisma.OrganizationCreateWithoutFileAssetsInput, Prisma.OrganizationUncheckedCreateWithoutFileAssetsInput>
+  connectOrCreate?: Prisma.OrganizationCreateOrConnectWithoutFileAssetsInput
+  upsert?: Prisma.OrganizationUpsertWithoutFileAssetsInput
+  disconnect?: Prisma.OrganizationWhereInput | boolean
+  delete?: Prisma.OrganizationWhereInput | boolean
+  connect?: Prisma.OrganizationWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.OrganizationUpdateToOneWithWhereWithoutFileAssetsInput, Prisma.OrganizationUpdateWithoutFileAssetsInput>, Prisma.OrganizationUncheckedUpdateWithoutFileAssetsInput>
+}
+
+export type OrganizationCreateNestedOneWithoutMaintenanceSubsInput = {
+  create?: Prisma.XOR<Prisma.OrganizationCreateWithoutMaintenanceSubsInput, Prisma.OrganizationUncheckedCreateWithoutMaintenanceSubsInput>
+  connectOrCreate?: Prisma.OrganizationCreateOrConnectWithoutMaintenanceSubsInput
+  connect?: Prisma.OrganizationWhereUniqueInput
+}
+
+export type OrganizationUpdateOneRequiredWithoutMaintenanceSubsNestedInput = {
+  create?: Prisma.XOR<Prisma.OrganizationCreateWithoutMaintenanceSubsInput, Prisma.OrganizationUncheckedCreateWithoutMaintenanceSubsInput>
+  connectOrCreate?: Prisma.OrganizationCreateOrConnectWithoutMaintenanceSubsInput
+  upsert?: Prisma.OrganizationUpsertWithoutMaintenanceSubsInput
+  connect?: Prisma.OrganizationWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.OrganizationUpdateToOneWithWhereWithoutMaintenanceSubsInput, Prisma.OrganizationUpdateWithoutMaintenanceSubsInput>, Prisma.OrganizationUncheckedUpdateWithoutMaintenanceSubsInput>
+}
+
+export type OrganizationCreateNestedOneWithoutBillingProfileInput = {
+  create?: Prisma.XOR<Prisma.OrganizationCreateWithoutBillingProfileInput, Prisma.OrganizationUncheckedCreateWithoutBillingProfileInput>
+  connectOrCreate?: Prisma.OrganizationCreateOrConnectWithoutBillingProfileInput
+  connect?: Prisma.OrganizationWhereUniqueInput
+}
+
+export type OrganizationUpdateOneRequiredWithoutBillingProfileNestedInput = {
+  create?: Prisma.XOR<Prisma.OrganizationCreateWithoutBillingProfileInput, Prisma.OrganizationUncheckedCreateWithoutBillingProfileInput>
+  connectOrCreate?: Prisma.OrganizationCreateOrConnectWithoutBillingProfileInput
+  upsert?: Prisma.OrganizationUpsertWithoutBillingProfileInput
+  connect?: Prisma.OrganizationWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.OrganizationUpdateToOneWithWhereWithoutBillingProfileInput, Prisma.OrganizationUpdateWithoutBillingProfileInput>, Prisma.OrganizationUncheckedUpdateWithoutBillingProfileInput>
+}
+
+export type OrganizationCreateNestedOneWithoutQuotesInput = {
+  create?: Prisma.XOR<Prisma.OrganizationCreateWithoutQuotesInput, Prisma.OrganizationUncheckedCreateWithoutQuotesInput>
+  connectOrCreate?: Prisma.OrganizationCreateOrConnectWithoutQuotesInput
+  connect?: Prisma.OrganizationWhereUniqueInput
+}
+
+export type OrganizationUpdateOneRequiredWithoutQuotesNestedInput = {
+  create?: Prisma.XOR<Prisma.OrganizationCreateWithoutQuotesInput, Prisma.OrganizationUncheckedCreateWithoutQuotesInput>
+  connectOrCreate?: Prisma.OrganizationCreateOrConnectWithoutQuotesInput
+  upsert?: Prisma.OrganizationUpsertWithoutQuotesInput
+  connect?: Prisma.OrganizationWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.OrganizationUpdateToOneWithWhereWithoutQuotesInput, Prisma.OrganizationUpdateWithoutQuotesInput>, Prisma.OrganizationUncheckedUpdateWithoutQuotesInput>
+}
+
+export type OrganizationCreateNestedOneWithoutContractsInput = {
+  create?: Prisma.XOR<Prisma.OrganizationCreateWithoutContractsInput, Prisma.OrganizationUncheckedCreateWithoutContractsInput>
+  connectOrCreate?: Prisma.OrganizationCreateOrConnectWithoutContractsInput
+  connect?: Prisma.OrganizationWhereUniqueInput
+}
+
+export type OrganizationUpdateOneRequiredWithoutContractsNestedInput = {
+  create?: Prisma.XOR<Prisma.OrganizationCreateWithoutContractsInput, Prisma.OrganizationUncheckedCreateWithoutContractsInput>
+  connectOrCreate?: Prisma.OrganizationCreateOrConnectWithoutContractsInput
+  upsert?: Prisma.OrganizationUpsertWithoutContractsInput
+  connect?: Prisma.OrganizationWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.OrganizationUpdateToOneWithWhereWithoutContractsInput, Prisma.OrganizationUpdateWithoutContractsInput>, Prisma.OrganizationUncheckedUpdateWithoutContractsInput>
+}
+
+export type OrganizationCreateNestedOneWithoutInvoicesInput = {
+  create?: Prisma.XOR<Prisma.OrganizationCreateWithoutInvoicesInput, Prisma.OrganizationUncheckedCreateWithoutInvoicesInput>
+  connectOrCreate?: Prisma.OrganizationCreateOrConnectWithoutInvoicesInput
+  connect?: Prisma.OrganizationWhereUniqueInput
+}
+
+export type OrganizationUpdateOneRequiredWithoutInvoicesNestedInput = {
+  create?: Prisma.XOR<Prisma.OrganizationCreateWithoutInvoicesInput, Prisma.OrganizationUncheckedCreateWithoutInvoicesInput>
+  connectOrCreate?: Prisma.OrganizationCreateOrConnectWithoutInvoicesInput
+  upsert?: Prisma.OrganizationUpsertWithoutInvoicesInput
+  connect?: Prisma.OrganizationWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.OrganizationUpdateToOneWithWhereWithoutInvoicesInput, Prisma.OrganizationUpdateWithoutInvoicesInput>, Prisma.OrganizationUncheckedUpdateWithoutInvoicesInput>
+}
+
+export type OrganizationCreateNestedOneWithoutSupportTicketsInput = {
+  create?: Prisma.XOR<Prisma.OrganizationCreateWithoutSupportTicketsInput, Prisma.OrganizationUncheckedCreateWithoutSupportTicketsInput>
+  connectOrCreate?: Prisma.OrganizationCreateOrConnectWithoutSupportTicketsInput
+  connect?: Prisma.OrganizationWhereUniqueInput
+}
+
+export type OrganizationUpdateOneRequiredWithoutSupportTicketsNestedInput = {
+  create?: Prisma.XOR<Prisma.OrganizationCreateWithoutSupportTicketsInput, Prisma.OrganizationUncheckedCreateWithoutSupportTicketsInput>
+  connectOrCreate?: Prisma.OrganizationCreateOrConnectWithoutSupportTicketsInput
+  upsert?: Prisma.OrganizationUpsertWithoutSupportTicketsInput
+  connect?: Prisma.OrganizationWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.OrganizationUpdateToOneWithWhereWithoutSupportTicketsInput, Prisma.OrganizationUpdateWithoutSupportTicketsInput>, Prisma.OrganizationUncheckedUpdateWithoutSupportTicketsInput>
+}
+
 export type OrganizationCreateWithoutProfilesInput = {
   id?: string
   slug: string
@@ -388,6 +558,14 @@ export type OrganizationCreateWithoutProfilesInput = {
   updatedAt?: Date | string
   members?: Prisma.OrganizationMemberCreateNestedManyWithoutOrganizationInput
   invitations?: Prisma.InvitationCreateNestedManyWithoutOrganizationInput
+  brandProfiles?: Prisma.BrandProfileCreateNestedManyWithoutOrganizationInput
+  fileAssets?: Prisma.FileAssetCreateNestedManyWithoutOrganizationInput
+  maintenanceSubs?: Prisma.MaintenanceSubscriptionCreateNestedManyWithoutOrganizationInput
+  billingProfile?: Prisma.BillingProfileCreateNestedOneWithoutOrganizationInput
+  quotes?: Prisma.QuoteCreateNestedManyWithoutOrganizationInput
+  contracts?: Prisma.ContractCreateNestedManyWithoutOrganizationInput
+  invoices?: Prisma.InvoiceCreateNestedManyWithoutOrganizationInput
+  supportTickets?: Prisma.SupportTicketCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationUncheckedCreateWithoutProfilesInput = {
@@ -398,6 +576,14 @@ export type OrganizationUncheckedCreateWithoutProfilesInput = {
   updatedAt?: Date | string
   members?: Prisma.OrganizationMemberUncheckedCreateNestedManyWithoutOrganizationInput
   invitations?: Prisma.InvitationUncheckedCreateNestedManyWithoutOrganizationInput
+  brandProfiles?: Prisma.BrandProfileUncheckedCreateNestedManyWithoutOrganizationInput
+  fileAssets?: Prisma.FileAssetUncheckedCreateNestedManyWithoutOrganizationInput
+  maintenanceSubs?: Prisma.MaintenanceSubscriptionUncheckedCreateNestedManyWithoutOrganizationInput
+  billingProfile?: Prisma.BillingProfileUncheckedCreateNestedOneWithoutOrganizationInput
+  quotes?: Prisma.QuoteUncheckedCreateNestedManyWithoutOrganizationInput
+  contracts?: Prisma.ContractUncheckedCreateNestedManyWithoutOrganizationInput
+  invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutOrganizationInput
+  supportTickets?: Prisma.SupportTicketUncheckedCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationCreateOrConnectWithoutProfilesInput = {
@@ -424,6 +610,14 @@ export type OrganizationUpdateWithoutProfilesInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   members?: Prisma.OrganizationMemberUpdateManyWithoutOrganizationNestedInput
   invitations?: Prisma.InvitationUpdateManyWithoutOrganizationNestedInput
+  brandProfiles?: Prisma.BrandProfileUpdateManyWithoutOrganizationNestedInput
+  fileAssets?: Prisma.FileAssetUpdateManyWithoutOrganizationNestedInput
+  maintenanceSubs?: Prisma.MaintenanceSubscriptionUpdateManyWithoutOrganizationNestedInput
+  billingProfile?: Prisma.BillingProfileUpdateOneWithoutOrganizationNestedInput
+  quotes?: Prisma.QuoteUpdateManyWithoutOrganizationNestedInput
+  contracts?: Prisma.ContractUpdateManyWithoutOrganizationNestedInput
+  invoices?: Prisma.InvoiceUpdateManyWithoutOrganizationNestedInput
+  supportTickets?: Prisma.SupportTicketUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationUncheckedUpdateWithoutProfilesInput = {
@@ -434,6 +628,14 @@ export type OrganizationUncheckedUpdateWithoutProfilesInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   members?: Prisma.OrganizationMemberUncheckedUpdateManyWithoutOrganizationNestedInput
   invitations?: Prisma.InvitationUncheckedUpdateManyWithoutOrganizationNestedInput
+  brandProfiles?: Prisma.BrandProfileUncheckedUpdateManyWithoutOrganizationNestedInput
+  fileAssets?: Prisma.FileAssetUncheckedUpdateManyWithoutOrganizationNestedInput
+  maintenanceSubs?: Prisma.MaintenanceSubscriptionUncheckedUpdateManyWithoutOrganizationNestedInput
+  billingProfile?: Prisma.BillingProfileUncheckedUpdateOneWithoutOrganizationNestedInput
+  quotes?: Prisma.QuoteUncheckedUpdateManyWithoutOrganizationNestedInput
+  contracts?: Prisma.ContractUncheckedUpdateManyWithoutOrganizationNestedInput
+  invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutOrganizationNestedInput
+  supportTickets?: Prisma.SupportTicketUncheckedUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationCreateWithoutMembersInput = {
@@ -444,6 +646,14 @@ export type OrganizationCreateWithoutMembersInput = {
   updatedAt?: Date | string
   profiles?: Prisma.CustomerProfileCreateNestedManyWithoutOrganizationInput
   invitations?: Prisma.InvitationCreateNestedManyWithoutOrganizationInput
+  brandProfiles?: Prisma.BrandProfileCreateNestedManyWithoutOrganizationInput
+  fileAssets?: Prisma.FileAssetCreateNestedManyWithoutOrganizationInput
+  maintenanceSubs?: Prisma.MaintenanceSubscriptionCreateNestedManyWithoutOrganizationInput
+  billingProfile?: Prisma.BillingProfileCreateNestedOneWithoutOrganizationInput
+  quotes?: Prisma.QuoteCreateNestedManyWithoutOrganizationInput
+  contracts?: Prisma.ContractCreateNestedManyWithoutOrganizationInput
+  invoices?: Prisma.InvoiceCreateNestedManyWithoutOrganizationInput
+  supportTickets?: Prisma.SupportTicketCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationUncheckedCreateWithoutMembersInput = {
@@ -454,6 +664,14 @@ export type OrganizationUncheckedCreateWithoutMembersInput = {
   updatedAt?: Date | string
   profiles?: Prisma.CustomerProfileUncheckedCreateNestedManyWithoutOrganizationInput
   invitations?: Prisma.InvitationUncheckedCreateNestedManyWithoutOrganizationInput
+  brandProfiles?: Prisma.BrandProfileUncheckedCreateNestedManyWithoutOrganizationInput
+  fileAssets?: Prisma.FileAssetUncheckedCreateNestedManyWithoutOrganizationInput
+  maintenanceSubs?: Prisma.MaintenanceSubscriptionUncheckedCreateNestedManyWithoutOrganizationInput
+  billingProfile?: Prisma.BillingProfileUncheckedCreateNestedOneWithoutOrganizationInput
+  quotes?: Prisma.QuoteUncheckedCreateNestedManyWithoutOrganizationInput
+  contracts?: Prisma.ContractUncheckedCreateNestedManyWithoutOrganizationInput
+  invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutOrganizationInput
+  supportTickets?: Prisma.SupportTicketUncheckedCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationCreateOrConnectWithoutMembersInput = {
@@ -480,6 +698,14 @@ export type OrganizationUpdateWithoutMembersInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profiles?: Prisma.CustomerProfileUpdateManyWithoutOrganizationNestedInput
   invitations?: Prisma.InvitationUpdateManyWithoutOrganizationNestedInput
+  brandProfiles?: Prisma.BrandProfileUpdateManyWithoutOrganizationNestedInput
+  fileAssets?: Prisma.FileAssetUpdateManyWithoutOrganizationNestedInput
+  maintenanceSubs?: Prisma.MaintenanceSubscriptionUpdateManyWithoutOrganizationNestedInput
+  billingProfile?: Prisma.BillingProfileUpdateOneWithoutOrganizationNestedInput
+  quotes?: Prisma.QuoteUpdateManyWithoutOrganizationNestedInput
+  contracts?: Prisma.ContractUpdateManyWithoutOrganizationNestedInput
+  invoices?: Prisma.InvoiceUpdateManyWithoutOrganizationNestedInput
+  supportTickets?: Prisma.SupportTicketUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationUncheckedUpdateWithoutMembersInput = {
@@ -490,6 +716,14 @@ export type OrganizationUncheckedUpdateWithoutMembersInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profiles?: Prisma.CustomerProfileUncheckedUpdateManyWithoutOrganizationNestedInput
   invitations?: Prisma.InvitationUncheckedUpdateManyWithoutOrganizationNestedInput
+  brandProfiles?: Prisma.BrandProfileUncheckedUpdateManyWithoutOrganizationNestedInput
+  fileAssets?: Prisma.FileAssetUncheckedUpdateManyWithoutOrganizationNestedInput
+  maintenanceSubs?: Prisma.MaintenanceSubscriptionUncheckedUpdateManyWithoutOrganizationNestedInput
+  billingProfile?: Prisma.BillingProfileUncheckedUpdateOneWithoutOrganizationNestedInput
+  quotes?: Prisma.QuoteUncheckedUpdateManyWithoutOrganizationNestedInput
+  contracts?: Prisma.ContractUncheckedUpdateManyWithoutOrganizationNestedInput
+  invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutOrganizationNestedInput
+  supportTickets?: Prisma.SupportTicketUncheckedUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationCreateWithoutInvitationsInput = {
@@ -500,6 +734,14 @@ export type OrganizationCreateWithoutInvitationsInput = {
   updatedAt?: Date | string
   members?: Prisma.OrganizationMemberCreateNestedManyWithoutOrganizationInput
   profiles?: Prisma.CustomerProfileCreateNestedManyWithoutOrganizationInput
+  brandProfiles?: Prisma.BrandProfileCreateNestedManyWithoutOrganizationInput
+  fileAssets?: Prisma.FileAssetCreateNestedManyWithoutOrganizationInput
+  maintenanceSubs?: Prisma.MaintenanceSubscriptionCreateNestedManyWithoutOrganizationInput
+  billingProfile?: Prisma.BillingProfileCreateNestedOneWithoutOrganizationInput
+  quotes?: Prisma.QuoteCreateNestedManyWithoutOrganizationInput
+  contracts?: Prisma.ContractCreateNestedManyWithoutOrganizationInput
+  invoices?: Prisma.InvoiceCreateNestedManyWithoutOrganizationInput
+  supportTickets?: Prisma.SupportTicketCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationUncheckedCreateWithoutInvitationsInput = {
@@ -510,6 +752,14 @@ export type OrganizationUncheckedCreateWithoutInvitationsInput = {
   updatedAt?: Date | string
   members?: Prisma.OrganizationMemberUncheckedCreateNestedManyWithoutOrganizationInput
   profiles?: Prisma.CustomerProfileUncheckedCreateNestedManyWithoutOrganizationInput
+  brandProfiles?: Prisma.BrandProfileUncheckedCreateNestedManyWithoutOrganizationInput
+  fileAssets?: Prisma.FileAssetUncheckedCreateNestedManyWithoutOrganizationInput
+  maintenanceSubs?: Prisma.MaintenanceSubscriptionUncheckedCreateNestedManyWithoutOrganizationInput
+  billingProfile?: Prisma.BillingProfileUncheckedCreateNestedOneWithoutOrganizationInput
+  quotes?: Prisma.QuoteUncheckedCreateNestedManyWithoutOrganizationInput
+  contracts?: Prisma.ContractUncheckedCreateNestedManyWithoutOrganizationInput
+  invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutOrganizationInput
+  supportTickets?: Prisma.SupportTicketUncheckedCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationCreateOrConnectWithoutInvitationsInput = {
@@ -536,6 +786,14 @@ export type OrganizationUpdateWithoutInvitationsInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   members?: Prisma.OrganizationMemberUpdateManyWithoutOrganizationNestedInput
   profiles?: Prisma.CustomerProfileUpdateManyWithoutOrganizationNestedInput
+  brandProfiles?: Prisma.BrandProfileUpdateManyWithoutOrganizationNestedInput
+  fileAssets?: Prisma.FileAssetUpdateManyWithoutOrganizationNestedInput
+  maintenanceSubs?: Prisma.MaintenanceSubscriptionUpdateManyWithoutOrganizationNestedInput
+  billingProfile?: Prisma.BillingProfileUpdateOneWithoutOrganizationNestedInput
+  quotes?: Prisma.QuoteUpdateManyWithoutOrganizationNestedInput
+  contracts?: Prisma.ContractUpdateManyWithoutOrganizationNestedInput
+  invoices?: Prisma.InvoiceUpdateManyWithoutOrganizationNestedInput
+  supportTickets?: Prisma.SupportTicketUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationUncheckedUpdateWithoutInvitationsInput = {
@@ -546,6 +804,718 @@ export type OrganizationUncheckedUpdateWithoutInvitationsInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   members?: Prisma.OrganizationMemberUncheckedUpdateManyWithoutOrganizationNestedInput
   profiles?: Prisma.CustomerProfileUncheckedUpdateManyWithoutOrganizationNestedInput
+  brandProfiles?: Prisma.BrandProfileUncheckedUpdateManyWithoutOrganizationNestedInput
+  fileAssets?: Prisma.FileAssetUncheckedUpdateManyWithoutOrganizationNestedInput
+  maintenanceSubs?: Prisma.MaintenanceSubscriptionUncheckedUpdateManyWithoutOrganizationNestedInput
+  billingProfile?: Prisma.BillingProfileUncheckedUpdateOneWithoutOrganizationNestedInput
+  quotes?: Prisma.QuoteUncheckedUpdateManyWithoutOrganizationNestedInput
+  contracts?: Prisma.ContractUncheckedUpdateManyWithoutOrganizationNestedInput
+  invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutOrganizationNestedInput
+  supportTickets?: Prisma.SupportTicketUncheckedUpdateManyWithoutOrganizationNestedInput
+}
+
+export type OrganizationCreateWithoutBrandProfilesInput = {
+  id?: string
+  slug: string
+  name: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  members?: Prisma.OrganizationMemberCreateNestedManyWithoutOrganizationInput
+  profiles?: Prisma.CustomerProfileCreateNestedManyWithoutOrganizationInput
+  invitations?: Prisma.InvitationCreateNestedManyWithoutOrganizationInput
+  fileAssets?: Prisma.FileAssetCreateNestedManyWithoutOrganizationInput
+  maintenanceSubs?: Prisma.MaintenanceSubscriptionCreateNestedManyWithoutOrganizationInput
+  billingProfile?: Prisma.BillingProfileCreateNestedOneWithoutOrganizationInput
+  quotes?: Prisma.QuoteCreateNestedManyWithoutOrganizationInput
+  contracts?: Prisma.ContractCreateNestedManyWithoutOrganizationInput
+  invoices?: Prisma.InvoiceCreateNestedManyWithoutOrganizationInput
+  supportTickets?: Prisma.SupportTicketCreateNestedManyWithoutOrganizationInput
+}
+
+export type OrganizationUncheckedCreateWithoutBrandProfilesInput = {
+  id?: string
+  slug: string
+  name: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  members?: Prisma.OrganizationMemberUncheckedCreateNestedManyWithoutOrganizationInput
+  profiles?: Prisma.CustomerProfileUncheckedCreateNestedManyWithoutOrganizationInput
+  invitations?: Prisma.InvitationUncheckedCreateNestedManyWithoutOrganizationInput
+  fileAssets?: Prisma.FileAssetUncheckedCreateNestedManyWithoutOrganizationInput
+  maintenanceSubs?: Prisma.MaintenanceSubscriptionUncheckedCreateNestedManyWithoutOrganizationInput
+  billingProfile?: Prisma.BillingProfileUncheckedCreateNestedOneWithoutOrganizationInput
+  quotes?: Prisma.QuoteUncheckedCreateNestedManyWithoutOrganizationInput
+  contracts?: Prisma.ContractUncheckedCreateNestedManyWithoutOrganizationInput
+  invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutOrganizationInput
+  supportTickets?: Prisma.SupportTicketUncheckedCreateNestedManyWithoutOrganizationInput
+}
+
+export type OrganizationCreateOrConnectWithoutBrandProfilesInput = {
+  where: Prisma.OrganizationWhereUniqueInput
+  create: Prisma.XOR<Prisma.OrganizationCreateWithoutBrandProfilesInput, Prisma.OrganizationUncheckedCreateWithoutBrandProfilesInput>
+}
+
+export type OrganizationUpsertWithoutBrandProfilesInput = {
+  update: Prisma.XOR<Prisma.OrganizationUpdateWithoutBrandProfilesInput, Prisma.OrganizationUncheckedUpdateWithoutBrandProfilesInput>
+  create: Prisma.XOR<Prisma.OrganizationCreateWithoutBrandProfilesInput, Prisma.OrganizationUncheckedCreateWithoutBrandProfilesInput>
+  where?: Prisma.OrganizationWhereInput
+}
+
+export type OrganizationUpdateToOneWithWhereWithoutBrandProfilesInput = {
+  where?: Prisma.OrganizationWhereInput
+  data: Prisma.XOR<Prisma.OrganizationUpdateWithoutBrandProfilesInput, Prisma.OrganizationUncheckedUpdateWithoutBrandProfilesInput>
+}
+
+export type OrganizationUpdateWithoutBrandProfilesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  members?: Prisma.OrganizationMemberUpdateManyWithoutOrganizationNestedInput
+  profiles?: Prisma.CustomerProfileUpdateManyWithoutOrganizationNestedInput
+  invitations?: Prisma.InvitationUpdateManyWithoutOrganizationNestedInput
+  fileAssets?: Prisma.FileAssetUpdateManyWithoutOrganizationNestedInput
+  maintenanceSubs?: Prisma.MaintenanceSubscriptionUpdateManyWithoutOrganizationNestedInput
+  billingProfile?: Prisma.BillingProfileUpdateOneWithoutOrganizationNestedInput
+  quotes?: Prisma.QuoteUpdateManyWithoutOrganizationNestedInput
+  contracts?: Prisma.ContractUpdateManyWithoutOrganizationNestedInput
+  invoices?: Prisma.InvoiceUpdateManyWithoutOrganizationNestedInput
+  supportTickets?: Prisma.SupportTicketUpdateManyWithoutOrganizationNestedInput
+}
+
+export type OrganizationUncheckedUpdateWithoutBrandProfilesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  members?: Prisma.OrganizationMemberUncheckedUpdateManyWithoutOrganizationNestedInput
+  profiles?: Prisma.CustomerProfileUncheckedUpdateManyWithoutOrganizationNestedInput
+  invitations?: Prisma.InvitationUncheckedUpdateManyWithoutOrganizationNestedInput
+  fileAssets?: Prisma.FileAssetUncheckedUpdateManyWithoutOrganizationNestedInput
+  maintenanceSubs?: Prisma.MaintenanceSubscriptionUncheckedUpdateManyWithoutOrganizationNestedInput
+  billingProfile?: Prisma.BillingProfileUncheckedUpdateOneWithoutOrganizationNestedInput
+  quotes?: Prisma.QuoteUncheckedUpdateManyWithoutOrganizationNestedInput
+  contracts?: Prisma.ContractUncheckedUpdateManyWithoutOrganizationNestedInput
+  invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutOrganizationNestedInput
+  supportTickets?: Prisma.SupportTicketUncheckedUpdateManyWithoutOrganizationNestedInput
+}
+
+export type OrganizationCreateWithoutFileAssetsInput = {
+  id?: string
+  slug: string
+  name: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  members?: Prisma.OrganizationMemberCreateNestedManyWithoutOrganizationInput
+  profiles?: Prisma.CustomerProfileCreateNestedManyWithoutOrganizationInput
+  invitations?: Prisma.InvitationCreateNestedManyWithoutOrganizationInput
+  brandProfiles?: Prisma.BrandProfileCreateNestedManyWithoutOrganizationInput
+  maintenanceSubs?: Prisma.MaintenanceSubscriptionCreateNestedManyWithoutOrganizationInput
+  billingProfile?: Prisma.BillingProfileCreateNestedOneWithoutOrganizationInput
+  quotes?: Prisma.QuoteCreateNestedManyWithoutOrganizationInput
+  contracts?: Prisma.ContractCreateNestedManyWithoutOrganizationInput
+  invoices?: Prisma.InvoiceCreateNestedManyWithoutOrganizationInput
+  supportTickets?: Prisma.SupportTicketCreateNestedManyWithoutOrganizationInput
+}
+
+export type OrganizationUncheckedCreateWithoutFileAssetsInput = {
+  id?: string
+  slug: string
+  name: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  members?: Prisma.OrganizationMemberUncheckedCreateNestedManyWithoutOrganizationInput
+  profiles?: Prisma.CustomerProfileUncheckedCreateNestedManyWithoutOrganizationInput
+  invitations?: Prisma.InvitationUncheckedCreateNestedManyWithoutOrganizationInput
+  brandProfiles?: Prisma.BrandProfileUncheckedCreateNestedManyWithoutOrganizationInput
+  maintenanceSubs?: Prisma.MaintenanceSubscriptionUncheckedCreateNestedManyWithoutOrganizationInput
+  billingProfile?: Prisma.BillingProfileUncheckedCreateNestedOneWithoutOrganizationInput
+  quotes?: Prisma.QuoteUncheckedCreateNestedManyWithoutOrganizationInput
+  contracts?: Prisma.ContractUncheckedCreateNestedManyWithoutOrganizationInput
+  invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutOrganizationInput
+  supportTickets?: Prisma.SupportTicketUncheckedCreateNestedManyWithoutOrganizationInput
+}
+
+export type OrganizationCreateOrConnectWithoutFileAssetsInput = {
+  where: Prisma.OrganizationWhereUniqueInput
+  create: Prisma.XOR<Prisma.OrganizationCreateWithoutFileAssetsInput, Prisma.OrganizationUncheckedCreateWithoutFileAssetsInput>
+}
+
+export type OrganizationUpsertWithoutFileAssetsInput = {
+  update: Prisma.XOR<Prisma.OrganizationUpdateWithoutFileAssetsInput, Prisma.OrganizationUncheckedUpdateWithoutFileAssetsInput>
+  create: Prisma.XOR<Prisma.OrganizationCreateWithoutFileAssetsInput, Prisma.OrganizationUncheckedCreateWithoutFileAssetsInput>
+  where?: Prisma.OrganizationWhereInput
+}
+
+export type OrganizationUpdateToOneWithWhereWithoutFileAssetsInput = {
+  where?: Prisma.OrganizationWhereInput
+  data: Prisma.XOR<Prisma.OrganizationUpdateWithoutFileAssetsInput, Prisma.OrganizationUncheckedUpdateWithoutFileAssetsInput>
+}
+
+export type OrganizationUpdateWithoutFileAssetsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  members?: Prisma.OrganizationMemberUpdateManyWithoutOrganizationNestedInput
+  profiles?: Prisma.CustomerProfileUpdateManyWithoutOrganizationNestedInput
+  invitations?: Prisma.InvitationUpdateManyWithoutOrganizationNestedInput
+  brandProfiles?: Prisma.BrandProfileUpdateManyWithoutOrganizationNestedInput
+  maintenanceSubs?: Prisma.MaintenanceSubscriptionUpdateManyWithoutOrganizationNestedInput
+  billingProfile?: Prisma.BillingProfileUpdateOneWithoutOrganizationNestedInput
+  quotes?: Prisma.QuoteUpdateManyWithoutOrganizationNestedInput
+  contracts?: Prisma.ContractUpdateManyWithoutOrganizationNestedInput
+  invoices?: Prisma.InvoiceUpdateManyWithoutOrganizationNestedInput
+  supportTickets?: Prisma.SupportTicketUpdateManyWithoutOrganizationNestedInput
+}
+
+export type OrganizationUncheckedUpdateWithoutFileAssetsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  members?: Prisma.OrganizationMemberUncheckedUpdateManyWithoutOrganizationNestedInput
+  profiles?: Prisma.CustomerProfileUncheckedUpdateManyWithoutOrganizationNestedInput
+  invitations?: Prisma.InvitationUncheckedUpdateManyWithoutOrganizationNestedInput
+  brandProfiles?: Prisma.BrandProfileUncheckedUpdateManyWithoutOrganizationNestedInput
+  maintenanceSubs?: Prisma.MaintenanceSubscriptionUncheckedUpdateManyWithoutOrganizationNestedInput
+  billingProfile?: Prisma.BillingProfileUncheckedUpdateOneWithoutOrganizationNestedInput
+  quotes?: Prisma.QuoteUncheckedUpdateManyWithoutOrganizationNestedInput
+  contracts?: Prisma.ContractUncheckedUpdateManyWithoutOrganizationNestedInput
+  invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutOrganizationNestedInput
+  supportTickets?: Prisma.SupportTicketUncheckedUpdateManyWithoutOrganizationNestedInput
+}
+
+export type OrganizationCreateWithoutMaintenanceSubsInput = {
+  id?: string
+  slug: string
+  name: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  members?: Prisma.OrganizationMemberCreateNestedManyWithoutOrganizationInput
+  profiles?: Prisma.CustomerProfileCreateNestedManyWithoutOrganizationInput
+  invitations?: Prisma.InvitationCreateNestedManyWithoutOrganizationInput
+  brandProfiles?: Prisma.BrandProfileCreateNestedManyWithoutOrganizationInput
+  fileAssets?: Prisma.FileAssetCreateNestedManyWithoutOrganizationInput
+  billingProfile?: Prisma.BillingProfileCreateNestedOneWithoutOrganizationInput
+  quotes?: Prisma.QuoteCreateNestedManyWithoutOrganizationInput
+  contracts?: Prisma.ContractCreateNestedManyWithoutOrganizationInput
+  invoices?: Prisma.InvoiceCreateNestedManyWithoutOrganizationInput
+  supportTickets?: Prisma.SupportTicketCreateNestedManyWithoutOrganizationInput
+}
+
+export type OrganizationUncheckedCreateWithoutMaintenanceSubsInput = {
+  id?: string
+  slug: string
+  name: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  members?: Prisma.OrganizationMemberUncheckedCreateNestedManyWithoutOrganizationInput
+  profiles?: Prisma.CustomerProfileUncheckedCreateNestedManyWithoutOrganizationInput
+  invitations?: Prisma.InvitationUncheckedCreateNestedManyWithoutOrganizationInput
+  brandProfiles?: Prisma.BrandProfileUncheckedCreateNestedManyWithoutOrganizationInput
+  fileAssets?: Prisma.FileAssetUncheckedCreateNestedManyWithoutOrganizationInput
+  billingProfile?: Prisma.BillingProfileUncheckedCreateNestedOneWithoutOrganizationInput
+  quotes?: Prisma.QuoteUncheckedCreateNestedManyWithoutOrganizationInput
+  contracts?: Prisma.ContractUncheckedCreateNestedManyWithoutOrganizationInput
+  invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutOrganizationInput
+  supportTickets?: Prisma.SupportTicketUncheckedCreateNestedManyWithoutOrganizationInput
+}
+
+export type OrganizationCreateOrConnectWithoutMaintenanceSubsInput = {
+  where: Prisma.OrganizationWhereUniqueInput
+  create: Prisma.XOR<Prisma.OrganizationCreateWithoutMaintenanceSubsInput, Prisma.OrganizationUncheckedCreateWithoutMaintenanceSubsInput>
+}
+
+export type OrganizationUpsertWithoutMaintenanceSubsInput = {
+  update: Prisma.XOR<Prisma.OrganizationUpdateWithoutMaintenanceSubsInput, Prisma.OrganizationUncheckedUpdateWithoutMaintenanceSubsInput>
+  create: Prisma.XOR<Prisma.OrganizationCreateWithoutMaintenanceSubsInput, Prisma.OrganizationUncheckedCreateWithoutMaintenanceSubsInput>
+  where?: Prisma.OrganizationWhereInput
+}
+
+export type OrganizationUpdateToOneWithWhereWithoutMaintenanceSubsInput = {
+  where?: Prisma.OrganizationWhereInput
+  data: Prisma.XOR<Prisma.OrganizationUpdateWithoutMaintenanceSubsInput, Prisma.OrganizationUncheckedUpdateWithoutMaintenanceSubsInput>
+}
+
+export type OrganizationUpdateWithoutMaintenanceSubsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  members?: Prisma.OrganizationMemberUpdateManyWithoutOrganizationNestedInput
+  profiles?: Prisma.CustomerProfileUpdateManyWithoutOrganizationNestedInput
+  invitations?: Prisma.InvitationUpdateManyWithoutOrganizationNestedInput
+  brandProfiles?: Prisma.BrandProfileUpdateManyWithoutOrganizationNestedInput
+  fileAssets?: Prisma.FileAssetUpdateManyWithoutOrganizationNestedInput
+  billingProfile?: Prisma.BillingProfileUpdateOneWithoutOrganizationNestedInput
+  quotes?: Prisma.QuoteUpdateManyWithoutOrganizationNestedInput
+  contracts?: Prisma.ContractUpdateManyWithoutOrganizationNestedInput
+  invoices?: Prisma.InvoiceUpdateManyWithoutOrganizationNestedInput
+  supportTickets?: Prisma.SupportTicketUpdateManyWithoutOrganizationNestedInput
+}
+
+export type OrganizationUncheckedUpdateWithoutMaintenanceSubsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  members?: Prisma.OrganizationMemberUncheckedUpdateManyWithoutOrganizationNestedInput
+  profiles?: Prisma.CustomerProfileUncheckedUpdateManyWithoutOrganizationNestedInput
+  invitations?: Prisma.InvitationUncheckedUpdateManyWithoutOrganizationNestedInput
+  brandProfiles?: Prisma.BrandProfileUncheckedUpdateManyWithoutOrganizationNestedInput
+  fileAssets?: Prisma.FileAssetUncheckedUpdateManyWithoutOrganizationNestedInput
+  billingProfile?: Prisma.BillingProfileUncheckedUpdateOneWithoutOrganizationNestedInput
+  quotes?: Prisma.QuoteUncheckedUpdateManyWithoutOrganizationNestedInput
+  contracts?: Prisma.ContractUncheckedUpdateManyWithoutOrganizationNestedInput
+  invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutOrganizationNestedInput
+  supportTickets?: Prisma.SupportTicketUncheckedUpdateManyWithoutOrganizationNestedInput
+}
+
+export type OrganizationCreateWithoutBillingProfileInput = {
+  id?: string
+  slug: string
+  name: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  members?: Prisma.OrganizationMemberCreateNestedManyWithoutOrganizationInput
+  profiles?: Prisma.CustomerProfileCreateNestedManyWithoutOrganizationInput
+  invitations?: Prisma.InvitationCreateNestedManyWithoutOrganizationInput
+  brandProfiles?: Prisma.BrandProfileCreateNestedManyWithoutOrganizationInput
+  fileAssets?: Prisma.FileAssetCreateNestedManyWithoutOrganizationInput
+  maintenanceSubs?: Prisma.MaintenanceSubscriptionCreateNestedManyWithoutOrganizationInput
+  quotes?: Prisma.QuoteCreateNestedManyWithoutOrganizationInput
+  contracts?: Prisma.ContractCreateNestedManyWithoutOrganizationInput
+  invoices?: Prisma.InvoiceCreateNestedManyWithoutOrganizationInput
+  supportTickets?: Prisma.SupportTicketCreateNestedManyWithoutOrganizationInput
+}
+
+export type OrganizationUncheckedCreateWithoutBillingProfileInput = {
+  id?: string
+  slug: string
+  name: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  members?: Prisma.OrganizationMemberUncheckedCreateNestedManyWithoutOrganizationInput
+  profiles?: Prisma.CustomerProfileUncheckedCreateNestedManyWithoutOrganizationInput
+  invitations?: Prisma.InvitationUncheckedCreateNestedManyWithoutOrganizationInput
+  brandProfiles?: Prisma.BrandProfileUncheckedCreateNestedManyWithoutOrganizationInput
+  fileAssets?: Prisma.FileAssetUncheckedCreateNestedManyWithoutOrganizationInput
+  maintenanceSubs?: Prisma.MaintenanceSubscriptionUncheckedCreateNestedManyWithoutOrganizationInput
+  quotes?: Prisma.QuoteUncheckedCreateNestedManyWithoutOrganizationInput
+  contracts?: Prisma.ContractUncheckedCreateNestedManyWithoutOrganizationInput
+  invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutOrganizationInput
+  supportTickets?: Prisma.SupportTicketUncheckedCreateNestedManyWithoutOrganizationInput
+}
+
+export type OrganizationCreateOrConnectWithoutBillingProfileInput = {
+  where: Prisma.OrganizationWhereUniqueInput
+  create: Prisma.XOR<Prisma.OrganizationCreateWithoutBillingProfileInput, Prisma.OrganizationUncheckedCreateWithoutBillingProfileInput>
+}
+
+export type OrganizationUpsertWithoutBillingProfileInput = {
+  update: Prisma.XOR<Prisma.OrganizationUpdateWithoutBillingProfileInput, Prisma.OrganizationUncheckedUpdateWithoutBillingProfileInput>
+  create: Prisma.XOR<Prisma.OrganizationCreateWithoutBillingProfileInput, Prisma.OrganizationUncheckedCreateWithoutBillingProfileInput>
+  where?: Prisma.OrganizationWhereInput
+}
+
+export type OrganizationUpdateToOneWithWhereWithoutBillingProfileInput = {
+  where?: Prisma.OrganizationWhereInput
+  data: Prisma.XOR<Prisma.OrganizationUpdateWithoutBillingProfileInput, Prisma.OrganizationUncheckedUpdateWithoutBillingProfileInput>
+}
+
+export type OrganizationUpdateWithoutBillingProfileInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  members?: Prisma.OrganizationMemberUpdateManyWithoutOrganizationNestedInput
+  profiles?: Prisma.CustomerProfileUpdateManyWithoutOrganizationNestedInput
+  invitations?: Prisma.InvitationUpdateManyWithoutOrganizationNestedInput
+  brandProfiles?: Prisma.BrandProfileUpdateManyWithoutOrganizationNestedInput
+  fileAssets?: Prisma.FileAssetUpdateManyWithoutOrganizationNestedInput
+  maintenanceSubs?: Prisma.MaintenanceSubscriptionUpdateManyWithoutOrganizationNestedInput
+  quotes?: Prisma.QuoteUpdateManyWithoutOrganizationNestedInput
+  contracts?: Prisma.ContractUpdateManyWithoutOrganizationNestedInput
+  invoices?: Prisma.InvoiceUpdateManyWithoutOrganizationNestedInput
+  supportTickets?: Prisma.SupportTicketUpdateManyWithoutOrganizationNestedInput
+}
+
+export type OrganizationUncheckedUpdateWithoutBillingProfileInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  members?: Prisma.OrganizationMemberUncheckedUpdateManyWithoutOrganizationNestedInput
+  profiles?: Prisma.CustomerProfileUncheckedUpdateManyWithoutOrganizationNestedInput
+  invitations?: Prisma.InvitationUncheckedUpdateManyWithoutOrganizationNestedInput
+  brandProfiles?: Prisma.BrandProfileUncheckedUpdateManyWithoutOrganizationNestedInput
+  fileAssets?: Prisma.FileAssetUncheckedUpdateManyWithoutOrganizationNestedInput
+  maintenanceSubs?: Prisma.MaintenanceSubscriptionUncheckedUpdateManyWithoutOrganizationNestedInput
+  quotes?: Prisma.QuoteUncheckedUpdateManyWithoutOrganizationNestedInput
+  contracts?: Prisma.ContractUncheckedUpdateManyWithoutOrganizationNestedInput
+  invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutOrganizationNestedInput
+  supportTickets?: Prisma.SupportTicketUncheckedUpdateManyWithoutOrganizationNestedInput
+}
+
+export type OrganizationCreateWithoutQuotesInput = {
+  id?: string
+  slug: string
+  name: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  members?: Prisma.OrganizationMemberCreateNestedManyWithoutOrganizationInput
+  profiles?: Prisma.CustomerProfileCreateNestedManyWithoutOrganizationInput
+  invitations?: Prisma.InvitationCreateNestedManyWithoutOrganizationInput
+  brandProfiles?: Prisma.BrandProfileCreateNestedManyWithoutOrganizationInput
+  fileAssets?: Prisma.FileAssetCreateNestedManyWithoutOrganizationInput
+  maintenanceSubs?: Prisma.MaintenanceSubscriptionCreateNestedManyWithoutOrganizationInput
+  billingProfile?: Prisma.BillingProfileCreateNestedOneWithoutOrganizationInput
+  contracts?: Prisma.ContractCreateNestedManyWithoutOrganizationInput
+  invoices?: Prisma.InvoiceCreateNestedManyWithoutOrganizationInput
+  supportTickets?: Prisma.SupportTicketCreateNestedManyWithoutOrganizationInput
+}
+
+export type OrganizationUncheckedCreateWithoutQuotesInput = {
+  id?: string
+  slug: string
+  name: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  members?: Prisma.OrganizationMemberUncheckedCreateNestedManyWithoutOrganizationInput
+  profiles?: Prisma.CustomerProfileUncheckedCreateNestedManyWithoutOrganizationInput
+  invitations?: Prisma.InvitationUncheckedCreateNestedManyWithoutOrganizationInput
+  brandProfiles?: Prisma.BrandProfileUncheckedCreateNestedManyWithoutOrganizationInput
+  fileAssets?: Prisma.FileAssetUncheckedCreateNestedManyWithoutOrganizationInput
+  maintenanceSubs?: Prisma.MaintenanceSubscriptionUncheckedCreateNestedManyWithoutOrganizationInput
+  billingProfile?: Prisma.BillingProfileUncheckedCreateNestedOneWithoutOrganizationInput
+  contracts?: Prisma.ContractUncheckedCreateNestedManyWithoutOrganizationInput
+  invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutOrganizationInput
+  supportTickets?: Prisma.SupportTicketUncheckedCreateNestedManyWithoutOrganizationInput
+}
+
+export type OrganizationCreateOrConnectWithoutQuotesInput = {
+  where: Prisma.OrganizationWhereUniqueInput
+  create: Prisma.XOR<Prisma.OrganizationCreateWithoutQuotesInput, Prisma.OrganizationUncheckedCreateWithoutQuotesInput>
+}
+
+export type OrganizationUpsertWithoutQuotesInput = {
+  update: Prisma.XOR<Prisma.OrganizationUpdateWithoutQuotesInput, Prisma.OrganizationUncheckedUpdateWithoutQuotesInput>
+  create: Prisma.XOR<Prisma.OrganizationCreateWithoutQuotesInput, Prisma.OrganizationUncheckedCreateWithoutQuotesInput>
+  where?: Prisma.OrganizationWhereInput
+}
+
+export type OrganizationUpdateToOneWithWhereWithoutQuotesInput = {
+  where?: Prisma.OrganizationWhereInput
+  data: Prisma.XOR<Prisma.OrganizationUpdateWithoutQuotesInput, Prisma.OrganizationUncheckedUpdateWithoutQuotesInput>
+}
+
+export type OrganizationUpdateWithoutQuotesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  members?: Prisma.OrganizationMemberUpdateManyWithoutOrganizationNestedInput
+  profiles?: Prisma.CustomerProfileUpdateManyWithoutOrganizationNestedInput
+  invitations?: Prisma.InvitationUpdateManyWithoutOrganizationNestedInput
+  brandProfiles?: Prisma.BrandProfileUpdateManyWithoutOrganizationNestedInput
+  fileAssets?: Prisma.FileAssetUpdateManyWithoutOrganizationNestedInput
+  maintenanceSubs?: Prisma.MaintenanceSubscriptionUpdateManyWithoutOrganizationNestedInput
+  billingProfile?: Prisma.BillingProfileUpdateOneWithoutOrganizationNestedInput
+  contracts?: Prisma.ContractUpdateManyWithoutOrganizationNestedInput
+  invoices?: Prisma.InvoiceUpdateManyWithoutOrganizationNestedInput
+  supportTickets?: Prisma.SupportTicketUpdateManyWithoutOrganizationNestedInput
+}
+
+export type OrganizationUncheckedUpdateWithoutQuotesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  members?: Prisma.OrganizationMemberUncheckedUpdateManyWithoutOrganizationNestedInput
+  profiles?: Prisma.CustomerProfileUncheckedUpdateManyWithoutOrganizationNestedInput
+  invitations?: Prisma.InvitationUncheckedUpdateManyWithoutOrganizationNestedInput
+  brandProfiles?: Prisma.BrandProfileUncheckedUpdateManyWithoutOrganizationNestedInput
+  fileAssets?: Prisma.FileAssetUncheckedUpdateManyWithoutOrganizationNestedInput
+  maintenanceSubs?: Prisma.MaintenanceSubscriptionUncheckedUpdateManyWithoutOrganizationNestedInput
+  billingProfile?: Prisma.BillingProfileUncheckedUpdateOneWithoutOrganizationNestedInput
+  contracts?: Prisma.ContractUncheckedUpdateManyWithoutOrganizationNestedInput
+  invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutOrganizationNestedInput
+  supportTickets?: Prisma.SupportTicketUncheckedUpdateManyWithoutOrganizationNestedInput
+}
+
+export type OrganizationCreateWithoutContractsInput = {
+  id?: string
+  slug: string
+  name: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  members?: Prisma.OrganizationMemberCreateNestedManyWithoutOrganizationInput
+  profiles?: Prisma.CustomerProfileCreateNestedManyWithoutOrganizationInput
+  invitations?: Prisma.InvitationCreateNestedManyWithoutOrganizationInput
+  brandProfiles?: Prisma.BrandProfileCreateNestedManyWithoutOrganizationInput
+  fileAssets?: Prisma.FileAssetCreateNestedManyWithoutOrganizationInput
+  maintenanceSubs?: Prisma.MaintenanceSubscriptionCreateNestedManyWithoutOrganizationInput
+  billingProfile?: Prisma.BillingProfileCreateNestedOneWithoutOrganizationInput
+  quotes?: Prisma.QuoteCreateNestedManyWithoutOrganizationInput
+  invoices?: Prisma.InvoiceCreateNestedManyWithoutOrganizationInput
+  supportTickets?: Prisma.SupportTicketCreateNestedManyWithoutOrganizationInput
+}
+
+export type OrganizationUncheckedCreateWithoutContractsInput = {
+  id?: string
+  slug: string
+  name: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  members?: Prisma.OrganizationMemberUncheckedCreateNestedManyWithoutOrganizationInput
+  profiles?: Prisma.CustomerProfileUncheckedCreateNestedManyWithoutOrganizationInput
+  invitations?: Prisma.InvitationUncheckedCreateNestedManyWithoutOrganizationInput
+  brandProfiles?: Prisma.BrandProfileUncheckedCreateNestedManyWithoutOrganizationInput
+  fileAssets?: Prisma.FileAssetUncheckedCreateNestedManyWithoutOrganizationInput
+  maintenanceSubs?: Prisma.MaintenanceSubscriptionUncheckedCreateNestedManyWithoutOrganizationInput
+  billingProfile?: Prisma.BillingProfileUncheckedCreateNestedOneWithoutOrganizationInput
+  quotes?: Prisma.QuoteUncheckedCreateNestedManyWithoutOrganizationInput
+  invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutOrganizationInput
+  supportTickets?: Prisma.SupportTicketUncheckedCreateNestedManyWithoutOrganizationInput
+}
+
+export type OrganizationCreateOrConnectWithoutContractsInput = {
+  where: Prisma.OrganizationWhereUniqueInput
+  create: Prisma.XOR<Prisma.OrganizationCreateWithoutContractsInput, Prisma.OrganizationUncheckedCreateWithoutContractsInput>
+}
+
+export type OrganizationUpsertWithoutContractsInput = {
+  update: Prisma.XOR<Prisma.OrganizationUpdateWithoutContractsInput, Prisma.OrganizationUncheckedUpdateWithoutContractsInput>
+  create: Prisma.XOR<Prisma.OrganizationCreateWithoutContractsInput, Prisma.OrganizationUncheckedCreateWithoutContractsInput>
+  where?: Prisma.OrganizationWhereInput
+}
+
+export type OrganizationUpdateToOneWithWhereWithoutContractsInput = {
+  where?: Prisma.OrganizationWhereInput
+  data: Prisma.XOR<Prisma.OrganizationUpdateWithoutContractsInput, Prisma.OrganizationUncheckedUpdateWithoutContractsInput>
+}
+
+export type OrganizationUpdateWithoutContractsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  members?: Prisma.OrganizationMemberUpdateManyWithoutOrganizationNestedInput
+  profiles?: Prisma.CustomerProfileUpdateManyWithoutOrganizationNestedInput
+  invitations?: Prisma.InvitationUpdateManyWithoutOrganizationNestedInput
+  brandProfiles?: Prisma.BrandProfileUpdateManyWithoutOrganizationNestedInput
+  fileAssets?: Prisma.FileAssetUpdateManyWithoutOrganizationNestedInput
+  maintenanceSubs?: Prisma.MaintenanceSubscriptionUpdateManyWithoutOrganizationNestedInput
+  billingProfile?: Prisma.BillingProfileUpdateOneWithoutOrganizationNestedInput
+  quotes?: Prisma.QuoteUpdateManyWithoutOrganizationNestedInput
+  invoices?: Prisma.InvoiceUpdateManyWithoutOrganizationNestedInput
+  supportTickets?: Prisma.SupportTicketUpdateManyWithoutOrganizationNestedInput
+}
+
+export type OrganizationUncheckedUpdateWithoutContractsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  members?: Prisma.OrganizationMemberUncheckedUpdateManyWithoutOrganizationNestedInput
+  profiles?: Prisma.CustomerProfileUncheckedUpdateManyWithoutOrganizationNestedInput
+  invitations?: Prisma.InvitationUncheckedUpdateManyWithoutOrganizationNestedInput
+  brandProfiles?: Prisma.BrandProfileUncheckedUpdateManyWithoutOrganizationNestedInput
+  fileAssets?: Prisma.FileAssetUncheckedUpdateManyWithoutOrganizationNestedInput
+  maintenanceSubs?: Prisma.MaintenanceSubscriptionUncheckedUpdateManyWithoutOrganizationNestedInput
+  billingProfile?: Prisma.BillingProfileUncheckedUpdateOneWithoutOrganizationNestedInput
+  quotes?: Prisma.QuoteUncheckedUpdateManyWithoutOrganizationNestedInput
+  invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutOrganizationNestedInput
+  supportTickets?: Prisma.SupportTicketUncheckedUpdateManyWithoutOrganizationNestedInput
+}
+
+export type OrganizationCreateWithoutInvoicesInput = {
+  id?: string
+  slug: string
+  name: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  members?: Prisma.OrganizationMemberCreateNestedManyWithoutOrganizationInput
+  profiles?: Prisma.CustomerProfileCreateNestedManyWithoutOrganizationInput
+  invitations?: Prisma.InvitationCreateNestedManyWithoutOrganizationInput
+  brandProfiles?: Prisma.BrandProfileCreateNestedManyWithoutOrganizationInput
+  fileAssets?: Prisma.FileAssetCreateNestedManyWithoutOrganizationInput
+  maintenanceSubs?: Prisma.MaintenanceSubscriptionCreateNestedManyWithoutOrganizationInput
+  billingProfile?: Prisma.BillingProfileCreateNestedOneWithoutOrganizationInput
+  quotes?: Prisma.QuoteCreateNestedManyWithoutOrganizationInput
+  contracts?: Prisma.ContractCreateNestedManyWithoutOrganizationInput
+  supportTickets?: Prisma.SupportTicketCreateNestedManyWithoutOrganizationInput
+}
+
+export type OrganizationUncheckedCreateWithoutInvoicesInput = {
+  id?: string
+  slug: string
+  name: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  members?: Prisma.OrganizationMemberUncheckedCreateNestedManyWithoutOrganizationInput
+  profiles?: Prisma.CustomerProfileUncheckedCreateNestedManyWithoutOrganizationInput
+  invitations?: Prisma.InvitationUncheckedCreateNestedManyWithoutOrganizationInput
+  brandProfiles?: Prisma.BrandProfileUncheckedCreateNestedManyWithoutOrganizationInput
+  fileAssets?: Prisma.FileAssetUncheckedCreateNestedManyWithoutOrganizationInput
+  maintenanceSubs?: Prisma.MaintenanceSubscriptionUncheckedCreateNestedManyWithoutOrganizationInput
+  billingProfile?: Prisma.BillingProfileUncheckedCreateNestedOneWithoutOrganizationInput
+  quotes?: Prisma.QuoteUncheckedCreateNestedManyWithoutOrganizationInput
+  contracts?: Prisma.ContractUncheckedCreateNestedManyWithoutOrganizationInput
+  supportTickets?: Prisma.SupportTicketUncheckedCreateNestedManyWithoutOrganizationInput
+}
+
+export type OrganizationCreateOrConnectWithoutInvoicesInput = {
+  where: Prisma.OrganizationWhereUniqueInput
+  create: Prisma.XOR<Prisma.OrganizationCreateWithoutInvoicesInput, Prisma.OrganizationUncheckedCreateWithoutInvoicesInput>
+}
+
+export type OrganizationUpsertWithoutInvoicesInput = {
+  update: Prisma.XOR<Prisma.OrganizationUpdateWithoutInvoicesInput, Prisma.OrganizationUncheckedUpdateWithoutInvoicesInput>
+  create: Prisma.XOR<Prisma.OrganizationCreateWithoutInvoicesInput, Prisma.OrganizationUncheckedCreateWithoutInvoicesInput>
+  where?: Prisma.OrganizationWhereInput
+}
+
+export type OrganizationUpdateToOneWithWhereWithoutInvoicesInput = {
+  where?: Prisma.OrganizationWhereInput
+  data: Prisma.XOR<Prisma.OrganizationUpdateWithoutInvoicesInput, Prisma.OrganizationUncheckedUpdateWithoutInvoicesInput>
+}
+
+export type OrganizationUpdateWithoutInvoicesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  members?: Prisma.OrganizationMemberUpdateManyWithoutOrganizationNestedInput
+  profiles?: Prisma.CustomerProfileUpdateManyWithoutOrganizationNestedInput
+  invitations?: Prisma.InvitationUpdateManyWithoutOrganizationNestedInput
+  brandProfiles?: Prisma.BrandProfileUpdateManyWithoutOrganizationNestedInput
+  fileAssets?: Prisma.FileAssetUpdateManyWithoutOrganizationNestedInput
+  maintenanceSubs?: Prisma.MaintenanceSubscriptionUpdateManyWithoutOrganizationNestedInput
+  billingProfile?: Prisma.BillingProfileUpdateOneWithoutOrganizationNestedInput
+  quotes?: Prisma.QuoteUpdateManyWithoutOrganizationNestedInput
+  contracts?: Prisma.ContractUpdateManyWithoutOrganizationNestedInput
+  supportTickets?: Prisma.SupportTicketUpdateManyWithoutOrganizationNestedInput
+}
+
+export type OrganizationUncheckedUpdateWithoutInvoicesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  members?: Prisma.OrganizationMemberUncheckedUpdateManyWithoutOrganizationNestedInput
+  profiles?: Prisma.CustomerProfileUncheckedUpdateManyWithoutOrganizationNestedInput
+  invitations?: Prisma.InvitationUncheckedUpdateManyWithoutOrganizationNestedInput
+  brandProfiles?: Prisma.BrandProfileUncheckedUpdateManyWithoutOrganizationNestedInput
+  fileAssets?: Prisma.FileAssetUncheckedUpdateManyWithoutOrganizationNestedInput
+  maintenanceSubs?: Prisma.MaintenanceSubscriptionUncheckedUpdateManyWithoutOrganizationNestedInput
+  billingProfile?: Prisma.BillingProfileUncheckedUpdateOneWithoutOrganizationNestedInput
+  quotes?: Prisma.QuoteUncheckedUpdateManyWithoutOrganizationNestedInput
+  contracts?: Prisma.ContractUncheckedUpdateManyWithoutOrganizationNestedInput
+  supportTickets?: Prisma.SupportTicketUncheckedUpdateManyWithoutOrganizationNestedInput
+}
+
+export type OrganizationCreateWithoutSupportTicketsInput = {
+  id?: string
+  slug: string
+  name: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  members?: Prisma.OrganizationMemberCreateNestedManyWithoutOrganizationInput
+  profiles?: Prisma.CustomerProfileCreateNestedManyWithoutOrganizationInput
+  invitations?: Prisma.InvitationCreateNestedManyWithoutOrganizationInput
+  brandProfiles?: Prisma.BrandProfileCreateNestedManyWithoutOrganizationInput
+  fileAssets?: Prisma.FileAssetCreateNestedManyWithoutOrganizationInput
+  maintenanceSubs?: Prisma.MaintenanceSubscriptionCreateNestedManyWithoutOrganizationInput
+  billingProfile?: Prisma.BillingProfileCreateNestedOneWithoutOrganizationInput
+  quotes?: Prisma.QuoteCreateNestedManyWithoutOrganizationInput
+  contracts?: Prisma.ContractCreateNestedManyWithoutOrganizationInput
+  invoices?: Prisma.InvoiceCreateNestedManyWithoutOrganizationInput
+}
+
+export type OrganizationUncheckedCreateWithoutSupportTicketsInput = {
+  id?: string
+  slug: string
+  name: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  members?: Prisma.OrganizationMemberUncheckedCreateNestedManyWithoutOrganizationInput
+  profiles?: Prisma.CustomerProfileUncheckedCreateNestedManyWithoutOrganizationInput
+  invitations?: Prisma.InvitationUncheckedCreateNestedManyWithoutOrganizationInput
+  brandProfiles?: Prisma.BrandProfileUncheckedCreateNestedManyWithoutOrganizationInput
+  fileAssets?: Prisma.FileAssetUncheckedCreateNestedManyWithoutOrganizationInput
+  maintenanceSubs?: Prisma.MaintenanceSubscriptionUncheckedCreateNestedManyWithoutOrganizationInput
+  billingProfile?: Prisma.BillingProfileUncheckedCreateNestedOneWithoutOrganizationInput
+  quotes?: Prisma.QuoteUncheckedCreateNestedManyWithoutOrganizationInput
+  contracts?: Prisma.ContractUncheckedCreateNestedManyWithoutOrganizationInput
+  invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutOrganizationInput
+}
+
+export type OrganizationCreateOrConnectWithoutSupportTicketsInput = {
+  where: Prisma.OrganizationWhereUniqueInput
+  create: Prisma.XOR<Prisma.OrganizationCreateWithoutSupportTicketsInput, Prisma.OrganizationUncheckedCreateWithoutSupportTicketsInput>
+}
+
+export type OrganizationUpsertWithoutSupportTicketsInput = {
+  update: Prisma.XOR<Prisma.OrganizationUpdateWithoutSupportTicketsInput, Prisma.OrganizationUncheckedUpdateWithoutSupportTicketsInput>
+  create: Prisma.XOR<Prisma.OrganizationCreateWithoutSupportTicketsInput, Prisma.OrganizationUncheckedCreateWithoutSupportTicketsInput>
+  where?: Prisma.OrganizationWhereInput
+}
+
+export type OrganizationUpdateToOneWithWhereWithoutSupportTicketsInput = {
+  where?: Prisma.OrganizationWhereInput
+  data: Prisma.XOR<Prisma.OrganizationUpdateWithoutSupportTicketsInput, Prisma.OrganizationUncheckedUpdateWithoutSupportTicketsInput>
+}
+
+export type OrganizationUpdateWithoutSupportTicketsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  members?: Prisma.OrganizationMemberUpdateManyWithoutOrganizationNestedInput
+  profiles?: Prisma.CustomerProfileUpdateManyWithoutOrganizationNestedInput
+  invitations?: Prisma.InvitationUpdateManyWithoutOrganizationNestedInput
+  brandProfiles?: Prisma.BrandProfileUpdateManyWithoutOrganizationNestedInput
+  fileAssets?: Prisma.FileAssetUpdateManyWithoutOrganizationNestedInput
+  maintenanceSubs?: Prisma.MaintenanceSubscriptionUpdateManyWithoutOrganizationNestedInput
+  billingProfile?: Prisma.BillingProfileUpdateOneWithoutOrganizationNestedInput
+  quotes?: Prisma.QuoteUpdateManyWithoutOrganizationNestedInput
+  contracts?: Prisma.ContractUpdateManyWithoutOrganizationNestedInput
+  invoices?: Prisma.InvoiceUpdateManyWithoutOrganizationNestedInput
+}
+
+export type OrganizationUncheckedUpdateWithoutSupportTicketsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  members?: Prisma.OrganizationMemberUncheckedUpdateManyWithoutOrganizationNestedInput
+  profiles?: Prisma.CustomerProfileUncheckedUpdateManyWithoutOrganizationNestedInput
+  invitations?: Prisma.InvitationUncheckedUpdateManyWithoutOrganizationNestedInput
+  brandProfiles?: Prisma.BrandProfileUncheckedUpdateManyWithoutOrganizationNestedInput
+  fileAssets?: Prisma.FileAssetUncheckedUpdateManyWithoutOrganizationNestedInput
+  maintenanceSubs?: Prisma.MaintenanceSubscriptionUncheckedUpdateManyWithoutOrganizationNestedInput
+  billingProfile?: Prisma.BillingProfileUncheckedUpdateOneWithoutOrganizationNestedInput
+  quotes?: Prisma.QuoteUncheckedUpdateManyWithoutOrganizationNestedInput
+  contracts?: Prisma.ContractUncheckedUpdateManyWithoutOrganizationNestedInput
+  invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutOrganizationNestedInput
 }
 
 
@@ -557,12 +1527,26 @@ export type OrganizationCountOutputType = {
   members: number
   profiles: number
   invitations: number
+  brandProfiles: number
+  fileAssets: number
+  maintenanceSubs: number
+  quotes: number
+  contracts: number
+  invoices: number
+  supportTickets: number
 }
 
 export type OrganizationCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   members?: boolean | OrganizationCountOutputTypeCountMembersArgs
   profiles?: boolean | OrganizationCountOutputTypeCountProfilesArgs
   invitations?: boolean | OrganizationCountOutputTypeCountInvitationsArgs
+  brandProfiles?: boolean | OrganizationCountOutputTypeCountBrandProfilesArgs
+  fileAssets?: boolean | OrganizationCountOutputTypeCountFileAssetsArgs
+  maintenanceSubs?: boolean | OrganizationCountOutputTypeCountMaintenanceSubsArgs
+  quotes?: boolean | OrganizationCountOutputTypeCountQuotesArgs
+  contracts?: boolean | OrganizationCountOutputTypeCountContractsArgs
+  invoices?: boolean | OrganizationCountOutputTypeCountInvoicesArgs
+  supportTickets?: boolean | OrganizationCountOutputTypeCountSupportTicketsArgs
 }
 
 /**
@@ -596,6 +1580,55 @@ export type OrganizationCountOutputTypeCountInvitationsArgs<ExtArgs extends runt
   where?: Prisma.InvitationWhereInput
 }
 
+/**
+ * OrganizationCountOutputType without action
+ */
+export type OrganizationCountOutputTypeCountBrandProfilesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.BrandProfileWhereInput
+}
+
+/**
+ * OrganizationCountOutputType without action
+ */
+export type OrganizationCountOutputTypeCountFileAssetsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.FileAssetWhereInput
+}
+
+/**
+ * OrganizationCountOutputType without action
+ */
+export type OrganizationCountOutputTypeCountMaintenanceSubsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.MaintenanceSubscriptionWhereInput
+}
+
+/**
+ * OrganizationCountOutputType without action
+ */
+export type OrganizationCountOutputTypeCountQuotesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.QuoteWhereInput
+}
+
+/**
+ * OrganizationCountOutputType without action
+ */
+export type OrganizationCountOutputTypeCountContractsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ContractWhereInput
+}
+
+/**
+ * OrganizationCountOutputType without action
+ */
+export type OrganizationCountOutputTypeCountInvoicesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.InvoiceWhereInput
+}
+
+/**
+ * OrganizationCountOutputType without action
+ */
+export type OrganizationCountOutputTypeCountSupportTicketsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.SupportTicketWhereInput
+}
+
 
 export type OrganizationSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -606,6 +1639,14 @@ export type OrganizationSelect<ExtArgs extends runtime.Types.Extensions.Internal
   members?: boolean | Prisma.Organization$membersArgs<ExtArgs>
   profiles?: boolean | Prisma.Organization$profilesArgs<ExtArgs>
   invitations?: boolean | Prisma.Organization$invitationsArgs<ExtArgs>
+  brandProfiles?: boolean | Prisma.Organization$brandProfilesArgs<ExtArgs>
+  fileAssets?: boolean | Prisma.Organization$fileAssetsArgs<ExtArgs>
+  maintenanceSubs?: boolean | Prisma.Organization$maintenanceSubsArgs<ExtArgs>
+  billingProfile?: boolean | Prisma.Organization$billingProfileArgs<ExtArgs>
+  quotes?: boolean | Prisma.Organization$quotesArgs<ExtArgs>
+  contracts?: boolean | Prisma.Organization$contractsArgs<ExtArgs>
+  invoices?: boolean | Prisma.Organization$invoicesArgs<ExtArgs>
+  supportTickets?: boolean | Prisma.Organization$supportTicketsArgs<ExtArgs>
   _count?: boolean | Prisma.OrganizationCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["organization"]>
 
@@ -638,6 +1679,14 @@ export type OrganizationInclude<ExtArgs extends runtime.Types.Extensions.Interna
   members?: boolean | Prisma.Organization$membersArgs<ExtArgs>
   profiles?: boolean | Prisma.Organization$profilesArgs<ExtArgs>
   invitations?: boolean | Prisma.Organization$invitationsArgs<ExtArgs>
+  brandProfiles?: boolean | Prisma.Organization$brandProfilesArgs<ExtArgs>
+  fileAssets?: boolean | Prisma.Organization$fileAssetsArgs<ExtArgs>
+  maintenanceSubs?: boolean | Prisma.Organization$maintenanceSubsArgs<ExtArgs>
+  billingProfile?: boolean | Prisma.Organization$billingProfileArgs<ExtArgs>
+  quotes?: boolean | Prisma.Organization$quotesArgs<ExtArgs>
+  contracts?: boolean | Prisma.Organization$contractsArgs<ExtArgs>
+  invoices?: boolean | Prisma.Organization$invoicesArgs<ExtArgs>
+  supportTickets?: boolean | Prisma.Organization$supportTicketsArgs<ExtArgs>
   _count?: boolean | Prisma.OrganizationCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type OrganizationIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -649,6 +1698,14 @@ export type $OrganizationPayload<ExtArgs extends runtime.Types.Extensions.Intern
     members: Prisma.$OrganizationMemberPayload<ExtArgs>[]
     profiles: Prisma.$CustomerProfilePayload<ExtArgs>[]
     invitations: Prisma.$InvitationPayload<ExtArgs>[]
+    brandProfiles: Prisma.$BrandProfilePayload<ExtArgs>[]
+    fileAssets: Prisma.$FileAssetPayload<ExtArgs>[]
+    maintenanceSubs: Prisma.$MaintenanceSubscriptionPayload<ExtArgs>[]
+    billingProfile: Prisma.$BillingProfilePayload<ExtArgs> | null
+    quotes: Prisma.$QuotePayload<ExtArgs>[]
+    contracts: Prisma.$ContractPayload<ExtArgs>[]
+    invoices: Prisma.$InvoicePayload<ExtArgs>[]
+    supportTickets: Prisma.$SupportTicketPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1053,6 +2110,14 @@ export interface Prisma__OrganizationClient<T, Null = never, ExtArgs extends run
   members<T extends Prisma.Organization$membersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Organization$membersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$OrganizationMemberPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   profiles<T extends Prisma.Organization$profilesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Organization$profilesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CustomerProfilePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   invitations<T extends Prisma.Organization$invitationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Organization$invitationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$InvitationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  brandProfiles<T extends Prisma.Organization$brandProfilesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Organization$brandProfilesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BrandProfilePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  fileAssets<T extends Prisma.Organization$fileAssetsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Organization$fileAssetsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$FileAssetPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  maintenanceSubs<T extends Prisma.Organization$maintenanceSubsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Organization$maintenanceSubsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MaintenanceSubscriptionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  billingProfile<T extends Prisma.Organization$billingProfileArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Organization$billingProfileArgs<ExtArgs>>): Prisma.Prisma__BillingProfileClient<runtime.Types.Result.GetResult<Prisma.$BillingProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  quotes<T extends Prisma.Organization$quotesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Organization$quotesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$QuotePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  contracts<T extends Prisma.Organization$contractsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Organization$contractsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ContractPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  invoices<T extends Prisma.Organization$invoicesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Organization$invoicesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$InvoicePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  supportTickets<T extends Prisma.Organization$supportTicketsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Organization$supportTicketsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SupportTicketPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1549,6 +2614,193 @@ export type Organization$invitationsArgs<ExtArgs extends runtime.Types.Extension
   take?: number
   skip?: number
   distinct?: Prisma.InvitationScalarFieldEnum | Prisma.InvitationScalarFieldEnum[]
+}
+
+/**
+ * Organization.brandProfiles
+ */
+export type Organization$brandProfilesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the BrandProfile
+   */
+  select?: Prisma.BrandProfileSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the BrandProfile
+   */
+  omit?: Prisma.BrandProfileOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.BrandProfileInclude<ExtArgs> | null
+  where?: Prisma.BrandProfileWhereInput
+  orderBy?: Prisma.BrandProfileOrderByWithRelationInput | Prisma.BrandProfileOrderByWithRelationInput[]
+  cursor?: Prisma.BrandProfileWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.BrandProfileScalarFieldEnum | Prisma.BrandProfileScalarFieldEnum[]
+}
+
+/**
+ * Organization.fileAssets
+ */
+export type Organization$fileAssetsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the FileAsset
+   */
+  select?: Prisma.FileAssetSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the FileAsset
+   */
+  omit?: Prisma.FileAssetOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.FileAssetInclude<ExtArgs> | null
+  where?: Prisma.FileAssetWhereInput
+  orderBy?: Prisma.FileAssetOrderByWithRelationInput | Prisma.FileAssetOrderByWithRelationInput[]
+  cursor?: Prisma.FileAssetWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.FileAssetScalarFieldEnum | Prisma.FileAssetScalarFieldEnum[]
+}
+
+/**
+ * Organization.maintenanceSubs
+ */
+export type Organization$maintenanceSubsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the MaintenanceSubscription
+   */
+  select?: Prisma.MaintenanceSubscriptionSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the MaintenanceSubscription
+   */
+  omit?: Prisma.MaintenanceSubscriptionOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.MaintenanceSubscriptionInclude<ExtArgs> | null
+  where?: Prisma.MaintenanceSubscriptionWhereInput
+  orderBy?: Prisma.MaintenanceSubscriptionOrderByWithRelationInput | Prisma.MaintenanceSubscriptionOrderByWithRelationInput[]
+  cursor?: Prisma.MaintenanceSubscriptionWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.MaintenanceSubscriptionScalarFieldEnum | Prisma.MaintenanceSubscriptionScalarFieldEnum[]
+}
+
+/**
+ * Organization.billingProfile
+ */
+export type Organization$billingProfileArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the BillingProfile
+   */
+  select?: Prisma.BillingProfileSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the BillingProfile
+   */
+  omit?: Prisma.BillingProfileOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.BillingProfileInclude<ExtArgs> | null
+  where?: Prisma.BillingProfileWhereInput
+}
+
+/**
+ * Organization.quotes
+ */
+export type Organization$quotesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Quote
+   */
+  select?: Prisma.QuoteSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Quote
+   */
+  omit?: Prisma.QuoteOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.QuoteInclude<ExtArgs> | null
+  where?: Prisma.QuoteWhereInput
+  orderBy?: Prisma.QuoteOrderByWithRelationInput | Prisma.QuoteOrderByWithRelationInput[]
+  cursor?: Prisma.QuoteWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.QuoteScalarFieldEnum | Prisma.QuoteScalarFieldEnum[]
+}
+
+/**
+ * Organization.contracts
+ */
+export type Organization$contractsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Contract
+   */
+  select?: Prisma.ContractSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Contract
+   */
+  omit?: Prisma.ContractOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ContractInclude<ExtArgs> | null
+  where?: Prisma.ContractWhereInput
+  orderBy?: Prisma.ContractOrderByWithRelationInput | Prisma.ContractOrderByWithRelationInput[]
+  cursor?: Prisma.ContractWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ContractScalarFieldEnum | Prisma.ContractScalarFieldEnum[]
+}
+
+/**
+ * Organization.invoices
+ */
+export type Organization$invoicesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Invoice
+   */
+  select?: Prisma.InvoiceSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Invoice
+   */
+  omit?: Prisma.InvoiceOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.InvoiceInclude<ExtArgs> | null
+  where?: Prisma.InvoiceWhereInput
+  orderBy?: Prisma.InvoiceOrderByWithRelationInput | Prisma.InvoiceOrderByWithRelationInput[]
+  cursor?: Prisma.InvoiceWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.InvoiceScalarFieldEnum | Prisma.InvoiceScalarFieldEnum[]
+}
+
+/**
+ * Organization.supportTickets
+ */
+export type Organization$supportTicketsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the SupportTicket
+   */
+  select?: Prisma.SupportTicketSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the SupportTicket
+   */
+  omit?: Prisma.SupportTicketOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SupportTicketInclude<ExtArgs> | null
+  where?: Prisma.SupportTicketWhereInput
+  orderBy?: Prisma.SupportTicketOrderByWithRelationInput | Prisma.SupportTicketOrderByWithRelationInput[]
+  cursor?: Prisma.SupportTicketWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.SupportTicketScalarFieldEnum | Prisma.SupportTicketScalarFieldEnum[]
 }
 
 /**

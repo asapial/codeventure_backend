@@ -332,6 +332,12 @@ export type ProjectWhereInput = {
   members?: Prisma.ProjectMemberListRelationFilter
   deliverables?: Prisma.DeliverableListRelationFilter
   activity?: Prisma.ActivityEventListRelationFilter
+  milestones?: Prisma.ProjectMilestoneListRelationFilter
+  approvalRequests?: Prisma.ApprovalRequestListRelationFilter
+  changeRequests?: Prisma.ChangeRequestListRelationFilter
+  comments?: Prisma.ProjectCommentListRelationFilter
+  files?: Prisma.ProjectFileListRelationFilter
+  supportTickets?: Prisma.SupportTicketListRelationFilter
 }
 
 export type ProjectOrderByWithRelationInput = {
@@ -358,6 +364,12 @@ export type ProjectOrderByWithRelationInput = {
   members?: Prisma.ProjectMemberOrderByRelationAggregateInput
   deliverables?: Prisma.DeliverableOrderByRelationAggregateInput
   activity?: Prisma.ActivityEventOrderByRelationAggregateInput
+  milestones?: Prisma.ProjectMilestoneOrderByRelationAggregateInput
+  approvalRequests?: Prisma.ApprovalRequestOrderByRelationAggregateInput
+  changeRequests?: Prisma.ChangeRequestOrderByRelationAggregateInput
+  comments?: Prisma.ProjectCommentOrderByRelationAggregateInput
+  files?: Prisma.ProjectFileOrderByRelationAggregateInput
+  supportTickets?: Prisma.SupportTicketOrderByRelationAggregateInput
 }
 
 export type ProjectWhereUniqueInput = Prisma.AtLeast<{
@@ -387,6 +399,12 @@ export type ProjectWhereUniqueInput = Prisma.AtLeast<{
   members?: Prisma.ProjectMemberListRelationFilter
   deliverables?: Prisma.DeliverableListRelationFilter
   activity?: Prisma.ActivityEventListRelationFilter
+  milestones?: Prisma.ProjectMilestoneListRelationFilter
+  approvalRequests?: Prisma.ApprovalRequestListRelationFilter
+  changeRequests?: Prisma.ChangeRequestListRelationFilter
+  comments?: Prisma.ProjectCommentListRelationFilter
+  files?: Prisma.ProjectFileListRelationFilter
+  supportTickets?: Prisma.SupportTicketListRelationFilter
 }, "id" | "slug">
 
 export type ProjectOrderByWithAggregationInput = {
@@ -464,6 +482,12 @@ export type ProjectCreateInput = {
   members?: Prisma.ProjectMemberCreateNestedManyWithoutProjectInput
   deliverables?: Prisma.DeliverableCreateNestedManyWithoutProjectInput
   activity?: Prisma.ActivityEventCreateNestedManyWithoutProjectInput
+  milestones?: Prisma.ProjectMilestoneCreateNestedManyWithoutProjectInput
+  approvalRequests?: Prisma.ApprovalRequestCreateNestedManyWithoutProjectInput
+  changeRequests?: Prisma.ChangeRequestCreateNestedManyWithoutProjectInput
+  comments?: Prisma.ProjectCommentCreateNestedManyWithoutProjectInput
+  files?: Prisma.ProjectFileCreateNestedManyWithoutProjectInput
+  supportTickets?: Prisma.SupportTicketCreateNestedManyWithoutProjectInput
 }
 
 export type ProjectUncheckedCreateInput = {
@@ -489,6 +513,12 @@ export type ProjectUncheckedCreateInput = {
   members?: Prisma.ProjectMemberUncheckedCreateNestedManyWithoutProjectInput
   deliverables?: Prisma.DeliverableUncheckedCreateNestedManyWithoutProjectInput
   activity?: Prisma.ActivityEventUncheckedCreateNestedManyWithoutProjectInput
+  milestones?: Prisma.ProjectMilestoneUncheckedCreateNestedManyWithoutProjectInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedCreateNestedManyWithoutProjectInput
+  changeRequests?: Prisma.ChangeRequestUncheckedCreateNestedManyWithoutProjectInput
+  comments?: Prisma.ProjectCommentUncheckedCreateNestedManyWithoutProjectInput
+  files?: Prisma.ProjectFileUncheckedCreateNestedManyWithoutProjectInput
+  supportTickets?: Prisma.SupportTicketUncheckedCreateNestedManyWithoutProjectInput
 }
 
 export type ProjectUpdateInput = {
@@ -514,6 +544,12 @@ export type ProjectUpdateInput = {
   members?: Prisma.ProjectMemberUpdateManyWithoutProjectNestedInput
   deliverables?: Prisma.DeliverableUpdateManyWithoutProjectNestedInput
   activity?: Prisma.ActivityEventUpdateManyWithoutProjectNestedInput
+  milestones?: Prisma.ProjectMilestoneUpdateManyWithoutProjectNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUpdateManyWithoutProjectNestedInput
+  changeRequests?: Prisma.ChangeRequestUpdateManyWithoutProjectNestedInput
+  comments?: Prisma.ProjectCommentUpdateManyWithoutProjectNestedInput
+  files?: Prisma.ProjectFileUpdateManyWithoutProjectNestedInput
+  supportTickets?: Prisma.SupportTicketUpdateManyWithoutProjectNestedInput
 }
 
 export type ProjectUncheckedUpdateInput = {
@@ -539,6 +575,12 @@ export type ProjectUncheckedUpdateInput = {
   members?: Prisma.ProjectMemberUncheckedUpdateManyWithoutProjectNestedInput
   deliverables?: Prisma.DeliverableUncheckedUpdateManyWithoutProjectNestedInput
   activity?: Prisma.ActivityEventUncheckedUpdateManyWithoutProjectNestedInput
+  milestones?: Prisma.ProjectMilestoneUncheckedUpdateManyWithoutProjectNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedUpdateManyWithoutProjectNestedInput
+  changeRequests?: Prisma.ChangeRequestUncheckedUpdateManyWithoutProjectNestedInput
+  comments?: Prisma.ProjectCommentUncheckedUpdateManyWithoutProjectNestedInput
+  files?: Prisma.ProjectFileUncheckedUpdateManyWithoutProjectNestedInput
+  supportTickets?: Prisma.SupportTicketUncheckedUpdateManyWithoutProjectNestedInput
 }
 
 export type ProjectCreateManyInput = {
@@ -815,6 +857,92 @@ export type ProjectUpdateOneWithoutActivityNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.ProjectUpdateToOneWithWhereWithoutActivityInput, Prisma.ProjectUpdateWithoutActivityInput>, Prisma.ProjectUncheckedUpdateWithoutActivityInput>
 }
 
+export type ProjectCreateNestedOneWithoutMilestonesInput = {
+  create?: Prisma.XOR<Prisma.ProjectCreateWithoutMilestonesInput, Prisma.ProjectUncheckedCreateWithoutMilestonesInput>
+  connectOrCreate?: Prisma.ProjectCreateOrConnectWithoutMilestonesInput
+  connect?: Prisma.ProjectWhereUniqueInput
+}
+
+export type ProjectUpdateOneRequiredWithoutMilestonesNestedInput = {
+  create?: Prisma.XOR<Prisma.ProjectCreateWithoutMilestonesInput, Prisma.ProjectUncheckedCreateWithoutMilestonesInput>
+  connectOrCreate?: Prisma.ProjectCreateOrConnectWithoutMilestonesInput
+  upsert?: Prisma.ProjectUpsertWithoutMilestonesInput
+  connect?: Prisma.ProjectWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ProjectUpdateToOneWithWhereWithoutMilestonesInput, Prisma.ProjectUpdateWithoutMilestonesInput>, Prisma.ProjectUncheckedUpdateWithoutMilestonesInput>
+}
+
+export type ProjectCreateNestedOneWithoutApprovalRequestsInput = {
+  create?: Prisma.XOR<Prisma.ProjectCreateWithoutApprovalRequestsInput, Prisma.ProjectUncheckedCreateWithoutApprovalRequestsInput>
+  connectOrCreate?: Prisma.ProjectCreateOrConnectWithoutApprovalRequestsInput
+  connect?: Prisma.ProjectWhereUniqueInput
+}
+
+export type ProjectUpdateOneRequiredWithoutApprovalRequestsNestedInput = {
+  create?: Prisma.XOR<Prisma.ProjectCreateWithoutApprovalRequestsInput, Prisma.ProjectUncheckedCreateWithoutApprovalRequestsInput>
+  connectOrCreate?: Prisma.ProjectCreateOrConnectWithoutApprovalRequestsInput
+  upsert?: Prisma.ProjectUpsertWithoutApprovalRequestsInput
+  connect?: Prisma.ProjectWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ProjectUpdateToOneWithWhereWithoutApprovalRequestsInput, Prisma.ProjectUpdateWithoutApprovalRequestsInput>, Prisma.ProjectUncheckedUpdateWithoutApprovalRequestsInput>
+}
+
+export type ProjectCreateNestedOneWithoutChangeRequestsInput = {
+  create?: Prisma.XOR<Prisma.ProjectCreateWithoutChangeRequestsInput, Prisma.ProjectUncheckedCreateWithoutChangeRequestsInput>
+  connectOrCreate?: Prisma.ProjectCreateOrConnectWithoutChangeRequestsInput
+  connect?: Prisma.ProjectWhereUniqueInput
+}
+
+export type ProjectUpdateOneRequiredWithoutChangeRequestsNestedInput = {
+  create?: Prisma.XOR<Prisma.ProjectCreateWithoutChangeRequestsInput, Prisma.ProjectUncheckedCreateWithoutChangeRequestsInput>
+  connectOrCreate?: Prisma.ProjectCreateOrConnectWithoutChangeRequestsInput
+  upsert?: Prisma.ProjectUpsertWithoutChangeRequestsInput
+  connect?: Prisma.ProjectWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ProjectUpdateToOneWithWhereWithoutChangeRequestsInput, Prisma.ProjectUpdateWithoutChangeRequestsInput>, Prisma.ProjectUncheckedUpdateWithoutChangeRequestsInput>
+}
+
+export type ProjectCreateNestedOneWithoutCommentsInput = {
+  create?: Prisma.XOR<Prisma.ProjectCreateWithoutCommentsInput, Prisma.ProjectUncheckedCreateWithoutCommentsInput>
+  connectOrCreate?: Prisma.ProjectCreateOrConnectWithoutCommentsInput
+  connect?: Prisma.ProjectWhereUniqueInput
+}
+
+export type ProjectUpdateOneRequiredWithoutCommentsNestedInput = {
+  create?: Prisma.XOR<Prisma.ProjectCreateWithoutCommentsInput, Prisma.ProjectUncheckedCreateWithoutCommentsInput>
+  connectOrCreate?: Prisma.ProjectCreateOrConnectWithoutCommentsInput
+  upsert?: Prisma.ProjectUpsertWithoutCommentsInput
+  connect?: Prisma.ProjectWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ProjectUpdateToOneWithWhereWithoutCommentsInput, Prisma.ProjectUpdateWithoutCommentsInput>, Prisma.ProjectUncheckedUpdateWithoutCommentsInput>
+}
+
+export type ProjectCreateNestedOneWithoutFilesInput = {
+  create?: Prisma.XOR<Prisma.ProjectCreateWithoutFilesInput, Prisma.ProjectUncheckedCreateWithoutFilesInput>
+  connectOrCreate?: Prisma.ProjectCreateOrConnectWithoutFilesInput
+  connect?: Prisma.ProjectWhereUniqueInput
+}
+
+export type ProjectUpdateOneRequiredWithoutFilesNestedInput = {
+  create?: Prisma.XOR<Prisma.ProjectCreateWithoutFilesInput, Prisma.ProjectUncheckedCreateWithoutFilesInput>
+  connectOrCreate?: Prisma.ProjectCreateOrConnectWithoutFilesInput
+  upsert?: Prisma.ProjectUpsertWithoutFilesInput
+  connect?: Prisma.ProjectWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ProjectUpdateToOneWithWhereWithoutFilesInput, Prisma.ProjectUpdateWithoutFilesInput>, Prisma.ProjectUncheckedUpdateWithoutFilesInput>
+}
+
+export type ProjectCreateNestedOneWithoutSupportTicketsInput = {
+  create?: Prisma.XOR<Prisma.ProjectCreateWithoutSupportTicketsInput, Prisma.ProjectUncheckedCreateWithoutSupportTicketsInput>
+  connectOrCreate?: Prisma.ProjectCreateOrConnectWithoutSupportTicketsInput
+  connect?: Prisma.ProjectWhereUniqueInput
+}
+
+export type ProjectUpdateOneWithoutSupportTicketsNestedInput = {
+  create?: Prisma.XOR<Prisma.ProjectCreateWithoutSupportTicketsInput, Prisma.ProjectUncheckedCreateWithoutSupportTicketsInput>
+  connectOrCreate?: Prisma.ProjectCreateOrConnectWithoutSupportTicketsInput
+  upsert?: Prisma.ProjectUpsertWithoutSupportTicketsInput
+  disconnect?: Prisma.ProjectWhereInput | boolean
+  delete?: Prisma.ProjectWhereInput | boolean
+  connect?: Prisma.ProjectWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ProjectUpdateToOneWithWhereWithoutSupportTicketsInput, Prisma.ProjectUpdateWithoutSupportTicketsInput>, Prisma.ProjectUncheckedUpdateWithoutSupportTicketsInput>
+}
+
 export type ProjectCreateWithoutOwnerInput = {
   id?: string
   slug: string
@@ -837,6 +965,12 @@ export type ProjectCreateWithoutOwnerInput = {
   members?: Prisma.ProjectMemberCreateNestedManyWithoutProjectInput
   deliverables?: Prisma.DeliverableCreateNestedManyWithoutProjectInput
   activity?: Prisma.ActivityEventCreateNestedManyWithoutProjectInput
+  milestones?: Prisma.ProjectMilestoneCreateNestedManyWithoutProjectInput
+  approvalRequests?: Prisma.ApprovalRequestCreateNestedManyWithoutProjectInput
+  changeRequests?: Prisma.ChangeRequestCreateNestedManyWithoutProjectInput
+  comments?: Prisma.ProjectCommentCreateNestedManyWithoutProjectInput
+  files?: Prisma.ProjectFileCreateNestedManyWithoutProjectInput
+  supportTickets?: Prisma.SupportTicketCreateNestedManyWithoutProjectInput
 }
 
 export type ProjectUncheckedCreateWithoutOwnerInput = {
@@ -861,6 +995,12 @@ export type ProjectUncheckedCreateWithoutOwnerInput = {
   members?: Prisma.ProjectMemberUncheckedCreateNestedManyWithoutProjectInput
   deliverables?: Prisma.DeliverableUncheckedCreateNestedManyWithoutProjectInput
   activity?: Prisma.ActivityEventUncheckedCreateNestedManyWithoutProjectInput
+  milestones?: Prisma.ProjectMilestoneUncheckedCreateNestedManyWithoutProjectInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedCreateNestedManyWithoutProjectInput
+  changeRequests?: Prisma.ChangeRequestUncheckedCreateNestedManyWithoutProjectInput
+  comments?: Prisma.ProjectCommentUncheckedCreateNestedManyWithoutProjectInput
+  files?: Prisma.ProjectFileUncheckedCreateNestedManyWithoutProjectInput
+  supportTickets?: Prisma.SupportTicketUncheckedCreateNestedManyWithoutProjectInput
 }
 
 export type ProjectCreateOrConnectWithoutOwnerInput = {
@@ -936,6 +1076,12 @@ export type ProjectCreateWithoutMembersInput = {
   owner: Prisma.UserCreateNestedOneWithoutOwnedProjectsInput
   deliverables?: Prisma.DeliverableCreateNestedManyWithoutProjectInput
   activity?: Prisma.ActivityEventCreateNestedManyWithoutProjectInput
+  milestones?: Prisma.ProjectMilestoneCreateNestedManyWithoutProjectInput
+  approvalRequests?: Prisma.ApprovalRequestCreateNestedManyWithoutProjectInput
+  changeRequests?: Prisma.ChangeRequestCreateNestedManyWithoutProjectInput
+  comments?: Prisma.ProjectCommentCreateNestedManyWithoutProjectInput
+  files?: Prisma.ProjectFileCreateNestedManyWithoutProjectInput
+  supportTickets?: Prisma.SupportTicketCreateNestedManyWithoutProjectInput
 }
 
 export type ProjectUncheckedCreateWithoutMembersInput = {
@@ -960,6 +1106,12 @@ export type ProjectUncheckedCreateWithoutMembersInput = {
   updatedAt?: Date | string
   deliverables?: Prisma.DeliverableUncheckedCreateNestedManyWithoutProjectInput
   activity?: Prisma.ActivityEventUncheckedCreateNestedManyWithoutProjectInput
+  milestones?: Prisma.ProjectMilestoneUncheckedCreateNestedManyWithoutProjectInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedCreateNestedManyWithoutProjectInput
+  changeRequests?: Prisma.ChangeRequestUncheckedCreateNestedManyWithoutProjectInput
+  comments?: Prisma.ProjectCommentUncheckedCreateNestedManyWithoutProjectInput
+  files?: Prisma.ProjectFileUncheckedCreateNestedManyWithoutProjectInput
+  supportTickets?: Prisma.SupportTicketUncheckedCreateNestedManyWithoutProjectInput
 }
 
 export type ProjectCreateOrConnectWithoutMembersInput = {
@@ -1000,6 +1152,12 @@ export type ProjectUpdateWithoutMembersInput = {
   owner?: Prisma.UserUpdateOneRequiredWithoutOwnedProjectsNestedInput
   deliverables?: Prisma.DeliverableUpdateManyWithoutProjectNestedInput
   activity?: Prisma.ActivityEventUpdateManyWithoutProjectNestedInput
+  milestones?: Prisma.ProjectMilestoneUpdateManyWithoutProjectNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUpdateManyWithoutProjectNestedInput
+  changeRequests?: Prisma.ChangeRequestUpdateManyWithoutProjectNestedInput
+  comments?: Prisma.ProjectCommentUpdateManyWithoutProjectNestedInput
+  files?: Prisma.ProjectFileUpdateManyWithoutProjectNestedInput
+  supportTickets?: Prisma.SupportTicketUpdateManyWithoutProjectNestedInput
 }
 
 export type ProjectUncheckedUpdateWithoutMembersInput = {
@@ -1024,6 +1182,12 @@ export type ProjectUncheckedUpdateWithoutMembersInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deliverables?: Prisma.DeliverableUncheckedUpdateManyWithoutProjectNestedInput
   activity?: Prisma.ActivityEventUncheckedUpdateManyWithoutProjectNestedInput
+  milestones?: Prisma.ProjectMilestoneUncheckedUpdateManyWithoutProjectNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedUpdateManyWithoutProjectNestedInput
+  changeRequests?: Prisma.ChangeRequestUncheckedUpdateManyWithoutProjectNestedInput
+  comments?: Prisma.ProjectCommentUncheckedUpdateManyWithoutProjectNestedInput
+  files?: Prisma.ProjectFileUncheckedUpdateManyWithoutProjectNestedInput
+  supportTickets?: Prisma.SupportTicketUncheckedUpdateManyWithoutProjectNestedInput
 }
 
 export type ProjectCreateWithoutDeliverablesInput = {
@@ -1048,6 +1212,12 @@ export type ProjectCreateWithoutDeliverablesInput = {
   owner: Prisma.UserCreateNestedOneWithoutOwnedProjectsInput
   members?: Prisma.ProjectMemberCreateNestedManyWithoutProjectInput
   activity?: Prisma.ActivityEventCreateNestedManyWithoutProjectInput
+  milestones?: Prisma.ProjectMilestoneCreateNestedManyWithoutProjectInput
+  approvalRequests?: Prisma.ApprovalRequestCreateNestedManyWithoutProjectInput
+  changeRequests?: Prisma.ChangeRequestCreateNestedManyWithoutProjectInput
+  comments?: Prisma.ProjectCommentCreateNestedManyWithoutProjectInput
+  files?: Prisma.ProjectFileCreateNestedManyWithoutProjectInput
+  supportTickets?: Prisma.SupportTicketCreateNestedManyWithoutProjectInput
 }
 
 export type ProjectUncheckedCreateWithoutDeliverablesInput = {
@@ -1072,6 +1242,12 @@ export type ProjectUncheckedCreateWithoutDeliverablesInput = {
   updatedAt?: Date | string
   members?: Prisma.ProjectMemberUncheckedCreateNestedManyWithoutProjectInput
   activity?: Prisma.ActivityEventUncheckedCreateNestedManyWithoutProjectInput
+  milestones?: Prisma.ProjectMilestoneUncheckedCreateNestedManyWithoutProjectInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedCreateNestedManyWithoutProjectInput
+  changeRequests?: Prisma.ChangeRequestUncheckedCreateNestedManyWithoutProjectInput
+  comments?: Prisma.ProjectCommentUncheckedCreateNestedManyWithoutProjectInput
+  files?: Prisma.ProjectFileUncheckedCreateNestedManyWithoutProjectInput
+  supportTickets?: Prisma.SupportTicketUncheckedCreateNestedManyWithoutProjectInput
 }
 
 export type ProjectCreateOrConnectWithoutDeliverablesInput = {
@@ -1112,6 +1288,12 @@ export type ProjectUpdateWithoutDeliverablesInput = {
   owner?: Prisma.UserUpdateOneRequiredWithoutOwnedProjectsNestedInput
   members?: Prisma.ProjectMemberUpdateManyWithoutProjectNestedInput
   activity?: Prisma.ActivityEventUpdateManyWithoutProjectNestedInput
+  milestones?: Prisma.ProjectMilestoneUpdateManyWithoutProjectNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUpdateManyWithoutProjectNestedInput
+  changeRequests?: Prisma.ChangeRequestUpdateManyWithoutProjectNestedInput
+  comments?: Prisma.ProjectCommentUpdateManyWithoutProjectNestedInput
+  files?: Prisma.ProjectFileUpdateManyWithoutProjectNestedInput
+  supportTickets?: Prisma.SupportTicketUpdateManyWithoutProjectNestedInput
 }
 
 export type ProjectUncheckedUpdateWithoutDeliverablesInput = {
@@ -1136,6 +1318,12 @@ export type ProjectUncheckedUpdateWithoutDeliverablesInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   members?: Prisma.ProjectMemberUncheckedUpdateManyWithoutProjectNestedInput
   activity?: Prisma.ActivityEventUncheckedUpdateManyWithoutProjectNestedInput
+  milestones?: Prisma.ProjectMilestoneUncheckedUpdateManyWithoutProjectNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedUpdateManyWithoutProjectNestedInput
+  changeRequests?: Prisma.ChangeRequestUncheckedUpdateManyWithoutProjectNestedInput
+  comments?: Prisma.ProjectCommentUncheckedUpdateManyWithoutProjectNestedInput
+  files?: Prisma.ProjectFileUncheckedUpdateManyWithoutProjectNestedInput
+  supportTickets?: Prisma.SupportTicketUncheckedUpdateManyWithoutProjectNestedInput
 }
 
 export type ProjectCreateWithoutActivityInput = {
@@ -1160,6 +1348,12 @@ export type ProjectCreateWithoutActivityInput = {
   owner: Prisma.UserCreateNestedOneWithoutOwnedProjectsInput
   members?: Prisma.ProjectMemberCreateNestedManyWithoutProjectInput
   deliverables?: Prisma.DeliverableCreateNestedManyWithoutProjectInput
+  milestones?: Prisma.ProjectMilestoneCreateNestedManyWithoutProjectInput
+  approvalRequests?: Prisma.ApprovalRequestCreateNestedManyWithoutProjectInput
+  changeRequests?: Prisma.ChangeRequestCreateNestedManyWithoutProjectInput
+  comments?: Prisma.ProjectCommentCreateNestedManyWithoutProjectInput
+  files?: Prisma.ProjectFileCreateNestedManyWithoutProjectInput
+  supportTickets?: Prisma.SupportTicketCreateNestedManyWithoutProjectInput
 }
 
 export type ProjectUncheckedCreateWithoutActivityInput = {
@@ -1184,6 +1378,12 @@ export type ProjectUncheckedCreateWithoutActivityInput = {
   updatedAt?: Date | string
   members?: Prisma.ProjectMemberUncheckedCreateNestedManyWithoutProjectInput
   deliverables?: Prisma.DeliverableUncheckedCreateNestedManyWithoutProjectInput
+  milestones?: Prisma.ProjectMilestoneUncheckedCreateNestedManyWithoutProjectInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedCreateNestedManyWithoutProjectInput
+  changeRequests?: Prisma.ChangeRequestUncheckedCreateNestedManyWithoutProjectInput
+  comments?: Prisma.ProjectCommentUncheckedCreateNestedManyWithoutProjectInput
+  files?: Prisma.ProjectFileUncheckedCreateNestedManyWithoutProjectInput
+  supportTickets?: Prisma.SupportTicketUncheckedCreateNestedManyWithoutProjectInput
 }
 
 export type ProjectCreateOrConnectWithoutActivityInput = {
@@ -1224,6 +1424,12 @@ export type ProjectUpdateWithoutActivityInput = {
   owner?: Prisma.UserUpdateOneRequiredWithoutOwnedProjectsNestedInput
   members?: Prisma.ProjectMemberUpdateManyWithoutProjectNestedInput
   deliverables?: Prisma.DeliverableUpdateManyWithoutProjectNestedInput
+  milestones?: Prisma.ProjectMilestoneUpdateManyWithoutProjectNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUpdateManyWithoutProjectNestedInput
+  changeRequests?: Prisma.ChangeRequestUpdateManyWithoutProjectNestedInput
+  comments?: Prisma.ProjectCommentUpdateManyWithoutProjectNestedInput
+  files?: Prisma.ProjectFileUpdateManyWithoutProjectNestedInput
+  supportTickets?: Prisma.SupportTicketUpdateManyWithoutProjectNestedInput
 }
 
 export type ProjectUncheckedUpdateWithoutActivityInput = {
@@ -1248,6 +1454,828 @@ export type ProjectUncheckedUpdateWithoutActivityInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   members?: Prisma.ProjectMemberUncheckedUpdateManyWithoutProjectNestedInput
   deliverables?: Prisma.DeliverableUncheckedUpdateManyWithoutProjectNestedInput
+  milestones?: Prisma.ProjectMilestoneUncheckedUpdateManyWithoutProjectNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedUpdateManyWithoutProjectNestedInput
+  changeRequests?: Prisma.ChangeRequestUncheckedUpdateManyWithoutProjectNestedInput
+  comments?: Prisma.ProjectCommentUncheckedUpdateManyWithoutProjectNestedInput
+  files?: Prisma.ProjectFileUncheckedUpdateManyWithoutProjectNestedInput
+  supportTickets?: Prisma.SupportTicketUncheckedUpdateManyWithoutProjectNestedInput
+}
+
+export type ProjectCreateWithoutMilestonesInput = {
+  id?: string
+  slug: string
+  name: string
+  tagline?: string | null
+  description?: string | null
+  status?: $Enums.ProjectStatus
+  heroImageUrl?: string | null
+  accentColor?: string | null
+  startDate?: Date | string | null
+  targetEndDate?: Date | string | null
+  completedAt?: Date | string | null
+  budgetAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  budgetCurrency?: string | null
+  spentAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  tags?: Prisma.ProjectCreatetagsInput | string[]
+  isDeleted?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  owner: Prisma.UserCreateNestedOneWithoutOwnedProjectsInput
+  members?: Prisma.ProjectMemberCreateNestedManyWithoutProjectInput
+  deliverables?: Prisma.DeliverableCreateNestedManyWithoutProjectInput
+  activity?: Prisma.ActivityEventCreateNestedManyWithoutProjectInput
+  approvalRequests?: Prisma.ApprovalRequestCreateNestedManyWithoutProjectInput
+  changeRequests?: Prisma.ChangeRequestCreateNestedManyWithoutProjectInput
+  comments?: Prisma.ProjectCommentCreateNestedManyWithoutProjectInput
+  files?: Prisma.ProjectFileCreateNestedManyWithoutProjectInput
+  supportTickets?: Prisma.SupportTicketCreateNestedManyWithoutProjectInput
+}
+
+export type ProjectUncheckedCreateWithoutMilestonesInput = {
+  id?: string
+  slug: string
+  name: string
+  tagline?: string | null
+  description?: string | null
+  status?: $Enums.ProjectStatus
+  heroImageUrl?: string | null
+  accentColor?: string | null
+  startDate?: Date | string | null
+  targetEndDate?: Date | string | null
+  completedAt?: Date | string | null
+  budgetAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  budgetCurrency?: string | null
+  spentAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  ownerId: string
+  tags?: Prisma.ProjectCreatetagsInput | string[]
+  isDeleted?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  members?: Prisma.ProjectMemberUncheckedCreateNestedManyWithoutProjectInput
+  deliverables?: Prisma.DeliverableUncheckedCreateNestedManyWithoutProjectInput
+  activity?: Prisma.ActivityEventUncheckedCreateNestedManyWithoutProjectInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedCreateNestedManyWithoutProjectInput
+  changeRequests?: Prisma.ChangeRequestUncheckedCreateNestedManyWithoutProjectInput
+  comments?: Prisma.ProjectCommentUncheckedCreateNestedManyWithoutProjectInput
+  files?: Prisma.ProjectFileUncheckedCreateNestedManyWithoutProjectInput
+  supportTickets?: Prisma.SupportTicketUncheckedCreateNestedManyWithoutProjectInput
+}
+
+export type ProjectCreateOrConnectWithoutMilestonesInput = {
+  where: Prisma.ProjectWhereUniqueInput
+  create: Prisma.XOR<Prisma.ProjectCreateWithoutMilestonesInput, Prisma.ProjectUncheckedCreateWithoutMilestonesInput>
+}
+
+export type ProjectUpsertWithoutMilestonesInput = {
+  update: Prisma.XOR<Prisma.ProjectUpdateWithoutMilestonesInput, Prisma.ProjectUncheckedUpdateWithoutMilestonesInput>
+  create: Prisma.XOR<Prisma.ProjectCreateWithoutMilestonesInput, Prisma.ProjectUncheckedCreateWithoutMilestonesInput>
+  where?: Prisma.ProjectWhereInput
+}
+
+export type ProjectUpdateToOneWithWhereWithoutMilestonesInput = {
+  where?: Prisma.ProjectWhereInput
+  data: Prisma.XOR<Prisma.ProjectUpdateWithoutMilestonesInput, Prisma.ProjectUncheckedUpdateWithoutMilestonesInput>
+}
+
+export type ProjectUpdateWithoutMilestonesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  tagline?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumProjectStatusFieldUpdateOperationsInput | $Enums.ProjectStatus
+  heroImageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  accentColor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  startDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  targetEndDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  completedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  budgetAmount?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  budgetCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  spentAmount?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  tags?: Prisma.ProjectUpdatetagsInput | string[]
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  owner?: Prisma.UserUpdateOneRequiredWithoutOwnedProjectsNestedInput
+  members?: Prisma.ProjectMemberUpdateManyWithoutProjectNestedInput
+  deliverables?: Prisma.DeliverableUpdateManyWithoutProjectNestedInput
+  activity?: Prisma.ActivityEventUpdateManyWithoutProjectNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUpdateManyWithoutProjectNestedInput
+  changeRequests?: Prisma.ChangeRequestUpdateManyWithoutProjectNestedInput
+  comments?: Prisma.ProjectCommentUpdateManyWithoutProjectNestedInput
+  files?: Prisma.ProjectFileUpdateManyWithoutProjectNestedInput
+  supportTickets?: Prisma.SupportTicketUpdateManyWithoutProjectNestedInput
+}
+
+export type ProjectUncheckedUpdateWithoutMilestonesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  tagline?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumProjectStatusFieldUpdateOperationsInput | $Enums.ProjectStatus
+  heroImageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  accentColor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  startDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  targetEndDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  completedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  budgetAmount?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  budgetCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  spentAmount?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  ownerId?: Prisma.StringFieldUpdateOperationsInput | string
+  tags?: Prisma.ProjectUpdatetagsInput | string[]
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  members?: Prisma.ProjectMemberUncheckedUpdateManyWithoutProjectNestedInput
+  deliverables?: Prisma.DeliverableUncheckedUpdateManyWithoutProjectNestedInput
+  activity?: Prisma.ActivityEventUncheckedUpdateManyWithoutProjectNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedUpdateManyWithoutProjectNestedInput
+  changeRequests?: Prisma.ChangeRequestUncheckedUpdateManyWithoutProjectNestedInput
+  comments?: Prisma.ProjectCommentUncheckedUpdateManyWithoutProjectNestedInput
+  files?: Prisma.ProjectFileUncheckedUpdateManyWithoutProjectNestedInput
+  supportTickets?: Prisma.SupportTicketUncheckedUpdateManyWithoutProjectNestedInput
+}
+
+export type ProjectCreateWithoutApprovalRequestsInput = {
+  id?: string
+  slug: string
+  name: string
+  tagline?: string | null
+  description?: string | null
+  status?: $Enums.ProjectStatus
+  heroImageUrl?: string | null
+  accentColor?: string | null
+  startDate?: Date | string | null
+  targetEndDate?: Date | string | null
+  completedAt?: Date | string | null
+  budgetAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  budgetCurrency?: string | null
+  spentAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  tags?: Prisma.ProjectCreatetagsInput | string[]
+  isDeleted?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  owner: Prisma.UserCreateNestedOneWithoutOwnedProjectsInput
+  members?: Prisma.ProjectMemberCreateNestedManyWithoutProjectInput
+  deliverables?: Prisma.DeliverableCreateNestedManyWithoutProjectInput
+  activity?: Prisma.ActivityEventCreateNestedManyWithoutProjectInput
+  milestones?: Prisma.ProjectMilestoneCreateNestedManyWithoutProjectInput
+  changeRequests?: Prisma.ChangeRequestCreateNestedManyWithoutProjectInput
+  comments?: Prisma.ProjectCommentCreateNestedManyWithoutProjectInput
+  files?: Prisma.ProjectFileCreateNestedManyWithoutProjectInput
+  supportTickets?: Prisma.SupportTicketCreateNestedManyWithoutProjectInput
+}
+
+export type ProjectUncheckedCreateWithoutApprovalRequestsInput = {
+  id?: string
+  slug: string
+  name: string
+  tagline?: string | null
+  description?: string | null
+  status?: $Enums.ProjectStatus
+  heroImageUrl?: string | null
+  accentColor?: string | null
+  startDate?: Date | string | null
+  targetEndDate?: Date | string | null
+  completedAt?: Date | string | null
+  budgetAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  budgetCurrency?: string | null
+  spentAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  ownerId: string
+  tags?: Prisma.ProjectCreatetagsInput | string[]
+  isDeleted?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  members?: Prisma.ProjectMemberUncheckedCreateNestedManyWithoutProjectInput
+  deliverables?: Prisma.DeliverableUncheckedCreateNestedManyWithoutProjectInput
+  activity?: Prisma.ActivityEventUncheckedCreateNestedManyWithoutProjectInput
+  milestones?: Prisma.ProjectMilestoneUncheckedCreateNestedManyWithoutProjectInput
+  changeRequests?: Prisma.ChangeRequestUncheckedCreateNestedManyWithoutProjectInput
+  comments?: Prisma.ProjectCommentUncheckedCreateNestedManyWithoutProjectInput
+  files?: Prisma.ProjectFileUncheckedCreateNestedManyWithoutProjectInput
+  supportTickets?: Prisma.SupportTicketUncheckedCreateNestedManyWithoutProjectInput
+}
+
+export type ProjectCreateOrConnectWithoutApprovalRequestsInput = {
+  where: Prisma.ProjectWhereUniqueInput
+  create: Prisma.XOR<Prisma.ProjectCreateWithoutApprovalRequestsInput, Prisma.ProjectUncheckedCreateWithoutApprovalRequestsInput>
+}
+
+export type ProjectUpsertWithoutApprovalRequestsInput = {
+  update: Prisma.XOR<Prisma.ProjectUpdateWithoutApprovalRequestsInput, Prisma.ProjectUncheckedUpdateWithoutApprovalRequestsInput>
+  create: Prisma.XOR<Prisma.ProjectCreateWithoutApprovalRequestsInput, Prisma.ProjectUncheckedCreateWithoutApprovalRequestsInput>
+  where?: Prisma.ProjectWhereInput
+}
+
+export type ProjectUpdateToOneWithWhereWithoutApprovalRequestsInput = {
+  where?: Prisma.ProjectWhereInput
+  data: Prisma.XOR<Prisma.ProjectUpdateWithoutApprovalRequestsInput, Prisma.ProjectUncheckedUpdateWithoutApprovalRequestsInput>
+}
+
+export type ProjectUpdateWithoutApprovalRequestsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  tagline?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumProjectStatusFieldUpdateOperationsInput | $Enums.ProjectStatus
+  heroImageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  accentColor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  startDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  targetEndDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  completedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  budgetAmount?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  budgetCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  spentAmount?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  tags?: Prisma.ProjectUpdatetagsInput | string[]
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  owner?: Prisma.UserUpdateOneRequiredWithoutOwnedProjectsNestedInput
+  members?: Prisma.ProjectMemberUpdateManyWithoutProjectNestedInput
+  deliverables?: Prisma.DeliverableUpdateManyWithoutProjectNestedInput
+  activity?: Prisma.ActivityEventUpdateManyWithoutProjectNestedInput
+  milestones?: Prisma.ProjectMilestoneUpdateManyWithoutProjectNestedInput
+  changeRequests?: Prisma.ChangeRequestUpdateManyWithoutProjectNestedInput
+  comments?: Prisma.ProjectCommentUpdateManyWithoutProjectNestedInput
+  files?: Prisma.ProjectFileUpdateManyWithoutProjectNestedInput
+  supportTickets?: Prisma.SupportTicketUpdateManyWithoutProjectNestedInput
+}
+
+export type ProjectUncheckedUpdateWithoutApprovalRequestsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  tagline?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumProjectStatusFieldUpdateOperationsInput | $Enums.ProjectStatus
+  heroImageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  accentColor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  startDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  targetEndDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  completedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  budgetAmount?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  budgetCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  spentAmount?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  ownerId?: Prisma.StringFieldUpdateOperationsInput | string
+  tags?: Prisma.ProjectUpdatetagsInput | string[]
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  members?: Prisma.ProjectMemberUncheckedUpdateManyWithoutProjectNestedInput
+  deliverables?: Prisma.DeliverableUncheckedUpdateManyWithoutProjectNestedInput
+  activity?: Prisma.ActivityEventUncheckedUpdateManyWithoutProjectNestedInput
+  milestones?: Prisma.ProjectMilestoneUncheckedUpdateManyWithoutProjectNestedInput
+  changeRequests?: Prisma.ChangeRequestUncheckedUpdateManyWithoutProjectNestedInput
+  comments?: Prisma.ProjectCommentUncheckedUpdateManyWithoutProjectNestedInput
+  files?: Prisma.ProjectFileUncheckedUpdateManyWithoutProjectNestedInput
+  supportTickets?: Prisma.SupportTicketUncheckedUpdateManyWithoutProjectNestedInput
+}
+
+export type ProjectCreateWithoutChangeRequestsInput = {
+  id?: string
+  slug: string
+  name: string
+  tagline?: string | null
+  description?: string | null
+  status?: $Enums.ProjectStatus
+  heroImageUrl?: string | null
+  accentColor?: string | null
+  startDate?: Date | string | null
+  targetEndDate?: Date | string | null
+  completedAt?: Date | string | null
+  budgetAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  budgetCurrency?: string | null
+  spentAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  tags?: Prisma.ProjectCreatetagsInput | string[]
+  isDeleted?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  owner: Prisma.UserCreateNestedOneWithoutOwnedProjectsInput
+  members?: Prisma.ProjectMemberCreateNestedManyWithoutProjectInput
+  deliverables?: Prisma.DeliverableCreateNestedManyWithoutProjectInput
+  activity?: Prisma.ActivityEventCreateNestedManyWithoutProjectInput
+  milestones?: Prisma.ProjectMilestoneCreateNestedManyWithoutProjectInput
+  approvalRequests?: Prisma.ApprovalRequestCreateNestedManyWithoutProjectInput
+  comments?: Prisma.ProjectCommentCreateNestedManyWithoutProjectInput
+  files?: Prisma.ProjectFileCreateNestedManyWithoutProjectInput
+  supportTickets?: Prisma.SupportTicketCreateNestedManyWithoutProjectInput
+}
+
+export type ProjectUncheckedCreateWithoutChangeRequestsInput = {
+  id?: string
+  slug: string
+  name: string
+  tagline?: string | null
+  description?: string | null
+  status?: $Enums.ProjectStatus
+  heroImageUrl?: string | null
+  accentColor?: string | null
+  startDate?: Date | string | null
+  targetEndDate?: Date | string | null
+  completedAt?: Date | string | null
+  budgetAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  budgetCurrency?: string | null
+  spentAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  ownerId: string
+  tags?: Prisma.ProjectCreatetagsInput | string[]
+  isDeleted?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  members?: Prisma.ProjectMemberUncheckedCreateNestedManyWithoutProjectInput
+  deliverables?: Prisma.DeliverableUncheckedCreateNestedManyWithoutProjectInput
+  activity?: Prisma.ActivityEventUncheckedCreateNestedManyWithoutProjectInput
+  milestones?: Prisma.ProjectMilestoneUncheckedCreateNestedManyWithoutProjectInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedCreateNestedManyWithoutProjectInput
+  comments?: Prisma.ProjectCommentUncheckedCreateNestedManyWithoutProjectInput
+  files?: Prisma.ProjectFileUncheckedCreateNestedManyWithoutProjectInput
+  supportTickets?: Prisma.SupportTicketUncheckedCreateNestedManyWithoutProjectInput
+}
+
+export type ProjectCreateOrConnectWithoutChangeRequestsInput = {
+  where: Prisma.ProjectWhereUniqueInput
+  create: Prisma.XOR<Prisma.ProjectCreateWithoutChangeRequestsInput, Prisma.ProjectUncheckedCreateWithoutChangeRequestsInput>
+}
+
+export type ProjectUpsertWithoutChangeRequestsInput = {
+  update: Prisma.XOR<Prisma.ProjectUpdateWithoutChangeRequestsInput, Prisma.ProjectUncheckedUpdateWithoutChangeRequestsInput>
+  create: Prisma.XOR<Prisma.ProjectCreateWithoutChangeRequestsInput, Prisma.ProjectUncheckedCreateWithoutChangeRequestsInput>
+  where?: Prisma.ProjectWhereInput
+}
+
+export type ProjectUpdateToOneWithWhereWithoutChangeRequestsInput = {
+  where?: Prisma.ProjectWhereInput
+  data: Prisma.XOR<Prisma.ProjectUpdateWithoutChangeRequestsInput, Prisma.ProjectUncheckedUpdateWithoutChangeRequestsInput>
+}
+
+export type ProjectUpdateWithoutChangeRequestsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  tagline?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumProjectStatusFieldUpdateOperationsInput | $Enums.ProjectStatus
+  heroImageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  accentColor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  startDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  targetEndDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  completedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  budgetAmount?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  budgetCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  spentAmount?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  tags?: Prisma.ProjectUpdatetagsInput | string[]
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  owner?: Prisma.UserUpdateOneRequiredWithoutOwnedProjectsNestedInput
+  members?: Prisma.ProjectMemberUpdateManyWithoutProjectNestedInput
+  deliverables?: Prisma.DeliverableUpdateManyWithoutProjectNestedInput
+  activity?: Prisma.ActivityEventUpdateManyWithoutProjectNestedInput
+  milestones?: Prisma.ProjectMilestoneUpdateManyWithoutProjectNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUpdateManyWithoutProjectNestedInput
+  comments?: Prisma.ProjectCommentUpdateManyWithoutProjectNestedInput
+  files?: Prisma.ProjectFileUpdateManyWithoutProjectNestedInput
+  supportTickets?: Prisma.SupportTicketUpdateManyWithoutProjectNestedInput
+}
+
+export type ProjectUncheckedUpdateWithoutChangeRequestsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  tagline?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumProjectStatusFieldUpdateOperationsInput | $Enums.ProjectStatus
+  heroImageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  accentColor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  startDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  targetEndDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  completedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  budgetAmount?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  budgetCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  spentAmount?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  ownerId?: Prisma.StringFieldUpdateOperationsInput | string
+  tags?: Prisma.ProjectUpdatetagsInput | string[]
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  members?: Prisma.ProjectMemberUncheckedUpdateManyWithoutProjectNestedInput
+  deliverables?: Prisma.DeliverableUncheckedUpdateManyWithoutProjectNestedInput
+  activity?: Prisma.ActivityEventUncheckedUpdateManyWithoutProjectNestedInput
+  milestones?: Prisma.ProjectMilestoneUncheckedUpdateManyWithoutProjectNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedUpdateManyWithoutProjectNestedInput
+  comments?: Prisma.ProjectCommentUncheckedUpdateManyWithoutProjectNestedInput
+  files?: Prisma.ProjectFileUncheckedUpdateManyWithoutProjectNestedInput
+  supportTickets?: Prisma.SupportTicketUncheckedUpdateManyWithoutProjectNestedInput
+}
+
+export type ProjectCreateWithoutCommentsInput = {
+  id?: string
+  slug: string
+  name: string
+  tagline?: string | null
+  description?: string | null
+  status?: $Enums.ProjectStatus
+  heroImageUrl?: string | null
+  accentColor?: string | null
+  startDate?: Date | string | null
+  targetEndDate?: Date | string | null
+  completedAt?: Date | string | null
+  budgetAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  budgetCurrency?: string | null
+  spentAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  tags?: Prisma.ProjectCreatetagsInput | string[]
+  isDeleted?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  owner: Prisma.UserCreateNestedOneWithoutOwnedProjectsInput
+  members?: Prisma.ProjectMemberCreateNestedManyWithoutProjectInput
+  deliverables?: Prisma.DeliverableCreateNestedManyWithoutProjectInput
+  activity?: Prisma.ActivityEventCreateNestedManyWithoutProjectInput
+  milestones?: Prisma.ProjectMilestoneCreateNestedManyWithoutProjectInput
+  approvalRequests?: Prisma.ApprovalRequestCreateNestedManyWithoutProjectInput
+  changeRequests?: Prisma.ChangeRequestCreateNestedManyWithoutProjectInput
+  files?: Prisma.ProjectFileCreateNestedManyWithoutProjectInput
+  supportTickets?: Prisma.SupportTicketCreateNestedManyWithoutProjectInput
+}
+
+export type ProjectUncheckedCreateWithoutCommentsInput = {
+  id?: string
+  slug: string
+  name: string
+  tagline?: string | null
+  description?: string | null
+  status?: $Enums.ProjectStatus
+  heroImageUrl?: string | null
+  accentColor?: string | null
+  startDate?: Date | string | null
+  targetEndDate?: Date | string | null
+  completedAt?: Date | string | null
+  budgetAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  budgetCurrency?: string | null
+  spentAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  ownerId: string
+  tags?: Prisma.ProjectCreatetagsInput | string[]
+  isDeleted?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  members?: Prisma.ProjectMemberUncheckedCreateNestedManyWithoutProjectInput
+  deliverables?: Prisma.DeliverableUncheckedCreateNestedManyWithoutProjectInput
+  activity?: Prisma.ActivityEventUncheckedCreateNestedManyWithoutProjectInput
+  milestones?: Prisma.ProjectMilestoneUncheckedCreateNestedManyWithoutProjectInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedCreateNestedManyWithoutProjectInput
+  changeRequests?: Prisma.ChangeRequestUncheckedCreateNestedManyWithoutProjectInput
+  files?: Prisma.ProjectFileUncheckedCreateNestedManyWithoutProjectInput
+  supportTickets?: Prisma.SupportTicketUncheckedCreateNestedManyWithoutProjectInput
+}
+
+export type ProjectCreateOrConnectWithoutCommentsInput = {
+  where: Prisma.ProjectWhereUniqueInput
+  create: Prisma.XOR<Prisma.ProjectCreateWithoutCommentsInput, Prisma.ProjectUncheckedCreateWithoutCommentsInput>
+}
+
+export type ProjectUpsertWithoutCommentsInput = {
+  update: Prisma.XOR<Prisma.ProjectUpdateWithoutCommentsInput, Prisma.ProjectUncheckedUpdateWithoutCommentsInput>
+  create: Prisma.XOR<Prisma.ProjectCreateWithoutCommentsInput, Prisma.ProjectUncheckedCreateWithoutCommentsInput>
+  where?: Prisma.ProjectWhereInput
+}
+
+export type ProjectUpdateToOneWithWhereWithoutCommentsInput = {
+  where?: Prisma.ProjectWhereInput
+  data: Prisma.XOR<Prisma.ProjectUpdateWithoutCommentsInput, Prisma.ProjectUncheckedUpdateWithoutCommentsInput>
+}
+
+export type ProjectUpdateWithoutCommentsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  tagline?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumProjectStatusFieldUpdateOperationsInput | $Enums.ProjectStatus
+  heroImageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  accentColor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  startDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  targetEndDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  completedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  budgetAmount?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  budgetCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  spentAmount?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  tags?: Prisma.ProjectUpdatetagsInput | string[]
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  owner?: Prisma.UserUpdateOneRequiredWithoutOwnedProjectsNestedInput
+  members?: Prisma.ProjectMemberUpdateManyWithoutProjectNestedInput
+  deliverables?: Prisma.DeliverableUpdateManyWithoutProjectNestedInput
+  activity?: Prisma.ActivityEventUpdateManyWithoutProjectNestedInput
+  milestones?: Prisma.ProjectMilestoneUpdateManyWithoutProjectNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUpdateManyWithoutProjectNestedInput
+  changeRequests?: Prisma.ChangeRequestUpdateManyWithoutProjectNestedInput
+  files?: Prisma.ProjectFileUpdateManyWithoutProjectNestedInput
+  supportTickets?: Prisma.SupportTicketUpdateManyWithoutProjectNestedInput
+}
+
+export type ProjectUncheckedUpdateWithoutCommentsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  tagline?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumProjectStatusFieldUpdateOperationsInput | $Enums.ProjectStatus
+  heroImageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  accentColor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  startDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  targetEndDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  completedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  budgetAmount?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  budgetCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  spentAmount?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  ownerId?: Prisma.StringFieldUpdateOperationsInput | string
+  tags?: Prisma.ProjectUpdatetagsInput | string[]
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  members?: Prisma.ProjectMemberUncheckedUpdateManyWithoutProjectNestedInput
+  deliverables?: Prisma.DeliverableUncheckedUpdateManyWithoutProjectNestedInput
+  activity?: Prisma.ActivityEventUncheckedUpdateManyWithoutProjectNestedInput
+  milestones?: Prisma.ProjectMilestoneUncheckedUpdateManyWithoutProjectNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedUpdateManyWithoutProjectNestedInput
+  changeRequests?: Prisma.ChangeRequestUncheckedUpdateManyWithoutProjectNestedInput
+  files?: Prisma.ProjectFileUncheckedUpdateManyWithoutProjectNestedInput
+  supportTickets?: Prisma.SupportTicketUncheckedUpdateManyWithoutProjectNestedInput
+}
+
+export type ProjectCreateWithoutFilesInput = {
+  id?: string
+  slug: string
+  name: string
+  tagline?: string | null
+  description?: string | null
+  status?: $Enums.ProjectStatus
+  heroImageUrl?: string | null
+  accentColor?: string | null
+  startDate?: Date | string | null
+  targetEndDate?: Date | string | null
+  completedAt?: Date | string | null
+  budgetAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  budgetCurrency?: string | null
+  spentAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  tags?: Prisma.ProjectCreatetagsInput | string[]
+  isDeleted?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  owner: Prisma.UserCreateNestedOneWithoutOwnedProjectsInput
+  members?: Prisma.ProjectMemberCreateNestedManyWithoutProjectInput
+  deliverables?: Prisma.DeliverableCreateNestedManyWithoutProjectInput
+  activity?: Prisma.ActivityEventCreateNestedManyWithoutProjectInput
+  milestones?: Prisma.ProjectMilestoneCreateNestedManyWithoutProjectInput
+  approvalRequests?: Prisma.ApprovalRequestCreateNestedManyWithoutProjectInput
+  changeRequests?: Prisma.ChangeRequestCreateNestedManyWithoutProjectInput
+  comments?: Prisma.ProjectCommentCreateNestedManyWithoutProjectInput
+  supportTickets?: Prisma.SupportTicketCreateNestedManyWithoutProjectInput
+}
+
+export type ProjectUncheckedCreateWithoutFilesInput = {
+  id?: string
+  slug: string
+  name: string
+  tagline?: string | null
+  description?: string | null
+  status?: $Enums.ProjectStatus
+  heroImageUrl?: string | null
+  accentColor?: string | null
+  startDate?: Date | string | null
+  targetEndDate?: Date | string | null
+  completedAt?: Date | string | null
+  budgetAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  budgetCurrency?: string | null
+  spentAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  ownerId: string
+  tags?: Prisma.ProjectCreatetagsInput | string[]
+  isDeleted?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  members?: Prisma.ProjectMemberUncheckedCreateNestedManyWithoutProjectInput
+  deliverables?: Prisma.DeliverableUncheckedCreateNestedManyWithoutProjectInput
+  activity?: Prisma.ActivityEventUncheckedCreateNestedManyWithoutProjectInput
+  milestones?: Prisma.ProjectMilestoneUncheckedCreateNestedManyWithoutProjectInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedCreateNestedManyWithoutProjectInput
+  changeRequests?: Prisma.ChangeRequestUncheckedCreateNestedManyWithoutProjectInput
+  comments?: Prisma.ProjectCommentUncheckedCreateNestedManyWithoutProjectInput
+  supportTickets?: Prisma.SupportTicketUncheckedCreateNestedManyWithoutProjectInput
+}
+
+export type ProjectCreateOrConnectWithoutFilesInput = {
+  where: Prisma.ProjectWhereUniqueInput
+  create: Prisma.XOR<Prisma.ProjectCreateWithoutFilesInput, Prisma.ProjectUncheckedCreateWithoutFilesInput>
+}
+
+export type ProjectUpsertWithoutFilesInput = {
+  update: Prisma.XOR<Prisma.ProjectUpdateWithoutFilesInput, Prisma.ProjectUncheckedUpdateWithoutFilesInput>
+  create: Prisma.XOR<Prisma.ProjectCreateWithoutFilesInput, Prisma.ProjectUncheckedCreateWithoutFilesInput>
+  where?: Prisma.ProjectWhereInput
+}
+
+export type ProjectUpdateToOneWithWhereWithoutFilesInput = {
+  where?: Prisma.ProjectWhereInput
+  data: Prisma.XOR<Prisma.ProjectUpdateWithoutFilesInput, Prisma.ProjectUncheckedUpdateWithoutFilesInput>
+}
+
+export type ProjectUpdateWithoutFilesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  tagline?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumProjectStatusFieldUpdateOperationsInput | $Enums.ProjectStatus
+  heroImageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  accentColor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  startDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  targetEndDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  completedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  budgetAmount?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  budgetCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  spentAmount?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  tags?: Prisma.ProjectUpdatetagsInput | string[]
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  owner?: Prisma.UserUpdateOneRequiredWithoutOwnedProjectsNestedInput
+  members?: Prisma.ProjectMemberUpdateManyWithoutProjectNestedInput
+  deliverables?: Prisma.DeliverableUpdateManyWithoutProjectNestedInput
+  activity?: Prisma.ActivityEventUpdateManyWithoutProjectNestedInput
+  milestones?: Prisma.ProjectMilestoneUpdateManyWithoutProjectNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUpdateManyWithoutProjectNestedInput
+  changeRequests?: Prisma.ChangeRequestUpdateManyWithoutProjectNestedInput
+  comments?: Prisma.ProjectCommentUpdateManyWithoutProjectNestedInput
+  supportTickets?: Prisma.SupportTicketUpdateManyWithoutProjectNestedInput
+}
+
+export type ProjectUncheckedUpdateWithoutFilesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  tagline?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumProjectStatusFieldUpdateOperationsInput | $Enums.ProjectStatus
+  heroImageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  accentColor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  startDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  targetEndDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  completedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  budgetAmount?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  budgetCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  spentAmount?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  ownerId?: Prisma.StringFieldUpdateOperationsInput | string
+  tags?: Prisma.ProjectUpdatetagsInput | string[]
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  members?: Prisma.ProjectMemberUncheckedUpdateManyWithoutProjectNestedInput
+  deliverables?: Prisma.DeliverableUncheckedUpdateManyWithoutProjectNestedInput
+  activity?: Prisma.ActivityEventUncheckedUpdateManyWithoutProjectNestedInput
+  milestones?: Prisma.ProjectMilestoneUncheckedUpdateManyWithoutProjectNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedUpdateManyWithoutProjectNestedInput
+  changeRequests?: Prisma.ChangeRequestUncheckedUpdateManyWithoutProjectNestedInput
+  comments?: Prisma.ProjectCommentUncheckedUpdateManyWithoutProjectNestedInput
+  supportTickets?: Prisma.SupportTicketUncheckedUpdateManyWithoutProjectNestedInput
+}
+
+export type ProjectCreateWithoutSupportTicketsInput = {
+  id?: string
+  slug: string
+  name: string
+  tagline?: string | null
+  description?: string | null
+  status?: $Enums.ProjectStatus
+  heroImageUrl?: string | null
+  accentColor?: string | null
+  startDate?: Date | string | null
+  targetEndDate?: Date | string | null
+  completedAt?: Date | string | null
+  budgetAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  budgetCurrency?: string | null
+  spentAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  tags?: Prisma.ProjectCreatetagsInput | string[]
+  isDeleted?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  owner: Prisma.UserCreateNestedOneWithoutOwnedProjectsInput
+  members?: Prisma.ProjectMemberCreateNestedManyWithoutProjectInput
+  deliverables?: Prisma.DeliverableCreateNestedManyWithoutProjectInput
+  activity?: Prisma.ActivityEventCreateNestedManyWithoutProjectInput
+  milestones?: Prisma.ProjectMilestoneCreateNestedManyWithoutProjectInput
+  approvalRequests?: Prisma.ApprovalRequestCreateNestedManyWithoutProjectInput
+  changeRequests?: Prisma.ChangeRequestCreateNestedManyWithoutProjectInput
+  comments?: Prisma.ProjectCommentCreateNestedManyWithoutProjectInput
+  files?: Prisma.ProjectFileCreateNestedManyWithoutProjectInput
+}
+
+export type ProjectUncheckedCreateWithoutSupportTicketsInput = {
+  id?: string
+  slug: string
+  name: string
+  tagline?: string | null
+  description?: string | null
+  status?: $Enums.ProjectStatus
+  heroImageUrl?: string | null
+  accentColor?: string | null
+  startDate?: Date | string | null
+  targetEndDate?: Date | string | null
+  completedAt?: Date | string | null
+  budgetAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  budgetCurrency?: string | null
+  spentAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  ownerId: string
+  tags?: Prisma.ProjectCreatetagsInput | string[]
+  isDeleted?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  members?: Prisma.ProjectMemberUncheckedCreateNestedManyWithoutProjectInput
+  deliverables?: Prisma.DeliverableUncheckedCreateNestedManyWithoutProjectInput
+  activity?: Prisma.ActivityEventUncheckedCreateNestedManyWithoutProjectInput
+  milestones?: Prisma.ProjectMilestoneUncheckedCreateNestedManyWithoutProjectInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedCreateNestedManyWithoutProjectInput
+  changeRequests?: Prisma.ChangeRequestUncheckedCreateNestedManyWithoutProjectInput
+  comments?: Prisma.ProjectCommentUncheckedCreateNestedManyWithoutProjectInput
+  files?: Prisma.ProjectFileUncheckedCreateNestedManyWithoutProjectInput
+}
+
+export type ProjectCreateOrConnectWithoutSupportTicketsInput = {
+  where: Prisma.ProjectWhereUniqueInput
+  create: Prisma.XOR<Prisma.ProjectCreateWithoutSupportTicketsInput, Prisma.ProjectUncheckedCreateWithoutSupportTicketsInput>
+}
+
+export type ProjectUpsertWithoutSupportTicketsInput = {
+  update: Prisma.XOR<Prisma.ProjectUpdateWithoutSupportTicketsInput, Prisma.ProjectUncheckedUpdateWithoutSupportTicketsInput>
+  create: Prisma.XOR<Prisma.ProjectCreateWithoutSupportTicketsInput, Prisma.ProjectUncheckedCreateWithoutSupportTicketsInput>
+  where?: Prisma.ProjectWhereInput
+}
+
+export type ProjectUpdateToOneWithWhereWithoutSupportTicketsInput = {
+  where?: Prisma.ProjectWhereInput
+  data: Prisma.XOR<Prisma.ProjectUpdateWithoutSupportTicketsInput, Prisma.ProjectUncheckedUpdateWithoutSupportTicketsInput>
+}
+
+export type ProjectUpdateWithoutSupportTicketsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  tagline?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumProjectStatusFieldUpdateOperationsInput | $Enums.ProjectStatus
+  heroImageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  accentColor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  startDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  targetEndDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  completedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  budgetAmount?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  budgetCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  spentAmount?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  tags?: Prisma.ProjectUpdatetagsInput | string[]
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  owner?: Prisma.UserUpdateOneRequiredWithoutOwnedProjectsNestedInput
+  members?: Prisma.ProjectMemberUpdateManyWithoutProjectNestedInput
+  deliverables?: Prisma.DeliverableUpdateManyWithoutProjectNestedInput
+  activity?: Prisma.ActivityEventUpdateManyWithoutProjectNestedInput
+  milestones?: Prisma.ProjectMilestoneUpdateManyWithoutProjectNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUpdateManyWithoutProjectNestedInput
+  changeRequests?: Prisma.ChangeRequestUpdateManyWithoutProjectNestedInput
+  comments?: Prisma.ProjectCommentUpdateManyWithoutProjectNestedInput
+  files?: Prisma.ProjectFileUpdateManyWithoutProjectNestedInput
+}
+
+export type ProjectUncheckedUpdateWithoutSupportTicketsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  tagline?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumProjectStatusFieldUpdateOperationsInput | $Enums.ProjectStatus
+  heroImageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  accentColor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  startDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  targetEndDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  completedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  budgetAmount?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  budgetCurrency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  spentAmount?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  ownerId?: Prisma.StringFieldUpdateOperationsInput | string
+  tags?: Prisma.ProjectUpdatetagsInput | string[]
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  members?: Prisma.ProjectMemberUncheckedUpdateManyWithoutProjectNestedInput
+  deliverables?: Prisma.DeliverableUncheckedUpdateManyWithoutProjectNestedInput
+  activity?: Prisma.ActivityEventUncheckedUpdateManyWithoutProjectNestedInput
+  milestones?: Prisma.ProjectMilestoneUncheckedUpdateManyWithoutProjectNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedUpdateManyWithoutProjectNestedInput
+  changeRequests?: Prisma.ChangeRequestUncheckedUpdateManyWithoutProjectNestedInput
+  comments?: Prisma.ProjectCommentUncheckedUpdateManyWithoutProjectNestedInput
+  files?: Prisma.ProjectFileUncheckedUpdateManyWithoutProjectNestedInput
 }
 
 export type ProjectCreateManyOwnerInput = {
@@ -1293,6 +2321,12 @@ export type ProjectUpdateWithoutOwnerInput = {
   members?: Prisma.ProjectMemberUpdateManyWithoutProjectNestedInput
   deliverables?: Prisma.DeliverableUpdateManyWithoutProjectNestedInput
   activity?: Prisma.ActivityEventUpdateManyWithoutProjectNestedInput
+  milestones?: Prisma.ProjectMilestoneUpdateManyWithoutProjectNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUpdateManyWithoutProjectNestedInput
+  changeRequests?: Prisma.ChangeRequestUpdateManyWithoutProjectNestedInput
+  comments?: Prisma.ProjectCommentUpdateManyWithoutProjectNestedInput
+  files?: Prisma.ProjectFileUpdateManyWithoutProjectNestedInput
+  supportTickets?: Prisma.SupportTicketUpdateManyWithoutProjectNestedInput
 }
 
 export type ProjectUncheckedUpdateWithoutOwnerInput = {
@@ -1317,6 +2351,12 @@ export type ProjectUncheckedUpdateWithoutOwnerInput = {
   members?: Prisma.ProjectMemberUncheckedUpdateManyWithoutProjectNestedInput
   deliverables?: Prisma.DeliverableUncheckedUpdateManyWithoutProjectNestedInput
   activity?: Prisma.ActivityEventUncheckedUpdateManyWithoutProjectNestedInput
+  milestones?: Prisma.ProjectMilestoneUncheckedUpdateManyWithoutProjectNestedInput
+  approvalRequests?: Prisma.ApprovalRequestUncheckedUpdateManyWithoutProjectNestedInput
+  changeRequests?: Prisma.ChangeRequestUncheckedUpdateManyWithoutProjectNestedInput
+  comments?: Prisma.ProjectCommentUncheckedUpdateManyWithoutProjectNestedInput
+  files?: Prisma.ProjectFileUncheckedUpdateManyWithoutProjectNestedInput
+  supportTickets?: Prisma.SupportTicketUncheckedUpdateManyWithoutProjectNestedInput
 }
 
 export type ProjectUncheckedUpdateManyWithoutOwnerInput = {
@@ -1349,12 +2389,24 @@ export type ProjectCountOutputType = {
   members: number
   deliverables: number
   activity: number
+  milestones: number
+  approvalRequests: number
+  changeRequests: number
+  comments: number
+  files: number
+  supportTickets: number
 }
 
 export type ProjectCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   members?: boolean | ProjectCountOutputTypeCountMembersArgs
   deliverables?: boolean | ProjectCountOutputTypeCountDeliverablesArgs
   activity?: boolean | ProjectCountOutputTypeCountActivityArgs
+  milestones?: boolean | ProjectCountOutputTypeCountMilestonesArgs
+  approvalRequests?: boolean | ProjectCountOutputTypeCountApprovalRequestsArgs
+  changeRequests?: boolean | ProjectCountOutputTypeCountChangeRequestsArgs
+  comments?: boolean | ProjectCountOutputTypeCountCommentsArgs
+  files?: boolean | ProjectCountOutputTypeCountFilesArgs
+  supportTickets?: boolean | ProjectCountOutputTypeCountSupportTicketsArgs
 }
 
 /**
@@ -1388,6 +2440,48 @@ export type ProjectCountOutputTypeCountActivityArgs<ExtArgs extends runtime.Type
   where?: Prisma.ActivityEventWhereInput
 }
 
+/**
+ * ProjectCountOutputType without action
+ */
+export type ProjectCountOutputTypeCountMilestonesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ProjectMilestoneWhereInput
+}
+
+/**
+ * ProjectCountOutputType without action
+ */
+export type ProjectCountOutputTypeCountApprovalRequestsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ApprovalRequestWhereInput
+}
+
+/**
+ * ProjectCountOutputType without action
+ */
+export type ProjectCountOutputTypeCountChangeRequestsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ChangeRequestWhereInput
+}
+
+/**
+ * ProjectCountOutputType without action
+ */
+export type ProjectCountOutputTypeCountCommentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ProjectCommentWhereInput
+}
+
+/**
+ * ProjectCountOutputType without action
+ */
+export type ProjectCountOutputTypeCountFilesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ProjectFileWhereInput
+}
+
+/**
+ * ProjectCountOutputType without action
+ */
+export type ProjectCountOutputTypeCountSupportTicketsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.SupportTicketWhereInput
+}
+
 
 export type ProjectSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -1413,6 +2507,12 @@ export type ProjectSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   members?: boolean | Prisma.Project$membersArgs<ExtArgs>
   deliverables?: boolean | Prisma.Project$deliverablesArgs<ExtArgs>
   activity?: boolean | Prisma.Project$activityArgs<ExtArgs>
+  milestones?: boolean | Prisma.Project$milestonesArgs<ExtArgs>
+  approvalRequests?: boolean | Prisma.Project$approvalRequestsArgs<ExtArgs>
+  changeRequests?: boolean | Prisma.Project$changeRequestsArgs<ExtArgs>
+  comments?: boolean | Prisma.Project$commentsArgs<ExtArgs>
+  files?: boolean | Prisma.Project$filesArgs<ExtArgs>
+  supportTickets?: boolean | Prisma.Project$supportTicketsArgs<ExtArgs>
   _count?: boolean | Prisma.ProjectCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["project"]>
 
@@ -1490,6 +2590,12 @@ export type ProjectInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs
   members?: boolean | Prisma.Project$membersArgs<ExtArgs>
   deliverables?: boolean | Prisma.Project$deliverablesArgs<ExtArgs>
   activity?: boolean | Prisma.Project$activityArgs<ExtArgs>
+  milestones?: boolean | Prisma.Project$milestonesArgs<ExtArgs>
+  approvalRequests?: boolean | Prisma.Project$approvalRequestsArgs<ExtArgs>
+  changeRequests?: boolean | Prisma.Project$changeRequestsArgs<ExtArgs>
+  comments?: boolean | Prisma.Project$commentsArgs<ExtArgs>
+  files?: boolean | Prisma.Project$filesArgs<ExtArgs>
+  supportTickets?: boolean | Prisma.Project$supportTicketsArgs<ExtArgs>
   _count?: boolean | Prisma.ProjectCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type ProjectIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1506,6 +2612,12 @@ export type $ProjectPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     members: Prisma.$ProjectMemberPayload<ExtArgs>[]
     deliverables: Prisma.$DeliverablePayload<ExtArgs>[]
     activity: Prisma.$ActivityEventPayload<ExtArgs>[]
+    milestones: Prisma.$ProjectMilestonePayload<ExtArgs>[]
+    approvalRequests: Prisma.$ApprovalRequestPayload<ExtArgs>[]
+    changeRequests: Prisma.$ChangeRequestPayload<ExtArgs>[]
+    comments: Prisma.$ProjectCommentPayload<ExtArgs>[]
+    files: Prisma.$ProjectFilePayload<ExtArgs>[]
+    supportTickets: Prisma.$SupportTicketPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1925,6 +3037,12 @@ export interface Prisma__ProjectClient<T, Null = never, ExtArgs extends runtime.
   members<T extends Prisma.Project$membersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Project$membersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ProjectMemberPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   deliverables<T extends Prisma.Project$deliverablesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Project$deliverablesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$DeliverablePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   activity<T extends Prisma.Project$activityArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Project$activityArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ActivityEventPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  milestones<T extends Prisma.Project$milestonesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Project$milestonesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ProjectMilestonePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  approvalRequests<T extends Prisma.Project$approvalRequestsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Project$approvalRequestsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ApprovalRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  changeRequests<T extends Prisma.Project$changeRequestsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Project$changeRequestsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ChangeRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  comments<T extends Prisma.Project$commentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Project$commentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ProjectCommentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  files<T extends Prisma.Project$filesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Project$filesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ProjectFilePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  supportTickets<T extends Prisma.Project$supportTicketsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Project$supportTicketsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SupportTicketPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2443,6 +3561,150 @@ export type Project$activityArgs<ExtArgs extends runtime.Types.Extensions.Intern
   take?: number
   skip?: number
   distinct?: Prisma.ActivityEventScalarFieldEnum | Prisma.ActivityEventScalarFieldEnum[]
+}
+
+/**
+ * Project.milestones
+ */
+export type Project$milestonesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the ProjectMilestone
+   */
+  select?: Prisma.ProjectMilestoneSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the ProjectMilestone
+   */
+  omit?: Prisma.ProjectMilestoneOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ProjectMilestoneInclude<ExtArgs> | null
+  where?: Prisma.ProjectMilestoneWhereInput
+  orderBy?: Prisma.ProjectMilestoneOrderByWithRelationInput | Prisma.ProjectMilestoneOrderByWithRelationInput[]
+  cursor?: Prisma.ProjectMilestoneWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ProjectMilestoneScalarFieldEnum | Prisma.ProjectMilestoneScalarFieldEnum[]
+}
+
+/**
+ * Project.approvalRequests
+ */
+export type Project$approvalRequestsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the ApprovalRequest
+   */
+  select?: Prisma.ApprovalRequestSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the ApprovalRequest
+   */
+  omit?: Prisma.ApprovalRequestOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ApprovalRequestInclude<ExtArgs> | null
+  where?: Prisma.ApprovalRequestWhereInput
+  orderBy?: Prisma.ApprovalRequestOrderByWithRelationInput | Prisma.ApprovalRequestOrderByWithRelationInput[]
+  cursor?: Prisma.ApprovalRequestWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ApprovalRequestScalarFieldEnum | Prisma.ApprovalRequestScalarFieldEnum[]
+}
+
+/**
+ * Project.changeRequests
+ */
+export type Project$changeRequestsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the ChangeRequest
+   */
+  select?: Prisma.ChangeRequestSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the ChangeRequest
+   */
+  omit?: Prisma.ChangeRequestOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ChangeRequestInclude<ExtArgs> | null
+  where?: Prisma.ChangeRequestWhereInput
+  orderBy?: Prisma.ChangeRequestOrderByWithRelationInput | Prisma.ChangeRequestOrderByWithRelationInput[]
+  cursor?: Prisma.ChangeRequestWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ChangeRequestScalarFieldEnum | Prisma.ChangeRequestScalarFieldEnum[]
+}
+
+/**
+ * Project.comments
+ */
+export type Project$commentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the ProjectComment
+   */
+  select?: Prisma.ProjectCommentSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the ProjectComment
+   */
+  omit?: Prisma.ProjectCommentOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ProjectCommentInclude<ExtArgs> | null
+  where?: Prisma.ProjectCommentWhereInput
+  orderBy?: Prisma.ProjectCommentOrderByWithRelationInput | Prisma.ProjectCommentOrderByWithRelationInput[]
+  cursor?: Prisma.ProjectCommentWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ProjectCommentScalarFieldEnum | Prisma.ProjectCommentScalarFieldEnum[]
+}
+
+/**
+ * Project.files
+ */
+export type Project$filesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the ProjectFile
+   */
+  select?: Prisma.ProjectFileSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the ProjectFile
+   */
+  omit?: Prisma.ProjectFileOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ProjectFileInclude<ExtArgs> | null
+  where?: Prisma.ProjectFileWhereInput
+  orderBy?: Prisma.ProjectFileOrderByWithRelationInput | Prisma.ProjectFileOrderByWithRelationInput[]
+  cursor?: Prisma.ProjectFileWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ProjectFileScalarFieldEnum | Prisma.ProjectFileScalarFieldEnum[]
+}
+
+/**
+ * Project.supportTickets
+ */
+export type Project$supportTicketsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the SupportTicket
+   */
+  select?: Prisma.SupportTicketSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the SupportTicket
+   */
+  omit?: Prisma.SupportTicketOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SupportTicketInclude<ExtArgs> | null
+  where?: Prisma.SupportTicketWhereInput
+  orderBy?: Prisma.SupportTicketOrderByWithRelationInput | Prisma.SupportTicketOrderByWithRelationInput[]
+  cursor?: Prisma.SupportTicketWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.SupportTicketScalarFieldEnum | Prisma.SupportTicketScalarFieldEnum[]
 }
 
 /**

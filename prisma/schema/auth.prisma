@@ -46,6 +46,19 @@ model User {
   orgMemberships          OrganizationMember[]
   invitationsCreated      Invitation[]           @relation("InvitationCreatedBy")
 
+  // Customer portal relations (C1–C10)
+  onboarding              OnboardingProfile?
+  approvalResponses       ApprovalResponse[]
+  projectComments         ProjectComment[]       @relation("projectCommentAuthor")
+  projectFiles            ProjectFile[]
+  fileAssets              FileAsset[]
+  maintenanceRequests     MaintenanceRequest[]
+  supportTickets          SupportTicket[]
+  ticketMessages          TicketMessage[]
+  ticketAttachments       TicketAttachment[]
+  notificationPreference  NotificationPreference?
+  dataExportJobs          DataExportJob[]        @relation("dataExportJobs")
+
   @@unique([email])
   @@map("user")
 }
