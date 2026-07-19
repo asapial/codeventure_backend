@@ -6,7 +6,7 @@
 
 import status from "http-status";
 import { prisma } from "../../lib/prisma.js";
-import { AppError } from "../../errorHelpers/AppError.js";
+import AppError from "../../errorHelpers/AppError.js";
 import type { IPublicLegalDocument } from "./public-legal.type.js";
 
 /**
