@@ -36,7 +36,7 @@ describe("accountRoleSchema", () => {
 
 describe("registerSchema", () => {
   const valid = {
-    email: "[email protected]",
+    email: "ada@example.com",
     password: "Sup3rSecret!",
     firstName: "Ada",
     lastName: "Lovelace",
@@ -106,11 +106,11 @@ describe("registerSchema", () => {
 
   it("lowercases the email", () => {
     const r = registerSchema.safeParse({
-      body: { ...valid, email: "  [email protected]  " },
+      body: { ...valid, email: "  ada@example.com  " },
     });
     expect(r.success).toBe(true);
     if (r.success) {
-      expect(r.data.body.email).toBe("[email protected]");
+      expect(r.data.body.email).toBe("ada@example.com");
     }
   });
 });

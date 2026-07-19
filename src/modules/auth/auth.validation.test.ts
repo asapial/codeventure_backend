@@ -10,7 +10,7 @@ describe("signInSchema", () => {
   it("accepts a valid email + password", () => {
     const result = signInSchema.safeParse({
       body: {
-        email: "[email protected]",
+        email: "ada@example.com",
         password: "correcthorsebatterystaple",
       },
     });
@@ -19,11 +19,11 @@ describe("signInSchema", () => {
 
   it.each([
     ["missing email", { password: "abcdefgh1" }],
-    ["missing password", { email: "[email protected]" }],
+    ["missing password", { email: "ada@example.com" }],
     ["bad email shape", { email: "not-an-email", password: "abcdefgh1" }],
     [
       "short password",
-      { email: "[email protected]", password: "short" },
+      { email: "ada@example.com", password: "short" },
     ],
   ])("rejects %s", (_label, body) => {
     const result = signInSchema.safeParse({ body });
@@ -32,11 +32,11 @@ describe("signInSchema", () => {
 
   it("lowercases and trims the email", () => {
     const result = signInSchema.safeParse({
-      body: { email: "  [email protected]  ", password: "abcdefgh1" },
+      body: { email: "  ada@example.com  ", password: "abcdefgh1" },
     });
     expect(result.success).toBe(true);
     if (result.success) {
-      expect(result.data.body.email).toBe("[email protected]");
+      expect(result.data.body.email).toBe("ada@example.com");
     }
   });
 });
@@ -46,7 +46,7 @@ describe("signUpSchema", () => {
     const result = signUpSchema.safeParse({
       body: {
         name: "Ada Lovelace",
-        email: "[email protected]",
+        email: "ada@example.com",
         password: "Sup3rSecret!",
       },
     });
@@ -54,11 +54,11 @@ describe("signUpSchema", () => {
   });
 
   it.each([
-    ["short name", { name: "A", email: "[email protected]", password: "Sup3rSecret!" }],
+    ["short name", { name: "A", email: "ada@example.com", password: "Sup3rSecret!" }],
     ["bad email", { name: "Ada Lovelace", email: "nope", password: "Sup3rSecret!" }],
     [
       "short password",
-      { name: "Ada Lovelace", email: "[email protected]", password: "short1" },
+      { name: "Ada Lovelace", email: "ada@example.com", password: "short1" },
     ],
   ])("rejects %s", (_label, body) => {
     expect(signUpSchema.safeParse({ body }).success).toBe(false);

@@ -7,7 +7,7 @@ import {
 describe("verifyEmailSchema", () => {
   it("accepts an email + 6-digit code", () => {
     const r = verifyEmailSchema.safeParse({
-      body: { email: "[email protected]", code: "123456" },
+      body: { email: "ada@example.com", code: "123456" },
     });
     expect(r.success).toBe(true);
   });
@@ -15,7 +15,7 @@ describe("verifyEmailSchema", () => {
   it("accepts an email + magic-link token", () => {
     const r = verifyEmailSchema.safeParse({
       body: {
-        email: "[email protected]",
+        email: "ada@example.com",
         token: "abcdefghijklmnopqrstuvwxyz1234",
       },
     });
@@ -24,7 +24,7 @@ describe("verifyEmailSchema", () => {
 
   it("rejects when neither code nor token is provided", () => {
     const r = verifyEmailSchema.safeParse({
-      body: { email: "[email protected]" },
+      body: { email: "ada@example.com" },
     });
     expect(r.success).toBe(false);
   });
@@ -32,7 +32,7 @@ describe("verifyEmailSchema", () => {
   it("rejects when both code and token are provided", () => {
     const r = verifyEmailSchema.safeParse({
       body: {
-        email: "[email protected]",
+        email: "ada@example.com",
         code: "123456",
         token: "abcdefghijklmnopqrstuvwxyz1234",
       },
@@ -41,9 +41,9 @@ describe("verifyEmailSchema", () => {
   });
 
   it.each([
-    ["non-numeric code", { email: "[email protected]", code: "12ab56" }],
-    ["5-digit code", { email: "[email protected]", code: "12345" }],
-    ["short token", { email: "[email protected]", token: "short" }],
+    ["non-numeric code", { email: "ada@example.com", code: "12ab56" }],
+    ["5-digit code", { email: "ada@example.com", code: "12345" }],
+    ["short token", { email: "ada@example.com", token: "short" }],
     ["bad email", { email: "nope", code: "123456" }],
   ])("rejects %s", (_label, body) => {
     expect(verifyEmailSchema.safeParse({ body }).success).toBe(false);
@@ -51,11 +51,11 @@ describe("verifyEmailSchema", () => {
 
   it("lowercases and trims the email", () => {
     const r = verifyEmailSchema.safeParse({
-      body: { email: "  [email protected]  ", code: "123456" },
+      body: { email: "  ada@example.com  ", code: "123456" },
     });
     expect(r.success).toBe(true);
     if (r.success) {
-      expect(r.data.body.email).toBe("[email protected]");
+      expect(r.data.body.email).toBe("ada@example.com");
     }
   });
 });
@@ -64,7 +64,7 @@ describe("resendVerificationSchema", () => {
   it("accepts an email", () => {
     expect(
       resendVerificationSchema.safeParse({
-        body: { email: "[email protected]" },
+        body: { email: "ada@example.com" },
       }).success,
     ).toBe(true);
   });
