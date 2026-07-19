@@ -1,5 +1,52 @@
+// System role — kept for backward compatibility with BetterAuth's User table.
+// Drives platform-wide capability gates (e.g. admin console, teacher tools).
 enum Role {
   ADMIN
   TEACHER
   STUDENT
+}
+
+// Account-level permission tier — drives what the user can do inside their
+// OWN workspace / account (projects, members, billing). Mirrors the
+// frontend's `SessionUser.role` union ("owner" | "admin" | "editor" | "viewer").
+enum AccountRole {
+  OWNER
+  ADMIN
+  EDITOR
+  VIEWER
+}
+
+// Lifecycle / workflow state of a Project.
+// Mirrors the frontend's `ProjectStatus` union.
+enum ProjectStatus {
+  draft
+  planning
+  in_progress  // mapped from "in-progress" in the API layer
+  review
+  launched
+  paused
+  archived
+}
+
+enum DeliverableStatus {
+  pending
+  in_progress
+  review
+  complete
+  blocked
+}
+
+// Activity feed events.
+enum ActivityType {
+  PROJECT_CREATED
+  PROJECT_UPDATED
+  PROJECT_STATUS_CHANGED
+  DELIVERABLE_CREATED
+  DELIVERABLE_UPDATED
+  DELIVERABLE_STATUS_CHANGED
+  MEMBER_ADDED
+  MEMBER_REMOVED
+  COMMENT_POSTED
+  FILE_UPLOADED
+  BILLING_EVENT
 }

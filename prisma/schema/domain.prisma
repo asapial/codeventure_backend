@@ -1,0 +1,140 @@
+// ----------------------------------------------------------------------------
+// CodeVenture domain models — projects, deliverables, activity, billing.
+// All FKs cascade on user delete to keep orphaned rows out of the DB.
+// ----------------------------------------------------------------------------
+
+model Project {
+  id              String        @id @default(uuid())
+  slug            String        @unique
+  name            String
+  tagline         String?
+  description     String?
+  status          ProjectStatus @default(PLANNING)
+  heroImageUrl    String?
+  accentColor     String?
+  startDate       DateTime?
+  targetEndDate   DateTime?
+  completedAt     DateTime?
+
+  // Budget figures are stored as Decimal(12, 2) so cents never drift.
+  budgetAmount    Decimal?      @db.Decimal(12, 2)
+  budgetCurrency  String?       @default("USD")
+  spentAmount     Decimal?      @db.Decimal(12, 2)
+
+  // Owner of the project (who created it).
+  ownerId         String
+  owner           User          @relation("ProjectOwner", fields: [ownerId], references: [id])
+
+  // Tech stack / tags surfaced as chips on the card.
+  tags            String[]      @default([])
+
+  isDeleted       Boolean       @default(false)
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+
+  members         ProjectMember[]
+  deliverables    Deliverable[]
+  activity        ActivityEvent[]
+
+  @@index([status])
+  @@index([ownerId])
+  @@index([isDeleted])
+  @@map("project")
+}
+
+// Many-to-many between Project and User with a per-project role.
+model ProjectMember {
+  id        String   @id @default(uuid())
+  projectId String
+  userId    String
+  role      AccountRole @default(VIEWER)
+  joinedAt  DateTime @default(now())
+
+  project   Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([projectId, userId])
+  @@index([userId])
+  @@map("project_member")
+}
+
+model Deliverable {
+  id          String           @id @default(uuid())
+  projectId   String
+  title       String
+  description String?
+  status      DeliverableStatus @default(PENDING)
+  dueDate     DateTime?
+  completedAt DateTime?
+  orderIndex  Int              @default(0)
+  createdAt   DateTime         @default(now())
+  updatedAt   DateTime         @updatedAt
+
+  project     Project          @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  @@index([projectId])
+  @@index([status])
+  @@map("deliverable")
+}
+
+model ActivityEvent {
+  id          String       @id @default(uuid())
+  projectId   String?
+  actorId     String?
+  type        ActivityType
+  title       String
+  description String?
+  metadata    Json?
+  createdAt   DateTime     @default(now())
+
+  project     Project?     @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  actor       User?        @relation("ActivityActor", fields: [actorId], references: [id], onDelete: SetNull)
+
+  @@index([projectId, createdAt])
+  @@index([actorId])
+  @@map("activity_event")
+}
+
+// Per-user monthly billing snapshot for the account dashboard.
+// Keyed by (userId, month YYYY-MM) so we always have the latest rolling figure.
+model BillingSummary {
+  id              String   @id @default(uuid())
+  userId          String
+  month           String   // "YYYY-MM" e.g. "2026-06"
+
+  planName        String   @default("Starter")
+  planAmount      Decimal  @db.Decimal(12, 2)
+  currency        String   @default("USD")
+
+  usedHours       Decimal  @db.Decimal(8, 2) @default(0)
+  includedHours   Decimal  @db.Decimal(8, 2) @default(0)
+
+  activeProjects  Int      @default(0)
+  totalProjects   Int      @default(0)
+
+  nextInvoiceDate DateTime?
+  nextInvoiceAmount Decimal? @db.Decimal(12, 2)
+
+  updatedAt       DateTime @updatedAt
+  createdAt       DateTime @default(now())
+
+  @@unique([userId, month])
+  @@index([userId])
+  @@map("billing_summary")
+}
+
+// Workspace membership — a user can belong to multiple workspaces (accounts).
+// For CodeVenture v1 the workspace concept is light: OWNER = self, members
+// invited via ProjectMember. Kept here for forward-compatibility with a
+// future multi-tenant UI.
+model AccountMembership {
+  id        String   @id @default(uuid())
+  userId    String
+  role      AccountRole @default(VIEWER)
+  joinedAt  DateTime @default(now())
+
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@map("account_membership")
+}

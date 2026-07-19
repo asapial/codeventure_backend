@@ -4,10 +4,15 @@ import cookieParser from "cookie-parser";
 import { toNodeHandler } from "better-auth/node";
 import { auth } from "./lib/auth";
 import { indexRouter } from ".";
+import { requestId } from "./middleware/requestId";
 
 const app: Application = express();
 
-// Middleware
+// 1. Request id must be first so every downstream middleware/handler
+//    (including globalErrorHandler) can read `req.id`.
+app.use(requestId);
+
+// 2. Cookie & body parsers
 app.use(cookieParser());
 app.use(express.json());
 
@@ -18,7 +23,7 @@ app.use(
   cors({
     origin: (origin, callback) => {
       if (!origin) return callback(null, true);
-      
+
       const isAllowed =
         allowedOrigins.includes(origin) ||
         /^https:\/\/.*\.vercel\.app$/.test(origin); // Allow Vercel deployments
@@ -31,13 +36,13 @@ app.use(
     },
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization", "Cookie"],
-    exposedHeaders: ["Set-Cookie"],
+    allowedHeaders: ["Content-Type", "Authorization", "Cookie", "x-request-id"],
+    exposedHeaders: ["Set-Cookie", "x-request-id"],
   })
 );
 
 // Better Auth API Route
-app.all('/api/auth/*splat', toNodeHandler(auth));
+app.all("/api/auth/*splat", toNodeHandler(auth));
 
 // Health Check Route
 app.get("/", (_req, res) => {
@@ -52,7 +57,6 @@ app.get("/", (_req, res) => {
   });
 });
 
-
-app.use("/api/v1",indexRouter)
+app.use("/api/v1", indexRouter);
 
 export default app;

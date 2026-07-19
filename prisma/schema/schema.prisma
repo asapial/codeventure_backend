@@ -11,3 +11,7 @@ generator client {
 datasource db {
   provider = "postgresql"
 }
+
+import "./schema/enums.prisma"
+import "./schema/auth.prisma"
+import "./schema/domain.prisma"

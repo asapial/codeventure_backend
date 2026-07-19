@@ -1,14 +1,32 @@
-
 model User {
   id            String    @id
   name          String
   email         String
   emailVerified Boolean   @default(false)
   image         String?
+
+  // App-level identity & state
+  password      String?
+  role          Role      @default(STUDENT)
+  accountRole   AccountRole @default(OWNER)
+  isActive      Boolean   @default(true)
+  isDeleted     Boolean   @default(false)
+
+  // Marketing / portfolio metadata (optional)
+  jobTitle      String?
+  bio           String?
+  location      String?
+
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
-  sessions      Session[]
-  accounts      Account[]
+
+  sessions                Session[]
+  accounts                Account[]
+  passwordResetTokens     PasswordResetToken[]
+  ownedProjects           Project[]              @relation("ProjectOwner")
+  projectMemberships      ProjectMember[]
+  activityEvents          ActivityEvent[]        @relation("ActivityActor")
+  accountMemberships      AccountMembership[]
 
   @@unique([email])
   @@map("user")
@@ -60,4 +78,21 @@ model Verification {
 
   @@index([identifier])
   @@map("verification")
+}
+
+// One-time token used by the "forgot password" flow.
+// `tokenHash` stores SHA-256(token) so the raw token in the email link
+// can never be reversed from the DB row.
+model PasswordResetToken {
+  id         String   @id @default(uuid())
+  userId     String
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  tokenHash  String   @unique
+  expiresAt  DateTime
+  usedAt     DateTime?
+  createdAt  DateTime @default(now())
+
+  @@index([userId])
+  @@index([expiresAt])
+  @@map("password_reset_token")
 }
