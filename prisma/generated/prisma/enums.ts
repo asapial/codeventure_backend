@@ -16,3 +16,109 @@ export const Role = {
 } as const
 
 export type Role = (typeof Role)[keyof typeof Role]
+
+
+export const AccountRole = {
+  OWNER: 'OWNER',
+  ADMIN: 'ADMIN',
+  EDITOR: 'EDITOR',
+  VIEWER: 'VIEWER'
+} as const
+
+export type AccountRole = (typeof AccountRole)[keyof typeof AccountRole]
+
+
+export const ProjectStatus = {
+  DRAFT: 'DRAFT',
+  PLANNING: 'PLANNING',
+  IN_PROGRESS: 'IN_PROGRESS',
+  IN_REVIEW: 'IN_REVIEW',
+  LAUNCHED: 'LAUNCHED',
+  PAUSED: 'PAUSED',
+  ARCHIVED: 'ARCHIVED'
+} as const
+
+export type ProjectStatus = (typeof ProjectStatus)[keyof typeof ProjectStatus]
+
+
+export const DeliverableStatus = {
+  PENDING: 'PENDING',
+  IN_PROGRESS: 'IN_PROGRESS',
+  IN_REVIEW: 'IN_REVIEW',
+  COMPLETE: 'COMPLETE',
+  BLOCKED: 'BLOCKED'
+} as const
+
+export type DeliverableStatus = (typeof DeliverableStatus)[keyof typeof DeliverableStatus]
+
+
+export const ActivityType = {
+  PROJECT_CREATED: 'PROJECT_CREATED',
+  PROJECT_UPDATED: 'PROJECT_UPDATED',
+  PROJECT_STATUS_CHANGED: 'PROJECT_STATUS_CHANGED',
+  DELIVERABLE_CREATED: 'DELIVERABLE_CREATED',
+  DELIVERABLE_UPDATED: 'DELIVERABLE_UPDATED',
+  DELIVERABLE_STATUS_CHANGED: 'DELIVERABLE_STATUS_CHANGED',
+  MEMBER_ADDED: 'MEMBER_ADDED',
+  MEMBER_REMOVED: 'MEMBER_REMOVED',
+  COMMENT_POSTED: 'COMMENT_POSTED',
+  FILE_UPLOADED: 'FILE_UPLOADED',
+  BILLING_EVENT: 'BILLING_EVENT',
+  AUTH_LOGIN: 'AUTH_LOGIN',
+  AUTH_2FA_VERIFIED: 'AUTH_2FA_VERIFIED',
+  AUTH_PASSWORD_RESET: 'AUTH_PASSWORD_RESET',
+  AUTH_EMAIL_VERIFIED: 'AUTH_EMAIL_VERIFIED'
+} as const
+
+export type ActivityType = (typeof ActivityType)[keyof typeof ActivityType]
+
+
+export const TwoFactorMethod = {
+  TOTP: 'TOTP',
+  EMAIL_OTP: 'EMAIL_OTP',
+  RECOVERY_CODE: 'RECOVERY_CODE'
+} as const
+
+export type TwoFactorMethod = (typeof TwoFactorMethod)[keyof typeof TwoFactorMethod]
+
+
+export const OtpPurpose = {
+  EMAIL_VERIFY: 'EMAIL_VERIFY',
+  PASSWORD_RESET: 'PASSWORD_RESET',
+  TWO_FACTOR_EMAIL: 'TWO_FACTOR_EMAIL'
+} as const
+
+export type OtpPurpose = (typeof OtpPurpose)[keyof typeof OtpPurpose]
+
+
+export const LegalDocumentType = {
+  PRIVACY_POLICY: 'PRIVACY_POLICY',
+  TERMS_OF_SERVICE: 'TERMS_OF_SERVICE',
+  COOKIE_POLICY: 'COOKIE_POLICY',
+  ACCEPTABLE_USE: 'ACCEPTABLE_USE',
+  SERVICE_POLICY: 'SERVICE_POLICY'
+} as const
+
+export type LegalDocumentType = (typeof LegalDocumentType)[keyof typeof LegalDocumentType]
+
+
+export const LegalDocumentStatus = {
+  DRAFT: 'DRAFT',
+  PUBLISHED: 'PUBLISHED',
+  ARCHIVED: 'ARCHIVED'
+} as const
+
+export type LegalDocumentStatus = (typeof LegalDocumentStatus)[keyof typeof LegalDocumentStatus]
+
+
+export const ReferralSourceType = {
+  DIRECT: 'DIRECT',
+  ORGANIC_SEARCH: 'ORGANIC_SEARCH',
+  PAID_AD: 'PAID_AD',
+  SOCIAL: 'SOCIAL',
+  REFERRAL: 'REFERRAL',
+  EMAIL_CAMPAIGN: 'EMAIL_CAMPAIGN',
+  OTHER: 'OTHER'
+} as const
+
+export type ReferralSourceType = (typeof ReferralSourceType)[keyof typeof ReferralSourceType]

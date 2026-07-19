@@ -14,11 +14,24 @@ import type {
 import type { ProjectListQuery } from "./projects.validation";
 
 /** Wire-format `ProjectStatus` ↔ DB enum `ProjectStatus`. */
-const toWireStatus = (db: string): ProjectStatus =>
-    db === "in_progress" ? "in-progress" : (db as ProjectStatus);
+const toWireStatus = (db: string): ProjectStatus => {
+    if (db === "IN_PROGRESS") return "in-progress";
+    return db.toLowerCase() as ProjectStatus;
+};
 
-const toWireDeliverableStatus = (db: string): DeliverableStatus =>
-    db === "in_progress" ? "in-progress" : (db as DeliverableStatus);
+/** Wire-format `DeliverableStatus` ↔ DB enum `DeliverableStatus`. */
+const toWireDeliverableStatus = (db: string): DeliverableStatus => {
+    if (db === "IN_PROGRESS") return "in-progress";
+    return db.toLowerCase() as DeliverableStatus;
+};
+
+/** Wire-format `ProjectStatus` → DB enum. */
+const fromWireProjectStatus = (wire: ProjectStatus): string =>
+    wire === "in-progress" ? "IN_PROGRESS" : wire.toUpperCase();
+
+/** Wire-format `DeliverableStatus` → DB enum. */
+const fromWireDeliverableStatus = (wire: DeliverableStatus): string =>
+    wire === "in-progress" ? "IN_PROGRESS" : wire.toUpperCase();
 
 const toDateOnly = (d: Date | null | undefined): string | null =>
     d ? d.toISOString() : null;
@@ -40,7 +53,7 @@ const formatPackageLabel = (
 const computeProgress = async (projectId: string): Promise<number | null> => {
     const [total, done] = await Promise.all([
         prisma.deliverable.count({ where: { projectId } }),
-        prisma.deliverable.count({ where: { projectId, status: "complete" } }),
+        prisma.deliverable.count({ where: { projectId, status: "COMPLETE" } }),
     ]);
     if (total === 0) return null;
     return Math.min(1, done / total);
@@ -50,7 +63,7 @@ const findNextMilestone = async (
     projectId: string,
 ): Promise<IProjectSummary["nextMilestone"]> => {
     const next = await prisma.deliverable.findFirst({
-        where: { projectId, status: { in: ["pending", "in_progress", "review"] } },
+        where: { projectId, status: { in: ["PENDING", "IN_PROGRESS", "IN_REVIEW"] } },
         orderBy: [{ dueDate: "asc" }, { orderIndex: "asc" }],
         select: { title: true, dueDate: true },
     });
@@ -95,8 +108,7 @@ const list = async (
     };
 
     if (query.status && query.status !== "all") {
-        const dbStatus = query.status === "in-progress" ? "in_progress" : query.status;
-        where.status = dbStatus;
+        where.status = fromWireProjectStatus(query.status);
     }
 
     if (query.search) {

@@ -238,6 +238,12 @@ const getSession = async (
     return { user: toSessionUser(user), expiresAt };
 };
 
+// Maximum number of reset requests a user can make in FORGOT_WINDOW_MS.
+// Anything beyond this rate-limit creates a SecurityAlert but still returns
+// `{ ok: true }` to the caller so we never leak whether the email exists.
+const FORGOT_PASSWORD_MAX_PER_HOUR = 5;
+const FORGOT_WINDOW_MS = 60 * 60 * 1000;
+
 const forgotPassword = async (input: ForgotPasswordInput): Promise<{ ok: true }> => {
     const user = await prisma.user.findUnique({
         where: { email: input.email },
@@ -246,6 +252,27 @@ const forgotPassword = async (input: ForgotPasswordInput): Promise<{ ok: true }>
 
     // Always return ok — never leak whether the email exists.
     if (!user || user.isDeleted || !user.isActive) {
+        return { ok: true };
+    }
+
+    const since = new Date(Date.now() - FORGOT_WINDOW_MS);
+    const recentCount = await prisma.passwordResetToken.count({
+        where: { userId: user.id, createdAt: { gte: since } },
+    });
+
+    if (recentCount >= FORGOT_PASSWORD_MAX_PER_HOUR) {
+        // Record the abuse signal but still return ok — never reveal the lockout
+        // to a stranger probing email addresses.
+        await prisma.securityAlert.create({
+            data: {
+                userId: user.id,
+                kind: "OTP_LOCKED",
+                message: `Too many password reset requests. Try again in about ${Math.ceil(
+                    FORGOT_WINDOW_MS / 60_000,
+                )} minutes.`,
+                metadata: { source: "forgot_password", count: recentCount },
+            },
+        });
         return { ok: true };
     }
 
@@ -291,6 +318,28 @@ const resetPassword = async (input: ResetPasswordInput): Promise<{ ok: true }> =
         prisma.passwordResetToken.update({
             where: { id: record.id },
             data: { usedAt: new Date() },
+        }),
+        // Revoke all BetterAuth sessions for this user — they need to sign in
+        // again with the new password. JWTs issued from those sessions become
+        // unusable because the user row no longer matches any future check.
+        prisma.session.deleteMany({ where: { userId: record.userId } }),
+        // Audit log + in-app security alert so the user sees this in their
+        // account security centre.
+        prisma.securityAlert.create({
+            data: {
+                userId: record.userId,
+                kind: "PASSWORD_CHANGED",
+                message: "Your password was changed. All other sessions were signed out.",
+            },
+        }),
+        prisma.activityEvent.create({
+            data: {
+                projectId: null, // system-wide event — not tied to a project
+                actorId: record.userId,
+                type: "AUTH_PASSWORD_RESET",
+                title: "Password reset",
+                description: "All sessions were revoked after a successful password reset.",
+            },
         }),
     ]);
 

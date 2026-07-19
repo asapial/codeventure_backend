@@ -1,0 +1,90 @@
+// Customer registration (P17), organisations, invitations, referral source.
+// One-to-one with User via `userId @unique`.
+
+model CustomerProfile {
+  id              String   @id @default(uuid())
+  userId          String   @unique
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  firstName       String
+  lastName        String
+  signupSource    ReferralSourceType @default(DIRECT)
+  referralCode    String?            // e.g. "FRIEND-AB12" typed at sign-up
+  referralSourceId String?
+  referralSource  ReferralSource? @relation(fields: [referralSourceId], references: [id], onDelete: SetNull)
+
+  termsAcceptedAt DateTime?
+  privacyAcceptedAt DateTime?
+  marketingOptIn  Boolean  @default(false)
+
+  organizationId  String?
+  organization    Organization? @relation(fields: [organizationId], references: [id], onDelete: SetNull)
+
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@index([signupSource])
+  @@index([organizationId])
+  @@map("customer_profile")
+}
+
+model Organization {
+  id           String   @id @default(uuid())
+  slug         String   @unique
+  name         String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  members      OrganizationMember[]
+  profiles     CustomerProfile[]
+  invitations  Invitation[]
+
+  @@map("organization")
+}
+
+model OrganizationMember {
+  id              String   @id @default(uuid())
+  userId          String
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  organizationId  String
+  organization    Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  role            AccountRole  @default(VIEWER)
+  joinedAt        DateTime @default(now())
+
+  @@unique([userId, organizationId])
+  @@index([organizationId])
+  @@map("organization_member")
+}
+
+model Invitation {
+  id              String   @id @default(uuid())
+  email           String
+  organizationId  String
+  organization    Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  role            AccountRole @default(VIEWER)
+  invitedById     String
+  invitedBy       User     @relation("InvitationCreatedBy", fields: [invitedById], references: [id], onDelete: Cascade)
+  /// SHA-256 of the raw invite token. Raw token never persists.
+  tokenHash       String   @unique
+  expiresAt       DateTime
+  acceptedAt      DateTime?
+  acceptedByUserId String?
+  createdAt       DateTime @default(now())
+
+  @@index([email])
+  @@index([organizationId])
+  @@map("invitation")
+}
+
+/// Tracks referral sources that appear in a campaign URL, e.g. `?ref=growth-feb`.
+model ReferralSource {
+  id                String   @id @default(uuid())
+  code              String   @unique
+  name              String
+  attributionCount  Int      @default(0)
+  createdAt         DateTime @default(now())
+
+  profiles          CustomerProfile[]
+
+  @@map("referral_source")
+}

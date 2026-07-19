@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "test:ui": "vitest --ui",
     "test:ai": "npx tsx src/scripts/testAiResponse.ts",
     "dev": "npx tsx watch src/server.ts",
     "seeding": "npx tsx src/scripts/seedingAdmin.ts",
@@ -18,16 +21,21 @@
   "license": "ISC",
   "type": "module",
   "devDependencies": {
+    "@testing-library/jest-dom": "^6.6.3",
     "@types/cookie-parser": "^1.4.10",
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.6",
     "@types/jsonwebtoken": "^9.0.10",
     "@types/node": "^26.0.1",
+    "@types/supertest": "^6.0.2",
+    "@vitest/coverage-v8": "^2.1.9",
     "dotenv": "^17.4.2",
     "prisma": "^7.8.0",
+    "supertest": "^7.0.0",
     "tsup": "^8.5.1",
     "tsx": "^4.22.4",
-    "typescript": "^6.0.3"
+    "typescript": "^6.0.3",
+    "vitest": "^2.1.9"
   },
   "dependencies": {
     "@prisma/adapter-pg": "^7.8.0",

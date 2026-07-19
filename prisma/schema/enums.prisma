@@ -17,23 +17,24 @@ enum AccountRole {
 }
 
 // Lifecycle / workflow state of a Project.
-// Mirrors the frontend's `ProjectStatus` union.
+// Mirrors the frontend's `ProjectStatus` union after API mapping
+// (e.g. `IN_PROGRESS` ⇄ `in-progress`, `IN_REVIEW` ⇄ `review`).
 enum ProjectStatus {
-  draft
-  planning
-  in_progress  // mapped from "in-progress" in the API layer
-  review
-  launched
-  paused
-  archived
+  DRAFT
+  PLANNING
+  IN_PROGRESS
+  IN_REVIEW
+  LAUNCHED
+  PAUSED
+  ARCHIVED
 }
 
 enum DeliverableStatus {
-  pending
-  in_progress
-  review
-  complete
-  blocked
+  PENDING
+  IN_PROGRESS
+  IN_REVIEW
+  COMPLETE
+  BLOCKED
 }
 
 // Activity feed events.
@@ -49,4 +50,50 @@ enum ActivityType {
   COMMENT_POSTED
   FILE_UPLOADED
   BILLING_EVENT
+  AUTH_LOGIN
+  AUTH_2FA_VERIFIED
+  AUTH_PASSWORD_RESET
+  AUTH_EMAIL_VERIFIED
+}
+
+// Two-factor authentication challenge method.
+enum TwoFactorMethod {
+  TOTP
+  EMAIL_OTP
+  RECOVERY_CODE
+}
+
+// Purpose codes for one-time codes (email verification, password reset,
+// 2FA email-OTP). Mirrors the frontend `OtpPurpose` union.
+enum OtpPurpose {
+  EMAIL_VERIFY
+  PASSWORD_RESET
+  TWO_FACTOR_EMAIL
+}
+
+// Type of legal document we publish.
+enum LegalDocumentType {
+  PRIVACY_POLICY
+  TERMS_OF_SERVICE
+  COOKIE_POLICY
+  ACCEPTABLE_USE
+  SERVICE_POLICY
+}
+
+// Lifecycle of a legal document version.
+enum LegalDocumentStatus {
+  DRAFT
+  PUBLISHED
+  ARCHIVED
+}
+
+// Source attribution captured on registration.
+enum ReferralSourceType {
+  DIRECT
+  ORGANIC_SEARCH
+  PAID_AD
+  SOCIAL
+  REFERRAL
+  EMAIL_CAMPAIGN
+  OTHER
 }
