@@ -50,10 +50,10 @@ export const registerSchema = z.object({
             .optional(),
         inviteToken: z.string().trim().min(20).max(256).optional(),
         acceptTerms: z.literal(true, {
-            errorMap: () => ({ message: "You must accept the terms to register." }),
+            error: "You must accept the terms to register.",
         }),
         acceptPrivacy: z.literal(true, {
-            errorMap: () => ({ message: "You must accept the privacy policy to register." }),
+            error: "You must accept the privacy policy to register.",
         }),
         marketingOptIn: z.boolean().optional().default(false),
         website: websiteHoneypot,
@@ -74,7 +74,7 @@ export const acceptInvitationSchema = z.object({
         lastName: z.string().trim().min(1).max(60),
         password: passwordSchema,
         acceptTerms: z.literal(true, {
-            errorMap: () => ({ message: "You must accept the terms to continue." }),
+            error: "You must accept the terms to continue.",
         }),
         website: websiteHoneypot,
     }),

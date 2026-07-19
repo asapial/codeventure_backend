@@ -5,6 +5,7 @@ import { toNodeHandler } from "better-auth/node";
 import { auth } from "./lib/auth";
 import { indexRouter } from ".";
 import { requestId } from "./middleware/requestId";
+import { globalErrorHandler } from "./middleware/globalErrorHandler";
 
 const app: Application = express();
 
@@ -17,7 +18,9 @@ app.use(cookieParser());
 app.use(express.json());
 
 // CORS Setup
-const allowedOrigins = ["http://localhost:3000"].filter(Boolean);
+const allowedOrigins = ["http://localhost:3000", process.env.FRONTEND_URL].filter(
+  (origin): origin is string => Boolean(origin),
+);
 
 app.use(
   cors({
@@ -58,5 +61,7 @@ app.get("/", (_req, res) => {
 });
 
 app.use("/api/v1", indexRouter);
+
+app.use(globalErrorHandler);
 
 export default app;

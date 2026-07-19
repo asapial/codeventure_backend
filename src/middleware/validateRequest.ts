@@ -24,7 +24,11 @@ export const validateRequest =
                 body: req.body ?? {},
                 params: req.params ?? {},
                 query: req.query ?? {},
-            });
+            }) as {
+                body?: unknown;
+                params?: unknown;
+                query?: unknown;
+            };
 
             if (parsed.body !== undefined) req.body = parsed.body;
             if (parsed.params !== undefined) {
@@ -33,7 +37,7 @@ export const validateRequest =
             if (parsed.query !== undefined) {
                 // Express 5 makes req.query a getter — assign via Object.assign
                 // to avoid the "Cannot set property query" error.
-                Object.assign(req.query, parsed.query);
+                Object.assign(req.query, parsed.query as object);
             }
 
             next();

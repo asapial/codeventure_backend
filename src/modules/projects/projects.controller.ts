@@ -6,7 +6,7 @@ import { projectsService } from "./projects.service";
 import type { ProjectListQuery } from "./projects.validation";
 
 const list = catchAsync(async (req: Request, res: Response) => {
-    const query = req.query as ProjectListQuery;
+    const query = req.query as unknown as ProjectListQuery;
     const result = await projectsService.list(req.user.userId, query);
     sendResponse(res, {
         status: status.OK,
@@ -17,7 +17,8 @@ const list = catchAsync(async (req: Request, res: Response) => {
 });
 
 const getBySlug = catchAsync(async (req: Request, res: Response) => {
-    const result = await projectsService.getBySlug(req.user.userId, req.params.slug);
+    const { slug } = req.params as { slug: string };
+    const result = await projectsService.getBySlug(req.user.userId, slug);
     sendResponse(res, {
         status: status.OK,
         success: true,

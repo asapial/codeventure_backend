@@ -1,13 +1,10 @@
-import type { AccountRole } from "../../../prisma/generated/prisma/enums";
-
 /** Mirrors the frontend `SessionUser` type. */
 export interface ISessionUser {
     id: string;
     name: string;
     email: string;
-    image: string | null;
-    jobTitle: string | null;
-    accountRole: AccountRole;
+    avatarUrl: string | null;
+    role: "owner" | "admin" | "editor" | "viewer";
 }
 
 /** Mirrors the frontend `Session` type. */

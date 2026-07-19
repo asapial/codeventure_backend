@@ -28,7 +28,7 @@ export interface TErrorSources {
   message: string;
 }
 
-export interface TErrorResponse extends ApiErrorBody {
+export interface TErrorResponse {
   success?: false;
   message?: string;
   stack?: string;

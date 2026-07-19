@@ -96,7 +96,7 @@ export const checkAuth = (...authRoles: Role[]) => async (req: Request, res: Res
 
         if (sessionToken) {
             const rawSessionToken = sessionToken.includes(".")
-                ? sessionToken.split(".")[0]
+                ? (sessionToken.split(".")[0] ?? sessionToken)
                 : sessionToken;
 
             const sessionExists = await prisma.session.findFirst({

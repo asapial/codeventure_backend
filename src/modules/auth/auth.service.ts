@@ -5,7 +5,6 @@ import { prisma } from "../../lib/prisma";
 import { hashPassword, verifyPassword } from "../../lib/password";
 import { tokenUtils } from "../../utils/token";
 import { cookieUtils } from "../../utils/cookie";
-import { auth as betterAuth } from "../../lib/auth";
 import { envVars } from "../../config/env";
 import type {
     SignInInput,
@@ -22,25 +21,24 @@ const toSessionUser = (user: {
     email: string;
     image: string | null;
     jobTitle: string | null;
-    accountRole: ISessionUser["accountRole"];
+    accountRole: "OWNER" | "ADMIN" | "EDITOR" | "VIEWER";
 }): ISessionUser => ({
     id: user.id,
     name: user.name,
     email: user.email,
-    image: user.image,
-    jobTitle: user.jobTitle,
-    accountRole: user.accountRole,
+    avatarUrl: user.image,
+    role: user.accountRole.toLowerCase() as ISessionUser["role"],
 });
 
 /** Build the JWT payload minted for the access token cookie. */
 const buildTokenPayload = (user: {
     id: string;
     email: string;
-    role: ISessionUser["accountRole"];
+    accountRole: "OWNER" | "ADMIN" | "EDITOR" | "VIEWER";
 }) => ({
     userId: user.id,
     email: user.email,
-    role: user.role,
+    role: user.accountRole,
 });
 
 /** Set both the canonical `accessToken` cookie AND the `cv_session` alias. */
@@ -120,22 +118,16 @@ const signUp = async (
 
     const hashed = await hashPassword(input.password);
 
-    // Use BetterAuth's signup path so the Session row is created with the
-    // correct token format expected by `getBetterAuthSessionToken`. Then
-    // attach our password hash + idempotent-id on the same User row.
-    const result = await betterAuth.api.signUpEmail({
-        body: {
+    // This application authenticates with its own scrypt hash and JWT
+    // cookies. Creating the user through the same path keeps registration
+    // and login on one consistent credential system.
+    const user = await prisma.user.create({
+        data: {
+            id: randomBytes(16).toString("hex"),
             email: input.email,
-            password: input.password, // BetterAuth hashes internally; we keep our hash too.
             name: input.name,
+            password: hashed,
         },
-        asResponse: false,
-    });
-
-    // Prefer the user BetterAuth just created; fall back to a fresh insert
-    // if BetterAuth is misconfigured for email/password.
-    let user = await prisma.user.findUnique({
-        where: { email: input.email },
         select: {
             id: true,
             name: true,
@@ -146,50 +138,11 @@ const signUp = async (
         },
     });
 
-    if (!user) {
-        user = await prisma.user.create({
-            data: {
-                id: randomBytes(16).toString("hex"),
-                email: input.email,
-                name: input.name,
-                password: hashed,
-            },
-            select: {
-                id: true,
-                name: true,
-                email: true,
-                image: true,
-                jobTitle: true,
-                accountRole: true,
-            },
-        });
-    } else if (!user.jobTitle) {
-        // Update password if missing (BetterAuth signed up but our hash isn't there).
-        user = await prisma.user.update({
-            where: { id: user.id },
-            data: { password: hashed },
-            select: {
-                id: true,
-                name: true,
-                email: true,
-                image: true,
-                jobTitle: true,
-                accountRole: true,
-            },
-        });
-    }
-
-    // Forward the BetterAuth session cookie if any was set on the response.
-    const setCookie = (result as { headers?: Headers } | undefined)?.headers?.get?.("set-cookie");
-    if (setCookie) {
-        res.setHeader("Set-Cookie", setCookie);
-    }
-
-    const token = tokenUtils.createAccessToken(buildTokenPayload(user!));
+    const token = tokenUtils.createAccessToken(buildTokenPayload(user));
     setSessionCookies(res, token);
 
     const expiresAt = new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString();
-    return { user: toSessionUser(user!), expiresAt };
+    return { user: toSessionUser(user), expiresAt };
 };
 
 const signOut = async (res: Parameters<typeof clearSessionCookies>[0]): Promise<null> => {

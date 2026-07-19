@@ -2,9 +2,15 @@ import status from "http-status";
 import AppError from "../../errorHelpers/AppError";
 import { prisma } from "../../lib/prisma";
 import type { IAccountSummary, IActivityEvent } from "./account.type";
+import { ProjectStatus } from "../../../prisma/generated/prisma/enums";
 
 /** Statuses that count as "active work in flight" on the dashboard. */
-const ACTIVE_PROJECT_STATUSES = ["planning", "in_progress", "review", "launched"];
+const ACTIVE_PROJECT_STATUSES: ProjectStatus[] = [
+    ProjectStatus.PLANNING,
+    ProjectStatus.IN_PROGRESS,
+    ProjectStatus.IN_REVIEW,
+    ProjectStatus.LAUNCHED,
+];
 
 const userScopedProjectWhere = (userId: string) => ({
     isDeleted: false,

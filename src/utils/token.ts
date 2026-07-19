@@ -51,7 +51,7 @@ const setAccessTokenCookie = (res: Response, token: string) => {
  */
 const setCvSessionCookie = (res: Response, token: string) => {
     cookieUtils.setCookie(res, "cv_session", token, {
-        httpOnly: false,
+        httpOnly: true,
         secure: isProd,
         sameSite: isProd ? "none" : "lax",
         path: "/",
@@ -61,7 +61,7 @@ const setCvSessionCookie = (res: Response, token: string) => {
 
 const clearCvSessionCookie = (res: Response) => {
     cookieUtils.clearCookie(res, "cv_session", {
-        httpOnly: false,
+        httpOnly: true,
         secure: isProd,
         sameSite: isProd ? "none" : "lax",
         path: "/",

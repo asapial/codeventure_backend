@@ -12,7 +12,8 @@ const getLegalDocument = catchAsync(async (req: Request, res: Response) => {
     const document = await publicLegalService.getLegalDocumentBySlug(slug);
 
     sendResponse(res, {
-        statusCode: 200,
+        status: 200,
+        success: true,
         message: "Legal document fetched.",
         data: document,
     });

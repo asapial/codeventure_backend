@@ -62,8 +62,9 @@ export const globalErrorHandler = async (
         : {}),
       ...(req.id ? { requestId: req.id } : {}),
     },
-    ...(envVars.NODE_ENV === "development"
-      ? { stack, raw: err instanceof Error ? undefined : err }
+    ...(envVars.NODE_ENV === "development" && stack ? { stack } : {}),
+    ...(envVars.NODE_ENV === "development" && !(err instanceof Error)
+      ? { raw: err }
       : {}),
   };
 

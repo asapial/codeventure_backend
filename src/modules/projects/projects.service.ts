@@ -236,7 +236,7 @@ const getBySlug = async (userId: string, slug: string): Promise<IProjectDetail> 
     const deliverables: IDeliverable[] = project.deliverables.map((d) => ({
         id: d.id,
         title: d.title,
-        description: d.description ?? undefined,
+        ...(d.description ? { description: d.description } : {}),
         status: toWireDeliverableStatus(d.status),
         dueAt: toDateOnly(d.dueDate),
     }));

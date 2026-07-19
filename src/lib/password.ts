@@ -52,6 +52,7 @@ export const verifyPassword = async (
     if (parts.length !== 6 || parts[0] !== "scrypt") return false;
 
     const [, nStr, rStr, pStr, saltB64, hashB64] = parts;
+    if (!saltB64 || !hashB64) return false;
     const nVal = Number(nStr);
     const rVal = Number(rStr);
     const pVal = Number(pStr);

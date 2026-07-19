@@ -50,7 +50,7 @@ const forgotPassword = catchAsync(async (req: Request, res: Response) => {
         status: status.OK,
         success: true,
         message: "If an account exists for that email, a reset link has been sent.",
-        data: { ok: true },
+        data: { reference: req.id ?? "request-received" },
     });
 });
 
