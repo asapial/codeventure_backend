@@ -28,24 +28,30 @@ const list = async (
         };
     }
 
-    const where: Record<string, unknown> = {
+    const where: {
+        organizationId: string;
+        AND?: Array<Record<string, unknown>>;
+        status?: { in: string[] };
+        priority?: { in: string[] };
+    } = {
         organizationId: org.id,
-        isDeleted: false,
     };
 
     const search = query.search ?? query.q;
     if (search) {
-        where.OR = [
-            { subject: { contains: search, mode: "insensitive" } },
-            { description: { contains: search, mode: "insensitive" } },
+        where.AND = [
+            {
+                OR: [
+                    { subject: { contains: search, mode: "insensitive" } },
+                ],
+            },
         ];
     }
 
     if (query.status) {
         const map: Record<string, string[]> = {
             open: ["OPEN"],
-            pending: ["PENDING"],
-            "on-hold": ["ON_HOLD"],
+            pending: ["PENDING_CUSTOMER", "PENDING_STAFF"],
             resolved: ["RESOLVED"],
             closed: ["CLOSED"],
         };
@@ -68,7 +74,13 @@ const list = async (
             orderBy: { updatedAt: "desc" },
             skip: (query.page - 1) * query.perPage,
             take: query.perPage,
-            include: {
+            select: {
+                id: true,
+                ticketNumber: true,
+                subject: true,
+                status: true,
+                priority: true,
+                updatedAt: true,
                 project: { select: { name: true } },
             },
         }),
@@ -77,12 +89,12 @@ const list = async (
 
     const tickets: ITicketSummary[] = rows.map((t) => ({
         id: t.id,
-        number: t.number,
+        number: t.ticketNumber,
         subject: t.subject,
         status: toWireTicketStatus(t.status),
         priority: toWireTicketPriority(t.priority),
         lastUpdatedAt: t.updatedAt.toISOString(),
-        unreadByCustomer: t.unreadByCustomer,
+        unreadByCustomer: false,
         projectName: t.project?.name ?? null,
     }));
 
@@ -117,34 +129,54 @@ const create = async (
     const created = await prisma.supportTicket.create({
         data: {
             organizationId: org.id,
-            submittedById: userId,
-            number: ticketNumber,
+            requesterId: userId,
+            ticketNumber,
             subject: body.subject,
-            description: body.description,
-            priority: body.priority.toUpperCase(),
+            priority: body.priority.toUpperCase() as
+                | "LOW"
+                | "NORMAL"
+                | "HIGH"
+                | "URGENT",
             status: "OPEN",
-            unreadByCustomer: false,
             projectId: body.projectId ?? null,
+            category: "general",
+        },
+        select: {
+            id: true,
+            ticketNumber: true,
+            priority: true,
+            updatedAt: true,
         },
     });
+
+    if (body.description) {
+        await prisma.ticketMessage.create({
+            data: {
+                ticketId: created.id,
+                authorId: userId,
+                body: body.description,
+                visibility: "CUSTOMER",
+            },
+        });
+    }
 
     if (body.attachments?.length) {
         await prisma.ticketAttachment.createMany({
             data: body.attachments.map((a) => ({
                 ticketId: created.id,
                 uploaderId: userId,
-                name: a.name,
-                mimeType: a.mimeType ?? null,
-                size: a.size ?? null,
-                url: a.url,
+                fileName: a.name,
+                mimeType: a.mimeType ?? "application/octet-stream",
+                sizeBytes: a.size ?? 0,
+                storageKey: a.url,
             })),
         });
     }
 
     return {
         id: created.id,
-        number: created.number,
-        subject: created.subject,
+        number: created.ticketNumber,
+        subject: body.subject,
         status: "open",
         priority: toWireTicketPriority(created.priority),
         lastUpdatedAt: created.updatedAt.toISOString(),
@@ -166,6 +198,14 @@ const searchHelp = async (
         },
         orderBy: { updatedAt: "desc" },
         take: query.limit,
+        select: {
+            id: true,
+            title: true,
+            excerpt: true,
+            category: true,
+            slug: true,
+            updatedAt: true,
+        },
     });
 
     return {
@@ -173,7 +213,7 @@ const searchHelp = async (
         results: articles.map((a) => ({
             id: a.id,
             title: a.title,
-            excerpt: a.excerpt,
+            excerpt: a.excerpt ?? null,
             category: a.category,
             slug: a.slug,
             updatedAt: a.updatedAt.toISOString(),

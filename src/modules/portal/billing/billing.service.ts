@@ -20,14 +20,20 @@ import type { PayInvoiceBody } from "./billing.validation";
 
 const mapContractStatus = (raw: string): ContractStatusWire => {
     switch (raw) {
-        case "EXPIRING":
-            return "expiring";
-        case "EXPIRED":
-            return "expired";
         case "SIGNED":
             return "signed";
-        default:
+        case "APPROVED":
             return "active";
+        case "PENDING":
+            return "pending";
+        case "CANCELLED":
+            return "cancelled";
+        case "EXPIRED":
+            return "expired";
+        case "CHANGES_REQUESTED":
+            return "changes-requested";
+        default:
+            return "pending";
     }
 };
 
@@ -44,34 +50,36 @@ const getBilling = async (userId: string): Promise<ICustomerBilling> => {
         };
     }
 
-    const [invoices, contracts, paymentMethods] = await Promise.all([
+    const [invoices, contracts, billingProfile] = await Promise.all([
         prisma.invoice.findMany({
             where: { organizationId: org.id },
-            orderBy: { issuedAt: "desc" },
+            orderBy: { dueAt: "desc" },
             take: 50,
-            include: { project: { select: { name: true } } },
         }),
         prisma.contract.findMany({
             where: { organizationId: org.id },
-            orderBy: { effectiveAt: "desc" },
+            orderBy: { createdAt: "desc" },
         }),
-        prisma.paymentMethod.findMany({
+        prisma.billingProfile.findUnique({
             where: { organizationId: org.id },
-            orderBy: { isDefault: "desc" },
+            select: {
+                paymentProvider: true,
+                paymentMethodMasked: true,
+            },
         }),
     ]);
 
     const invoiceWires: IInvoiceSummary[] = invoices.map((inv) => ({
         id: inv.id,
-        number: inv.number,
+        number: inv.invoiceNumber,
         status: toWireInvoiceStatus(inv.status),
-        issuedAt: inv.issuedAt.toISOString(),
+        issuedAt: inv.createdAt.toISOString(),
         dueAt: inv.dueAt.toISOString(),
         paidAt: toIso(inv.paidAt),
         total: dec(inv.total),
         currency: inv.currency,
-        pdfUrl: inv.pdfUrl,
-        projectName: inv.project?.name ?? null,
+        pdfUrl: inv.storageKey,
+        projectName: null,
     }));
 
     const contractWires: IContractSummary[] = contracts.map((c) => ({
@@ -79,27 +87,31 @@ const getBilling = async (userId: string): Promise<ICustomerBilling> => {
         title: c.title,
         status: mapContractStatus(c.status),
         signedAt: toIso(c.signedAt),
-        effectiveAt: toIso(c.effectiveAt),
-        expiresAt: toIso(c.expiresAt),
-        pdfUrl: c.pdfUrl,
+        effectiveAt: null,
+        expiresAt: null,
+        pdfUrl: c.storageKey,
     }));
 
-    const paymentMethodWires: IPaymentMethod[] = paymentMethods.map((pm) => ({
-        id: pm.id,
-        brand: pm.brand,
-        last4: pm.last4,
-        expiryMonth: pm.expiryMonth,
-        expiryYear: pm.expiryYear,
-        isDefault: pm.isDefault,
-    }));
+    const paymentMethodWires: IPaymentMethod[] = billingProfile?.paymentMethodMasked
+        ? [
+              {
+                  id: `${org.id}-default`,
+                  brand: billingProfile.paymentProvider ?? "card",
+                  last4: billingProfile.paymentMethodMasked.slice(-4),
+                  expiryMonth: null,
+                  expiryYear: null,
+                  isDefault: true,
+              },
+          ]
+        : [];
 
     const outstanding = invoiceWires
         .filter((i) => i.status === "sent" || i.status === "overdue")
-        .reduce((acc, i) => acc + Number(i.total), 0);
+        .reduce((acc, i) => acc + i.total, 0);
 
     const ytdPaid = invoiceWires
         .filter((i) => i.status === "paid")
-        .reduce((acc, i) => acc + Number(i.total), 0);
+        .reduce((acc, i) => acc + i.total, 0);
 
     const nextDue = invoiceWires
         .filter((i) => i.status === "sent" || i.status === "overdue")
@@ -139,7 +151,9 @@ const getInvoiceDetail = async (
         where: { id: invoiceId, organizationId: org.id },
         include: {
             items: { orderBy: { orderIndex: "asc" } },
-            project: { select: { name: true } },
+            payments: {
+                orderBy: { createdAt: "desc" },
+            },
         },
     });
     if (!inv) {
@@ -150,24 +164,31 @@ const getInvoiceDetail = async (
 
     return {
         id: inv.id,
-        number: inv.number,
+        number: inv.invoiceNumber,
         status: toWireInvoiceStatus(inv.status),
-        issuedAt: inv.issuedAt.toISOString(),
+        issuedAt: inv.createdAt.toISOString(),
         dueAt: inv.dueAt.toISOString(),
         paidAt: toIso(inv.paidAt),
         total: dec(inv.total),
         currency: inv.currency,
-        pdfUrl: inv.pdfUrl,
-        projectName: inv.project?.name ?? null,
+        pdfUrl: inv.storageKey,
+        projectName: null,
         subtotal: dec(inv.subtotal),
         tax: dec(inv.tax),
-        notes: inv.notes,
+        notes: null,
         lines: inv.items.map((line) => ({
             id: line.id,
             description: line.description,
             quantity: line.quantity,
             unitPrice: dec(line.unitPrice),
-            total: dec(line.total),
+            total: dec(line.amount),
+        })),
+        payments: inv.payments.map((p) => ({
+            id: p.id,
+            amount: dec(p.amount),
+            status: p.status,
+            provider: p.provider,
+            createdAt: p.createdAt.toISOString(),
         })),
     };
 };
@@ -187,14 +208,14 @@ const getContractPdf = async (userId: string, contractId: string) => {
             code: "CONTRACT_NOT_FOUND",
         });
     }
-    if (!contract.pdfUrl) {
+    if (!contract.storageKey) {
         throw new AppError(
             status.NOT_FOUND,
             "Contract PDF unavailable.",
             { code: "PDF_MISSING" },
         );
     }
-    return { url: contract.pdfUrl, filename: `${contract.title}.pdf` };
+    return { url: contract.storageKey, filename: `${contract.title}.pdf` };
 };
 
 const getInvoicePdf = async (userId: string, invoiceId: string) => {
@@ -212,14 +233,14 @@ const getInvoicePdf = async (userId: string, invoiceId: string) => {
             code: "INVOICE_NOT_FOUND",
         });
     }
-    if (!inv.pdfUrl) {
+    if (!inv.storageKey) {
         throw new AppError(
             status.NOT_FOUND,
             "Invoice PDF unavailable.",
             { code: "PDF_MISSING" },
         );
     }
-    return { url: inv.pdfUrl, filename: `Invoice-${inv.number}.pdf` };
+    return { url: inv.storageKey, filename: `Invoice-${inv.invoiceNumber}.pdf` };
 };
 
 const payInvoice = async (
@@ -237,16 +258,22 @@ const payInvoice = async (
     const idempotencyKey =
         body.idempotencyKey ?? `pay-${invoiceId}-${Date.now()}`;
 
-    const existing = await prisma.paymentAttempt.findUnique({
+    const existingPayment = await prisma.payment.findUnique({
         where: { idempotencyKey },
+        select: {
+            id: true,
+            status: true,
+            amount: true,
+            createdAt: true,
+        },
     });
-    if (existing) {
+    if (existingPayment) {
         return {
-            id: existing.id,
-            status: existing.status,
+            id: existingPayment.id,
+            status: existingPayment.status,
             invoiceId,
-            amount: dec(existing.amount),
-            processedAt: existing.createdAt.toISOString(),
+            amount: dec(existingPayment.amount),
+            processedAt: existingPayment.createdAt.toISOString(),
             idempotent: true,
         };
     }
@@ -267,51 +294,49 @@ const payInvoice = async (
         );
     }
 
-    const method = await prisma.paymentMethod.findFirst({
-        where: { id: body.paymentMethodId, organizationId: org.id },
-    });
-    if (!method) {
+    if (!body.paymentMethodId) {
         throw new AppError(
-            status.NOT_FOUND,
-            "Payment method not found.",
-            { code: "PAYMENT_METHOD_NOT_FOUND" },
+            status.BAD_REQUEST,
+            "paymentMethodId is required.",
+            { code: "PAYMENT_METHOD_REQUIRED" },
         );
     }
 
-    const attempt = await prisma.paymentAttempt.create({
-        data: {
-            organizationId: org.id,
-            invoiceId,
-            amount: inv.total,
-            currency: inv.currency,
-            method: method.brand,
-            idempotencyKey,
-            status: "SUCCEEDED",
-        },
-    });
-
-    await prisma.$transaction([
-        prisma.invoice.update({
-            where: { id: invoiceId },
-            data: { status: "PAID", paidAt: new Date() },
-        }),
-        prisma.payment.create({
+    const payment = await prisma.$transaction(async (tx) => {
+        const created = await tx.payment.create({
             data: {
                 invoiceId,
-                amount: inv.total,
+                idempotencyKey,
+                amount: inv.balance,
                 currency: inv.currency,
-                methodId: method.id,
-                reference: attempt.id,
+                status: "SUCCEEDED",
+                provider: "stripe",
+                providerRef: null,
             },
-        }),
-    ]);
+        });
+        await tx.paymentAttempt.create({
+            data: {
+                paymentId: created.id,
+                status: "SUCCEEDED",
+            },
+        });
+        await tx.invoice.update({
+            where: { id: invoiceId },
+            data: {
+                status: "PAID",
+                paidAt: new Date(),
+                balance: 0,
+            },
+        });
+        return created;
+    });
 
     return {
-        id: attempt.id,
-        status: "succeeded",
+        id: payment.id,
+        status: payment.status,
         invoiceId,
-        amount: dec(attempt.amount),
-        processedAt: attempt.createdAt.toISOString(),
+        amount: dec(payment.amount),
+        processedAt: payment.createdAt.toISOString(),
         idempotent: false,
     };
 };

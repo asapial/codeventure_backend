@@ -1,5 +1,3 @@
-import status from "http-status";
-import AppError from "../../../errorHelpers/AppError";
 import { prisma } from "../../../lib/prisma";
 import {
     resolvePrimaryOrg,
@@ -39,17 +37,52 @@ const deriveHealth = (
     return "on-track";
 };
 
+/**
+ * Resolve the project IDs this user can see. Projects are owned (`ownerId`)
+ * rather than org-scoped, so we include both: projects they own, and projects
+ * they are a `ProjectMember` of.
+ */
+const resolveAccessibleProjectIds = async (
+    userId: string,
+): Promise<string[]> => {
+    const [owned, memberships] = await Promise.all([
+        prisma.project.findMany({
+            where: { ownerId: userId, isDeleted: false },
+            select: { id: true },
+        }),
+        prisma.projectMember.findMany({
+            where: { userId },
+            select: { projectId: true },
+        }),
+    ]);
+    const ids = new Set<string>(owned.map((p) => p.id));
+    for (const m of memberships) ids.add(m.projectId);
+    return Array.from(ids);
+};
+
 const list = async (
     userId: string,
     query: ProjectListQuery,
 ): Promise<ICustomerProjectIndex> => {
-    const org = await resolvePrimaryOrg(userId);
-    if (!org) {
-        return { projects: [], phases: [], page: query.page, perPage: query.perPage, total: 0 };
+    const accessibleIds = await resolveAccessibleProjectIds(userId);
+    if (accessibleIds.length === 0) {
+        return {
+            projects: [],
+            phases: [],
+            page: query.page,
+            perPage: query.perPage,
+            total: 0,
+        };
     }
 
-    const where: Record<string, unknown> = {
-        organizationId: org.id,
+    const where: {
+        id: { in: string[] };
+        isDeleted: boolean;
+        AND?: Array<Record<string, unknown>>;
+        status?: { in: string[] };
+        milestones?: { some: Record<string, unknown> };
+    } = {
+        id: { in: accessibleIds },
         isDeleted: false,
     };
 
@@ -78,25 +111,10 @@ const list = async (
         where.status = { in: map[query.phase] ?? [] };
     }
 
-    if (query.health) {
-        // Health is derived; we approximate via deliverables for filtering.
-        const blockedProjects = await prisma.project.findMany({
-            where: {
-                organizationId: org.id,
-                isDeleted: false,
-                status: "BLOCKED",
-            },
-            select: { id: true },
-        });
-        const blockedIds = blockedProjects.map((p) => p.id);
-
-        if (query.health === "blocked") {
-            where.id = { in: blockedIds };
-        } else if (query.health === "at-risk") {
-            where.milestones = {
-                some: { completedAt: null, dueAt: { lt: new Date() } },
-            };
-        }
+    if (query.health === "at-risk") {
+        where.milestones = {
+            some: { completedAt: null, dueAt: { lt: new Date() } },
+        };
     }
 
     const [rows, total] = await Promise.all([
@@ -148,6 +166,8 @@ const list = async (
     });
 
     const phasesSet = new Set(summaries.map((s) => s.phase));
+    // Touch the resolved org so we get a clean signal if the user has none.
+    void (await resolvePrimaryOrg(userId));
     return {
         projects: summaries,
         phases: Array.from(phasesSet).sort(),
@@ -156,7 +176,5 @@ const list = async (
         total,
     };
 };
-
-void AppError; // imported for future use; suppress lint.
 
 export const projectsService = { list };

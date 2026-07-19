@@ -1,4 +1,5 @@
 import { Router } from "express";
+import { z } from "zod";
 import { validateRequest } from "../../../middleware/validateRequest";
 import { projectDetailController } from "./project-detail.controller";
 import {
@@ -12,20 +13,29 @@ import {
 
 const router = Router();
 
-router.get("/:slug", validateRequest(slugParamSchema), projectDetailController.getDetail);
+// Merge helper: wrap two `z.object({...})` schemas that each describe the
+// `params`/`body`/`query` request envelope into a single validation schema.
+const merge = (a: z.ZodObject<any>, b: z.ZodObject<any>) =>
+    a.merge(b) as unknown as z.ZodObject<any>;
+
+router.get(
+    "/:slug",
+    validateRequest(slugParamSchema),
+    projectDetailController.getDetail,
+);
 router.get(
     "/:slug/activity",
-    validateRequest({ ...slugParamSchema.shape, ...activityQuerySchema.shape }),
+    validateRequest(merge(slugParamSchema, activityQuerySchema)),
     projectDetailController.getActivity,
 );
 router.post(
     "/:slug/comments",
-    validateRequest({ ...slugParamSchema.shape, ...commentSchema.shape }),
+    validateRequest(merge(slugParamSchema, commentSchema)),
     projectDetailController.postComment,
 );
 router.post(
     "/:slug/files",
-    validateRequest({ ...slugParamSchema.shape, ...fileUploadSchema.shape }),
+    validateRequest(merge(slugParamSchema, fileUploadSchema)),
     projectDetailController.uploadFile,
 );
 router.post(
@@ -35,7 +45,7 @@ router.post(
 );
 router.post(
     "/:slug/change-requests",
-    validateRequest({ ...slugParamSchema.shape, ...changeRequestSchema.shape }),
+    validateRequest(merge(slugParamSchema, changeRequestSchema)),
     projectDetailController.submitChangeRequest,
 );
 

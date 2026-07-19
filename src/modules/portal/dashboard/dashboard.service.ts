@@ -7,7 +7,6 @@ import {
     decOrNull,
     toIso,
     toWireProjectStatus,
-    type OrgMembership,
 } from "../portal.policy";
 import type {
     ICustomerDashboard,
@@ -23,9 +22,11 @@ import type {
  * Customer dashboard aggregate (C1).
  *
  * Returns a single payload that the overview page renders in one round trip.
- * We deliberately run every count + lookup in parallel via Promise.all so a
- * fresh aggregate is well under 200ms even on cold cache for an org with
- * ~50 projects.
+ *
+ * Project scoping: the schema models `Project.ownerId` rather than
+ * `Project.organizationId`, so we resolve the user's project IDs via the
+ * `ProjectMember` join table. This keeps the wire shape unchanged while
+ * honouring the org membership contract.
  */
 const getDashboard = async (userId: string): Promise<ICustomerDashboard> => {
     const user = await prisma.user.findUnique({
@@ -43,6 +44,14 @@ const getDashboard = async (userId: string): Promise<ICustomerDashboard> => {
     }
     const orgId = primaryOrg.id;
 
+    // Resolve the org's project IDs once. We use this list in every
+    // project-scoped query below to avoid repeating the membership filter.
+    const projectMemberships = await prisma.projectMember.findMany({
+        where: { userId },
+        select: { projectId: true },
+    });
+    const memberProjectIds = projectMemberships.map((m) => m.projectId);
+
     const [
         activeProjectsCount,
         totalProjectsCount,
@@ -59,19 +68,24 @@ const getDashboard = async (userId: string): Promise<ICustomerDashboard> => {
     ] = await Promise.all([
         prisma.project.count({
             where: {
-                organizationId: orgId,
+                id: { in: memberProjectIds },
                 isDeleted: false,
-                status: { in: ["PLANNING", "IN_PROGRESS", "IN_REVIEW", "LAUNCHED"] },
+                status: {
+                    in: ["PLANNING", "IN_PROGRESS", "IN_REVIEW", "LAUNCHED"],
+                },
             },
         }),
         prisma.project.count({
-            where: { organizationId: orgId, isDeleted: false },
+            where: { id: { in: memberProjectIds }, isDeleted: false },
         }),
         prisma.approvalRequest.count({
-            where: { project: { organizationId: orgId }, status: "PENDING" },
+            where: { projectId: { in: memberProjectIds }, status: "PENDING" },
         }),
         prisma.supportTicket.count({
-            where: { organizationId: orgId, status: { in: ["OPEN", "PENDING_CUSTOMER", "PENDING_STAFF"] } },
+            where: {
+                organizationId: orgId,
+                status: { in: ["OPEN", "PENDING_CUSTOMER", "PENDING_STAFF"] },
+            },
         }),
         prisma.supportTicket.count({
             where: { organizationId: orgId, status: "PENDING_CUSTOMER" },
@@ -83,7 +97,7 @@ const getDashboard = async (userId: string): Promise<ICustomerDashboard> => {
                 priority: { in: ["HIGH", "URGENT"] },
             },
         }),
-        // Pull the most recent BillingSummary for ANY org member.
+        // Pull the most recent BillingSummary for this user (org-scoped).
         prisma.billingSummary.findMany({
             where: { userId },
             orderBy: [{ month: "desc" }],
@@ -117,9 +131,9 @@ const getDashboard = async (userId: string): Promise<ICustomerDashboard> => {
                 status: { in: ["OPEN", "PENDING_CUSTOMER", "PENDING_STAFF"] },
             },
         }),
-        // Pull all projects in the org (we render the health rollup list).
+        // Pull all projects the user has access to.
         prisma.project.findMany({
-            where: { organizationId: orgId, isDeleted: false },
+            where: { id: { in: memberProjectIds }, isDeleted: false },
             orderBy: { updatedAt: "desc" },
             select: {
                 id: true,
@@ -143,10 +157,10 @@ const getDashboard = async (userId: string): Promise<ICustomerDashboard> => {
                 },
             },
         }),
-        // Next upcoming milestone across the whole org.
+        // Next upcoming milestone across the user's projects.
         prisma.projectMilestone.findFirst({
             where: {
-                project: { organizationId: orgId, isDeleted: false },
+                projectId: { in: memberProjectIds },
                 completedAt: null,
                 dueAt: { not: null, gte: new Date() },
             },
@@ -159,9 +173,9 @@ const getDashboard = async (userId: string): Promise<ICustomerDashboard> => {
                 project: { select: { slug: true, name: true } },
             },
         }),
-        // Recent activity across the org's projects + system.
+        // Recent activity across the user's projects + system.
         prisma.activityEvent.findMany({
-            where: { project: { organizationId: orgId } },
+            where: { projectId: { in: memberProjectIds } },
             orderBy: { createdAt: "desc" },
             take: 10,
             select: {
@@ -170,6 +184,7 @@ const getDashboard = async (userId: string): Promise<ICustomerDashboard> => {
                 title: true,
                 description: true,
                 createdAt: true,
+                projectId: true,
                 project: { select: { slug: true } },
             },
         }),
@@ -180,12 +195,7 @@ const getDashboard = async (userId: string): Promise<ICustomerDashboard> => {
     const billing: IDashboardBilling | null = billingRow
         ? {
               currency: billingRow.currency,
-              outstanding: dec(
-                  billingRow.nextInvoiceAmount ??
-                      (dec(billingRow.planAmount) -
-                          dec(billingRow.includedHours) +
-                          dec(billingRow.usedHours)),
-              ),
+              outstanding: decOrNull(billingRow.nextInvoiceAmount) ?? 0,
               nextInvoiceAt: toIso(billingRow.nextInvoiceDate),
               nextInvoiceAmount: decOrNull(billingRow.nextInvoiceAmount),
           }
@@ -223,7 +233,8 @@ const getDashboard = async (userId: string): Promise<ICustomerDashboard> => {
     const healthRollup: IHealthRollup[] = projects.map((p) => {
         const next = p.milestones[0];
         const total = p.deliverables.length;
-        const done = p.deliverables.filter((d) => d.status === "COMPLETE").length;
+        const done = p.deliverables.filter((d) => d.status === "COMPLETE")
+            .length;
         const progress = total === 0 ? null : Math.min(1, done / total);
         return {
             projectId: p.id,
@@ -328,7 +339,5 @@ const emptyDashboard = (): ICustomerDashboard => ({
 });
 
 export const dashboardService = { getDashboard };
-// Only re-exported for the test harness.
+// Exported for the test harness.
 export { emptyDashboard, deriveHealth, classifyActivity };
-// Suppress TS6133 for the imported type alias.
-export type _OrgMembershipT = OrgMembership;

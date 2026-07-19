@@ -2,8 +2,11 @@ import status from "http-status";
 import AppError from "../../../errorHelpers/AppError";
 import { prisma } from "../../../lib/prisma";
 import {
+    dec,
+    decOrNull,
     resolvePrimaryOrg,
     toIso,
+    toWireTicketStatus,
 } from "../portal.policy";
 import type {
     CadenceWire,
@@ -14,31 +17,31 @@ import type {
     IMaintenanceSubscription,
     RequestStatusWire,
     RequestTypeWire,
-    SubscriptionStatusWire,
 } from "./maintenance.type";
 import type { SubmitMaintenanceRequestBody } from "./maintenance.validation";
 
 const mapCadence = (raw: string): CadenceWire => {
     switch (raw) {
-        case "WEEKLY":
-            return "weekly";
-        case "BIWEEKLY":
-            return "biweekly";
         case "QUARTERLY":
             return "quarterly";
+        case "ANNUAL":
+            return "annual";
+        case "MONTHLY":
         default:
             return "monthly";
     }
 };
 
-const mapSubStatus = (raw: string): SubscriptionStatusWire => {
+const mapSubStatus = (
+    raw: string,
+): IMaintenanceSubscription["status"] => {
     switch (raw) {
         case "PAUSED":
             return "paused";
-        case "ENDING":
-            return "ending";
-        case "ENDED":
-            return "ended";
+        case "CANCELLED":
+            return "cancelled";
+        case "EXPIRED":
+            return "expired";
         default:
             return "active";
     }
@@ -46,31 +49,37 @@ const mapSubStatus = (raw: string): SubscriptionStatusWire => {
 
 const mapRequestType = (raw: string): RequestTypeWire => {
     switch (raw) {
-        case "BUG":
+        case "BUG_FIX":
             return "bug";
-        case "CHANGE":
-            return "change";
-        case "INCIDENT":
-            return "incident";
+        case "CONTENT_EDIT":
+            return "content";
+        case "PERFORMANCE":
+            return "performance";
+        case "SECURITY":
+            return "security";
+        case "BACKUP_RESTORE":
+            return "backup";
+        case "CONSULT":
+            return "consult";
+        case "UPDATE":
         default:
-            return "question";
+            return "update";
     }
 };
 
 const mapRequestStatus = (raw: string): RequestStatusWire => {
     switch (raw) {
-        case "TRIAGING":
-            return "triaging";
-        case "SCHEDULED":
-            return "scheduled";
-        case "IN_PROGRESS":
-            return "in-progress";
+        case "PENDING_CUSTOMER":
+            return "pending-customer";
+        case "PENDING_STAFF":
+            return "pending-staff";
         case "RESOLVED":
             return "resolved";
         case "CLOSED":
             return "closed";
+        case "OPEN":
         default:
-            return "submitted";
+            return "open";
     }
 };
 
@@ -86,30 +95,44 @@ const getMaintenance = async (userId: string): Promise<ICustomerMaintenance> => 
     if (!org) return emptyMaintenance();
 
     const subscription = await prisma.maintenanceSubscription.findFirst({
-        where: { organizationId: org.id, status: { not: "ENDED" } },
+        where: { organizationId: org.id, status: { in: ["ACTIVE", "PAUSED"] } },
         orderBy: { createdAt: "desc" },
-        include: { plan: true },
+        include: {
+            plan: {
+                select: {
+                    id: true,
+                    name: true,
+                    description: true,
+                    priceMonthly: true,
+                    currency: true,
+                    includedHours: true,
+                },
+            },
+        },
     });
 
     const plan: IMaintenancePlan | null = subscription
         ? {
               id: subscription.plan.id,
               name: subscription.plan.name,
-              cadence: mapCadence(subscription.plan.cadence),
-              includes: subscription.plan.includes,
-              nextVisitAt: toIso(subscription.nextVisitAt),
-              monthlyPrice: subscription.plan.monthlyPrice?.toString() ?? null,
+              cadence: mapCadence(subscription.cadence),
+              priceMonthly: decOrNull(subscription.plan.priceMonthly),
+              currency: subscription.plan.currency,
+              includedHours: dec(subscription.plan.includedHours),
+              description: subscription.plan.description,
           }
         : null;
 
     const subscriptionWire: IMaintenanceSubscription | null = subscription
         ? {
               id: subscription.id,
-              plan: plan!,
+              plan,
               status: mapSubStatus(subscription.status),
-              startedAt: subscription.startedAt.toISOString(),
-              endsAt: toIso(subscription.endsAt),
-              lastVisitAt: toIso(subscription.lastVisitAt),
+              periodStart: subscription.periodStart.toISOString(),
+              periodEnd: toIso(subscription.periodEnd),
+              usedHours: dec(subscription.usedHours),
+              includedHours: dec(subscription.includedHours),
+              websiteUrl: subscription.websiteUrl,
           }
         : null;
 
@@ -118,8 +141,18 @@ const getMaintenance = async (userId: string): Promise<ICustomerMaintenance> => 
             where: subscription
                 ? { subscriptionId: subscription.id }
                 : { subscription: { organizationId: org.id } },
-            orderBy: { visitAt: "desc" },
+            orderBy: { periodEnd: "desc" },
             take: 6,
+            select: {
+                id: true,
+                periodStart: true,
+                periodEnd: true,
+                summary: true,
+                workCompleted: true,
+                backupsVerified: true,
+                securityChecks: true,
+                createdAt: true,
+            },
         }),
         prisma.maintenanceRequest.findMany({
             where: subscription
@@ -127,26 +160,38 @@ const getMaintenance = async (userId: string): Promise<ICustomerMaintenance> => 
                 : { subscription: { organizationId: org.id } },
             orderBy: { createdAt: "desc" },
             take: 10,
+            select: {
+                id: true,
+                requestType: true,
+                priority: true,
+                status: true,
+                title: true,
+                description: true,
+                createdAt: true,
+            },
         }),
     ]);
 
     const recentReports: IMaintenanceReport[] = reports.map((r) => ({
         id: r.id,
-        visitAt: r.visitAt.toISOString(),
+        periodStart: r.periodStart.toISOString(),
+        periodEnd: r.periodEnd.toISOString(),
         summary: r.summary,
-        items: r.items,
-        attachments: [],
+        workCompleted: r.workCompleted,
+        backupsVerified: r.backupsVerified,
+        securityChecks: r.securityChecks,
+        createdAt: r.createdAt.toISOString(),
     }));
 
     const activeRequests: IMaintenanceRequest[] = requests.map((r) => ({
         id: r.id,
-        type: mapRequestType(r.type),
+        type: mapRequestType(r.requestType),
         status: mapRequestStatus(r.status),
+        priority: r.priority.toLowerCase(),
+        ticketStatus: toWireTicketStatus(r.status),
         title: r.title,
         description: r.description,
         submittedAt: r.createdAt.toISOString(),
-        scheduledFor: toIso(r.scheduledFor),
-        resolvedAt: toIso(r.resolvedAt),
     }));
 
     return {
@@ -184,24 +229,35 @@ const submitRequest = async (
     const created = await prisma.maintenanceRequest.create({
         data: {
             subscriptionId: subscription.id,
-            submittedById: userId,
-            type: body.type.toUpperCase(),
-            severity: body.severity.toUpperCase(),
+            requesterId: userId,
+            requestType: body.type.toUpperCase() as
+                | "UPDATE"
+                | "BUG_FIX"
+                | "CONTENT_EDIT"
+                | "PERFORMANCE"
+                | "SECURITY"
+                | "BACKUP_RESTORE"
+                | "CONSULT",
+            priority: (body.severity.toUpperCase() as
+                | "LOW"
+                | "NORMAL"
+                | "HIGH"
+                | "URGENT"),
             title: body.title,
             description: body.description,
-            status: "SUBMITTED",
+            status: "OPEN",
         },
     });
 
     return {
         id: created.id,
-        type: mapRequestType(created.type),
-        status: "submitted",
+        type: mapRequestType(created.requestType),
+        status: "open",
+        priority: created.priority.toLowerCase(),
+        ticketStatus: "open",
         title: created.title,
         description: created.description,
         submittedAt: created.createdAt.toISOString(),
-        scheduledFor: null,
-        resolvedAt: null,
     };
 };
 

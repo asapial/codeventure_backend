@@ -9,8 +9,10 @@ import { projectDetailRouter } from "./project-detail/project-detail.route";
 import { maintenanceRouter } from "./maintenance/maintenance.route";
 import { billingRouter } from "./billing/billing.route";
 import { ticketsRouter } from "./tickets/tickets.route";
+import { helpRouter } from "./tickets/help.route";
 import { ticketDetailRouter } from "./ticket-detail/ticket-detail.route";
 import { notificationsRouter } from "./notifications/notifications.route";
+import { notificationPreferencesRouter } from "./notifications/preferences.route";
 import { settingsRouter } from "./settings/settings.route";
 
 /**
@@ -46,8 +48,9 @@ router.use("/maintenance", maintenanceRouter);
 router.use("/billing", billingRouter);
 router.use("/tickets", ticketsRouter);
 router.use("/tickets", ticketDetailRouter); // /tickets/:id is declared here
+router.use("/help", helpRouter);
 router.use("/notifications", notificationsRouter);
-router.use("/notification-preferences", notificationsRouter); // alias for C9
+router.use("/notification-preferences", notificationPreferencesRouter);
 router.use("/settings", settingsRouter);
 
 export const portalRouter = router;

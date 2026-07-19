@@ -10,15 +10,16 @@ import type {
     ITicketDetail,
     ITicketMessage,
     MessageVisibilityWire,
-    SenderRoleWire,
 } from "./ticket-detail.type";
 import type { PatchTicketBody, PostMessageBody } from "./ticket-detail.validation";
 
 const findTicketForUser = async (userId: string, ticketId: string) => {
-    const ticket = await prisma.supportTicket.findFirst({
-        where: { id: ticketId, isDeleted: false },
-        include: {
-            organization: { select: { id: true } },
+    const ticket = await prisma.supportTicket.findUnique({
+        where: { id: ticketId },
+        select: {
+            id: true,
+            organizationId: true,
+            requesterId: true,
             project: { select: { name: true } },
         },
     });
@@ -38,20 +39,8 @@ const findTicketForUser = async (userId: string, ticketId: string) => {
 };
 
 const mapVisibility = (raw: string): MessageVisibilityWire => {
-    if (raw === "ALL") return "all";
     if (raw === "INTERNAL") return "internal";
     return "customer";
-};
-
-const mapSenderRole = (raw: string): SenderRoleWire => {
-    switch (raw) {
-        case "AGENT":
-            return "agent";
-        case "SYSTEM":
-            return "system";
-        default:
-            return "customer";
-    }
 };
 
 const getDetail = async (
@@ -60,68 +49,85 @@ const getDetail = async (
 ): Promise<ITicketDetail> => {
     const ticket = await findTicketForUser(userId, ticketId);
 
-    const [messages, attachments, submitter] = await Promise.all([
+    const [fullTicket, messages, attachments, submitter] = await Promise.all([
+        prisma.supportTicket.findUnique({
+            where: { id: ticketId },
+            select: {
+                ticketNumber: true,
+                subject: true,
+                status: true,
+                priority: true,
+                createdAt: true,
+                updatedAt: true,
+            },
+        }),
         prisma.ticketMessage.findMany({
-            where: { ticketId, visibility: { in: ["ALL", "CUSTOMER"] } },
+            where: {
+                ticketId,
+                visibility: { in: ["CUSTOMER"] },
+            },
             orderBy: { createdAt: "asc" },
             include: {
-                attachments: true,
-                sender: {
-                    select: { name: true, avatarUrl: true },
-                },
+                author: { select: { id: true, name: true, image: true } },
             },
         }),
         prisma.ticketAttachment.findMany({
-            where: { ticketId, messageId: null },
+            where: { ticketId },
             orderBy: { createdAt: "asc" },
+            select: {
+                id: true,
+                fileName: true,
+                mimeType: true,
+                sizeBytes: true,
+                storageKey: true,
+            },
         }),
         prisma.user.findUnique({
-            where: { id: ticket.submittedById },
+            where: { id: ticket.requesterId },
             select: { name: true },
         }),
     ]);
 
-    const wireMessages: ITicketMessage[] = messages.map((m) => ({
-        id: m.id,
-        body: m.body,
-        visibility: mapVisibility(m.visibility),
-        senderName: m.sender?.name ?? "System",
-        senderRole: mapSenderRole(m.senderRole),
-        senderAvatarUrl: m.sender?.avatarUrl ?? null,
-        createdAt: m.createdAt.toISOString(),
-        attachments: m.attachments.map((a) => ({
-            id: a.id,
-            name: a.name,
-            mimeType: a.mimeType,
-            size: a.size,
-            url: a.url,
-        })),
-    }));
+    if (!fullTicket) {
+        throw new AppError(status.NOT_FOUND, "Ticket not found.", {
+            code: "TICKET_NOT_FOUND",
+        });
+    }
 
-    // Mark as read for the customer.
-    await prisma.supportTicket.update({
-        where: { id: ticketId },
-        data: { unreadByCustomer: false },
+    const wireMessages: ITicketMessage[] = messages.map((m) => {
+        const isStaff = m.authorId !== ticket.requesterId;
+        return {
+            id: m.id,
+            body: m.body,
+            visibility: mapVisibility(m.visibility),
+            senderName: isStaff ? "Support team" : m.author.name,
+            senderRole: isStaff ? "agent" : "customer",
+            senderAvatarUrl: m.author.image ?? null,
+            createdAt: m.createdAt.toISOString(),
+            attachments: attachments
+                .filter((a) => true) // attachments are ticket-level in this schema
+                .slice(0, 0), // empty per-message — wire shape compatibility
+        };
     });
 
     return {
         id: ticket.id,
-        number: ticket.number,
-        subject: ticket.subject,
-        description: ticket.description,
-        status: toWireTicketStatus(ticket.status),
-        priority: toWireTicketPriority(ticket.priority),
+        number: fullTicket.ticketNumber,
+        subject: fullTicket.subject,
+        description: null,
+        status: toWireTicketStatus(fullTicket.status),
+        priority: toWireTicketPriority(fullTicket.priority),
         projectName: ticket.project?.name ?? null,
         submittedByName: submitter?.name ?? "Unknown",
-        submittedAt: ticket.createdAt.toISOString(),
-        lastUpdatedAt: ticket.updatedAt.toISOString(),
+        submittedAt: fullTicket.createdAt.toISOString(),
+        lastUpdatedAt: fullTicket.updatedAt.toISOString(),
         messages: wireMessages,
         attachments: attachments.map((a) => ({
             id: a.id,
-            name: a.name,
+            name: a.fileName,
             mimeType: a.mimeType,
-            size: a.size,
-            url: a.url,
+            size: a.sizeBytes,
+            url: a.storageKey,
         })),
     };
 };
@@ -134,19 +140,20 @@ const postMessage = async (
     const ticket = await findTicketForUser(userId, ticketId);
 
     const visibilityEnum =
-        body.visibility === "all"
-            ? "ALL"
-            : body.visibility === "internal"
-                ? "INTERNAL"
-                : "CUSTOMER";
+        body.visibility === "internal" ? "INTERNAL" : "CUSTOMER";
 
     const created = await prisma.ticketMessage.create({
         data: {
             ticketId,
-            senderId: userId,
-            senderRole: "CUSTOMER",
+            authorId: userId,
             body: body.body,
             visibility: visibilityEnum,
+        },
+        select: {
+            id: true,
+            body: true,
+            visibility: true,
+            createdAt: true,
         },
     });
 
@@ -154,19 +161,18 @@ const postMessage = async (
         await prisma.ticketAttachment.createMany({
             data: body.attachments.map((a) => ({
                 ticketId,
-                messageId: created.id,
                 uploaderId: userId,
-                name: a.name,
-                mimeType: a.mimeType ?? null,
-                size: a.size ?? null,
-                url: a.url,
+                fileName: a.name,
+                mimeType: a.mimeType ?? "application/octet-stream",
+                sizeBytes: a.size ?? 0,
+                storageKey: a.url,
             })),
         });
     }
 
     await prisma.supportTicket.update({
         where: { id: ticket.id },
-        data: { updatedAt: new Date(), unreadByCustomer: false },
+        data: { updatedAt: new Date() },
     });
 
     return {
@@ -198,17 +204,17 @@ const patch = async (
                 ? {
                       messages: {
                           create: {
-                              senderId: userId,
-                              senderRole: "SYSTEM",
+                              authorId: userId,
                               body: `Customer ${body.action}d ticket${
                                   body.note ? `: ${body.note}` : ""
                               }`,
-                              visibility: "ALL",
+                              visibility: "INTERNAL",
                           },
                       },
                   }
                 : {}),
         },
+        select: { id: true, status: true, updatedAt: true },
     });
 
     return {

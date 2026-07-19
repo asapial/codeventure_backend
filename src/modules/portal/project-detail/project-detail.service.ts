@@ -1,16 +1,13 @@
 import status from "http-status";
-import crypto from "node:crypto";
 import AppError from "../../../errorHelpers/AppError";
 import { prisma } from "../../../lib/prisma";
 import {
-    requireOrgMembership,
     toIso,
     toWireProjectStatus,
 } from "../portal.policy";
 import type {
     ApprovalStatusWire,
     ChangeRequestStatusWire,
-    CommentVisibilityWire,
     ICustomerProjectActivity,
     ICustomerProjectActivityEntry,
     ICustomerProjectComment,
@@ -31,8 +28,6 @@ const mapApprovalStatus = (raw: string): ApprovalStatusWire => {
             return "approved";
         case "CHANGES_REQUESTED":
             return "changes-requested";
-        case "REJECTED":
-            return "rejected";
         default:
             return "pending";
     }
@@ -40,34 +35,30 @@ const mapApprovalStatus = (raw: string): ApprovalStatusWire => {
 
 const mapChangeStatus = (raw: string): ChangeRequestStatusWire => {
     switch (raw) {
-        case "ACCEPTED":
+        case "APPROVED":
             return "accepted";
-        case "DECLINED":
+        case "CHANGES_REQUESTED":
+        case "CANCELLED":
             return "declined";
         default:
             return "open";
     }
 };
 
-const mapVisibility = (raw: string): CommentVisibilityWire => {
-    if (raw === "ALL") return "all";
-    if (raw === "INTERNAL") return "internal";
-    return "customer";
-};
-
-const findProjectForUser = async (userId: string, slug: string) => {
+/**
+ * Permission check for project-level operations.
+ *
+ * The schema scopes a project by `ownerId` + `ProjectMember`, not by an
+ * organisation. So we allow either: the user owns the project, OR they are a
+ * member of it. Returning the project row so callers can reuse it.
+ */
+const findAccessibleProject = async (userId: string, slug: string) => {
     const project = await prisma.project.findFirst({
         where: { slug, isDeleted: false },
-        include: {
-            organization: {
-                select: {
-                    id: true,
-                    members: {
-                        where: { userId },
-                        select: { role: true },
-                    },
-                },
-            },
+        select: {
+            id: true,
+            ownerId: true,
+            members: { where: { userId }, select: { role: true } },
         },
     });
     if (!project) {
@@ -75,26 +66,87 @@ const findProjectForUser = async (userId: string, slug: string) => {
             code: "PROJECT_NOT_FOUND",
         });
     }
-    requireOrgMembership(userId, project.organization.id);
+    if (project.ownerId !== userId && project.members.length === 0) {
+        throw new AppError(
+            status.FORBIDDEN,
+            "You do not have access to this project.",
+            { code: "PROJECT_ACCESS_DENIED" },
+        );
+    }
     return project;
+};
+
+/** Same as above but takes the project ID (for routes that already resolved). */
+const assertProjectAccessById = async (userId: string, projectId: string) => {
+    const project = await prisma.project.findFirst({
+        where: { id: projectId, isDeleted: false },
+        select: { id: true, ownerId: true, slug: true, members: { where: { userId }, select: { role: true } } },
+    });
+    if (!project) {
+        throw new AppError(status.NOT_FOUND, "Project not found.", {
+            code: "PROJECT_NOT_FOUND",
+        });
+    }
+    if (project.ownerId !== userId && project.members.length === 0) {
+        throw new AppError(
+            status.FORBIDDEN,
+            "You do not have access to this project.",
+            { code: "PROJECT_ACCESS_DENIED" },
+        );
+    }
+    return project;
+};
+
+const derivePhase = (status: string): ICustomerProjectDetail["phase"] => {
+    switch (status) {
+        case "DRAFT":
+        case "PLANNING":
+            return "discovery";
+        case "IN_PROGRESS":
+            return "build";
+        case "IN_REVIEW":
+            return "review";
+        case "LAUNCHED":
+            return "launch";
+        case "PAUSED":
+            return "maintenance";
+        default:
+            return "discovery";
+    }
+};
+
+const deriveHealth = (
+    nextDueAt: string | null,
+): ICustomerProjectDetail["health"] => {
+    if (!nextDueAt) return "on-track";
+    if (new Date(nextDueAt).getTime() < Date.now()) return "at-risk";
+    return "on-track";
 };
 
 const getDetail = async (
     userId: string,
     slug: string,
 ): Promise<ICustomerProjectDetail> => {
-    const project = await prisma.project.findFirst({
-        where: { slug, isDeleted: false },
-        include: {
-            teamMembers: {
-                include: {
+    const access = await findAccessibleProject(userId, slug);
+    const project = await prisma.project.findUnique({
+        where: { id: access.id },
+        select: {
+            id: true,
+            slug: true,
+            name: true,
+            tagline: true,
+            description: true,
+            status: true,
+            heroImageUrl: true,
+            startDate: true,
+            targetEndDate: true,
+            updatedAt: true,
+            members: {
+                select: {
+                    role: true,
+                    joinedAt: true,
                     user: {
-                        select: {
-                            id: true,
-                            name: true,
-                            email: true,
-                            avatarUrl: true,
-                        },
+                        select: { id: true, name: true, email: true, image: true },
                     },
                 },
             },
@@ -102,7 +154,7 @@ const getDetail = async (
                 orderBy: [{ orderIndex: "asc" }, { dueAt: "asc" }],
             },
             deliverables: { select: { id: true, status: true } },
-            approvals: {
+            approvalRequests: {
                 where: { status: "PENDING" },
                 select: { id: true },
             },
@@ -113,7 +165,6 @@ const getDetail = async (
             code: "PROJECT_NOT_FOUND",
         });
     }
-    requireOrgMembership(userId, project.organizationId);
 
     const milestones: ICustomerProjectMilestone[] = project.milestones.map((m) => ({
         id: m.id,
@@ -137,28 +188,24 @@ const getDetail = async (
         tagline: project.tagline,
         description: project.description,
         status: toWireProjectStatus(project.status),
-        phase: project.status === "IN_PROGRESS" ? "build" : "discovery",
-        health: nextMilestone?.dueAt
-            ? new Date(nextMilestone.dueAt).getTime() < Date.now()
-                ? "at-risk"
-                : "on-track"
-            : "on-track",
+        phase: derivePhase(project.status),
+        health: deriveHealth(nextMilestone?.dueAt ?? null),
         progress,
         coverImageUrl: project.heroImageUrl,
-        startedAt: toIso(project.startedAt),
-        estimatedDeliveryAt: toIso(project.targetDeliveryAt),
+        startedAt: toIso(project.startDate),
+        estimatedDeliveryAt: toIso(project.targetEndDate),
         nextMilestone: nextMilestone
             ? { title: nextMilestone.title, dueAt: nextMilestone.dueAt }
             : null,
-        team: project.teamMembers.map((member) => ({
+        team: project.members.map((member) => ({
             userId: member.user.id,
             name: member.user.name,
             email: member.user.email,
             role: member.role,
-            avatarUrl: member.user.avatarUrl,
+            avatarUrl: member.user.image,
         })),
         milestones,
-        pendingApprovals: project.approvals.length,
+        pendingApprovals: project.approvalRequests.length,
     };
 };
 
@@ -167,26 +214,46 @@ const getActivity = async (
     slug: string,
     query: ActivityQuery,
 ): Promise<ICustomerProjectActivity> => {
-    const project = await findProjectForUser(userId, slug);
+    const project = await findAccessibleProject(userId, slug);
 
     const [rows, total] = await Promise.all([
-        prisma.projectActivity.findMany({
+        prisma.activityEvent.findMany({
             where: { projectId: project.id },
-            orderBy: { occurredAt: "desc" },
+            orderBy: { createdAt: "desc" },
             skip: (query.page - 1) * query.perPage,
             take: query.perPage,
+            select: {
+                id: true,
+                type: true,
+                title: true,
+                description: true,
+                createdAt: true,
+                actorId: true,
+            },
         }),
-        prisma.projectActivity.count({ where: { projectId: project.id } }),
+        prisma.activityEvent.count({ where: { projectId: project.id } }),
     ]);
+
+    // Look up actor names in one query.
+    const actorIds = Array.from(
+        new Set(rows.map((r) => r.actorId).filter((v): v is string => !!v)),
+    );
+    const actorRows = actorIds.length
+        ? await prisma.user.findMany({
+              where: { id: { in: actorIds } },
+              select: { id: true, name: true },
+          })
+        : [];
+    const actorMap = new Map(actorRows.map((a) => [a.id, a.name]));
 
     const entries: ICustomerProjectActivityEntry[] = rows.map((row) => ({
         id: row.id,
-        kind: row.kind as ICustomerProjectActivityEntry["kind"],
+        kind: row.type as ICustomerProjectActivityEntry["kind"],
         title: row.title,
-        description: row.description,
-        actorName: row.actorName,
-        occurredAt: row.occurredAt.toISOString(),
-        referenceId: row.referenceId,
+        description: row.description ?? null,
+        actorName: row.actorId ? (actorMap.get(row.actorId) ?? "Unknown") : "System",
+        occurredAt: row.createdAt.toISOString(),
+        referenceId: null,
     }));
 
     return {
@@ -203,47 +270,41 @@ const postComment = async (
     slug: string,
     body: CommentBody,
 ): Promise<ICustomerProjectComment> => {
-    const project = await findProjectForUser(userId, slug);
+    const project = await findAccessibleProject(userId, slug);
     const user = await prisma.user.findUnique({
         where: { id: userId },
-        select: { name: true, avatarUrl: true },
+        select: { name: true, image: true },
     });
-
-    const visibilityEnum =
-        body.visibility === "all"
-            ? "ALL"
-            : body.visibility === "internal"
-                ? "INTERNAL"
-                : "CUSTOMER";
 
     const created = await prisma.projectComment.create({
         data: {
             projectId: project.id,
             authorId: userId,
             body: body.body,
-            visibility: visibilityEnum,
-            parentId: body.parentId ?? null,
+        },
+        select: {
+            id: true,
+            body: true,
+            createdAt: true,
         },
     });
 
-    await prisma.projectActivity.create({
+    await prisma.activityEvent.create({
         data: {
             projectId: project.id,
-            kind: "COMMENT_POSTED",
+            actorId: userId,
+            type: "COMMENT_POSTED",
             title: "New comment",
             description: body.body.slice(0, 140),
-            actorName: user?.name ?? "Unknown",
-            occurredAt: new Date(),
-            referenceId: created.id,
         },
     });
 
     return {
         id: created.id,
         body: created.body,
-        visibility: mapVisibility(created.visibility),
+        visibility: "all",
         authorName: user?.name ?? "Unknown",
-        authorAvatarUrl: user?.avatarUrl ?? null,
+        authorAvatarUrl: user?.image ?? null,
         createdAt: created.createdAt.toISOString(),
         replies: [],
     };
@@ -254,7 +315,7 @@ const uploadFile = async (
     slug: string,
     body: FileUploadBody,
 ) => {
-    const project = await findProjectForUser(userId, slug);
+    const project = await findAccessibleProject(userId, slug);
     const user = await prisma.user.findUnique({
         where: { id: userId },
         select: { name: true },
@@ -264,31 +325,37 @@ const uploadFile = async (
         data: {
             projectId: project.id,
             uploaderId: userId,
-            name: body.name,
+            fileName: body.name,
             mimeType: body.mimeType,
-            size: body.size,
-            url: body.url,
+            sizeBytes: body.size,
+            storageKey: body.url,
+        },
+        select: {
+            id: true,
+            fileName: true,
+            mimeType: true,
+            sizeBytes: true,
+            storageKey: true,
+            createdAt: true,
         },
     });
 
-    await prisma.projectActivity.create({
+    await prisma.activityEvent.create({
         data: {
             projectId: project.id,
-            kind: "FILE_UPLOADED",
+            actorId: userId,
+            type: "FILE_UPLOADED",
             title: `File uploaded: ${body.name}`,
             description: null,
-            actorName: user?.name ?? "Unknown",
-            occurredAt: new Date(),
-            referenceId: created.id,
         },
     });
 
     return {
         id: created.id,
-        name: created.name,
+        name: created.fileName,
         mimeType: created.mimeType,
-        size: created.size,
-        url: created.url,
+        size: created.sizeBytes,
+        url: created.storageKey,
         uploadedByName: user?.name ?? "Unknown",
         uploadedAt: created.createdAt.toISOString(),
     };
@@ -313,14 +380,14 @@ const respondToApproval = async (
         });
     }
 
-    await findProjectForUser(userId, approval.projectId);
+    await assertProjectAccessById(userId, approval.projectId);
 
     const newStatus =
         body.decision === "approved"
             ? "APPROVED"
             : body.decision === "changes-requested"
                 ? "CHANGES_REQUESTED"
-                : "REJECTED";
+                : "CANCELLED";
 
     await prisma.$transaction(async (tx) => {
         await tx.approvalRequest.update({
@@ -332,18 +399,16 @@ const respondToApproval = async (
                 approvalId: approval.id,
                 responderId: userId,
                 decision: newStatus,
-                note: body.note ?? null,
+                comment: body.note ?? null,
             },
         });
-        await tx.projectActivity.create({
+        await tx.activityEvent.create({
             data: {
                 projectId: approval.projectId,
-                kind: "APPROVAL_RESPONDED",
+                actorId: userId,
+                type: "PROJECT_UPDATED",
                 title: `Approval ${body.decision}: ${approval.title}`,
                 description: body.note ?? null,
-                actorName: user?.name ?? "Unknown",
-                occurredAt: new Date(),
-                referenceId: approval.id,
             },
         });
     });
@@ -360,7 +425,7 @@ const submitChangeRequest = async (
     slug: string,
     body: ChangeRequestBody,
 ) => {
-    const project = await findProjectForUser(userId, slug);
+    const project = await findAccessibleProject(userId, slug);
     const user = await prisma.user.findUnique({
         where: { id: userId },
         select: { name: true },
@@ -369,23 +434,19 @@ const submitChangeRequest = async (
     const created = await prisma.changeRequest.create({
         data: {
             projectId: project.id,
-            submittedById: userId,
             title: body.title,
             description: body.description,
-            impact: body.impact.toUpperCase(),
-            status: "OPEN",
+            status: "PENDING",
         },
     });
 
-    await prisma.projectActivity.create({
+    await prisma.activityEvent.create({
         data: {
             projectId: project.id,
-            kind: "CHANGE_REQUEST_SUBMITTED",
+            actorId: userId,
+            type: "PROJECT_UPDATED",
             title: `Change request: ${body.title}`,
             description: null,
-            actorName: user?.name ?? "Unknown",
-            occurredAt: new Date(),
-            referenceId: created.id,
         },
     });
 
@@ -402,7 +463,6 @@ const submitChangeRequest = async (
     };
 };
 
-void crypto;
 export const projectDetailService = {
     getDetail,
     getActivity,

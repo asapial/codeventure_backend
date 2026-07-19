@@ -201,14 +201,15 @@ export const toWireTicketStatus = (db: string):
     | "resolved"
     | "closed" => {
     switch (db) {
-        case "PENDING":
+        case "PENDING_CUSTOMER":
+        case "PENDING_STAFF":
             return "pending";
-        case "ON_HOLD":
-            return "on-hold";
         case "RESOLVED":
             return "resolved";
         case "CLOSED":
             return "closed";
+        case "OPEN":
+            return "open";
         default:
             return "open";
     }

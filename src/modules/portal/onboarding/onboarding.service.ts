@@ -12,8 +12,8 @@ import type {
     IOnboardingProfile,
     ITeamInvitation,
     ITeamInvitationInput,
-    UpdateOnboardingBody,
 } from "./onboarding.type";
+import type { UpdateOnboardingBody } from "./onboarding.validation";
 
 const HOURS_72_MS = 72 * 60 * 60 * 1000;
 
