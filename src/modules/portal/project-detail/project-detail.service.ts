@@ -389,11 +389,34 @@ const respondToApproval = async (
                 ? "CHANGES_REQUESTED"
                 : "CANCELLED";
 
-    await prisma.$transaction(async (tx) => {
-        await tx.approvalRequest.update({
-            where: { id: approval.id },
-            data: { status: newStatus, respondedAt: new Date() },
-        });
+    // Optimistic locking: callers send the `version` they observed; we only
+    // update the row when the version still matches. Bumping `version` on
+    // every write keeps concurrent UI sessions honest.
+    const observedVersion =
+        body.version ?? ((approval as unknown as { version?: number }).version ?? 0);
+
+    const updated = await prisma.$transaction(async (tx) => {
+        const updatedRow = await tx.approvalRequest.updateMany(
+            {
+                where: {
+                    id: approval.id,
+                    version: observedVersion,
+                    status: "PENDING",
+                },
+                data: {
+                    status: newStatus,
+                    respondedAt: new Date(),
+                    version: { increment: 1 },
+                },
+            } as unknown as Parameters<typeof tx.approvalRequest.updateMany>[0],
+        );
+        if (updatedRow.count === 0) {
+            throw new AppError(
+                status.CONFLICT,
+                "This approval has changed since you opened it. Refresh and try again.",
+                { code: "APPROVAL_STALE_VERSION" },
+            );
+        }
         await tx.approvalResponse.create({
             data: {
                 approvalId: approval.id,
@@ -411,11 +434,13 @@ const respondToApproval = async (
                 description: body.note ?? null,
             },
         });
+        return updatedRow;
     });
 
     return {
         id: approval.id,
         status: mapApprovalStatus(newStatus),
+        version: observedVersion + 1,
         respondedAt: new Date().toISOString(),
     };
 };
@@ -431,13 +456,16 @@ const submitChangeRequest = async (
         select: { name: true },
     });
 
+    const impactUpper = body.impact.toUpperCase(); // "LOW" | "MEDIUM" | "HIGH"
+
     const created = await prisma.changeRequest.create({
         data: {
             projectId: project.id,
             title: body.title,
             description: body.description,
+            impact: impactUpper,
             status: "PENDING",
-        },
+        } as unknown as Parameters<typeof prisma.changeRequest.create>[0]["data"],
     });
 
     await prisma.activityEvent.create({
@@ -446,7 +474,7 @@ const submitChangeRequest = async (
             actorId: userId,
             type: "PROJECT_UPDATED",
             title: `Change request: ${body.title}`,
-            description: null,
+            description: `Impact: ${impactUpper.toLowerCase()}`,
         },
     });
 
@@ -454,6 +482,7 @@ const submitChangeRequest = async (
         id: created.id,
         title: created.title,
         description: created.description,
+        impact: impactUpper.toLowerCase() as "low" | "medium" | "high",
         status: mapChangeStatus(created.status),
         submittedByName: user?.name ?? "Unknown",
         submittedAt: created.createdAt.toISOString(),

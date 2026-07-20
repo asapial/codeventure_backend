@@ -119,6 +119,10 @@ model ApprovalRequest {
   dueAt           DateTime?
   respondedAt     DateTime?
 
+  /// Monotonic version bumped on every state change. Used by the customer
+  /// portal to reject stale responses with HTTP 409.
+  version         Int      @default(0)
+
   responses       ApprovalResponse[]
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
@@ -154,6 +158,8 @@ model ChangeRequest {
   description     String
   estimatedCost   Decimal? @db.Decimal(12, 2)
   estimatedDays   Int?
+  /// Customer's self-reported impact: LOW | MEDIUM | HIGH.
+  impact          String?  @default("MEDIUM")
   status          ApprovalStatus @default(PENDING)
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt

@@ -30,6 +30,10 @@ export const approvalRespondSchema = z.object({
             message: "Decision must be a terminal state.",
         }),
         note: z.string().trim().max(2000).optional(),
+        // Optional optimistic-locking token. When omitted the service falls
+        // back to whatever version the row currently has, which preserves
+        // the legacy "last write wins" behaviour.
+        version: z.coerce.number().int().nonnegative().optional(),
     }),
 });
 
