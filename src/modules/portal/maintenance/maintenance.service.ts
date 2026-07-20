@@ -232,7 +232,7 @@ const submitRequest = async (
         data: {
             subscriptionId: subscription.id,
             requesterId: userId,
-            requestType: body.type.toUpperCase() as
+            requestType: body.requestType.toUpperCase() as
                 | "UPDATE"
                 | "BUG_FIX"
                 | "CONTENT_EDIT"
@@ -240,11 +240,11 @@ const submitRequest = async (
                 | "SECURITY"
                 | "BACKUP_RESTORE"
                 | "CONSULT",
-            priority: (body.severity.toUpperCase() as
+            priority: body.priority.toUpperCase() as
                 | "LOW"
                 | "NORMAL"
                 | "HIGH"
-                | "URGENT"),
+                | "URGENT",
             title: body.title,
             description: body.description,
             status: "OPEN",
