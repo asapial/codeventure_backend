@@ -53,8 +53,8 @@ export const fileUploadSchema = z.object({
     body: z.object({
         fileId: z.string().min(1),
         name: z.string().min(1).max(240),
-        mimeType: z.string().max(120).optional(),
-        size: z.number().int().nonnegative().optional(),
+        mimeType: z.string().max(120),
+        size: z.number().int().nonnegative(),
         url: z.string().url(),
     }),
 });

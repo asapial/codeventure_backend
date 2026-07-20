@@ -27,7 +27,7 @@ export interface ICustomerTicketIndex {
 export interface IHelpArticle {
     id: string;
     title: string;
-    excerpt: string;
+    excerpt: string | null;
     category: string;
     slug: string;
     updatedAt: string;

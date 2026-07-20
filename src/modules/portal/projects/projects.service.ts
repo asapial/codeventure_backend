@@ -4,6 +4,8 @@ import {
     toIso,
     toWireProjectStatus,
 } from "../portal.policy";
+import { ProjectStatus } from "../../../../prisma/generated/prisma/enums";
+import type { Prisma } from "../../../../prisma/generated/prisma/client";
 import type { ICustomerProjectIndex, ICustomerProjectSummary } from "./projects.type";
 import type { ProjectListQuery } from "./projects.validation";
 
@@ -75,13 +77,7 @@ const list = async (
         };
     }
 
-    const where: {
-        id: { in: string[] };
-        isDeleted: boolean;
-        AND?: Array<Record<string, unknown>>;
-        status?: { in: string[] };
-        milestones?: { some: Record<string, unknown> };
-    } = {
+    const where: Prisma.ProjectWhereInput = {
         id: { in: accessibleIds },
         isDeleted: false,
     };
@@ -100,7 +96,7 @@ const list = async (
     }
 
     if (query.phase) {
-        const map: Record<string, string[]> = {
+        const map: Record<string, ProjectStatus[]> = {
             discovery: ["DRAFT", "PLANNING"],
             design: ["PLANNING"],
             build: ["IN_PROGRESS"],

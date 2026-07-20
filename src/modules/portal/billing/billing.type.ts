@@ -15,8 +15,8 @@ export interface IInvoiceLine {
     id: string;
     description: string;
     quantity: number;
-    unitPrice: string;
-    total: string;
+    unitPrice: number;
+    total: number;
 }
 
 export interface IInvoiceSummary {
@@ -26,17 +26,26 @@ export interface IInvoiceSummary {
     issuedAt: string;
     dueAt: string;
     paidAt: string | null;
-    total: string;
+    total: number;
     currency: string;
     pdfUrl: string | null;
     projectName: string | null;
 }
 
 export interface IInvoiceDetail extends IInvoiceSummary {
-    subtotal: string;
-    tax: string;
+    subtotal: number;
+    tax: number;
     notes: string | null;
     lines: IInvoiceLine[];
+    payments: IPaymentInfo[];
+}
+
+export interface IPaymentInfo {
+    id: string;
+    amount: number;
+    status: string;
+    provider: string;
+    createdAt: string;
 }
 
 export interface IContractSummary {
@@ -60,15 +69,15 @@ export interface IPaymentMethod {
 
 export interface IUpcomingCharge {
     description: string;
-    amount: string;
+    amount: number;
     dueAt: string;
     invoiceId: string | null;
 }
 
 export interface ICustomerBilling {
     nextCharge: IUpcomingCharge | null;
-    outstandingTotal: string;
-    ytdPaid: string;
+    outstandingTotal: number;
+    ytdPaid: number;
     paymentMethods: IPaymentMethod[];
     invoices: IInvoiceSummary[];
     contracts: IContractSummary[];

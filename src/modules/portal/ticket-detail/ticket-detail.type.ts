@@ -36,7 +36,7 @@ export interface ITicketDetail {
     id: string;
     number: string;
     subject: string;
-    description: string;
+    description: string | null;
     status: TicketStatusWire;
     priority: TicketPriorityWire;
     projectName: string | null;

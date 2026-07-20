@@ -240,7 +240,7 @@ const getSettings = async (
     const sessionWires: ISessionInfo[] = sessions.map(buildSession);
     // Mark the first (newest) session as current since the schema doesn't
     // store an `isCurrent` flag and we sorted by recency.
-    if (sessionWires.length > 0) sessionWires[0].isCurrent = true;
+    if (sessionWires.length > 0) sessionWires[0]!.isCurrent = true;
 
     const exportWires: IDataExportJob[] = exports.map((e) => ({
         id: e.id,

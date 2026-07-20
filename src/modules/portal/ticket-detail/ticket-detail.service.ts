@@ -7,6 +7,7 @@ import {
     toWireTicketStatus,
 } from "../portal.policy";
 import type {
+    ITicketAttachment,
     ITicketDetail,
     ITicketMessage,
     MessageVisibilityWire,
@@ -20,7 +21,6 @@ const findTicketForUser = async (userId: string, ticketId: string) => {
             id: true,
             organizationId: true,
             requesterId: true,
-            project: { select: { name: true } },
         },
     });
     if (!ticket) {
@@ -104,9 +104,7 @@ const getDetail = async (
             senderRole: isStaff ? "agent" : "customer",
             senderAvatarUrl: m.author.image ?? null,
             createdAt: m.createdAt.toISOString(),
-            attachments: attachments
-                .filter((a) => true) // attachments are ticket-level in this schema
-                .slice(0, 0), // empty per-message — wire shape compatibility
+            attachments: [] as ITicketAttachment[],
         };
     });
 
@@ -117,7 +115,7 @@ const getDetail = async (
         description: null,
         status: toWireTicketStatus(fullTicket.status),
         priority: toWireTicketPriority(fullTicket.priority),
-        projectName: ticket.project?.name ?? null,
+        projectName: null,
         submittedByName: submitter?.name ?? "Unknown",
         submittedAt: fullTicket.createdAt.toISOString(),
         lastUpdatedAt: fullTicket.updatedAt.toISOString(),

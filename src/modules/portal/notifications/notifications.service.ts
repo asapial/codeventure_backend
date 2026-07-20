@@ -38,7 +38,7 @@ const list = async (
 ): Promise<INotificationIndex> => {
     const { page, perPage, unreadOnly } = query;
     const where = unreadOnly
-        ? { userId, readAt: null as const }
+        ? { userId, readAt: null }
         : { userId };
     const skip = (page - 1) * perPage;
     const [items, total, unreadCount] = await Promise.all([

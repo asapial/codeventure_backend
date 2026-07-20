@@ -6,7 +6,6 @@ import {
     decOrNull,
     resolvePrimaryOrg,
     toIso,
-    toWireTicketStatus,
 } from "../portal.policy";
 import type {
     CadenceWire,
@@ -32,16 +31,14 @@ const mapCadence = (raw: string): CadenceWire => {
     }
 };
 
-const mapSubStatus = (
-    raw: string,
-): IMaintenanceSubscription["status"] => {
+const mapSubStatus = (raw: string): IMaintenanceSubscription["status"] => {
     switch (raw) {
         case "PAUSED":
             return "paused";
         case "CANCELLED":
-            return "cancelled";
+            return "ended";
         case "EXPIRED":
-            return "expired";
+            return "ended";
         default:
             return "active";
     }
@@ -116,7 +113,7 @@ const getMaintenance = async (userId: string): Promise<ICustomerMaintenance> => 
               id: subscription.plan.id,
               name: subscription.plan.name,
               cadence: mapCadence(subscription.cadence),
-              priceMonthly: decOrNull(subscription.plan.priceMonthly),
+              monthlyPrice: decOrNull(subscription.plan.priceMonthly),
               currency: subscription.plan.currency,
               includedHours: dec(subscription.plan.includedHours),
               description: subscription.plan.description,
@@ -126,7 +123,7 @@ const getMaintenance = async (userId: string): Promise<ICustomerMaintenance> => 
     const subscriptionWire: IMaintenanceSubscription | null = subscription
         ? {
               id: subscription.id,
-              plan,
+              plan: plan as IMaintenancePlan,
               status: mapSubStatus(subscription.status),
               periodStart: subscription.periodStart.toISOString(),
               periodEnd: toIso(subscription.periodEnd),
@@ -168,6 +165,7 @@ const getMaintenance = async (userId: string): Promise<ICustomerMaintenance> => 
                 title: true,
                 description: true,
                 createdAt: true,
+                updatedAt: true,
             },
         }),
     ]);
@@ -187,11 +185,15 @@ const getMaintenance = async (userId: string): Promise<ICustomerMaintenance> => 
         id: r.id,
         type: mapRequestType(r.requestType),
         status: mapRequestStatus(r.status),
-        priority: r.priority.toLowerCase(),
-        ticketStatus: toWireTicketStatus(r.status),
+        priority: r.priority.toLowerCase() as
+            | "low"
+            | "normal"
+            | "high"
+            | "urgent",
         title: r.title,
         description: r.description,
-        submittedAt: r.createdAt.toISOString(),
+        createdAt: r.createdAt.toISOString(),
+        updatedAt: r.createdAt.toISOString(),
     }));
 
     return {
@@ -253,11 +255,15 @@ const submitRequest = async (
         id: created.id,
         type: mapRequestType(created.requestType),
         status: "open",
-        priority: created.priority.toLowerCase(),
-        ticketStatus: "open",
+        priority: created.priority.toLowerCase() as
+            | "low"
+            | "normal"
+            | "high"
+            | "urgent",
         title: created.title,
         description: created.description,
-        submittedAt: created.createdAt.toISOString(),
+        createdAt: created.createdAt.toISOString(),
+        updatedAt: created.createdAt.toISOString(),
     };
 };
 

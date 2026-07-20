@@ -2,6 +2,8 @@ import status from "http-status";
 import AppError from "../../../errorHelpers/AppError";
 import { prisma } from "../../../lib/prisma";
 import { resolvePrimaryOrg, toWireTicketPriority, toWireTicketStatus } from "../portal.policy";
+import { TicketPriority, TicketStatus } from "../../../../prisma/generated/prisma/enums";
+import type { Prisma } from "../../../../prisma/generated/prisma/client";
 import type {
     ICustomerTicketIndex,
     IHelpSearchResult,
@@ -28,12 +30,7 @@ const list = async (
         };
     }
 
-    const where: {
-        organizationId: string;
-        AND?: Array<Record<string, unknown>>;
-        status?: { in: string[] };
-        priority?: { in: string[] };
-    } = {
+    const where: Prisma.SupportTicketWhereInput = {
         organizationId: org.id,
     };
 
@@ -49,21 +46,21 @@ const list = async (
     }
 
     if (query.status) {
-        const map: Record<string, string[]> = {
-            open: ["OPEN"],
-            pending: ["PENDING_CUSTOMER", "PENDING_STAFF"],
-            resolved: ["RESOLVED"],
-            closed: ["CLOSED"],
+        const map: Record<string, TicketStatus[]> = {
+            open: [TicketStatus.OPEN],
+            pending: [TicketStatus.PENDING_CUSTOMER, TicketStatus.PENDING_STAFF],
+            resolved: [TicketStatus.RESOLVED],
+            closed: [TicketStatus.CLOSED],
         };
         where.status = { in: map[query.status] ?? [] };
     }
 
     if (query.priority) {
-        const map: Record<string, string[]> = {
-            low: ["LOW"],
-            normal: ["NORMAL"],
-            high: ["HIGH"],
-            urgent: ["URGENT"],
+        const map: Record<string, TicketPriority[]> = {
+            low: [TicketPriority.LOW],
+            normal: [TicketPriority.NORMAL],
+            high: [TicketPriority.HIGH],
+            urgent: [TicketPriority.URGENT],
         };
         where.priority = { in: map[query.priority] ?? [] };
     }
@@ -81,7 +78,6 @@ const list = async (
                 status: true,
                 priority: true,
                 updatedAt: true,
-                project: { select: { name: true } },
             },
         }),
         prisma.supportTicket.count({ where }),
@@ -95,7 +91,7 @@ const list = async (
         priority: toWireTicketPriority(t.priority),
         lastUpdatedAt: t.updatedAt.toISOString(),
         unreadByCustomer: false,
-        projectName: t.project?.name ?? null,
+        projectName: null,
     }));
 
     const statusSet = new Set(tickets.map((t) => t.status));

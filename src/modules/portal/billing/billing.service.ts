@@ -22,18 +22,16 @@ const mapContractStatus = (raw: string): ContractStatusWire => {
     switch (raw) {
         case "SIGNED":
             return "signed";
-        case "APPROVED":
-            return "active";
-        case "PENDING":
-            return "pending";
-        case "CANCELLED":
-            return "cancelled";
         case "EXPIRED":
             return "expired";
+        case "CANCELLED":
+        case "VOIDED":
+            return "expired";
+        case "PENDING":
+        case "APPROVED":
         case "CHANGES_REQUESTED":
-            return "changes-requested";
         default:
-            return "pending";
+            return "active";
     }
 };
 
@@ -42,8 +40,8 @@ const getBilling = async (userId: string): Promise<ICustomerBilling> => {
     if (!org) {
         return {
             nextCharge: null,
-            outstandingTotal: "0.00",
-            ytdPaid: "0.00",
+            outstandingTotal: 0,
+            ytdPaid: 0,
             paymentMethods: [],
             invoices: [],
             contracts: [],
@@ -128,8 +126,8 @@ const getBilling = async (userId: string): Promise<ICustomerBilling> => {
 
     return {
         nextCharge,
-        outstandingTotal: outstanding.toFixed(2),
-        ytdPaid: ytdPaid.toFixed(2),
+        outstandingTotal: outstanding,
+        ytdPaid: ytdPaid,
         paymentMethods: paymentMethodWires,
         invoices: invoiceWires,
         contracts: contractWires,
