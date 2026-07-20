@@ -62,6 +62,37 @@ export interface ISupportSnapshot {
     urgent: number;
 }
 
+/**
+ * Actionable card surfaced at the top of the customer dashboard. Frontend
+ * renders up to 5 of these in the "Priority actions" rail. The list is
+ * pre-sorted server-side: critical → warning → info, then by dueAt ASC.
+ */
+export interface IPriorityAction {
+    id: string;
+    kind:
+        | "overdue-invoice"
+        | "approval-pending"
+        | "support-reply"
+        | "change-request-open";
+    title: string;
+    description: string;
+    cta: { label: string; href: string };
+    dueAt: string | null;
+    severity: "info" | "warning" | "critical";
+}
+
+/**
+ * Brief summary of the customer's primary organisation. Mirrors the
+ * `organizationSummary` block on the frontend dashboard contract.
+ */
+export interface IOrganizationSummary {
+    id: string;
+    name: string;
+    planName: string | null;
+    memberCount: number;
+    primaryDomain: string | null;
+}
+
 /** The full dashboard aggregate. */
 export interface ICustomerDashboard {
     projectsActive: number;
@@ -73,5 +104,13 @@ export interface ICustomerDashboard {
     support: ISupportSnapshot;
     nextMilestone: INextMilestone | null;
     recentActivity: IDashboardActivity[];
+    /** Pre-sorted actionable items for the priority-actions rail. */
+    priorityActions: IPriorityAction[];
+    /** Summary of the user's primary organisation. */
+    organizationSummary: IOrganizationSummary | null;
+    /** Top-level mirror of `billing.outstanding` for legacy wire consumers. */
+    outstandingBalance: number;
+    /** Top-level mirror of `support.open` for legacy wire consumers. */
+    openTicketCount: number;
     generatedAt: string;
 }

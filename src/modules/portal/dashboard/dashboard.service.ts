@@ -16,7 +16,12 @@ import type {
     ISupportSnapshot,
     IDashboardBilling,
     IDashboardActivity,
+    IOrganizationSummary,
+    IPriorityAction,
 } from "./dashboard.type";
+
+/** Cap on the priority-actions rail. Frontend renders up to 5. */
+const PRIORITY_ACTIONS_CAP = 5;
 
 /**
  * Customer dashboard aggregate (C1).
@@ -65,6 +70,8 @@ const getDashboard = async (userId: string): Promise<ICustomerDashboard> => {
         projects,
         nextMilestoneRow,
         activityRows,
+        overdueInvoices,
+        openChangeRequests,
     ] = await Promise.all([
         prisma.project.count({
             where: {
@@ -188,6 +195,31 @@ const getDashboard = async (userId: string): Promise<ICustomerDashboard> => {
                 project: { select: { slug: true } },
             },
         }),
+        // Overdue invoices for the priority-actions rail. Group by currency
+        // server-side so the UI doesn't have to re-aggregate.
+        prisma.invoice.findMany({
+            where: {
+                organizationId: orgId,
+                status: { in: ["SENT", "OVERDUE"] },
+                dueAt: { lt: new Date() },
+            },
+            orderBy: { dueAt: "asc" },
+            select: {
+                id: true,
+                invoiceNumber: true,
+                currency: true,
+                total: true,
+                balance: true,
+                dueAt: true,
+            },
+        }),
+        // Open change requests across the user's projects.
+        prisma.changeRequest.count({
+            where: {
+                projectId: { in: memberProjectIds },
+                status: "PENDING",
+            },
+        }),
     ]);
 
     // ─── Build typed snapshots ───────────────────────────────────────────
@@ -268,6 +300,18 @@ const getDashboard = async (userId: string): Promise<ICustomerDashboard> => {
         href: e.project?.slug ? `/dashboard/projects/${e.project.slug}` : null,
     }));
 
+    // ─── Priority actions rail (C1) ───────────────────────────────────────
+    const priorityActions = buildPriorityActions({
+        overdueInvoices,
+        approvalsPendingCount,
+        awaitingCustomerTickets,
+        openChangeRequests,
+        memberProjectIds,
+    });
+
+    // ─── Organization summary (C1) ────────────────────────────────────────
+    const organizationSummary = await buildOrganizationSummary(orgId);
+
     return {
         projectsActive: activeProjectsCount,
         projectsTotal: totalProjectsCount,
@@ -278,6 +322,10 @@ const getDashboard = async (userId: string): Promise<ICustomerDashboard> => {
         support,
         nextMilestone,
         recentActivity,
+        priorityActions,
+        organizationSummary,
+        outstandingBalance: billing?.outstanding ?? 0,
+        openTicketCount: openTickets,
         generatedAt: new Date().toISOString(),
     };
 };
@@ -335,9 +383,149 @@ const emptyDashboard = (): ICustomerDashboard => ({
     support: { open: 0, awaitingCustomer: 0, urgent: 0 },
     nextMilestone: null,
     recentActivity: [],
+    priorityActions: [],
+    organizationSummary: null,
+    outstandingBalance: 0,
+    openTicketCount: 0,
     generatedAt: new Date().toISOString(),
 });
 
+/**
+ * Build the priority-actions rail. The rail is the only "above the fold"
+ * actionable UI on the customer dashboard. Sort: critical > warning > info,
+ * then by dueAt ascending so the most urgent items sit on top.
+ *
+ * Cap at {@link PRIORITY_ACTIONS_CAP} entries.
+ */
+const buildPriorityActions = (input: {
+    overdueInvoices: Array<{
+        id: string;
+        invoiceNumber: string;
+        currency: string;
+        total: unknown;
+        balance: unknown;
+        dueAt: Date;
+    }>;
+    approvalsPendingCount: number;
+    awaitingCustomerTickets: number;
+    openChangeRequests: number;
+    memberProjectIds: string[];
+}): IPriorityAction[] => {
+    const actions: IPriorityAction[] = [];
+
+    // 1. Overdue invoices (critical, has dueAt).
+    for (const inv of input.overdueInvoices) {
+        actions.push({
+            id: `invoice:${inv.id}`,
+            kind: "overdue-invoice",
+            title: `Invoice ${inv.invoiceNumber} is overdue`,
+            description: `Balance ${inv.currency} ${dec(inv.balance).toFixed(2)} was due ${toIso(inv.dueAt)}.`,
+            cta: { label: "Pay invoice", href: `/dashboard/billing/invoices/${inv.id}` },
+            dueAt: toIso(inv.dueAt),
+            severity: "critical",
+        });
+    }
+
+    // 2. Pending approvals (warning, no dueAt).
+    if (input.approvalsPendingCount > 0) {
+        actions.push({
+            id: `approvals:${input.memberProjectIds.join(",")}`,
+            kind: "approval-pending",
+            title: `${input.approvalsPendingCount} approval${input.approvalsPendingCount === 1 ? "" : "s"} waiting on you`,
+            description:
+                "Designs, copy, or scope changes need your decision before work continues.",
+            cta: {
+                label: "Review approvals",
+                href: "/dashboard?focus=approvals",
+            },
+            dueAt: null,
+            severity: "warning",
+        });
+    }
+
+    // 3. Support tickets awaiting the customer (info).
+    if (input.awaitingCustomerTickets > 0) {
+        actions.push({
+            id: `support:awaiting`,
+            kind: "support-reply",
+            title: `${input.awaitingCustomerTickets} support thread${input.awaitingCustomerTickets === 1 ? "" : "s"} needs a reply`,
+            description: "Our team has responded — your turn.",
+            cta: {
+                label: "Reply",
+                href: "/dashboard/support?filter=awaiting",
+            },
+            dueAt: null,
+            severity: "info",
+        });
+    }
+
+    // 4. Open change requests (info).
+    if (input.openChangeRequests > 0) {
+        actions.push({
+            id: `change-requests:${input.memberProjectIds.join(",")}`,
+            kind: "change-request-open",
+            title: `${input.openChangeRequests} change request${input.openChangeRequests === 1 ? "" : "s"} open`,
+            description:
+                "Submitted changes waiting for a cost / timeline estimate.",
+            cta: {
+                label: "View change requests",
+                href: "/dashboard?focus=changes",
+            },
+            dueAt: null,
+            severity: "info",
+        });
+    }
+
+    const severityWeight: Record<IPriorityAction["severity"], number> = {
+        critical: 0,
+        warning: 1,
+        info: 2,
+    };
+
+    return actions
+        .sort((a, b) => {
+            const s = severityWeight[a.severity] - severityWeight[b.severity];
+            if (s !== 0) return s;
+            const aDue = a.dueAt ? new Date(a.dueAt).getTime() : Number.POSITIVE_INFINITY;
+            const bDue = b.dueAt ? new Date(b.dueAt).getTime() : Number.POSITIVE_INFINITY;
+            return aDue - bDue;
+        })
+        .slice(0, PRIORITY_ACTIONS_CAP);
+};
+
+/**
+ * Resolve the primary org summary that the dashboard header card renders.
+ * We keep the query separate so it can be cached independently.
+ */
+const buildOrganizationSummary = async (
+    orgId: string,
+): Promise<IOrganizationSummary | null> => {
+    const org = await prisma.organization.findUnique({
+        where: { id: orgId },
+        select: {
+            id: true,
+            name: true,
+            slug: true,
+            members: { select: { id: true } },
+            billingProfile: { select: { paymentProvider: true } },
+        },
+    });
+    if (!org) return null;
+
+    // Best-effort plan name: the customer-portal BillingProfile doesn't store
+    // a `planName` field directly, so we surface the payment provider as a
+    // proxy until a real plan relationship exists.
+    const planName = org.billingProfile?.paymentProvider ?? null;
+
+    return {
+        id: org.id,
+        name: org.name,
+        planName,
+        memberCount: org.members.length,
+        primaryDomain: null,
+    };
+};
+
 export const dashboardService = { getDashboard };
 // Exported for the test harness.
-export { emptyDashboard, deriveHealth, classifyActivity };
+export { emptyDashboard, deriveHealth, classifyActivity, buildPriorityActions, buildOrganizationSummary };
