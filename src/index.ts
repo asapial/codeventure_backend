@@ -7,6 +7,7 @@ import { authRegisterRouter } from "./modules/auth-register/auth-register.route.
 import { authVerifyEmailRouter } from "./modules/auth-verify-email/auth-verify-email.route.js";
 import { publicLegalRouter } from "./modules/public-legal/public-legal.route.js";
 import { portalRouter } from "./modules/portal/portal.route.js";
+import { supportRouter } from "./modules/support/support.route.js";
 
 const router = Router();
 
@@ -22,8 +23,11 @@ router.use("/auth/register", authRegisterRouter);
 router.use("/auth/verify-email", authVerifyEmailRouter);
 router.use("/account", accountRouter);
 router.use("/projects", projectsRouter);
-// Customer portal (C1â€"C10) â€” mounts every authenticated workspace endpoint.
+// Customer portal (C1–C10) — mounts every authenticated workspace endpoint.
 router.use("/customer", portalRouter);
+// Staff support console (S1–S7) — ADMIN/TEACHER-only, mounted separately
+// from the customer portal because the permission surface is different.
+router.use("/support", supportRouter);
 // Public legal document endpoint â€" intentionally unauthenticated.
 router.use("/public/legal", publicLegalRouter);
 
