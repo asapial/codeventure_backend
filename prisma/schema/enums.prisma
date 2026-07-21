@@ -230,3 +230,95 @@ enum FileAssetStatus {
   INFECTED
   ARCHIVED
 }
+
+// ----------------------------------------------------------------------------
+// Support module enums (S1–S7)
+//
+// Tagged here so they sit alongside the customer-portal enums but are kept
+// additive — the existing TicketStatus / TicketPriority / TicketMessageVisibility
+// enums above are NOT renamed because tickets.service / ticket-detail.service
+// already wire against them.
+// ----------------------------------------------------------------------------
+
+/// Reason code captured when a ticket moves to RESOLVED or CLOSED.
+/// Drives CSAT surveys and macro-classification reports (S7).
+enum ResolutionCode {
+  FIXED
+  WORKAROUND
+  DUPLICATE
+  WONT_FIX
+  CUSTOMER_RESPONDED
+  ESCALATED_TO_ENGINEERING
+  BILLING_ADJUSTMENT
+  OTHER
+}
+
+/// Sentiment inferred from the customer's last visible message (S1 dashboard
+/// + S3 workspace sentiment strip). NULL means "unknown / neutral".
+enum CustomerSentiment {
+  POSITIVE
+  NEUTRAL
+  NEGATIVE
+  AT_RISK
+}
+
+/// Lifecycle state of an organization's support relationship (S5 profile).
+enum AccountStatus {
+  ACTIVE
+  AT_RISK
+  CHURNING
+  DORMANT
+  CLOSED
+}
+
+/// Visibility tier for internal notes — INTERNAL_TEAM is staff-only,
+/// LEADERSHIP is restricted to ADMIN+OWNER, PRIVATE is the note author only.
+enum NoteVisibility {
+  INTERNAL_TEAM
+  LEADERSHIP
+  PRIVATE
+}
+
+/// Severity bucket that drives SLA timers + escalation radar ordering.
+enum SlaSeverity {
+  LOW
+  NORMAL
+  HIGH
+  CRITICAL
+}
+
+/// Audit trail event category for the support console (S7 reports).
+enum AuditEventType {
+  TICKET_CREATED
+  TICKET_ASSIGNED
+  TICKET_REASSIGNED
+  TICKET_ESCALATED
+  TICKET_RESOLVED
+  TICKET_CLOSED
+  TICKET_REOPENED
+  MESSAGE_POSTED
+  INTERNAL_NOTE_ADDED
+  PRIORITY_CHANGED
+  STATUS_CHANGED
+  MACRO_APPLIED
+  ARTICLE_PUBLISHED
+  ARTICLE_REVISED
+  CUSTOMER_FLAGGED
+}
+
+/// Async report / nightly-rollup job lifecycle.
+enum JobRunStatus {
+  QUEUED
+  RUNNING
+  SUCCEEDED
+  FAILED
+  PARTIAL
+}
+
+/// Lifecycle of a knowledge-base article.
+enum HelpArticleStatus {
+  DRAFT
+  IN_REVIEW
+  PUBLISHED
+  ARCHIVED
+}

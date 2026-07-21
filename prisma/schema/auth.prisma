@@ -59,6 +59,21 @@ model User {
   notificationPreference  NotificationPreference?
   dataExportJobs          DataExportJob[]        @relation("dataExportJobs")
 
+  // Support module relations (S1–S7)
+  helpArticlesAuthored    HelpArticle[]          @relation("helpArticleAuthor")
+  supportAssignments      SupportAssignment[]     @relation("supportAssignments")
+  supportAssignmentsMade  SupportAssignment[]     @relation("supportAssigners")
+  internalNotesAuthored   InternalNote[]         @relation("internalNoteAuthor")
+  escalationsTriggered    EscalationEvent[]      @relation("escalationTriggeredBy")
+  cannedResponsesAuthored CannedResponse[]       @relation("cannedResponseAuthor")
+  supportProfilesTouched  OrganizationSupportProfile[] @relation("profileLastTouchedBy")
+  customerActivityEvents  CustomerActivityLog[]  @relation("activityActor")
+  contentRevisionsAuthored ContentRevision[]     @relation("contentRevisionAuthor")
+  knowledgeFeedback       KnowledgeFeedback[]    @relation("knowledgeFeedbackUser")
+  articleUploads          ArticleAttachment[]    @relation("articleAttachmentUploader")
+  auditEventsAuthored     AuditLog[]             @relation("auditActor")
+  supportJobsRequested    SupportJobRun[]        @relation("supportJobRunRequester")
+
   @@unique([email])
   @@map("user")
 }

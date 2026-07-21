@@ -3,12 +3,21 @@
 import "dotenv/config";
 import { defineConfig } from "prisma/config";
 
+const databaseUrl = process.env["DATABASE_URL"];
+// Separate shadow DB so `migrate dev` doesn't try to spin up a fresh
+// (empty) DB and choke on the existing migration chain that already
+// references the production schema's tables.
+const shadowDatabaseUrl =
+  process.env["SHADOW_DATABASE_URL"] ??
+  (databaseUrl ? `${databaseUrl.split("?")[0]}?schema=shadow_prisma` : undefined);
+
 export default defineConfig({
   schema: "prisma/schema",
   migrations: {
     path: "prisma/migrations",
   },
   datasource: {
-    url: process.env["DATABASE_URL"],
+    url: databaseUrl,
+    ...(shadowDatabaseUrl ? { shadowDatabaseUrl } : {}),
   },
 });

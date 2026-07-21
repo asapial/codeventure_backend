@@ -47,6 +47,13 @@ model Organization {
   invoices               Invoice[]
   supportTickets         SupportTicket[]
 
+  // Support module relations (S1–S7)
+  slaPolicies            SlaPolicy[]
+  supportProfile         OrganizationSupportProfile?
+  customerActivities     CustomerActivityLog[]
+  supportMetrics         SupportMetricDaily[]
+  auditEvents            AuditLog[]
+
   @@map("organization")
 }
 
