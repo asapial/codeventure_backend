@@ -78,6 +78,19 @@ export const ModelName = {
   LegalDocument: 'LegalDocument',
   LegalDocumentVersion: 'LegalDocumentVersion',
   UserConsent: 'UserConsent',
+  SupportAssignment: 'SupportAssignment',
+  InternalNote: 'InternalNote',
+  EscalationEvent: 'EscalationEvent',
+  SlaPolicy: 'SlaPolicy',
+  CannedResponse: 'CannedResponse',
+  OrganizationSupportProfile: 'OrganizationSupportProfile',
+  CustomerActivityLog: 'CustomerActivityLog',
+  ContentRevision: 'ContentRevision',
+  KnowledgeFeedback: 'KnowledgeFeedback',
+  ArticleAttachment: 'ArticleAttachment',
+  SupportMetricDaily: 'SupportMetricDaily',
+  AuditLog: 'AuditLog',
+  SupportJobRun: 'SupportJobRun',
   OnboardingProfile: 'OnboardingProfile',
   BrandProfile: 'BrandProfile',
   FileAsset: 'FileAsset',
@@ -519,6 +532,211 @@ export const UserConsentScalarFieldEnum = {
 export type UserConsentScalarFieldEnum = (typeof UserConsentScalarFieldEnum)[keyof typeof UserConsentScalarFieldEnum]
 
 
+export const SupportAssignmentScalarFieldEnum = {
+  id: 'id',
+  ticketId: 'ticketId',
+  agentId: 'agentId',
+  assignedById: 'assignedById',
+  reason: 'reason',
+  isCurrent: 'isCurrent',
+  createdAt: 'createdAt'
+} as const
+
+export type SupportAssignmentScalarFieldEnum = (typeof SupportAssignmentScalarFieldEnum)[keyof typeof SupportAssignmentScalarFieldEnum]
+
+
+export const InternalNoteScalarFieldEnum = {
+  id: 'id',
+  ticketId: 'ticketId',
+  authorId: 'authorId',
+  body: 'body',
+  visibility: 'visibility',
+  pinned: 'pinned',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type InternalNoteScalarFieldEnum = (typeof InternalNoteScalarFieldEnum)[keyof typeof InternalNoteScalarFieldEnum]
+
+
+export const EscalationEventScalarFieldEnum = {
+  id: 'id',
+  ticketId: 'ticketId',
+  triggeredById: 'triggeredById',
+  fromPriority: 'fromPriority',
+  toPriority: 'toPriority',
+  reason: 'reason',
+  severity: 'severity',
+  etaMinutes: 'etaMinutes',
+  createdAt: 'createdAt'
+} as const
+
+export type EscalationEventScalarFieldEnum = (typeof EscalationEventScalarFieldEnum)[keyof typeof EscalationEventScalarFieldEnum]
+
+
+export const SlaPolicyScalarFieldEnum = {
+  id: 'id',
+  organizationId: 'organizationId',
+  name: 'name',
+  severity: 'severity',
+  firstResponseMinutes: 'firstResponseMinutes',
+  resolutionMinutes: 'resolutionMinutes',
+  businessHoursTz: 'businessHoursTz',
+  isDefault: 'isDefault',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type SlaPolicyScalarFieldEnum = (typeof SlaPolicyScalarFieldEnum)[keyof typeof SlaPolicyScalarFieldEnum]
+
+
+export const CannedResponseScalarFieldEnum = {
+  id: 'id',
+  authorId: 'authorId',
+  title: 'title',
+  shortcut: 'shortcut',
+  body: 'body',
+  category: 'category',
+  usageCount: 'usageCount',
+  archived: 'archived',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CannedResponseScalarFieldEnum = (typeof CannedResponseScalarFieldEnum)[keyof typeof CannedResponseScalarFieldEnum]
+
+
+export const OrganizationSupportProfileScalarFieldEnum = {
+  id: 'id',
+  organizationId: 'organizationId',
+  healthScore: 'healthScore',
+  status: 'status',
+  avgFirstResponseMin: 'avgFirstResponseMin',
+  avgResolutionMin: 'avgResolutionMin',
+  csatScore: 'csatScore',
+  churnRisk: 'churnRisk',
+  openTicketCount: 'openTicketCount',
+  awaitingCustomerCount: 'awaitingCustomerCount',
+  overdueInvoiceCount: 'overdueInvoiceCount',
+  lastTouchedById: 'lastTouchedById',
+  lastTouchedAt: 'lastTouchedAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type OrganizationSupportProfileScalarFieldEnum = (typeof OrganizationSupportProfileScalarFieldEnum)[keyof typeof OrganizationSupportProfileScalarFieldEnum]
+
+
+export const CustomerActivityLogScalarFieldEnum = {
+  id: 'id',
+  organizationId: 'organizationId',
+  actorId: 'actorId',
+  kind: 'kind',
+  title: 'title',
+  description: 'description',
+  href: 'href',
+  metadata: 'metadata',
+  createdAt: 'createdAt'
+} as const
+
+export type CustomerActivityLogScalarFieldEnum = (typeof CustomerActivityLogScalarFieldEnum)[keyof typeof CustomerActivityLogScalarFieldEnum]
+
+
+export const ContentRevisionScalarFieldEnum = {
+  id: 'id',
+  articleId: 'articleId',
+  authorId: 'authorId',
+  version: 'version',
+  title: 'title',
+  excerpt: 'excerpt',
+  body: 'body',
+  changeNote: 'changeNote',
+  createdAt: 'createdAt'
+} as const
+
+export type ContentRevisionScalarFieldEnum = (typeof ContentRevisionScalarFieldEnum)[keyof typeof ContentRevisionScalarFieldEnum]
+
+
+export const KnowledgeFeedbackScalarFieldEnum = {
+  id: 'id',
+  articleId: 'articleId',
+  userId: 'userId',
+  wasHelpful: 'wasHelpful',
+  comment: 'comment',
+  createdAt: 'createdAt'
+} as const
+
+export type KnowledgeFeedbackScalarFieldEnum = (typeof KnowledgeFeedbackScalarFieldEnum)[keyof typeof KnowledgeFeedbackScalarFieldEnum]
+
+
+export const ArticleAttachmentScalarFieldEnum = {
+  id: 'id',
+  articleId: 'articleId',
+  uploaderId: 'uploaderId',
+  fileName: 'fileName',
+  mimeType: 'mimeType',
+  sizeBytes: 'sizeBytes',
+  storageKey: 'storageKey',
+  altText: 'altText',
+  createdAt: 'createdAt'
+} as const
+
+export type ArticleAttachmentScalarFieldEnum = (typeof ArticleAttachmentScalarFieldEnum)[keyof typeof ArticleAttachmentScalarFieldEnum]
+
+
+export const SupportMetricDailyScalarFieldEnum = {
+  id: 'id',
+  organizationId: 'organizationId',
+  day: 'day',
+  ticketsOpened: 'ticketsOpened',
+  ticketsResolved: 'ticketsResolved',
+  ticketsEscalated: 'ticketsEscalated',
+  ticketsReopened: 'ticketsReopened',
+  avgFirstResponseMin: 'avgFirstResponseMin',
+  avgResolutionMin: 'avgResolutionMin',
+  backlogOpen: 'backlogOpen',
+  csatResponses: 'csatResponses',
+  csatAverage: 'csatAverage',
+  createdAt: 'createdAt'
+} as const
+
+export type SupportMetricDailyScalarFieldEnum = (typeof SupportMetricDailyScalarFieldEnum)[keyof typeof SupportMetricDailyScalarFieldEnum]
+
+
+export const AuditLogScalarFieldEnum = {
+  id: 'id',
+  actorId: 'actorId',
+  kind: 'kind',
+  targetRef: 'targetRef',
+  ticketId: 'ticketId',
+  organizationId: 'organizationId',
+  beforeJson: 'beforeJson',
+  afterJson: 'afterJson',
+  metadata: 'metadata',
+  customerVisible: 'customerVisible',
+  createdAt: 'createdAt'
+} as const
+
+export type AuditLogScalarFieldEnum = (typeof AuditLogScalarFieldEnum)[keyof typeof AuditLogScalarFieldEnum]
+
+
+export const SupportJobRunScalarFieldEnum = {
+  id: 'id',
+  kind: 'kind',
+  status: 'status',
+  requestedById: 'requestedById',
+  parameters: 'parameters',
+  resultJson: 'resultJson',
+  errorMessage: 'errorMessage',
+  startedAt: 'startedAt',
+  finishedAt: 'finishedAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type SupportJobRunScalarFieldEnum = (typeof SupportJobRunScalarFieldEnum)[keyof typeof SupportJobRunScalarFieldEnum]
+
+
 export const OnboardingProfileScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
@@ -601,6 +819,7 @@ export const ApprovalRequestScalarFieldEnum = {
   status: 'status',
   dueAt: 'dueAt',
   respondedAt: 'respondedAt',
+  version: 'version',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -627,6 +846,7 @@ export const ChangeRequestScalarFieldEnum = {
   description: 'description',
   estimatedCost: 'estimatedCost',
   estimatedDays: 'estimatedDays',
+  impact: 'impact',
   status: 'status',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -889,7 +1109,12 @@ export const HelpArticleScalarFieldEnum = {
   body: 'body',
   category: 'category',
   searchTokens: 'searchTokens',
+  status: 'status',
   publishedAt: 'publishedAt',
+  authorId: 'authorId',
+  viewCount: 'viewCount',
+  helpfulYes: 'helpfulYes',
+  helpfulNo: 'helpfulNo',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const

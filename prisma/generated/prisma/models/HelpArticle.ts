@@ -20,8 +20,22 @@ export type HelpArticleModel = runtime.Types.Result.DefaultSelection<Prisma.$Hel
 
 export type AggregateHelpArticle = {
   _count: HelpArticleCountAggregateOutputType | null
+  _avg: HelpArticleAvgAggregateOutputType | null
+  _sum: HelpArticleSumAggregateOutputType | null
   _min: HelpArticleMinAggregateOutputType | null
   _max: HelpArticleMaxAggregateOutputType | null
+}
+
+export type HelpArticleAvgAggregateOutputType = {
+  viewCount: number | null
+  helpfulYes: number | null
+  helpfulNo: number | null
+}
+
+export type HelpArticleSumAggregateOutputType = {
+  viewCount: number | null
+  helpfulYes: number | null
+  helpfulNo: number | null
 }
 
 export type HelpArticleMinAggregateOutputType = {
@@ -32,7 +46,12 @@ export type HelpArticleMinAggregateOutputType = {
   body: string | null
   category: string | null
   searchTokens: string | null
+  status: $Enums.HelpArticleStatus | null
   publishedAt: Date | null
+  authorId: string | null
+  viewCount: number | null
+  helpfulYes: number | null
+  helpfulNo: number | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -45,7 +64,12 @@ export type HelpArticleMaxAggregateOutputType = {
   body: string | null
   category: string | null
   searchTokens: string | null
+  status: $Enums.HelpArticleStatus | null
   publishedAt: Date | null
+  authorId: string | null
+  viewCount: number | null
+  helpfulYes: number | null
+  helpfulNo: number | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -58,12 +82,29 @@ export type HelpArticleCountAggregateOutputType = {
   body: number
   category: number
   searchTokens: number
+  status: number
   publishedAt: number
+  authorId: number
+  viewCount: number
+  helpfulYes: number
+  helpfulNo: number
   createdAt: number
   updatedAt: number
   _all: number
 }
 
+
+export type HelpArticleAvgAggregateInputType = {
+  viewCount?: true
+  helpfulYes?: true
+  helpfulNo?: true
+}
+
+export type HelpArticleSumAggregateInputType = {
+  viewCount?: true
+  helpfulYes?: true
+  helpfulNo?: true
+}
 
 export type HelpArticleMinAggregateInputType = {
   id?: true
@@ -73,7 +114,12 @@ export type HelpArticleMinAggregateInputType = {
   body?: true
   category?: true
   searchTokens?: true
+  status?: true
   publishedAt?: true
+  authorId?: true
+  viewCount?: true
+  helpfulYes?: true
+  helpfulNo?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -86,7 +132,12 @@ export type HelpArticleMaxAggregateInputType = {
   body?: true
   category?: true
   searchTokens?: true
+  status?: true
   publishedAt?: true
+  authorId?: true
+  viewCount?: true
+  helpfulYes?: true
+  helpfulNo?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -99,7 +150,12 @@ export type HelpArticleCountAggregateInputType = {
   body?: true
   category?: true
   searchTokens?: true
+  status?: true
   publishedAt?: true
+  authorId?: true
+  viewCount?: true
+  helpfulYes?: true
+  helpfulNo?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -143,6 +199,18 @@ export type HelpArticleAggregateArgs<ExtArgs extends runtime.Types.Extensions.In
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
    * 
+   * Select which fields to average
+  **/
+  _avg?: HelpArticleAvgAggregateInputType
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+   * 
+   * Select which fields to sum
+  **/
+  _sum?: HelpArticleSumAggregateInputType
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+   * 
    * Select which fields to find the minimum value
   **/
   _min?: HelpArticleMinAggregateInputType
@@ -173,6 +241,8 @@ export type HelpArticleGroupByArgs<ExtArgs extends runtime.Types.Extensions.Inte
   take?: number
   skip?: number
   _count?: HelpArticleCountAggregateInputType | true
+  _avg?: HelpArticleAvgAggregateInputType
+  _sum?: HelpArticleSumAggregateInputType
   _min?: HelpArticleMinAggregateInputType
   _max?: HelpArticleMaxAggregateInputType
 }
@@ -185,10 +255,17 @@ export type HelpArticleGroupByOutputType = {
   body: string
   category: string
   searchTokens: string
+  status: $Enums.HelpArticleStatus
   publishedAt: Date | null
+  authorId: string | null
+  viewCount: number
+  helpfulYes: number
+  helpfulNo: number
   createdAt: Date
   updatedAt: Date
   _count: HelpArticleCountAggregateOutputType | null
+  _avg: HelpArticleAvgAggregateOutputType | null
+  _sum: HelpArticleSumAggregateOutputType | null
   _min: HelpArticleMinAggregateOutputType | null
   _max: HelpArticleMaxAggregateOutputType | null
 }
@@ -219,9 +296,18 @@ export type HelpArticleWhereInput = {
   body?: Prisma.StringFilter<"HelpArticle"> | string
   category?: Prisma.StringFilter<"HelpArticle"> | string
   searchTokens?: Prisma.StringFilter<"HelpArticle"> | string
+  status?: Prisma.EnumHelpArticleStatusFilter<"HelpArticle"> | $Enums.HelpArticleStatus
   publishedAt?: Prisma.DateTimeNullableFilter<"HelpArticle"> | Date | string | null
+  authorId?: Prisma.StringNullableFilter<"HelpArticle"> | string | null
+  viewCount?: Prisma.IntFilter<"HelpArticle"> | number
+  helpfulYes?: Prisma.IntFilter<"HelpArticle"> | number
+  helpfulNo?: Prisma.IntFilter<"HelpArticle"> | number
   createdAt?: Prisma.DateTimeFilter<"HelpArticle"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"HelpArticle"> | Date | string
+  author?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
+  revisions?: Prisma.ContentRevisionListRelationFilter
+  attachments?: Prisma.ArticleAttachmentListRelationFilter
+  feedback?: Prisma.KnowledgeFeedbackListRelationFilter
 }
 
 export type HelpArticleOrderByWithRelationInput = {
@@ -232,9 +318,18 @@ export type HelpArticleOrderByWithRelationInput = {
   body?: Prisma.SortOrder
   category?: Prisma.SortOrder
   searchTokens?: Prisma.SortOrder
+  status?: Prisma.SortOrder
   publishedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  authorId?: Prisma.SortOrderInput | Prisma.SortOrder
+  viewCount?: Prisma.SortOrder
+  helpfulYes?: Prisma.SortOrder
+  helpfulNo?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  author?: Prisma.UserOrderByWithRelationInput
+  revisions?: Prisma.ContentRevisionOrderByRelationAggregateInput
+  attachments?: Prisma.ArticleAttachmentOrderByRelationAggregateInput
+  feedback?: Prisma.KnowledgeFeedbackOrderByRelationAggregateInput
 }
 
 export type HelpArticleWhereUniqueInput = Prisma.AtLeast<{
@@ -248,9 +343,18 @@ export type HelpArticleWhereUniqueInput = Prisma.AtLeast<{
   body?: Prisma.StringFilter<"HelpArticle"> | string
   category?: Prisma.StringFilter<"HelpArticle"> | string
   searchTokens?: Prisma.StringFilter<"HelpArticle"> | string
+  status?: Prisma.EnumHelpArticleStatusFilter<"HelpArticle"> | $Enums.HelpArticleStatus
   publishedAt?: Prisma.DateTimeNullableFilter<"HelpArticle"> | Date | string | null
+  authorId?: Prisma.StringNullableFilter<"HelpArticle"> | string | null
+  viewCount?: Prisma.IntFilter<"HelpArticle"> | number
+  helpfulYes?: Prisma.IntFilter<"HelpArticle"> | number
+  helpfulNo?: Prisma.IntFilter<"HelpArticle"> | number
   createdAt?: Prisma.DateTimeFilter<"HelpArticle"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"HelpArticle"> | Date | string
+  author?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
+  revisions?: Prisma.ContentRevisionListRelationFilter
+  attachments?: Prisma.ArticleAttachmentListRelationFilter
+  feedback?: Prisma.KnowledgeFeedbackListRelationFilter
 }, "id" | "slug">
 
 export type HelpArticleOrderByWithAggregationInput = {
@@ -261,12 +365,19 @@ export type HelpArticleOrderByWithAggregationInput = {
   body?: Prisma.SortOrder
   category?: Prisma.SortOrder
   searchTokens?: Prisma.SortOrder
+  status?: Prisma.SortOrder
   publishedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  authorId?: Prisma.SortOrderInput | Prisma.SortOrder
+  viewCount?: Prisma.SortOrder
+  helpfulYes?: Prisma.SortOrder
+  helpfulNo?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.HelpArticleCountOrderByAggregateInput
+  _avg?: Prisma.HelpArticleAvgOrderByAggregateInput
   _max?: Prisma.HelpArticleMaxOrderByAggregateInput
   _min?: Prisma.HelpArticleMinOrderByAggregateInput
+  _sum?: Prisma.HelpArticleSumOrderByAggregateInput
 }
 
 export type HelpArticleScalarWhereWithAggregatesInput = {
@@ -280,7 +391,12 @@ export type HelpArticleScalarWhereWithAggregatesInput = {
   body?: Prisma.StringWithAggregatesFilter<"HelpArticle"> | string
   category?: Prisma.StringWithAggregatesFilter<"HelpArticle"> | string
   searchTokens?: Prisma.StringWithAggregatesFilter<"HelpArticle"> | string
+  status?: Prisma.EnumHelpArticleStatusWithAggregatesFilter<"HelpArticle"> | $Enums.HelpArticleStatus
   publishedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"HelpArticle"> | Date | string | null
+  authorId?: Prisma.StringNullableWithAggregatesFilter<"HelpArticle"> | string | null
+  viewCount?: Prisma.IntWithAggregatesFilter<"HelpArticle"> | number
+  helpfulYes?: Prisma.IntWithAggregatesFilter<"HelpArticle"> | number
+  helpfulNo?: Prisma.IntWithAggregatesFilter<"HelpArticle"> | number
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"HelpArticle"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"HelpArticle"> | Date | string
 }
@@ -293,9 +409,17 @@ export type HelpArticleCreateInput = {
   body: string
   category: string
   searchTokens: string
+  status?: $Enums.HelpArticleStatus
   publishedAt?: Date | string | null
+  viewCount?: number
+  helpfulYes?: number
+  helpfulNo?: number
   createdAt?: Date | string
   updatedAt?: Date | string
+  author?: Prisma.UserCreateNestedOneWithoutHelpArticlesAuthoredInput
+  revisions?: Prisma.ContentRevisionCreateNestedManyWithoutArticleInput
+  attachments?: Prisma.ArticleAttachmentCreateNestedManyWithoutArticleInput
+  feedback?: Prisma.KnowledgeFeedbackCreateNestedManyWithoutArticleInput
 }
 
 export type HelpArticleUncheckedCreateInput = {
@@ -306,9 +430,17 @@ export type HelpArticleUncheckedCreateInput = {
   body: string
   category: string
   searchTokens: string
+  status?: $Enums.HelpArticleStatus
   publishedAt?: Date | string | null
+  authorId?: string | null
+  viewCount?: number
+  helpfulYes?: number
+  helpfulNo?: number
   createdAt?: Date | string
   updatedAt?: Date | string
+  revisions?: Prisma.ContentRevisionUncheckedCreateNestedManyWithoutArticleInput
+  attachments?: Prisma.ArticleAttachmentUncheckedCreateNestedManyWithoutArticleInput
+  feedback?: Prisma.KnowledgeFeedbackUncheckedCreateNestedManyWithoutArticleInput
 }
 
 export type HelpArticleUpdateInput = {
@@ -319,9 +451,17 @@ export type HelpArticleUpdateInput = {
   body?: Prisma.StringFieldUpdateOperationsInput | string
   category?: Prisma.StringFieldUpdateOperationsInput | string
   searchTokens?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumHelpArticleStatusFieldUpdateOperationsInput | $Enums.HelpArticleStatus
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  viewCount?: Prisma.IntFieldUpdateOperationsInput | number
+  helpfulYes?: Prisma.IntFieldUpdateOperationsInput | number
+  helpfulNo?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  author?: Prisma.UserUpdateOneWithoutHelpArticlesAuthoredNestedInput
+  revisions?: Prisma.ContentRevisionUpdateManyWithoutArticleNestedInput
+  attachments?: Prisma.ArticleAttachmentUpdateManyWithoutArticleNestedInput
+  feedback?: Prisma.KnowledgeFeedbackUpdateManyWithoutArticleNestedInput
 }
 
 export type HelpArticleUncheckedUpdateInput = {
@@ -332,9 +472,17 @@ export type HelpArticleUncheckedUpdateInput = {
   body?: Prisma.StringFieldUpdateOperationsInput | string
   category?: Prisma.StringFieldUpdateOperationsInput | string
   searchTokens?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumHelpArticleStatusFieldUpdateOperationsInput | $Enums.HelpArticleStatus
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  authorId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  viewCount?: Prisma.IntFieldUpdateOperationsInput | number
+  helpfulYes?: Prisma.IntFieldUpdateOperationsInput | number
+  helpfulNo?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  revisions?: Prisma.ContentRevisionUncheckedUpdateManyWithoutArticleNestedInput
+  attachments?: Prisma.ArticleAttachmentUncheckedUpdateManyWithoutArticleNestedInput
+  feedback?: Prisma.KnowledgeFeedbackUncheckedUpdateManyWithoutArticleNestedInput
 }
 
 export type HelpArticleCreateManyInput = {
@@ -345,7 +493,12 @@ export type HelpArticleCreateManyInput = {
   body: string
   category: string
   searchTokens: string
+  status?: $Enums.HelpArticleStatus
   publishedAt?: Date | string | null
+  authorId?: string | null
+  viewCount?: number
+  helpfulYes?: number
+  helpfulNo?: number
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -358,7 +511,11 @@ export type HelpArticleUpdateManyMutationInput = {
   body?: Prisma.StringFieldUpdateOperationsInput | string
   category?: Prisma.StringFieldUpdateOperationsInput | string
   searchTokens?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumHelpArticleStatusFieldUpdateOperationsInput | $Enums.HelpArticleStatus
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  viewCount?: Prisma.IntFieldUpdateOperationsInput | number
+  helpfulYes?: Prisma.IntFieldUpdateOperationsInput | number
+  helpfulNo?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -371,9 +528,29 @@ export type HelpArticleUncheckedUpdateManyInput = {
   body?: Prisma.StringFieldUpdateOperationsInput | string
   category?: Prisma.StringFieldUpdateOperationsInput | string
   searchTokens?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumHelpArticleStatusFieldUpdateOperationsInput | $Enums.HelpArticleStatus
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  authorId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  viewCount?: Prisma.IntFieldUpdateOperationsInput | number
+  helpfulYes?: Prisma.IntFieldUpdateOperationsInput | number
+  helpfulNo?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type HelpArticleListRelationFilter = {
+  every?: Prisma.HelpArticleWhereInput
+  some?: Prisma.HelpArticleWhereInput
+  none?: Prisma.HelpArticleWhereInput
+}
+
+export type HelpArticleOrderByRelationAggregateInput = {
+  _count?: Prisma.SortOrder
+}
+
+export type HelpArticleScalarRelationFilter = {
+  is?: Prisma.HelpArticleWhereInput
+  isNot?: Prisma.HelpArticleWhereInput
 }
 
 export type HelpArticleCountOrderByAggregateInput = {
@@ -384,9 +561,20 @@ export type HelpArticleCountOrderByAggregateInput = {
   body?: Prisma.SortOrder
   category?: Prisma.SortOrder
   searchTokens?: Prisma.SortOrder
+  status?: Prisma.SortOrder
   publishedAt?: Prisma.SortOrder
+  authorId?: Prisma.SortOrder
+  viewCount?: Prisma.SortOrder
+  helpfulYes?: Prisma.SortOrder
+  helpfulNo?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+}
+
+export type HelpArticleAvgOrderByAggregateInput = {
+  viewCount?: Prisma.SortOrder
+  helpfulYes?: Prisma.SortOrder
+  helpfulNo?: Prisma.SortOrder
 }
 
 export type HelpArticleMaxOrderByAggregateInput = {
@@ -397,7 +585,12 @@ export type HelpArticleMaxOrderByAggregateInput = {
   body?: Prisma.SortOrder
   category?: Prisma.SortOrder
   searchTokens?: Prisma.SortOrder
+  status?: Prisma.SortOrder
   publishedAt?: Prisma.SortOrder
+  authorId?: Prisma.SortOrder
+  viewCount?: Prisma.SortOrder
+  helpfulYes?: Prisma.SortOrder
+  helpfulNo?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -410,11 +603,606 @@ export type HelpArticleMinOrderByAggregateInput = {
   body?: Prisma.SortOrder
   category?: Prisma.SortOrder
   searchTokens?: Prisma.SortOrder
+  status?: Prisma.SortOrder
   publishedAt?: Prisma.SortOrder
+  authorId?: Prisma.SortOrder
+  viewCount?: Prisma.SortOrder
+  helpfulYes?: Prisma.SortOrder
+  helpfulNo?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
 
+export type HelpArticleSumOrderByAggregateInput = {
+  viewCount?: Prisma.SortOrder
+  helpfulYes?: Prisma.SortOrder
+  helpfulNo?: Prisma.SortOrder
+}
+
+export type HelpArticleCreateNestedManyWithoutAuthorInput = {
+  create?: Prisma.XOR<Prisma.HelpArticleCreateWithoutAuthorInput, Prisma.HelpArticleUncheckedCreateWithoutAuthorInput> | Prisma.HelpArticleCreateWithoutAuthorInput[] | Prisma.HelpArticleUncheckedCreateWithoutAuthorInput[]
+  connectOrCreate?: Prisma.HelpArticleCreateOrConnectWithoutAuthorInput | Prisma.HelpArticleCreateOrConnectWithoutAuthorInput[]
+  createMany?: Prisma.HelpArticleCreateManyAuthorInputEnvelope
+  connect?: Prisma.HelpArticleWhereUniqueInput | Prisma.HelpArticleWhereUniqueInput[]
+}
+
+export type HelpArticleUncheckedCreateNestedManyWithoutAuthorInput = {
+  create?: Prisma.XOR<Prisma.HelpArticleCreateWithoutAuthorInput, Prisma.HelpArticleUncheckedCreateWithoutAuthorInput> | Prisma.HelpArticleCreateWithoutAuthorInput[] | Prisma.HelpArticleUncheckedCreateWithoutAuthorInput[]
+  connectOrCreate?: Prisma.HelpArticleCreateOrConnectWithoutAuthorInput | Prisma.HelpArticleCreateOrConnectWithoutAuthorInput[]
+  createMany?: Prisma.HelpArticleCreateManyAuthorInputEnvelope
+  connect?: Prisma.HelpArticleWhereUniqueInput | Prisma.HelpArticleWhereUniqueInput[]
+}
+
+export type HelpArticleUpdateManyWithoutAuthorNestedInput = {
+  create?: Prisma.XOR<Prisma.HelpArticleCreateWithoutAuthorInput, Prisma.HelpArticleUncheckedCreateWithoutAuthorInput> | Prisma.HelpArticleCreateWithoutAuthorInput[] | Prisma.HelpArticleUncheckedCreateWithoutAuthorInput[]
+  connectOrCreate?: Prisma.HelpArticleCreateOrConnectWithoutAuthorInput | Prisma.HelpArticleCreateOrConnectWithoutAuthorInput[]
+  upsert?: Prisma.HelpArticleUpsertWithWhereUniqueWithoutAuthorInput | Prisma.HelpArticleUpsertWithWhereUniqueWithoutAuthorInput[]
+  createMany?: Prisma.HelpArticleCreateManyAuthorInputEnvelope
+  set?: Prisma.HelpArticleWhereUniqueInput | Prisma.HelpArticleWhereUniqueInput[]
+  disconnect?: Prisma.HelpArticleWhereUniqueInput | Prisma.HelpArticleWhereUniqueInput[]
+  delete?: Prisma.HelpArticleWhereUniqueInput | Prisma.HelpArticleWhereUniqueInput[]
+  connect?: Prisma.HelpArticleWhereUniqueInput | Prisma.HelpArticleWhereUniqueInput[]
+  update?: Prisma.HelpArticleUpdateWithWhereUniqueWithoutAuthorInput | Prisma.HelpArticleUpdateWithWhereUniqueWithoutAuthorInput[]
+  updateMany?: Prisma.HelpArticleUpdateManyWithWhereWithoutAuthorInput | Prisma.HelpArticleUpdateManyWithWhereWithoutAuthorInput[]
+  deleteMany?: Prisma.HelpArticleScalarWhereInput | Prisma.HelpArticleScalarWhereInput[]
+}
+
+export type HelpArticleUncheckedUpdateManyWithoutAuthorNestedInput = {
+  create?: Prisma.XOR<Prisma.HelpArticleCreateWithoutAuthorInput, Prisma.HelpArticleUncheckedCreateWithoutAuthorInput> | Prisma.HelpArticleCreateWithoutAuthorInput[] | Prisma.HelpArticleUncheckedCreateWithoutAuthorInput[]
+  connectOrCreate?: Prisma.HelpArticleCreateOrConnectWithoutAuthorInput | Prisma.HelpArticleCreateOrConnectWithoutAuthorInput[]
+  upsert?: Prisma.HelpArticleUpsertWithWhereUniqueWithoutAuthorInput | Prisma.HelpArticleUpsertWithWhereUniqueWithoutAuthorInput[]
+  createMany?: Prisma.HelpArticleCreateManyAuthorInputEnvelope
+  set?: Prisma.HelpArticleWhereUniqueInput | Prisma.HelpArticleWhereUniqueInput[]
+  disconnect?: Prisma.HelpArticleWhereUniqueInput | Prisma.HelpArticleWhereUniqueInput[]
+  delete?: Prisma.HelpArticleWhereUniqueInput | Prisma.HelpArticleWhereUniqueInput[]
+  connect?: Prisma.HelpArticleWhereUniqueInput | Prisma.HelpArticleWhereUniqueInput[]
+  update?: Prisma.HelpArticleUpdateWithWhereUniqueWithoutAuthorInput | Prisma.HelpArticleUpdateWithWhereUniqueWithoutAuthorInput[]
+  updateMany?: Prisma.HelpArticleUpdateManyWithWhereWithoutAuthorInput | Prisma.HelpArticleUpdateManyWithWhereWithoutAuthorInput[]
+  deleteMany?: Prisma.HelpArticleScalarWhereInput | Prisma.HelpArticleScalarWhereInput[]
+}
+
+export type HelpArticleCreateNestedOneWithoutRevisionsInput = {
+  create?: Prisma.XOR<Prisma.HelpArticleCreateWithoutRevisionsInput, Prisma.HelpArticleUncheckedCreateWithoutRevisionsInput>
+  connectOrCreate?: Prisma.HelpArticleCreateOrConnectWithoutRevisionsInput
+  connect?: Prisma.HelpArticleWhereUniqueInput
+}
+
+export type HelpArticleUpdateOneRequiredWithoutRevisionsNestedInput = {
+  create?: Prisma.XOR<Prisma.HelpArticleCreateWithoutRevisionsInput, Prisma.HelpArticleUncheckedCreateWithoutRevisionsInput>
+  connectOrCreate?: Prisma.HelpArticleCreateOrConnectWithoutRevisionsInput
+  upsert?: Prisma.HelpArticleUpsertWithoutRevisionsInput
+  connect?: Prisma.HelpArticleWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.HelpArticleUpdateToOneWithWhereWithoutRevisionsInput, Prisma.HelpArticleUpdateWithoutRevisionsInput>, Prisma.HelpArticleUncheckedUpdateWithoutRevisionsInput>
+}
+
+export type HelpArticleCreateNestedOneWithoutFeedbackInput = {
+  create?: Prisma.XOR<Prisma.HelpArticleCreateWithoutFeedbackInput, Prisma.HelpArticleUncheckedCreateWithoutFeedbackInput>
+  connectOrCreate?: Prisma.HelpArticleCreateOrConnectWithoutFeedbackInput
+  connect?: Prisma.HelpArticleWhereUniqueInput
+}
+
+export type HelpArticleUpdateOneRequiredWithoutFeedbackNestedInput = {
+  create?: Prisma.XOR<Prisma.HelpArticleCreateWithoutFeedbackInput, Prisma.HelpArticleUncheckedCreateWithoutFeedbackInput>
+  connectOrCreate?: Prisma.HelpArticleCreateOrConnectWithoutFeedbackInput
+  upsert?: Prisma.HelpArticleUpsertWithoutFeedbackInput
+  connect?: Prisma.HelpArticleWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.HelpArticleUpdateToOneWithWhereWithoutFeedbackInput, Prisma.HelpArticleUpdateWithoutFeedbackInput>, Prisma.HelpArticleUncheckedUpdateWithoutFeedbackInput>
+}
+
+export type HelpArticleCreateNestedOneWithoutAttachmentsInput = {
+  create?: Prisma.XOR<Prisma.HelpArticleCreateWithoutAttachmentsInput, Prisma.HelpArticleUncheckedCreateWithoutAttachmentsInput>
+  connectOrCreate?: Prisma.HelpArticleCreateOrConnectWithoutAttachmentsInput
+  connect?: Prisma.HelpArticleWhereUniqueInput
+}
+
+export type HelpArticleUpdateOneRequiredWithoutAttachmentsNestedInput = {
+  create?: Prisma.XOR<Prisma.HelpArticleCreateWithoutAttachmentsInput, Prisma.HelpArticleUncheckedCreateWithoutAttachmentsInput>
+  connectOrCreate?: Prisma.HelpArticleCreateOrConnectWithoutAttachmentsInput
+  upsert?: Prisma.HelpArticleUpsertWithoutAttachmentsInput
+  connect?: Prisma.HelpArticleWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.HelpArticleUpdateToOneWithWhereWithoutAttachmentsInput, Prisma.HelpArticleUpdateWithoutAttachmentsInput>, Prisma.HelpArticleUncheckedUpdateWithoutAttachmentsInput>
+}
+
+export type EnumHelpArticleStatusFieldUpdateOperationsInput = {
+  set?: $Enums.HelpArticleStatus
+}
+
+export type HelpArticleCreateWithoutAuthorInput = {
+  id?: string
+  slug: string
+  title: string
+  excerpt?: string | null
+  body: string
+  category: string
+  searchTokens: string
+  status?: $Enums.HelpArticleStatus
+  publishedAt?: Date | string | null
+  viewCount?: number
+  helpfulYes?: number
+  helpfulNo?: number
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  revisions?: Prisma.ContentRevisionCreateNestedManyWithoutArticleInput
+  attachments?: Prisma.ArticleAttachmentCreateNestedManyWithoutArticleInput
+  feedback?: Prisma.KnowledgeFeedbackCreateNestedManyWithoutArticleInput
+}
+
+export type HelpArticleUncheckedCreateWithoutAuthorInput = {
+  id?: string
+  slug: string
+  title: string
+  excerpt?: string | null
+  body: string
+  category: string
+  searchTokens: string
+  status?: $Enums.HelpArticleStatus
+  publishedAt?: Date | string | null
+  viewCount?: number
+  helpfulYes?: number
+  helpfulNo?: number
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  revisions?: Prisma.ContentRevisionUncheckedCreateNestedManyWithoutArticleInput
+  attachments?: Prisma.ArticleAttachmentUncheckedCreateNestedManyWithoutArticleInput
+  feedback?: Prisma.KnowledgeFeedbackUncheckedCreateNestedManyWithoutArticleInput
+}
+
+export type HelpArticleCreateOrConnectWithoutAuthorInput = {
+  where: Prisma.HelpArticleWhereUniqueInput
+  create: Prisma.XOR<Prisma.HelpArticleCreateWithoutAuthorInput, Prisma.HelpArticleUncheckedCreateWithoutAuthorInput>
+}
+
+export type HelpArticleCreateManyAuthorInputEnvelope = {
+  data: Prisma.HelpArticleCreateManyAuthorInput | Prisma.HelpArticleCreateManyAuthorInput[]
+  skipDuplicates?: boolean
+}
+
+export type HelpArticleUpsertWithWhereUniqueWithoutAuthorInput = {
+  where: Prisma.HelpArticleWhereUniqueInput
+  update: Prisma.XOR<Prisma.HelpArticleUpdateWithoutAuthorInput, Prisma.HelpArticleUncheckedUpdateWithoutAuthorInput>
+  create: Prisma.XOR<Prisma.HelpArticleCreateWithoutAuthorInput, Prisma.HelpArticleUncheckedCreateWithoutAuthorInput>
+}
+
+export type HelpArticleUpdateWithWhereUniqueWithoutAuthorInput = {
+  where: Prisma.HelpArticleWhereUniqueInput
+  data: Prisma.XOR<Prisma.HelpArticleUpdateWithoutAuthorInput, Prisma.HelpArticleUncheckedUpdateWithoutAuthorInput>
+}
+
+export type HelpArticleUpdateManyWithWhereWithoutAuthorInput = {
+  where: Prisma.HelpArticleScalarWhereInput
+  data: Prisma.XOR<Prisma.HelpArticleUpdateManyMutationInput, Prisma.HelpArticleUncheckedUpdateManyWithoutAuthorInput>
+}
+
+export type HelpArticleScalarWhereInput = {
+  AND?: Prisma.HelpArticleScalarWhereInput | Prisma.HelpArticleScalarWhereInput[]
+  OR?: Prisma.HelpArticleScalarWhereInput[]
+  NOT?: Prisma.HelpArticleScalarWhereInput | Prisma.HelpArticleScalarWhereInput[]
+  id?: Prisma.StringFilter<"HelpArticle"> | string
+  slug?: Prisma.StringFilter<"HelpArticle"> | string
+  title?: Prisma.StringFilter<"HelpArticle"> | string
+  excerpt?: Prisma.StringNullableFilter<"HelpArticle"> | string | null
+  body?: Prisma.StringFilter<"HelpArticle"> | string
+  category?: Prisma.StringFilter<"HelpArticle"> | string
+  searchTokens?: Prisma.StringFilter<"HelpArticle"> | string
+  status?: Prisma.EnumHelpArticleStatusFilter<"HelpArticle"> | $Enums.HelpArticleStatus
+  publishedAt?: Prisma.DateTimeNullableFilter<"HelpArticle"> | Date | string | null
+  authorId?: Prisma.StringNullableFilter<"HelpArticle"> | string | null
+  viewCount?: Prisma.IntFilter<"HelpArticle"> | number
+  helpfulYes?: Prisma.IntFilter<"HelpArticle"> | number
+  helpfulNo?: Prisma.IntFilter<"HelpArticle"> | number
+  createdAt?: Prisma.DateTimeFilter<"HelpArticle"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"HelpArticle"> | Date | string
+}
+
+export type HelpArticleCreateWithoutRevisionsInput = {
+  id?: string
+  slug: string
+  title: string
+  excerpt?: string | null
+  body: string
+  category: string
+  searchTokens: string
+  status?: $Enums.HelpArticleStatus
+  publishedAt?: Date | string | null
+  viewCount?: number
+  helpfulYes?: number
+  helpfulNo?: number
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  author?: Prisma.UserCreateNestedOneWithoutHelpArticlesAuthoredInput
+  attachments?: Prisma.ArticleAttachmentCreateNestedManyWithoutArticleInput
+  feedback?: Prisma.KnowledgeFeedbackCreateNestedManyWithoutArticleInput
+}
+
+export type HelpArticleUncheckedCreateWithoutRevisionsInput = {
+  id?: string
+  slug: string
+  title: string
+  excerpt?: string | null
+  body: string
+  category: string
+  searchTokens: string
+  status?: $Enums.HelpArticleStatus
+  publishedAt?: Date | string | null
+  authorId?: string | null
+  viewCount?: number
+  helpfulYes?: number
+  helpfulNo?: number
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  attachments?: Prisma.ArticleAttachmentUncheckedCreateNestedManyWithoutArticleInput
+  feedback?: Prisma.KnowledgeFeedbackUncheckedCreateNestedManyWithoutArticleInput
+}
+
+export type HelpArticleCreateOrConnectWithoutRevisionsInput = {
+  where: Prisma.HelpArticleWhereUniqueInput
+  create: Prisma.XOR<Prisma.HelpArticleCreateWithoutRevisionsInput, Prisma.HelpArticleUncheckedCreateWithoutRevisionsInput>
+}
+
+export type HelpArticleUpsertWithoutRevisionsInput = {
+  update: Prisma.XOR<Prisma.HelpArticleUpdateWithoutRevisionsInput, Prisma.HelpArticleUncheckedUpdateWithoutRevisionsInput>
+  create: Prisma.XOR<Prisma.HelpArticleCreateWithoutRevisionsInput, Prisma.HelpArticleUncheckedCreateWithoutRevisionsInput>
+  where?: Prisma.HelpArticleWhereInput
+}
+
+export type HelpArticleUpdateToOneWithWhereWithoutRevisionsInput = {
+  where?: Prisma.HelpArticleWhereInput
+  data: Prisma.XOR<Prisma.HelpArticleUpdateWithoutRevisionsInput, Prisma.HelpArticleUncheckedUpdateWithoutRevisionsInput>
+}
+
+export type HelpArticleUpdateWithoutRevisionsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  excerpt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  body?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.StringFieldUpdateOperationsInput | string
+  searchTokens?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumHelpArticleStatusFieldUpdateOperationsInput | $Enums.HelpArticleStatus
+  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  viewCount?: Prisma.IntFieldUpdateOperationsInput | number
+  helpfulYes?: Prisma.IntFieldUpdateOperationsInput | number
+  helpfulNo?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  author?: Prisma.UserUpdateOneWithoutHelpArticlesAuthoredNestedInput
+  attachments?: Prisma.ArticleAttachmentUpdateManyWithoutArticleNestedInput
+  feedback?: Prisma.KnowledgeFeedbackUpdateManyWithoutArticleNestedInput
+}
+
+export type HelpArticleUncheckedUpdateWithoutRevisionsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  excerpt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  body?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.StringFieldUpdateOperationsInput | string
+  searchTokens?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumHelpArticleStatusFieldUpdateOperationsInput | $Enums.HelpArticleStatus
+  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  authorId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  viewCount?: Prisma.IntFieldUpdateOperationsInput | number
+  helpfulYes?: Prisma.IntFieldUpdateOperationsInput | number
+  helpfulNo?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  attachments?: Prisma.ArticleAttachmentUncheckedUpdateManyWithoutArticleNestedInput
+  feedback?: Prisma.KnowledgeFeedbackUncheckedUpdateManyWithoutArticleNestedInput
+}
+
+export type HelpArticleCreateWithoutFeedbackInput = {
+  id?: string
+  slug: string
+  title: string
+  excerpt?: string | null
+  body: string
+  category: string
+  searchTokens: string
+  status?: $Enums.HelpArticleStatus
+  publishedAt?: Date | string | null
+  viewCount?: number
+  helpfulYes?: number
+  helpfulNo?: number
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  author?: Prisma.UserCreateNestedOneWithoutHelpArticlesAuthoredInput
+  revisions?: Prisma.ContentRevisionCreateNestedManyWithoutArticleInput
+  attachments?: Prisma.ArticleAttachmentCreateNestedManyWithoutArticleInput
+}
+
+export type HelpArticleUncheckedCreateWithoutFeedbackInput = {
+  id?: string
+  slug: string
+  title: string
+  excerpt?: string | null
+  body: string
+  category: string
+  searchTokens: string
+  status?: $Enums.HelpArticleStatus
+  publishedAt?: Date | string | null
+  authorId?: string | null
+  viewCount?: number
+  helpfulYes?: number
+  helpfulNo?: number
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  revisions?: Prisma.ContentRevisionUncheckedCreateNestedManyWithoutArticleInput
+  attachments?: Prisma.ArticleAttachmentUncheckedCreateNestedManyWithoutArticleInput
+}
+
+export type HelpArticleCreateOrConnectWithoutFeedbackInput = {
+  where: Prisma.HelpArticleWhereUniqueInput
+  create: Prisma.XOR<Prisma.HelpArticleCreateWithoutFeedbackInput, Prisma.HelpArticleUncheckedCreateWithoutFeedbackInput>
+}
+
+export type HelpArticleUpsertWithoutFeedbackInput = {
+  update: Prisma.XOR<Prisma.HelpArticleUpdateWithoutFeedbackInput, Prisma.HelpArticleUncheckedUpdateWithoutFeedbackInput>
+  create: Prisma.XOR<Prisma.HelpArticleCreateWithoutFeedbackInput, Prisma.HelpArticleUncheckedCreateWithoutFeedbackInput>
+  where?: Prisma.HelpArticleWhereInput
+}
+
+export type HelpArticleUpdateToOneWithWhereWithoutFeedbackInput = {
+  where?: Prisma.HelpArticleWhereInput
+  data: Prisma.XOR<Prisma.HelpArticleUpdateWithoutFeedbackInput, Prisma.HelpArticleUncheckedUpdateWithoutFeedbackInput>
+}
+
+export type HelpArticleUpdateWithoutFeedbackInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  excerpt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  body?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.StringFieldUpdateOperationsInput | string
+  searchTokens?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumHelpArticleStatusFieldUpdateOperationsInput | $Enums.HelpArticleStatus
+  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  viewCount?: Prisma.IntFieldUpdateOperationsInput | number
+  helpfulYes?: Prisma.IntFieldUpdateOperationsInput | number
+  helpfulNo?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  author?: Prisma.UserUpdateOneWithoutHelpArticlesAuthoredNestedInput
+  revisions?: Prisma.ContentRevisionUpdateManyWithoutArticleNestedInput
+  attachments?: Prisma.ArticleAttachmentUpdateManyWithoutArticleNestedInput
+}
+
+export type HelpArticleUncheckedUpdateWithoutFeedbackInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  excerpt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  body?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.StringFieldUpdateOperationsInput | string
+  searchTokens?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumHelpArticleStatusFieldUpdateOperationsInput | $Enums.HelpArticleStatus
+  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  authorId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  viewCount?: Prisma.IntFieldUpdateOperationsInput | number
+  helpfulYes?: Prisma.IntFieldUpdateOperationsInput | number
+  helpfulNo?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  revisions?: Prisma.ContentRevisionUncheckedUpdateManyWithoutArticleNestedInput
+  attachments?: Prisma.ArticleAttachmentUncheckedUpdateManyWithoutArticleNestedInput
+}
+
+export type HelpArticleCreateWithoutAttachmentsInput = {
+  id?: string
+  slug: string
+  title: string
+  excerpt?: string | null
+  body: string
+  category: string
+  searchTokens: string
+  status?: $Enums.HelpArticleStatus
+  publishedAt?: Date | string | null
+  viewCount?: number
+  helpfulYes?: number
+  helpfulNo?: number
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  author?: Prisma.UserCreateNestedOneWithoutHelpArticlesAuthoredInput
+  revisions?: Prisma.ContentRevisionCreateNestedManyWithoutArticleInput
+  feedback?: Prisma.KnowledgeFeedbackCreateNestedManyWithoutArticleInput
+}
+
+export type HelpArticleUncheckedCreateWithoutAttachmentsInput = {
+  id?: string
+  slug: string
+  title: string
+  excerpt?: string | null
+  body: string
+  category: string
+  searchTokens: string
+  status?: $Enums.HelpArticleStatus
+  publishedAt?: Date | string | null
+  authorId?: string | null
+  viewCount?: number
+  helpfulYes?: number
+  helpfulNo?: number
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  revisions?: Prisma.ContentRevisionUncheckedCreateNestedManyWithoutArticleInput
+  feedback?: Prisma.KnowledgeFeedbackUncheckedCreateNestedManyWithoutArticleInput
+}
+
+export type HelpArticleCreateOrConnectWithoutAttachmentsInput = {
+  where: Prisma.HelpArticleWhereUniqueInput
+  create: Prisma.XOR<Prisma.HelpArticleCreateWithoutAttachmentsInput, Prisma.HelpArticleUncheckedCreateWithoutAttachmentsInput>
+}
+
+export type HelpArticleUpsertWithoutAttachmentsInput = {
+  update: Prisma.XOR<Prisma.HelpArticleUpdateWithoutAttachmentsInput, Prisma.HelpArticleUncheckedUpdateWithoutAttachmentsInput>
+  create: Prisma.XOR<Prisma.HelpArticleCreateWithoutAttachmentsInput, Prisma.HelpArticleUncheckedCreateWithoutAttachmentsInput>
+  where?: Prisma.HelpArticleWhereInput
+}
+
+export type HelpArticleUpdateToOneWithWhereWithoutAttachmentsInput = {
+  where?: Prisma.HelpArticleWhereInput
+  data: Prisma.XOR<Prisma.HelpArticleUpdateWithoutAttachmentsInput, Prisma.HelpArticleUncheckedUpdateWithoutAttachmentsInput>
+}
+
+export type HelpArticleUpdateWithoutAttachmentsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  excerpt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  body?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.StringFieldUpdateOperationsInput | string
+  searchTokens?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumHelpArticleStatusFieldUpdateOperationsInput | $Enums.HelpArticleStatus
+  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  viewCount?: Prisma.IntFieldUpdateOperationsInput | number
+  helpfulYes?: Prisma.IntFieldUpdateOperationsInput | number
+  helpfulNo?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  author?: Prisma.UserUpdateOneWithoutHelpArticlesAuthoredNestedInput
+  revisions?: Prisma.ContentRevisionUpdateManyWithoutArticleNestedInput
+  feedback?: Prisma.KnowledgeFeedbackUpdateManyWithoutArticleNestedInput
+}
+
+export type HelpArticleUncheckedUpdateWithoutAttachmentsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  excerpt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  body?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.StringFieldUpdateOperationsInput | string
+  searchTokens?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumHelpArticleStatusFieldUpdateOperationsInput | $Enums.HelpArticleStatus
+  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  authorId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  viewCount?: Prisma.IntFieldUpdateOperationsInput | number
+  helpfulYes?: Prisma.IntFieldUpdateOperationsInput | number
+  helpfulNo?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  revisions?: Prisma.ContentRevisionUncheckedUpdateManyWithoutArticleNestedInput
+  feedback?: Prisma.KnowledgeFeedbackUncheckedUpdateManyWithoutArticleNestedInput
+}
+
+export type HelpArticleCreateManyAuthorInput = {
+  id?: string
+  slug: string
+  title: string
+  excerpt?: string | null
+  body: string
+  category: string
+  searchTokens: string
+  status?: $Enums.HelpArticleStatus
+  publishedAt?: Date | string | null
+  viewCount?: number
+  helpfulYes?: number
+  helpfulNo?: number
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type HelpArticleUpdateWithoutAuthorInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  excerpt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  body?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.StringFieldUpdateOperationsInput | string
+  searchTokens?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumHelpArticleStatusFieldUpdateOperationsInput | $Enums.HelpArticleStatus
+  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  viewCount?: Prisma.IntFieldUpdateOperationsInput | number
+  helpfulYes?: Prisma.IntFieldUpdateOperationsInput | number
+  helpfulNo?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  revisions?: Prisma.ContentRevisionUpdateManyWithoutArticleNestedInput
+  attachments?: Prisma.ArticleAttachmentUpdateManyWithoutArticleNestedInput
+  feedback?: Prisma.KnowledgeFeedbackUpdateManyWithoutArticleNestedInput
+}
+
+export type HelpArticleUncheckedUpdateWithoutAuthorInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  excerpt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  body?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.StringFieldUpdateOperationsInput | string
+  searchTokens?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumHelpArticleStatusFieldUpdateOperationsInput | $Enums.HelpArticleStatus
+  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  viewCount?: Prisma.IntFieldUpdateOperationsInput | number
+  helpfulYes?: Prisma.IntFieldUpdateOperationsInput | number
+  helpfulNo?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  revisions?: Prisma.ContentRevisionUncheckedUpdateManyWithoutArticleNestedInput
+  attachments?: Prisma.ArticleAttachmentUncheckedUpdateManyWithoutArticleNestedInput
+  feedback?: Prisma.KnowledgeFeedbackUncheckedUpdateManyWithoutArticleNestedInput
+}
+
+export type HelpArticleUncheckedUpdateManyWithoutAuthorInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  excerpt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  body?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.StringFieldUpdateOperationsInput | string
+  searchTokens?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumHelpArticleStatusFieldUpdateOperationsInput | $Enums.HelpArticleStatus
+  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  viewCount?: Prisma.IntFieldUpdateOperationsInput | number
+  helpfulYes?: Prisma.IntFieldUpdateOperationsInput | number
+  helpfulNo?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+
+/**
+ * Count Type HelpArticleCountOutputType
+ */
+
+export type HelpArticleCountOutputType = {
+  revisions: number
+  attachments: number
+  feedback: number
+}
+
+export type HelpArticleCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  revisions?: boolean | HelpArticleCountOutputTypeCountRevisionsArgs
+  attachments?: boolean | HelpArticleCountOutputTypeCountAttachmentsArgs
+  feedback?: boolean | HelpArticleCountOutputTypeCountFeedbackArgs
+}
+
+/**
+ * HelpArticleCountOutputType without action
+ */
+export type HelpArticleCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the HelpArticleCountOutputType
+   */
+  select?: Prisma.HelpArticleCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * HelpArticleCountOutputType without action
+ */
+export type HelpArticleCountOutputTypeCountRevisionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ContentRevisionWhereInput
+}
+
+/**
+ * HelpArticleCountOutputType without action
+ */
+export type HelpArticleCountOutputTypeCountAttachmentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ArticleAttachmentWhereInput
+}
+
+/**
+ * HelpArticleCountOutputType without action
+ */
+export type HelpArticleCountOutputTypeCountFeedbackArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.KnowledgeFeedbackWhereInput
+}
 
 
 export type HelpArticleSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -425,9 +1213,19 @@ export type HelpArticleSelect<ExtArgs extends runtime.Types.Extensions.InternalA
   body?: boolean
   category?: boolean
   searchTokens?: boolean
+  status?: boolean
   publishedAt?: boolean
+  authorId?: boolean
+  viewCount?: boolean
+  helpfulYes?: boolean
+  helpfulNo?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  author?: boolean | Prisma.HelpArticle$authorArgs<ExtArgs>
+  revisions?: boolean | Prisma.HelpArticle$revisionsArgs<ExtArgs>
+  attachments?: boolean | Prisma.HelpArticle$attachmentsArgs<ExtArgs>
+  feedback?: boolean | Prisma.HelpArticle$feedbackArgs<ExtArgs>
+  _count?: boolean | Prisma.HelpArticleCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["helpArticle"]>
 
 export type HelpArticleSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -438,9 +1236,15 @@ export type HelpArticleSelectCreateManyAndReturn<ExtArgs extends runtime.Types.E
   body?: boolean
   category?: boolean
   searchTokens?: boolean
+  status?: boolean
   publishedAt?: boolean
+  authorId?: boolean
+  viewCount?: boolean
+  helpfulYes?: boolean
+  helpfulNo?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  author?: boolean | Prisma.HelpArticle$authorArgs<ExtArgs>
 }, ExtArgs["result"]["helpArticle"]>
 
 export type HelpArticleSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -451,9 +1255,15 @@ export type HelpArticleSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.E
   body?: boolean
   category?: boolean
   searchTokens?: boolean
+  status?: boolean
   publishedAt?: boolean
+  authorId?: boolean
+  viewCount?: boolean
+  helpfulYes?: boolean
+  helpfulNo?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  author?: boolean | Prisma.HelpArticle$authorArgs<ExtArgs>
 }, ExtArgs["result"]["helpArticle"]>
 
 export type HelpArticleSelectScalar = {
@@ -464,16 +1274,39 @@ export type HelpArticleSelectScalar = {
   body?: boolean
   category?: boolean
   searchTokens?: boolean
+  status?: boolean
   publishedAt?: boolean
+  authorId?: boolean
+  viewCount?: boolean
+  helpfulYes?: boolean
+  helpfulNo?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type HelpArticleOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "slug" | "title" | "excerpt" | "body" | "category" | "searchTokens" | "publishedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["helpArticle"]>
+export type HelpArticleOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "slug" | "title" | "excerpt" | "body" | "category" | "searchTokens" | "status" | "publishedAt" | "authorId" | "viewCount" | "helpfulYes" | "helpfulNo" | "createdAt" | "updatedAt", ExtArgs["result"]["helpArticle"]>
+export type HelpArticleInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  author?: boolean | Prisma.HelpArticle$authorArgs<ExtArgs>
+  revisions?: boolean | Prisma.HelpArticle$revisionsArgs<ExtArgs>
+  attachments?: boolean | Prisma.HelpArticle$attachmentsArgs<ExtArgs>
+  feedback?: boolean | Prisma.HelpArticle$feedbackArgs<ExtArgs>
+  _count?: boolean | Prisma.HelpArticleCountOutputTypeDefaultArgs<ExtArgs>
+}
+export type HelpArticleIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  author?: boolean | Prisma.HelpArticle$authorArgs<ExtArgs>
+}
+export type HelpArticleIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  author?: boolean | Prisma.HelpArticle$authorArgs<ExtArgs>
+}
 
 export type $HelpArticlePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "HelpArticle"
-  objects: {}
+  objects: {
+    author: Prisma.$UserPayload<ExtArgs> | null
+    revisions: Prisma.$ContentRevisionPayload<ExtArgs>[]
+    attachments: Prisma.$ArticleAttachmentPayload<ExtArgs>[]
+    feedback: Prisma.$KnowledgeFeedbackPayload<ExtArgs>[]
+  }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     slug: string
@@ -482,7 +1315,12 @@ export type $HelpArticlePayload<ExtArgs extends runtime.Types.Extensions.Interna
     body: string
     category: string
     searchTokens: string
+    status: $Enums.HelpArticleStatus
     publishedAt: Date | null
+    authorId: string | null
+    viewCount: number
+    helpfulYes: number
+    helpfulNo: number
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["helpArticle"]>
@@ -879,6 +1717,10 @@ readonly fields: HelpArticleFieldRefs;
  */
 export interface Prisma__HelpArticleClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  author<T extends Prisma.HelpArticle$authorArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.HelpArticle$authorArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  revisions<T extends Prisma.HelpArticle$revisionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.HelpArticle$revisionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ContentRevisionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  attachments<T extends Prisma.HelpArticle$attachmentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.HelpArticle$attachmentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ArticleAttachmentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  feedback<T extends Prisma.HelpArticle$feedbackArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.HelpArticle$feedbackArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$KnowledgeFeedbackPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -915,7 +1757,12 @@ export interface HelpArticleFieldRefs {
   readonly body: Prisma.FieldRef<"HelpArticle", 'String'>
   readonly category: Prisma.FieldRef<"HelpArticle", 'String'>
   readonly searchTokens: Prisma.FieldRef<"HelpArticle", 'String'>
+  readonly status: Prisma.FieldRef<"HelpArticle", 'HelpArticleStatus'>
   readonly publishedAt: Prisma.FieldRef<"HelpArticle", 'DateTime'>
+  readonly authorId: Prisma.FieldRef<"HelpArticle", 'String'>
+  readonly viewCount: Prisma.FieldRef<"HelpArticle", 'Int'>
+  readonly helpfulYes: Prisma.FieldRef<"HelpArticle", 'Int'>
+  readonly helpfulNo: Prisma.FieldRef<"HelpArticle", 'Int'>
   readonly createdAt: Prisma.FieldRef<"HelpArticle", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"HelpArticle", 'DateTime'>
 }
@@ -935,6 +1782,10 @@ export type HelpArticleFindUniqueArgs<ExtArgs extends runtime.Types.Extensions.I
    */
   omit?: Prisma.HelpArticleOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.HelpArticleInclude<ExtArgs> | null
+  /**
    * Filter, which HelpArticle to fetch.
    */
   where: Prisma.HelpArticleWhereUniqueInput
@@ -953,6 +1804,10 @@ export type HelpArticleFindUniqueOrThrowArgs<ExtArgs extends runtime.Types.Exten
    */
   omit?: Prisma.HelpArticleOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.HelpArticleInclude<ExtArgs> | null
+  /**
    * Filter, which HelpArticle to fetch.
    */
   where: Prisma.HelpArticleWhereUniqueInput
@@ -970,6 +1825,10 @@ export type HelpArticleFindFirstArgs<ExtArgs extends runtime.Types.Extensions.In
    * Omit specific fields from the HelpArticle
    */
   omit?: Prisma.HelpArticleOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.HelpArticleInclude<ExtArgs> | null
   /**
    * Filter, which HelpArticle to fetch.
    */
@@ -1019,6 +1878,10 @@ export type HelpArticleFindFirstOrThrowArgs<ExtArgs extends runtime.Types.Extens
    */
   omit?: Prisma.HelpArticleOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.HelpArticleInclude<ExtArgs> | null
+  /**
    * Filter, which HelpArticle to fetch.
    */
   where?: Prisma.HelpArticleWhereInput
@@ -1066,6 +1929,10 @@ export type HelpArticleFindManyArgs<ExtArgs extends runtime.Types.Extensions.Int
    * Omit specific fields from the HelpArticle
    */
   omit?: Prisma.HelpArticleOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.HelpArticleInclude<ExtArgs> | null
   /**
    * Filter, which HelpArticles to fetch.
    */
@@ -1115,6 +1982,10 @@ export type HelpArticleCreateArgs<ExtArgs extends runtime.Types.Extensions.Inter
    */
   omit?: Prisma.HelpArticleOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.HelpArticleInclude<ExtArgs> | null
+  /**
    * The data needed to create a HelpArticle.
    */
   data: Prisma.XOR<Prisma.HelpArticleCreateInput, Prisma.HelpArticleUncheckedCreateInput>
@@ -1148,6 +2019,10 @@ export type HelpArticleCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Ext
    */
   data: Prisma.HelpArticleCreateManyInput | Prisma.HelpArticleCreateManyInput[]
   skipDuplicates?: boolean
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.HelpArticleIncludeCreateManyAndReturn<ExtArgs> | null
 }
 
 /**
@@ -1162,6 +2037,10 @@ export type HelpArticleUpdateArgs<ExtArgs extends runtime.Types.Extensions.Inter
    * Omit specific fields from the HelpArticle
    */
   omit?: Prisma.HelpArticleOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.HelpArticleInclude<ExtArgs> | null
   /**
    * The data needed to update a HelpArticle.
    */
@@ -1214,6 +2093,10 @@ export type HelpArticleUpdateManyAndReturnArgs<ExtArgs extends runtime.Types.Ext
    * Limit how many HelpArticles to update.
    */
   limit?: number
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.HelpArticleIncludeUpdateManyAndReturn<ExtArgs> | null
 }
 
 /**
@@ -1228,6 +2111,10 @@ export type HelpArticleUpsertArgs<ExtArgs extends runtime.Types.Extensions.Inter
    * Omit specific fields from the HelpArticle
    */
   omit?: Prisma.HelpArticleOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.HelpArticleInclude<ExtArgs> | null
   /**
    * The filter to search for the HelpArticle to update in case it exists.
    */
@@ -1255,6 +2142,10 @@ export type HelpArticleDeleteArgs<ExtArgs extends runtime.Types.Extensions.Inter
    */
   omit?: Prisma.HelpArticleOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.HelpArticleInclude<ExtArgs> | null
+  /**
    * Filter which HelpArticle to delete.
    */
   where: Prisma.HelpArticleWhereUniqueInput
@@ -1275,6 +2166,97 @@ export type HelpArticleDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.I
 }
 
 /**
+ * HelpArticle.author
+ */
+export type HelpArticle$authorArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the User
+   */
+  select?: Prisma.UserSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the User
+   */
+  omit?: Prisma.UserOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
+  where?: Prisma.UserWhereInput
+}
+
+/**
+ * HelpArticle.revisions
+ */
+export type HelpArticle$revisionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the ContentRevision
+   */
+  select?: Prisma.ContentRevisionSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the ContentRevision
+   */
+  omit?: Prisma.ContentRevisionOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ContentRevisionInclude<ExtArgs> | null
+  where?: Prisma.ContentRevisionWhereInput
+  orderBy?: Prisma.ContentRevisionOrderByWithRelationInput | Prisma.ContentRevisionOrderByWithRelationInput[]
+  cursor?: Prisma.ContentRevisionWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ContentRevisionScalarFieldEnum | Prisma.ContentRevisionScalarFieldEnum[]
+}
+
+/**
+ * HelpArticle.attachments
+ */
+export type HelpArticle$attachmentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the ArticleAttachment
+   */
+  select?: Prisma.ArticleAttachmentSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the ArticleAttachment
+   */
+  omit?: Prisma.ArticleAttachmentOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ArticleAttachmentInclude<ExtArgs> | null
+  where?: Prisma.ArticleAttachmentWhereInput
+  orderBy?: Prisma.ArticleAttachmentOrderByWithRelationInput | Prisma.ArticleAttachmentOrderByWithRelationInput[]
+  cursor?: Prisma.ArticleAttachmentWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ArticleAttachmentScalarFieldEnum | Prisma.ArticleAttachmentScalarFieldEnum[]
+}
+
+/**
+ * HelpArticle.feedback
+ */
+export type HelpArticle$feedbackArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the KnowledgeFeedback
+   */
+  select?: Prisma.KnowledgeFeedbackSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the KnowledgeFeedback
+   */
+  omit?: Prisma.KnowledgeFeedbackOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.KnowledgeFeedbackInclude<ExtArgs> | null
+  where?: Prisma.KnowledgeFeedbackWhereInput
+  orderBy?: Prisma.KnowledgeFeedbackOrderByWithRelationInput | Prisma.KnowledgeFeedbackOrderByWithRelationInput[]
+  cursor?: Prisma.KnowledgeFeedbackWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.KnowledgeFeedbackScalarFieldEnum | Prisma.KnowledgeFeedbackScalarFieldEnum[]
+}
+
+/**
  * HelpArticle without action
  */
 export type HelpArticleDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1286,4 +2268,8 @@ export type HelpArticleDefaultArgs<ExtArgs extends runtime.Types.Extensions.Inte
    * Omit specific fields from the HelpArticle
    */
   omit?: Prisma.HelpArticleOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.HelpArticleInclude<ExtArgs> | null
 }

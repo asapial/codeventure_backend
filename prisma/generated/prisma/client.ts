@@ -185,6 +185,89 @@ export type LegalDocumentVersion = Prisma.LegalDocumentVersionModel
  */
 export type UserConsent = Prisma.UserConsentModel
 /**
+ * Model SupportAssignment
+ * Agent ↔ ticket assignment. Many rows over time per ticket (audit trail).
+ * We also expose a `current` flag per agent row, but the canonical
+ * "currently assigned to" answer is "the latest `SupportAssignment` for the
+ * ticket".
+ */
+export type SupportAssignment = Prisma.SupportAssignmentModel
+/**
+ * Model InternalNote
+ * Notes a staff member leaves behind on a ticket. Always staff-private;
+ * customers never see these. `visibility` gates who among staff can see it.
+ */
+export type InternalNote = Prisma.InternalNoteModel
+/**
+ * Model EscalationEvent
+ * One row per escalation event on a ticket — captures the from→to
+ * priority/status transition and the reason the agent gave.
+ */
+export type EscalationEvent = Prisma.EscalationEventModel
+/**
+ * Model SlaPolicy
+ * Per-organization SLA rule. The dashboard + reports pivot on the row whose
+ * `organizationId` matches the org (or the global "default" row whose
+ * `organizationId` is null).
+ */
+export type SlaPolicy = Prisma.SlaPolicyModel
+/**
+ * Model CannedResponse
+ * Agent-saved reply template ("macro"). Hot-keyed insertable snippets that
+ * appear in the workspace reply box.
+ */
+export type CannedResponse = Prisma.CannedResponseModel
+/**
+ * Model OrganizationSupportProfile
+ * Org-level support context — the S5 "profile" snapshot. One row per org,
+ * upserted on each profile view. Lives separately from `Organization` so
+ * write traffic doesn't churn the org table.
+ */
+export type OrganizationSupportProfile = Prisma.OrganizationSupportProfileModel
+/**
+ * Model CustomerActivityLog
+ * Per-org activity feed (auditable CSAT surveys, contract signings,
+ * escalations, etc.) that the S5 profile page renders in a timeline.
+ */
+export type CustomerActivityLog = Prisma.CustomerActivityLogModel
+/**
+ * Model ContentRevision
+ * Versioned content revision for a help article. Every save creates a new
+ * row; the "current" version is read from `HelpArticle.body` directly.
+ */
+export type ContentRevision = Prisma.ContentRevisionModel
+/**
+ * Model KnowledgeFeedback
+ * Per-customer helpfulness feedback on a help article.
+ */
+export type KnowledgeFeedback = Prisma.KnowledgeFeedbackModel
+/**
+ * Model ArticleAttachment
+ * Asset attached to a help article (image, PDF, video link, etc.).
+ */
+export type ArticleAttachment = Prisma.ArticleAttachmentModel
+/**
+ * Model SupportMetricDaily
+ * One row per UTC day per organization. Rollup populated by the nightly
+ * `JobRun` to drive S7 reports without scanning raw events.
+ */
+export type SupportMetricDaily = Prisma.SupportMetricDailyModel
+/**
+ * Model AuditLog
+ * Append-only audit log for the support console. Distinct from
+ * `CustomerActivityLog` because it's an internal compliance / forensics log,
+ * not a customer-visible timeline.
+ */
+export type AuditLog = Prisma.AuditLogModel
+/**
+ * Model SupportJobRun
+ * Async job tracking for the support console — used by the nightly metrics
+ * rollup, the macro-import wizard, and report exports. Distinct from the
+ * auth.prisma `JobRun` queue model because the run lifecycle here is
+ * long-lived and observable from the UI.
+ */
+export type SupportJobRun = Prisma.SupportJobRunModel
+/**
  * Model OnboardingProfile
  * Captures the wizard progress + finalised payload. One per user.
  */

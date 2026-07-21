@@ -281,3 +281,99 @@ export const FileAssetStatus = {
 } as const
 
 export type FileAssetStatus = (typeof FileAssetStatus)[keyof typeof FileAssetStatus]
+
+
+export const ResolutionCode = {
+  FIXED: 'FIXED',
+  WORKAROUND: 'WORKAROUND',
+  DUPLICATE: 'DUPLICATE',
+  WONT_FIX: 'WONT_FIX',
+  CUSTOMER_RESPONDED: 'CUSTOMER_RESPONDED',
+  ESCALATED_TO_ENGINEERING: 'ESCALATED_TO_ENGINEERING',
+  BILLING_ADJUSTMENT: 'BILLING_ADJUSTMENT',
+  OTHER: 'OTHER'
+} as const
+
+export type ResolutionCode = (typeof ResolutionCode)[keyof typeof ResolutionCode]
+
+
+export const CustomerSentiment = {
+  POSITIVE: 'POSITIVE',
+  NEUTRAL: 'NEUTRAL',
+  NEGATIVE: 'NEGATIVE',
+  AT_RISK: 'AT_RISK'
+} as const
+
+export type CustomerSentiment = (typeof CustomerSentiment)[keyof typeof CustomerSentiment]
+
+
+export const AccountStatus = {
+  ACTIVE: 'ACTIVE',
+  AT_RISK: 'AT_RISK',
+  CHURNING: 'CHURNING',
+  DORMANT: 'DORMANT',
+  CLOSED: 'CLOSED'
+} as const
+
+export type AccountStatus = (typeof AccountStatus)[keyof typeof AccountStatus]
+
+
+export const NoteVisibility = {
+  INTERNAL_TEAM: 'INTERNAL_TEAM',
+  LEADERSHIP: 'LEADERSHIP',
+  PRIVATE: 'PRIVATE'
+} as const
+
+export type NoteVisibility = (typeof NoteVisibility)[keyof typeof NoteVisibility]
+
+
+export const SlaSeverity = {
+  LOW: 'LOW',
+  NORMAL: 'NORMAL',
+  HIGH: 'HIGH',
+  CRITICAL: 'CRITICAL'
+} as const
+
+export type SlaSeverity = (typeof SlaSeverity)[keyof typeof SlaSeverity]
+
+
+export const AuditEventType = {
+  TICKET_CREATED: 'TICKET_CREATED',
+  TICKET_ASSIGNED: 'TICKET_ASSIGNED',
+  TICKET_REASSIGNED: 'TICKET_REASSIGNED',
+  TICKET_ESCALATED: 'TICKET_ESCALATED',
+  TICKET_RESOLVED: 'TICKET_RESOLVED',
+  TICKET_CLOSED: 'TICKET_CLOSED',
+  TICKET_REOPENED: 'TICKET_REOPENED',
+  MESSAGE_POSTED: 'MESSAGE_POSTED',
+  INTERNAL_NOTE_ADDED: 'INTERNAL_NOTE_ADDED',
+  PRIORITY_CHANGED: 'PRIORITY_CHANGED',
+  STATUS_CHANGED: 'STATUS_CHANGED',
+  MACRO_APPLIED: 'MACRO_APPLIED',
+  ARTICLE_PUBLISHED: 'ARTICLE_PUBLISHED',
+  ARTICLE_REVISED: 'ARTICLE_REVISED',
+  CUSTOMER_FLAGGED: 'CUSTOMER_FLAGGED'
+} as const
+
+export type AuditEventType = (typeof AuditEventType)[keyof typeof AuditEventType]
+
+
+export const JobRunStatus = {
+  QUEUED: 'QUEUED',
+  RUNNING: 'RUNNING',
+  SUCCEEDED: 'SUCCEEDED',
+  FAILED: 'FAILED',
+  PARTIAL: 'PARTIAL'
+} as const
+
+export type JobRunStatus = (typeof JobRunStatus)[keyof typeof JobRunStatus]
+
+
+export const HelpArticleStatus = {
+  DRAFT: 'DRAFT',
+  IN_REVIEW: 'IN_REVIEW',
+  PUBLISHED: 'PUBLISHED',
+  ARCHIVED: 'ARCHIVED'
+} as const
+
+export type HelpArticleStatus = (typeof HelpArticleStatus)[keyof typeof HelpArticleStatus]

@@ -43,6 +43,7 @@ export type ChangeRequestMinAggregateOutputType = {
   description: string | null
   estimatedCost: runtime.Decimal | null
   estimatedDays: number | null
+  impact: string | null
   status: $Enums.ApprovalStatus | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -55,6 +56,7 @@ export type ChangeRequestMaxAggregateOutputType = {
   description: string | null
   estimatedCost: runtime.Decimal | null
   estimatedDays: number | null
+  impact: string | null
   status: $Enums.ApprovalStatus | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -67,6 +69,7 @@ export type ChangeRequestCountAggregateOutputType = {
   description: number
   estimatedCost: number
   estimatedDays: number
+  impact: number
   status: number
   createdAt: number
   updatedAt: number
@@ -91,6 +94,7 @@ export type ChangeRequestMinAggregateInputType = {
   description?: true
   estimatedCost?: true
   estimatedDays?: true
+  impact?: true
   status?: true
   createdAt?: true
   updatedAt?: true
@@ -103,6 +107,7 @@ export type ChangeRequestMaxAggregateInputType = {
   description?: true
   estimatedCost?: true
   estimatedDays?: true
+  impact?: true
   status?: true
   createdAt?: true
   updatedAt?: true
@@ -115,6 +120,7 @@ export type ChangeRequestCountAggregateInputType = {
   description?: true
   estimatedCost?: true
   estimatedDays?: true
+  impact?: true
   status?: true
   createdAt?: true
   updatedAt?: true
@@ -214,6 +220,7 @@ export type ChangeRequestGroupByOutputType = {
   description: string
   estimatedCost: runtime.Decimal | null
   estimatedDays: number | null
+  impact: string | null
   status: $Enums.ApprovalStatus
   createdAt: Date
   updatedAt: Date
@@ -249,6 +256,7 @@ export type ChangeRequestWhereInput = {
   description?: Prisma.StringFilter<"ChangeRequest"> | string
   estimatedCost?: Prisma.DecimalNullableFilter<"ChangeRequest"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   estimatedDays?: Prisma.IntNullableFilter<"ChangeRequest"> | number | null
+  impact?: Prisma.StringNullableFilter<"ChangeRequest"> | string | null
   status?: Prisma.EnumApprovalStatusFilter<"ChangeRequest"> | $Enums.ApprovalStatus
   createdAt?: Prisma.DateTimeFilter<"ChangeRequest"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"ChangeRequest"> | Date | string
@@ -262,6 +270,7 @@ export type ChangeRequestOrderByWithRelationInput = {
   description?: Prisma.SortOrder
   estimatedCost?: Prisma.SortOrderInput | Prisma.SortOrder
   estimatedDays?: Prisma.SortOrderInput | Prisma.SortOrder
+  impact?: Prisma.SortOrderInput | Prisma.SortOrder
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -278,6 +287,7 @@ export type ChangeRequestWhereUniqueInput = Prisma.AtLeast<{
   description?: Prisma.StringFilter<"ChangeRequest"> | string
   estimatedCost?: Prisma.DecimalNullableFilter<"ChangeRequest"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   estimatedDays?: Prisma.IntNullableFilter<"ChangeRequest"> | number | null
+  impact?: Prisma.StringNullableFilter<"ChangeRequest"> | string | null
   status?: Prisma.EnumApprovalStatusFilter<"ChangeRequest"> | $Enums.ApprovalStatus
   createdAt?: Prisma.DateTimeFilter<"ChangeRequest"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"ChangeRequest"> | Date | string
@@ -291,6 +301,7 @@ export type ChangeRequestOrderByWithAggregationInput = {
   description?: Prisma.SortOrder
   estimatedCost?: Prisma.SortOrderInput | Prisma.SortOrder
   estimatedDays?: Prisma.SortOrderInput | Prisma.SortOrder
+  impact?: Prisma.SortOrderInput | Prisma.SortOrder
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -311,6 +322,7 @@ export type ChangeRequestScalarWhereWithAggregatesInput = {
   description?: Prisma.StringWithAggregatesFilter<"ChangeRequest"> | string
   estimatedCost?: Prisma.DecimalNullableWithAggregatesFilter<"ChangeRequest"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   estimatedDays?: Prisma.IntNullableWithAggregatesFilter<"ChangeRequest"> | number | null
+  impact?: Prisma.StringNullableWithAggregatesFilter<"ChangeRequest"> | string | null
   status?: Prisma.EnumApprovalStatusWithAggregatesFilter<"ChangeRequest"> | $Enums.ApprovalStatus
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"ChangeRequest"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"ChangeRequest"> | Date | string
@@ -322,6 +334,7 @@ export type ChangeRequestCreateInput = {
   description: string
   estimatedCost?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   estimatedDays?: number | null
+  impact?: string | null
   status?: $Enums.ApprovalStatus
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -335,6 +348,7 @@ export type ChangeRequestUncheckedCreateInput = {
   description: string
   estimatedCost?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   estimatedDays?: number | null
+  impact?: string | null
   status?: $Enums.ApprovalStatus
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -346,6 +360,7 @@ export type ChangeRequestUpdateInput = {
   description?: Prisma.StringFieldUpdateOperationsInput | string
   estimatedCost?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   estimatedDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  impact?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumApprovalStatusFieldUpdateOperationsInput | $Enums.ApprovalStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -359,6 +374,7 @@ export type ChangeRequestUncheckedUpdateInput = {
   description?: Prisma.StringFieldUpdateOperationsInput | string
   estimatedCost?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   estimatedDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  impact?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumApprovalStatusFieldUpdateOperationsInput | $Enums.ApprovalStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -371,6 +387,7 @@ export type ChangeRequestCreateManyInput = {
   description: string
   estimatedCost?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   estimatedDays?: number | null
+  impact?: string | null
   status?: $Enums.ApprovalStatus
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -382,6 +399,7 @@ export type ChangeRequestUpdateManyMutationInput = {
   description?: Prisma.StringFieldUpdateOperationsInput | string
   estimatedCost?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   estimatedDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  impact?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumApprovalStatusFieldUpdateOperationsInput | $Enums.ApprovalStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -394,6 +412,7 @@ export type ChangeRequestUncheckedUpdateManyInput = {
   description?: Prisma.StringFieldUpdateOperationsInput | string
   estimatedCost?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   estimatedDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  impact?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumApprovalStatusFieldUpdateOperationsInput | $Enums.ApprovalStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -416,6 +435,7 @@ export type ChangeRequestCountOrderByAggregateInput = {
   description?: Prisma.SortOrder
   estimatedCost?: Prisma.SortOrder
   estimatedDays?: Prisma.SortOrder
+  impact?: Prisma.SortOrder
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -433,6 +453,7 @@ export type ChangeRequestMaxOrderByAggregateInput = {
   description?: Prisma.SortOrder
   estimatedCost?: Prisma.SortOrder
   estimatedDays?: Prisma.SortOrder
+  impact?: Prisma.SortOrder
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -445,6 +466,7 @@ export type ChangeRequestMinOrderByAggregateInput = {
   description?: Prisma.SortOrder
   estimatedCost?: Prisma.SortOrder
   estimatedDays?: Prisma.SortOrder
+  impact?: Prisma.SortOrder
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -497,20 +519,13 @@ export type ChangeRequestUncheckedUpdateManyWithoutProjectNestedInput = {
   deleteMany?: Prisma.ChangeRequestScalarWhereInput | Prisma.ChangeRequestScalarWhereInput[]
 }
 
-export type NullableIntFieldUpdateOperationsInput = {
-  set?: number | null
-  increment?: number
-  decrement?: number
-  multiply?: number
-  divide?: number
-}
-
 export type ChangeRequestCreateWithoutProjectInput = {
   id?: string
   title: string
   description: string
   estimatedCost?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   estimatedDays?: number | null
+  impact?: string | null
   status?: $Enums.ApprovalStatus
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -522,6 +537,7 @@ export type ChangeRequestUncheckedCreateWithoutProjectInput = {
   description: string
   estimatedCost?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   estimatedDays?: number | null
+  impact?: string | null
   status?: $Enums.ApprovalStatus
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -563,6 +579,7 @@ export type ChangeRequestScalarWhereInput = {
   description?: Prisma.StringFilter<"ChangeRequest"> | string
   estimatedCost?: Prisma.DecimalNullableFilter<"ChangeRequest"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   estimatedDays?: Prisma.IntNullableFilter<"ChangeRequest"> | number | null
+  impact?: Prisma.StringNullableFilter<"ChangeRequest"> | string | null
   status?: Prisma.EnumApprovalStatusFilter<"ChangeRequest"> | $Enums.ApprovalStatus
   createdAt?: Prisma.DateTimeFilter<"ChangeRequest"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"ChangeRequest"> | Date | string
@@ -574,6 +591,7 @@ export type ChangeRequestCreateManyProjectInput = {
   description: string
   estimatedCost?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   estimatedDays?: number | null
+  impact?: string | null
   status?: $Enums.ApprovalStatus
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -585,6 +603,7 @@ export type ChangeRequestUpdateWithoutProjectInput = {
   description?: Prisma.StringFieldUpdateOperationsInput | string
   estimatedCost?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   estimatedDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  impact?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumApprovalStatusFieldUpdateOperationsInput | $Enums.ApprovalStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -596,6 +615,7 @@ export type ChangeRequestUncheckedUpdateWithoutProjectInput = {
   description?: Prisma.StringFieldUpdateOperationsInput | string
   estimatedCost?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   estimatedDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  impact?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumApprovalStatusFieldUpdateOperationsInput | $Enums.ApprovalStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -607,6 +627,7 @@ export type ChangeRequestUncheckedUpdateManyWithoutProjectInput = {
   description?: Prisma.StringFieldUpdateOperationsInput | string
   estimatedCost?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   estimatedDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  impact?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumApprovalStatusFieldUpdateOperationsInput | $Enums.ApprovalStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -621,6 +642,7 @@ export type ChangeRequestSelect<ExtArgs extends runtime.Types.Extensions.Interna
   description?: boolean
   estimatedCost?: boolean
   estimatedDays?: boolean
+  impact?: boolean
   status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -634,6 +656,7 @@ export type ChangeRequestSelectCreateManyAndReturn<ExtArgs extends runtime.Types
   description?: boolean
   estimatedCost?: boolean
   estimatedDays?: boolean
+  impact?: boolean
   status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -647,6 +670,7 @@ export type ChangeRequestSelectUpdateManyAndReturn<ExtArgs extends runtime.Types
   description?: boolean
   estimatedCost?: boolean
   estimatedDays?: boolean
+  impact?: boolean
   status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -660,12 +684,13 @@ export type ChangeRequestSelectScalar = {
   description?: boolean
   estimatedCost?: boolean
   estimatedDays?: boolean
+  impact?: boolean
   status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type ChangeRequestOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "projectId" | "title" | "description" | "estimatedCost" | "estimatedDays" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["changeRequest"]>
+export type ChangeRequestOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "projectId" | "title" | "description" | "estimatedCost" | "estimatedDays" | "impact" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["changeRequest"]>
 export type ChangeRequestInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   project?: boolean | Prisma.ProjectDefaultArgs<ExtArgs>
 }
@@ -688,6 +713,10 @@ export type $ChangeRequestPayload<ExtArgs extends runtime.Types.Extensions.Inter
     description: string
     estimatedCost: runtime.Decimal | null
     estimatedDays: number | null
+    /**
+     * Customer's self-reported impact: LOW | MEDIUM | HIGH.
+     */
+    impact: string | null
     status: $Enums.ApprovalStatus
     createdAt: Date
     updatedAt: Date
@@ -1121,6 +1150,7 @@ export interface ChangeRequestFieldRefs {
   readonly description: Prisma.FieldRef<"ChangeRequest", 'String'>
   readonly estimatedCost: Prisma.FieldRef<"ChangeRequest", 'Decimal'>
   readonly estimatedDays: Prisma.FieldRef<"ChangeRequest", 'Int'>
+  readonly impact: Prisma.FieldRef<"ChangeRequest", 'String'>
   readonly status: Prisma.FieldRef<"ChangeRequest", 'ApprovalStatus'>
   readonly createdAt: Prisma.FieldRef<"ChangeRequest", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"ChangeRequest", 'DateTime'>

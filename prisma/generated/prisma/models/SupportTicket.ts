@@ -251,6 +251,10 @@ export type SupportTicketWhereInput = {
   project?: Prisma.XOR<Prisma.ProjectNullableScalarRelationFilter, Prisma.ProjectWhereInput> | null
   messages?: Prisma.TicketMessageListRelationFilter
   attachments?: Prisma.TicketAttachmentListRelationFilter
+  supportAssignments?: Prisma.SupportAssignmentListRelationFilter
+  internalNotes?: Prisma.InternalNoteListRelationFilter
+  escalations?: Prisma.EscalationEventListRelationFilter
+  auditLogs?: Prisma.AuditLogListRelationFilter
 }
 
 export type SupportTicketOrderByWithRelationInput = {
@@ -272,6 +276,10 @@ export type SupportTicketOrderByWithRelationInput = {
   project?: Prisma.ProjectOrderByWithRelationInput
   messages?: Prisma.TicketMessageOrderByRelationAggregateInput
   attachments?: Prisma.TicketAttachmentOrderByRelationAggregateInput
+  supportAssignments?: Prisma.SupportAssignmentOrderByRelationAggregateInput
+  internalNotes?: Prisma.InternalNoteOrderByRelationAggregateInput
+  escalations?: Prisma.EscalationEventOrderByRelationAggregateInput
+  auditLogs?: Prisma.AuditLogOrderByRelationAggregateInput
 }
 
 export type SupportTicketWhereUniqueInput = Prisma.AtLeast<{
@@ -296,6 +304,10 @@ export type SupportTicketWhereUniqueInput = Prisma.AtLeast<{
   project?: Prisma.XOR<Prisma.ProjectNullableScalarRelationFilter, Prisma.ProjectWhereInput> | null
   messages?: Prisma.TicketMessageListRelationFilter
   attachments?: Prisma.TicketAttachmentListRelationFilter
+  supportAssignments?: Prisma.SupportAssignmentListRelationFilter
+  internalNotes?: Prisma.InternalNoteListRelationFilter
+  escalations?: Prisma.EscalationEventListRelationFilter
+  auditLogs?: Prisma.AuditLogListRelationFilter
 }, "id" | "ticketNumber">
 
 export type SupportTicketOrderByWithAggregationInput = {
@@ -352,6 +364,10 @@ export type SupportTicketCreateInput = {
   project?: Prisma.ProjectCreateNestedOneWithoutSupportTicketsInput
   messages?: Prisma.TicketMessageCreateNestedManyWithoutTicketInput
   attachments?: Prisma.TicketAttachmentCreateNestedManyWithoutTicketInput
+  supportAssignments?: Prisma.SupportAssignmentCreateNestedManyWithoutTicketInput
+  internalNotes?: Prisma.InternalNoteCreateNestedManyWithoutTicketInput
+  escalations?: Prisma.EscalationEventCreateNestedManyWithoutTicketInput
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutTicketInput
 }
 
 export type SupportTicketUncheckedCreateInput = {
@@ -370,6 +386,10 @@ export type SupportTicketUncheckedCreateInput = {
   updatedAt?: Date | string
   messages?: Prisma.TicketMessageUncheckedCreateNestedManyWithoutTicketInput
   attachments?: Prisma.TicketAttachmentUncheckedCreateNestedManyWithoutTicketInput
+  supportAssignments?: Prisma.SupportAssignmentUncheckedCreateNestedManyWithoutTicketInput
+  internalNotes?: Prisma.InternalNoteUncheckedCreateNestedManyWithoutTicketInput
+  escalations?: Prisma.EscalationEventUncheckedCreateNestedManyWithoutTicketInput
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutTicketInput
 }
 
 export type SupportTicketUpdateInput = {
@@ -388,6 +408,10 @@ export type SupportTicketUpdateInput = {
   project?: Prisma.ProjectUpdateOneWithoutSupportTicketsNestedInput
   messages?: Prisma.TicketMessageUpdateManyWithoutTicketNestedInput
   attachments?: Prisma.TicketAttachmentUpdateManyWithoutTicketNestedInput
+  supportAssignments?: Prisma.SupportAssignmentUpdateManyWithoutTicketNestedInput
+  internalNotes?: Prisma.InternalNoteUpdateManyWithoutTicketNestedInput
+  escalations?: Prisma.EscalationEventUpdateManyWithoutTicketNestedInput
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutTicketNestedInput
 }
 
 export type SupportTicketUncheckedUpdateInput = {
@@ -406,6 +430,10 @@ export type SupportTicketUncheckedUpdateInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   messages?: Prisma.TicketMessageUncheckedUpdateManyWithoutTicketNestedInput
   attachments?: Prisma.TicketAttachmentUncheckedUpdateManyWithoutTicketNestedInput
+  supportAssignments?: Prisma.SupportAssignmentUncheckedUpdateManyWithoutTicketNestedInput
+  internalNotes?: Prisma.InternalNoteUncheckedUpdateManyWithoutTicketNestedInput
+  escalations?: Prisma.EscalationEventUncheckedUpdateManyWithoutTicketNestedInput
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutTicketNestedInput
 }
 
 export type SupportTicketCreateManyInput = {
@@ -463,6 +491,16 @@ export type SupportTicketOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
 }
 
+export type SupportTicketScalarRelationFilter = {
+  is?: Prisma.SupportTicketWhereInput
+  isNot?: Prisma.SupportTicketWhereInput
+}
+
+export type SupportTicketNullableScalarRelationFilter = {
+  is?: Prisma.SupportTicketWhereInput | null
+  isNot?: Prisma.SupportTicketWhereInput | null
+}
+
 export type SupportTicketCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   organizationId?: Prisma.SortOrder
@@ -509,11 +547,6 @@ export type SupportTicketMinOrderByAggregateInput = {
   slaDueAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-}
-
-export type SupportTicketScalarRelationFilter = {
-  is?: Prisma.SupportTicketWhereInput
-  isNot?: Prisma.SupportTicketWhereInput
 }
 
 export type SupportTicketCreateNestedManyWithoutRequesterInput = {
@@ -642,6 +675,64 @@ export type SupportTicketUncheckedUpdateManyWithoutProjectNestedInput = {
   deleteMany?: Prisma.SupportTicketScalarWhereInput | Prisma.SupportTicketScalarWhereInput[]
 }
 
+export type SupportTicketCreateNestedOneWithoutSupportAssignmentsInput = {
+  create?: Prisma.XOR<Prisma.SupportTicketCreateWithoutSupportAssignmentsInput, Prisma.SupportTicketUncheckedCreateWithoutSupportAssignmentsInput>
+  connectOrCreate?: Prisma.SupportTicketCreateOrConnectWithoutSupportAssignmentsInput
+  connect?: Prisma.SupportTicketWhereUniqueInput
+}
+
+export type SupportTicketUpdateOneRequiredWithoutSupportAssignmentsNestedInput = {
+  create?: Prisma.XOR<Prisma.SupportTicketCreateWithoutSupportAssignmentsInput, Prisma.SupportTicketUncheckedCreateWithoutSupportAssignmentsInput>
+  connectOrCreate?: Prisma.SupportTicketCreateOrConnectWithoutSupportAssignmentsInput
+  upsert?: Prisma.SupportTicketUpsertWithoutSupportAssignmentsInput
+  connect?: Prisma.SupportTicketWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.SupportTicketUpdateToOneWithWhereWithoutSupportAssignmentsInput, Prisma.SupportTicketUpdateWithoutSupportAssignmentsInput>, Prisma.SupportTicketUncheckedUpdateWithoutSupportAssignmentsInput>
+}
+
+export type SupportTicketCreateNestedOneWithoutInternalNotesInput = {
+  create?: Prisma.XOR<Prisma.SupportTicketCreateWithoutInternalNotesInput, Prisma.SupportTicketUncheckedCreateWithoutInternalNotesInput>
+  connectOrCreate?: Prisma.SupportTicketCreateOrConnectWithoutInternalNotesInput
+  connect?: Prisma.SupportTicketWhereUniqueInput
+}
+
+export type SupportTicketUpdateOneRequiredWithoutInternalNotesNestedInput = {
+  create?: Prisma.XOR<Prisma.SupportTicketCreateWithoutInternalNotesInput, Prisma.SupportTicketUncheckedCreateWithoutInternalNotesInput>
+  connectOrCreate?: Prisma.SupportTicketCreateOrConnectWithoutInternalNotesInput
+  upsert?: Prisma.SupportTicketUpsertWithoutInternalNotesInput
+  connect?: Prisma.SupportTicketWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.SupportTicketUpdateToOneWithWhereWithoutInternalNotesInput, Prisma.SupportTicketUpdateWithoutInternalNotesInput>, Prisma.SupportTicketUncheckedUpdateWithoutInternalNotesInput>
+}
+
+export type SupportTicketCreateNestedOneWithoutEscalationsInput = {
+  create?: Prisma.XOR<Prisma.SupportTicketCreateWithoutEscalationsInput, Prisma.SupportTicketUncheckedCreateWithoutEscalationsInput>
+  connectOrCreate?: Prisma.SupportTicketCreateOrConnectWithoutEscalationsInput
+  connect?: Prisma.SupportTicketWhereUniqueInput
+}
+
+export type SupportTicketUpdateOneRequiredWithoutEscalationsNestedInput = {
+  create?: Prisma.XOR<Prisma.SupportTicketCreateWithoutEscalationsInput, Prisma.SupportTicketUncheckedCreateWithoutEscalationsInput>
+  connectOrCreate?: Prisma.SupportTicketCreateOrConnectWithoutEscalationsInput
+  upsert?: Prisma.SupportTicketUpsertWithoutEscalationsInput
+  connect?: Prisma.SupportTicketWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.SupportTicketUpdateToOneWithWhereWithoutEscalationsInput, Prisma.SupportTicketUpdateWithoutEscalationsInput>, Prisma.SupportTicketUncheckedUpdateWithoutEscalationsInput>
+}
+
+export type SupportTicketCreateNestedOneWithoutAuditLogsInput = {
+  create?: Prisma.XOR<Prisma.SupportTicketCreateWithoutAuditLogsInput, Prisma.SupportTicketUncheckedCreateWithoutAuditLogsInput>
+  connectOrCreate?: Prisma.SupportTicketCreateOrConnectWithoutAuditLogsInput
+  connect?: Prisma.SupportTicketWhereUniqueInput
+}
+
+export type SupportTicketUpdateOneWithoutAuditLogsNestedInput = {
+  create?: Prisma.XOR<Prisma.SupportTicketCreateWithoutAuditLogsInput, Prisma.SupportTicketUncheckedCreateWithoutAuditLogsInput>
+  connectOrCreate?: Prisma.SupportTicketCreateOrConnectWithoutAuditLogsInput
+  upsert?: Prisma.SupportTicketUpsertWithoutAuditLogsInput
+  disconnect?: Prisma.SupportTicketWhereInput | boolean
+  delete?: Prisma.SupportTicketWhereInput | boolean
+  connect?: Prisma.SupportTicketWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.SupportTicketUpdateToOneWithWhereWithoutAuditLogsInput, Prisma.SupportTicketUpdateWithoutAuditLogsInput>, Prisma.SupportTicketUncheckedUpdateWithoutAuditLogsInput>
+}
+
 export type SupportTicketCreateNestedOneWithoutMessagesInput = {
   create?: Prisma.XOR<Prisma.SupportTicketCreateWithoutMessagesInput, Prisma.SupportTicketUncheckedCreateWithoutMessagesInput>
   connectOrCreate?: Prisma.SupportTicketCreateOrConnectWithoutMessagesInput
@@ -685,6 +776,10 @@ export type SupportTicketCreateWithoutRequesterInput = {
   project?: Prisma.ProjectCreateNestedOneWithoutSupportTicketsInput
   messages?: Prisma.TicketMessageCreateNestedManyWithoutTicketInput
   attachments?: Prisma.TicketAttachmentCreateNestedManyWithoutTicketInput
+  supportAssignments?: Prisma.SupportAssignmentCreateNestedManyWithoutTicketInput
+  internalNotes?: Prisma.InternalNoteCreateNestedManyWithoutTicketInput
+  escalations?: Prisma.EscalationEventCreateNestedManyWithoutTicketInput
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutTicketInput
 }
 
 export type SupportTicketUncheckedCreateWithoutRequesterInput = {
@@ -702,6 +797,10 @@ export type SupportTicketUncheckedCreateWithoutRequesterInput = {
   updatedAt?: Date | string
   messages?: Prisma.TicketMessageUncheckedCreateNestedManyWithoutTicketInput
   attachments?: Prisma.TicketAttachmentUncheckedCreateNestedManyWithoutTicketInput
+  supportAssignments?: Prisma.SupportAssignmentUncheckedCreateNestedManyWithoutTicketInput
+  internalNotes?: Prisma.InternalNoteUncheckedCreateNestedManyWithoutTicketInput
+  escalations?: Prisma.EscalationEventUncheckedCreateNestedManyWithoutTicketInput
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutTicketInput
 }
 
 export type SupportTicketCreateOrConnectWithoutRequesterInput = {
@@ -764,6 +863,10 @@ export type SupportTicketCreateWithoutOrganizationInput = {
   project?: Prisma.ProjectCreateNestedOneWithoutSupportTicketsInput
   messages?: Prisma.TicketMessageCreateNestedManyWithoutTicketInput
   attachments?: Prisma.TicketAttachmentCreateNestedManyWithoutTicketInput
+  supportAssignments?: Prisma.SupportAssignmentCreateNestedManyWithoutTicketInput
+  internalNotes?: Prisma.InternalNoteCreateNestedManyWithoutTicketInput
+  escalations?: Prisma.EscalationEventCreateNestedManyWithoutTicketInput
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutTicketInput
 }
 
 export type SupportTicketUncheckedCreateWithoutOrganizationInput = {
@@ -781,6 +884,10 @@ export type SupportTicketUncheckedCreateWithoutOrganizationInput = {
   updatedAt?: Date | string
   messages?: Prisma.TicketMessageUncheckedCreateNestedManyWithoutTicketInput
   attachments?: Prisma.TicketAttachmentUncheckedCreateNestedManyWithoutTicketInput
+  supportAssignments?: Prisma.SupportAssignmentUncheckedCreateNestedManyWithoutTicketInput
+  internalNotes?: Prisma.InternalNoteUncheckedCreateNestedManyWithoutTicketInput
+  escalations?: Prisma.EscalationEventUncheckedCreateNestedManyWithoutTicketInput
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutTicketInput
 }
 
 export type SupportTicketCreateOrConnectWithoutOrganizationInput = {
@@ -824,6 +931,10 @@ export type SupportTicketCreateWithoutProjectInput = {
   requester: Prisma.UserCreateNestedOneWithoutSupportTicketsInput
   messages?: Prisma.TicketMessageCreateNestedManyWithoutTicketInput
   attachments?: Prisma.TicketAttachmentCreateNestedManyWithoutTicketInput
+  supportAssignments?: Prisma.SupportAssignmentCreateNestedManyWithoutTicketInput
+  internalNotes?: Prisma.InternalNoteCreateNestedManyWithoutTicketInput
+  escalations?: Prisma.EscalationEventCreateNestedManyWithoutTicketInput
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutTicketInput
 }
 
 export type SupportTicketUncheckedCreateWithoutProjectInput = {
@@ -841,6 +952,10 @@ export type SupportTicketUncheckedCreateWithoutProjectInput = {
   updatedAt?: Date | string
   messages?: Prisma.TicketMessageUncheckedCreateNestedManyWithoutTicketInput
   attachments?: Prisma.TicketAttachmentUncheckedCreateNestedManyWithoutTicketInput
+  supportAssignments?: Prisma.SupportAssignmentUncheckedCreateNestedManyWithoutTicketInput
+  internalNotes?: Prisma.InternalNoteUncheckedCreateNestedManyWithoutTicketInput
+  escalations?: Prisma.EscalationEventUncheckedCreateNestedManyWithoutTicketInput
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutTicketInput
 }
 
 export type SupportTicketCreateOrConnectWithoutProjectInput = {
@@ -869,6 +984,406 @@ export type SupportTicketUpdateManyWithWhereWithoutProjectInput = {
   data: Prisma.XOR<Prisma.SupportTicketUpdateManyMutationInput, Prisma.SupportTicketUncheckedUpdateManyWithoutProjectInput>
 }
 
+export type SupportTicketCreateWithoutSupportAssignmentsInput = {
+  id?: string
+  ticketNumber: string
+  subject: string
+  category: string
+  priority?: $Enums.TicketPriority
+  status?: $Enums.TicketStatus
+  resolvedAt?: Date | string | null
+  slaDueAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  organization: Prisma.OrganizationCreateNestedOneWithoutSupportTicketsInput
+  requester: Prisma.UserCreateNestedOneWithoutSupportTicketsInput
+  project?: Prisma.ProjectCreateNestedOneWithoutSupportTicketsInput
+  messages?: Prisma.TicketMessageCreateNestedManyWithoutTicketInput
+  attachments?: Prisma.TicketAttachmentCreateNestedManyWithoutTicketInput
+  internalNotes?: Prisma.InternalNoteCreateNestedManyWithoutTicketInput
+  escalations?: Prisma.EscalationEventCreateNestedManyWithoutTicketInput
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutTicketInput
+}
+
+export type SupportTicketUncheckedCreateWithoutSupportAssignmentsInput = {
+  id?: string
+  organizationId: string
+  requesterId: string
+  projectId?: string | null
+  ticketNumber: string
+  subject: string
+  category: string
+  priority?: $Enums.TicketPriority
+  status?: $Enums.TicketStatus
+  resolvedAt?: Date | string | null
+  slaDueAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  messages?: Prisma.TicketMessageUncheckedCreateNestedManyWithoutTicketInput
+  attachments?: Prisma.TicketAttachmentUncheckedCreateNestedManyWithoutTicketInput
+  internalNotes?: Prisma.InternalNoteUncheckedCreateNestedManyWithoutTicketInput
+  escalations?: Prisma.EscalationEventUncheckedCreateNestedManyWithoutTicketInput
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutTicketInput
+}
+
+export type SupportTicketCreateOrConnectWithoutSupportAssignmentsInput = {
+  where: Prisma.SupportTicketWhereUniqueInput
+  create: Prisma.XOR<Prisma.SupportTicketCreateWithoutSupportAssignmentsInput, Prisma.SupportTicketUncheckedCreateWithoutSupportAssignmentsInput>
+}
+
+export type SupportTicketUpsertWithoutSupportAssignmentsInput = {
+  update: Prisma.XOR<Prisma.SupportTicketUpdateWithoutSupportAssignmentsInput, Prisma.SupportTicketUncheckedUpdateWithoutSupportAssignmentsInput>
+  create: Prisma.XOR<Prisma.SupportTicketCreateWithoutSupportAssignmentsInput, Prisma.SupportTicketUncheckedCreateWithoutSupportAssignmentsInput>
+  where?: Prisma.SupportTicketWhereInput
+}
+
+export type SupportTicketUpdateToOneWithWhereWithoutSupportAssignmentsInput = {
+  where?: Prisma.SupportTicketWhereInput
+  data: Prisma.XOR<Prisma.SupportTicketUpdateWithoutSupportAssignmentsInput, Prisma.SupportTicketUncheckedUpdateWithoutSupportAssignmentsInput>
+}
+
+export type SupportTicketUpdateWithoutSupportAssignmentsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  ticketNumber?: Prisma.StringFieldUpdateOperationsInput | string
+  subject?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.StringFieldUpdateOperationsInput | string
+  priority?: Prisma.EnumTicketPriorityFieldUpdateOperationsInput | $Enums.TicketPriority
+  status?: Prisma.EnumTicketStatusFieldUpdateOperationsInput | $Enums.TicketStatus
+  resolvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  slaDueAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  organization?: Prisma.OrganizationUpdateOneRequiredWithoutSupportTicketsNestedInput
+  requester?: Prisma.UserUpdateOneRequiredWithoutSupportTicketsNestedInput
+  project?: Prisma.ProjectUpdateOneWithoutSupportTicketsNestedInput
+  messages?: Prisma.TicketMessageUpdateManyWithoutTicketNestedInput
+  attachments?: Prisma.TicketAttachmentUpdateManyWithoutTicketNestedInput
+  internalNotes?: Prisma.InternalNoteUpdateManyWithoutTicketNestedInput
+  escalations?: Prisma.EscalationEventUpdateManyWithoutTicketNestedInput
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutTicketNestedInput
+}
+
+export type SupportTicketUncheckedUpdateWithoutSupportAssignmentsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  organizationId?: Prisma.StringFieldUpdateOperationsInput | string
+  requesterId?: Prisma.StringFieldUpdateOperationsInput | string
+  projectId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ticketNumber?: Prisma.StringFieldUpdateOperationsInput | string
+  subject?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.StringFieldUpdateOperationsInput | string
+  priority?: Prisma.EnumTicketPriorityFieldUpdateOperationsInput | $Enums.TicketPriority
+  status?: Prisma.EnumTicketStatusFieldUpdateOperationsInput | $Enums.TicketStatus
+  resolvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  slaDueAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  messages?: Prisma.TicketMessageUncheckedUpdateManyWithoutTicketNestedInput
+  attachments?: Prisma.TicketAttachmentUncheckedUpdateManyWithoutTicketNestedInput
+  internalNotes?: Prisma.InternalNoteUncheckedUpdateManyWithoutTicketNestedInput
+  escalations?: Prisma.EscalationEventUncheckedUpdateManyWithoutTicketNestedInput
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutTicketNestedInput
+}
+
+export type SupportTicketCreateWithoutInternalNotesInput = {
+  id?: string
+  ticketNumber: string
+  subject: string
+  category: string
+  priority?: $Enums.TicketPriority
+  status?: $Enums.TicketStatus
+  resolvedAt?: Date | string | null
+  slaDueAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  organization: Prisma.OrganizationCreateNestedOneWithoutSupportTicketsInput
+  requester: Prisma.UserCreateNestedOneWithoutSupportTicketsInput
+  project?: Prisma.ProjectCreateNestedOneWithoutSupportTicketsInput
+  messages?: Prisma.TicketMessageCreateNestedManyWithoutTicketInput
+  attachments?: Prisma.TicketAttachmentCreateNestedManyWithoutTicketInput
+  supportAssignments?: Prisma.SupportAssignmentCreateNestedManyWithoutTicketInput
+  escalations?: Prisma.EscalationEventCreateNestedManyWithoutTicketInput
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutTicketInput
+}
+
+export type SupportTicketUncheckedCreateWithoutInternalNotesInput = {
+  id?: string
+  organizationId: string
+  requesterId: string
+  projectId?: string | null
+  ticketNumber: string
+  subject: string
+  category: string
+  priority?: $Enums.TicketPriority
+  status?: $Enums.TicketStatus
+  resolvedAt?: Date | string | null
+  slaDueAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  messages?: Prisma.TicketMessageUncheckedCreateNestedManyWithoutTicketInput
+  attachments?: Prisma.TicketAttachmentUncheckedCreateNestedManyWithoutTicketInput
+  supportAssignments?: Prisma.SupportAssignmentUncheckedCreateNestedManyWithoutTicketInput
+  escalations?: Prisma.EscalationEventUncheckedCreateNestedManyWithoutTicketInput
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutTicketInput
+}
+
+export type SupportTicketCreateOrConnectWithoutInternalNotesInput = {
+  where: Prisma.SupportTicketWhereUniqueInput
+  create: Prisma.XOR<Prisma.SupportTicketCreateWithoutInternalNotesInput, Prisma.SupportTicketUncheckedCreateWithoutInternalNotesInput>
+}
+
+export type SupportTicketUpsertWithoutInternalNotesInput = {
+  update: Prisma.XOR<Prisma.SupportTicketUpdateWithoutInternalNotesInput, Prisma.SupportTicketUncheckedUpdateWithoutInternalNotesInput>
+  create: Prisma.XOR<Prisma.SupportTicketCreateWithoutInternalNotesInput, Prisma.SupportTicketUncheckedCreateWithoutInternalNotesInput>
+  where?: Prisma.SupportTicketWhereInput
+}
+
+export type SupportTicketUpdateToOneWithWhereWithoutInternalNotesInput = {
+  where?: Prisma.SupportTicketWhereInput
+  data: Prisma.XOR<Prisma.SupportTicketUpdateWithoutInternalNotesInput, Prisma.SupportTicketUncheckedUpdateWithoutInternalNotesInput>
+}
+
+export type SupportTicketUpdateWithoutInternalNotesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  ticketNumber?: Prisma.StringFieldUpdateOperationsInput | string
+  subject?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.StringFieldUpdateOperationsInput | string
+  priority?: Prisma.EnumTicketPriorityFieldUpdateOperationsInput | $Enums.TicketPriority
+  status?: Prisma.EnumTicketStatusFieldUpdateOperationsInput | $Enums.TicketStatus
+  resolvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  slaDueAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  organization?: Prisma.OrganizationUpdateOneRequiredWithoutSupportTicketsNestedInput
+  requester?: Prisma.UserUpdateOneRequiredWithoutSupportTicketsNestedInput
+  project?: Prisma.ProjectUpdateOneWithoutSupportTicketsNestedInput
+  messages?: Prisma.TicketMessageUpdateManyWithoutTicketNestedInput
+  attachments?: Prisma.TicketAttachmentUpdateManyWithoutTicketNestedInput
+  supportAssignments?: Prisma.SupportAssignmentUpdateManyWithoutTicketNestedInput
+  escalations?: Prisma.EscalationEventUpdateManyWithoutTicketNestedInput
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutTicketNestedInput
+}
+
+export type SupportTicketUncheckedUpdateWithoutInternalNotesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  organizationId?: Prisma.StringFieldUpdateOperationsInput | string
+  requesterId?: Prisma.StringFieldUpdateOperationsInput | string
+  projectId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ticketNumber?: Prisma.StringFieldUpdateOperationsInput | string
+  subject?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.StringFieldUpdateOperationsInput | string
+  priority?: Prisma.EnumTicketPriorityFieldUpdateOperationsInput | $Enums.TicketPriority
+  status?: Prisma.EnumTicketStatusFieldUpdateOperationsInput | $Enums.TicketStatus
+  resolvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  slaDueAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  messages?: Prisma.TicketMessageUncheckedUpdateManyWithoutTicketNestedInput
+  attachments?: Prisma.TicketAttachmentUncheckedUpdateManyWithoutTicketNestedInput
+  supportAssignments?: Prisma.SupportAssignmentUncheckedUpdateManyWithoutTicketNestedInput
+  escalations?: Prisma.EscalationEventUncheckedUpdateManyWithoutTicketNestedInput
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutTicketNestedInput
+}
+
+export type SupportTicketCreateWithoutEscalationsInput = {
+  id?: string
+  ticketNumber: string
+  subject: string
+  category: string
+  priority?: $Enums.TicketPriority
+  status?: $Enums.TicketStatus
+  resolvedAt?: Date | string | null
+  slaDueAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  organization: Prisma.OrganizationCreateNestedOneWithoutSupportTicketsInput
+  requester: Prisma.UserCreateNestedOneWithoutSupportTicketsInput
+  project?: Prisma.ProjectCreateNestedOneWithoutSupportTicketsInput
+  messages?: Prisma.TicketMessageCreateNestedManyWithoutTicketInput
+  attachments?: Prisma.TicketAttachmentCreateNestedManyWithoutTicketInput
+  supportAssignments?: Prisma.SupportAssignmentCreateNestedManyWithoutTicketInput
+  internalNotes?: Prisma.InternalNoteCreateNestedManyWithoutTicketInput
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutTicketInput
+}
+
+export type SupportTicketUncheckedCreateWithoutEscalationsInput = {
+  id?: string
+  organizationId: string
+  requesterId: string
+  projectId?: string | null
+  ticketNumber: string
+  subject: string
+  category: string
+  priority?: $Enums.TicketPriority
+  status?: $Enums.TicketStatus
+  resolvedAt?: Date | string | null
+  slaDueAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  messages?: Prisma.TicketMessageUncheckedCreateNestedManyWithoutTicketInput
+  attachments?: Prisma.TicketAttachmentUncheckedCreateNestedManyWithoutTicketInput
+  supportAssignments?: Prisma.SupportAssignmentUncheckedCreateNestedManyWithoutTicketInput
+  internalNotes?: Prisma.InternalNoteUncheckedCreateNestedManyWithoutTicketInput
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutTicketInput
+}
+
+export type SupportTicketCreateOrConnectWithoutEscalationsInput = {
+  where: Prisma.SupportTicketWhereUniqueInput
+  create: Prisma.XOR<Prisma.SupportTicketCreateWithoutEscalationsInput, Prisma.SupportTicketUncheckedCreateWithoutEscalationsInput>
+}
+
+export type SupportTicketUpsertWithoutEscalationsInput = {
+  update: Prisma.XOR<Prisma.SupportTicketUpdateWithoutEscalationsInput, Prisma.SupportTicketUncheckedUpdateWithoutEscalationsInput>
+  create: Prisma.XOR<Prisma.SupportTicketCreateWithoutEscalationsInput, Prisma.SupportTicketUncheckedCreateWithoutEscalationsInput>
+  where?: Prisma.SupportTicketWhereInput
+}
+
+export type SupportTicketUpdateToOneWithWhereWithoutEscalationsInput = {
+  where?: Prisma.SupportTicketWhereInput
+  data: Prisma.XOR<Prisma.SupportTicketUpdateWithoutEscalationsInput, Prisma.SupportTicketUncheckedUpdateWithoutEscalationsInput>
+}
+
+export type SupportTicketUpdateWithoutEscalationsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  ticketNumber?: Prisma.StringFieldUpdateOperationsInput | string
+  subject?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.StringFieldUpdateOperationsInput | string
+  priority?: Prisma.EnumTicketPriorityFieldUpdateOperationsInput | $Enums.TicketPriority
+  status?: Prisma.EnumTicketStatusFieldUpdateOperationsInput | $Enums.TicketStatus
+  resolvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  slaDueAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  organization?: Prisma.OrganizationUpdateOneRequiredWithoutSupportTicketsNestedInput
+  requester?: Prisma.UserUpdateOneRequiredWithoutSupportTicketsNestedInput
+  project?: Prisma.ProjectUpdateOneWithoutSupportTicketsNestedInput
+  messages?: Prisma.TicketMessageUpdateManyWithoutTicketNestedInput
+  attachments?: Prisma.TicketAttachmentUpdateManyWithoutTicketNestedInput
+  supportAssignments?: Prisma.SupportAssignmentUpdateManyWithoutTicketNestedInput
+  internalNotes?: Prisma.InternalNoteUpdateManyWithoutTicketNestedInput
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutTicketNestedInput
+}
+
+export type SupportTicketUncheckedUpdateWithoutEscalationsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  organizationId?: Prisma.StringFieldUpdateOperationsInput | string
+  requesterId?: Prisma.StringFieldUpdateOperationsInput | string
+  projectId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ticketNumber?: Prisma.StringFieldUpdateOperationsInput | string
+  subject?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.StringFieldUpdateOperationsInput | string
+  priority?: Prisma.EnumTicketPriorityFieldUpdateOperationsInput | $Enums.TicketPriority
+  status?: Prisma.EnumTicketStatusFieldUpdateOperationsInput | $Enums.TicketStatus
+  resolvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  slaDueAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  messages?: Prisma.TicketMessageUncheckedUpdateManyWithoutTicketNestedInput
+  attachments?: Prisma.TicketAttachmentUncheckedUpdateManyWithoutTicketNestedInput
+  supportAssignments?: Prisma.SupportAssignmentUncheckedUpdateManyWithoutTicketNestedInput
+  internalNotes?: Prisma.InternalNoteUncheckedUpdateManyWithoutTicketNestedInput
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutTicketNestedInput
+}
+
+export type SupportTicketCreateWithoutAuditLogsInput = {
+  id?: string
+  ticketNumber: string
+  subject: string
+  category: string
+  priority?: $Enums.TicketPriority
+  status?: $Enums.TicketStatus
+  resolvedAt?: Date | string | null
+  slaDueAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  organization: Prisma.OrganizationCreateNestedOneWithoutSupportTicketsInput
+  requester: Prisma.UserCreateNestedOneWithoutSupportTicketsInput
+  project?: Prisma.ProjectCreateNestedOneWithoutSupportTicketsInput
+  messages?: Prisma.TicketMessageCreateNestedManyWithoutTicketInput
+  attachments?: Prisma.TicketAttachmentCreateNestedManyWithoutTicketInput
+  supportAssignments?: Prisma.SupportAssignmentCreateNestedManyWithoutTicketInput
+  internalNotes?: Prisma.InternalNoteCreateNestedManyWithoutTicketInput
+  escalations?: Prisma.EscalationEventCreateNestedManyWithoutTicketInput
+}
+
+export type SupportTicketUncheckedCreateWithoutAuditLogsInput = {
+  id?: string
+  organizationId: string
+  requesterId: string
+  projectId?: string | null
+  ticketNumber: string
+  subject: string
+  category: string
+  priority?: $Enums.TicketPriority
+  status?: $Enums.TicketStatus
+  resolvedAt?: Date | string | null
+  slaDueAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  messages?: Prisma.TicketMessageUncheckedCreateNestedManyWithoutTicketInput
+  attachments?: Prisma.TicketAttachmentUncheckedCreateNestedManyWithoutTicketInput
+  supportAssignments?: Prisma.SupportAssignmentUncheckedCreateNestedManyWithoutTicketInput
+  internalNotes?: Prisma.InternalNoteUncheckedCreateNestedManyWithoutTicketInput
+  escalations?: Prisma.EscalationEventUncheckedCreateNestedManyWithoutTicketInput
+}
+
+export type SupportTicketCreateOrConnectWithoutAuditLogsInput = {
+  where: Prisma.SupportTicketWhereUniqueInput
+  create: Prisma.XOR<Prisma.SupportTicketCreateWithoutAuditLogsInput, Prisma.SupportTicketUncheckedCreateWithoutAuditLogsInput>
+}
+
+export type SupportTicketUpsertWithoutAuditLogsInput = {
+  update: Prisma.XOR<Prisma.SupportTicketUpdateWithoutAuditLogsInput, Prisma.SupportTicketUncheckedUpdateWithoutAuditLogsInput>
+  create: Prisma.XOR<Prisma.SupportTicketCreateWithoutAuditLogsInput, Prisma.SupportTicketUncheckedCreateWithoutAuditLogsInput>
+  where?: Prisma.SupportTicketWhereInput
+}
+
+export type SupportTicketUpdateToOneWithWhereWithoutAuditLogsInput = {
+  where?: Prisma.SupportTicketWhereInput
+  data: Prisma.XOR<Prisma.SupportTicketUpdateWithoutAuditLogsInput, Prisma.SupportTicketUncheckedUpdateWithoutAuditLogsInput>
+}
+
+export type SupportTicketUpdateWithoutAuditLogsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  ticketNumber?: Prisma.StringFieldUpdateOperationsInput | string
+  subject?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.StringFieldUpdateOperationsInput | string
+  priority?: Prisma.EnumTicketPriorityFieldUpdateOperationsInput | $Enums.TicketPriority
+  status?: Prisma.EnumTicketStatusFieldUpdateOperationsInput | $Enums.TicketStatus
+  resolvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  slaDueAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  organization?: Prisma.OrganizationUpdateOneRequiredWithoutSupportTicketsNestedInput
+  requester?: Prisma.UserUpdateOneRequiredWithoutSupportTicketsNestedInput
+  project?: Prisma.ProjectUpdateOneWithoutSupportTicketsNestedInput
+  messages?: Prisma.TicketMessageUpdateManyWithoutTicketNestedInput
+  attachments?: Prisma.TicketAttachmentUpdateManyWithoutTicketNestedInput
+  supportAssignments?: Prisma.SupportAssignmentUpdateManyWithoutTicketNestedInput
+  internalNotes?: Prisma.InternalNoteUpdateManyWithoutTicketNestedInput
+  escalations?: Prisma.EscalationEventUpdateManyWithoutTicketNestedInput
+}
+
+export type SupportTicketUncheckedUpdateWithoutAuditLogsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  organizationId?: Prisma.StringFieldUpdateOperationsInput | string
+  requesterId?: Prisma.StringFieldUpdateOperationsInput | string
+  projectId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ticketNumber?: Prisma.StringFieldUpdateOperationsInput | string
+  subject?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.StringFieldUpdateOperationsInput | string
+  priority?: Prisma.EnumTicketPriorityFieldUpdateOperationsInput | $Enums.TicketPriority
+  status?: Prisma.EnumTicketStatusFieldUpdateOperationsInput | $Enums.TicketStatus
+  resolvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  slaDueAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  messages?: Prisma.TicketMessageUncheckedUpdateManyWithoutTicketNestedInput
+  attachments?: Prisma.TicketAttachmentUncheckedUpdateManyWithoutTicketNestedInput
+  supportAssignments?: Prisma.SupportAssignmentUncheckedUpdateManyWithoutTicketNestedInput
+  internalNotes?: Prisma.InternalNoteUncheckedUpdateManyWithoutTicketNestedInput
+  escalations?: Prisma.EscalationEventUncheckedUpdateManyWithoutTicketNestedInput
+}
+
 export type SupportTicketCreateWithoutMessagesInput = {
   id?: string
   ticketNumber: string
@@ -884,6 +1399,10 @@ export type SupportTicketCreateWithoutMessagesInput = {
   requester: Prisma.UserCreateNestedOneWithoutSupportTicketsInput
   project?: Prisma.ProjectCreateNestedOneWithoutSupportTicketsInput
   attachments?: Prisma.TicketAttachmentCreateNestedManyWithoutTicketInput
+  supportAssignments?: Prisma.SupportAssignmentCreateNestedManyWithoutTicketInput
+  internalNotes?: Prisma.InternalNoteCreateNestedManyWithoutTicketInput
+  escalations?: Prisma.EscalationEventCreateNestedManyWithoutTicketInput
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutTicketInput
 }
 
 export type SupportTicketUncheckedCreateWithoutMessagesInput = {
@@ -901,6 +1420,10 @@ export type SupportTicketUncheckedCreateWithoutMessagesInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   attachments?: Prisma.TicketAttachmentUncheckedCreateNestedManyWithoutTicketInput
+  supportAssignments?: Prisma.SupportAssignmentUncheckedCreateNestedManyWithoutTicketInput
+  internalNotes?: Prisma.InternalNoteUncheckedCreateNestedManyWithoutTicketInput
+  escalations?: Prisma.EscalationEventUncheckedCreateNestedManyWithoutTicketInput
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutTicketInput
 }
 
 export type SupportTicketCreateOrConnectWithoutMessagesInput = {
@@ -934,6 +1457,10 @@ export type SupportTicketUpdateWithoutMessagesInput = {
   requester?: Prisma.UserUpdateOneRequiredWithoutSupportTicketsNestedInput
   project?: Prisma.ProjectUpdateOneWithoutSupportTicketsNestedInput
   attachments?: Prisma.TicketAttachmentUpdateManyWithoutTicketNestedInput
+  supportAssignments?: Prisma.SupportAssignmentUpdateManyWithoutTicketNestedInput
+  internalNotes?: Prisma.InternalNoteUpdateManyWithoutTicketNestedInput
+  escalations?: Prisma.EscalationEventUpdateManyWithoutTicketNestedInput
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutTicketNestedInput
 }
 
 export type SupportTicketUncheckedUpdateWithoutMessagesInput = {
@@ -951,6 +1478,10 @@ export type SupportTicketUncheckedUpdateWithoutMessagesInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   attachments?: Prisma.TicketAttachmentUncheckedUpdateManyWithoutTicketNestedInput
+  supportAssignments?: Prisma.SupportAssignmentUncheckedUpdateManyWithoutTicketNestedInput
+  internalNotes?: Prisma.InternalNoteUncheckedUpdateManyWithoutTicketNestedInput
+  escalations?: Prisma.EscalationEventUncheckedUpdateManyWithoutTicketNestedInput
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutTicketNestedInput
 }
 
 export type SupportTicketCreateWithoutAttachmentsInput = {
@@ -968,6 +1499,10 @@ export type SupportTicketCreateWithoutAttachmentsInput = {
   requester: Prisma.UserCreateNestedOneWithoutSupportTicketsInput
   project?: Prisma.ProjectCreateNestedOneWithoutSupportTicketsInput
   messages?: Prisma.TicketMessageCreateNestedManyWithoutTicketInput
+  supportAssignments?: Prisma.SupportAssignmentCreateNestedManyWithoutTicketInput
+  internalNotes?: Prisma.InternalNoteCreateNestedManyWithoutTicketInput
+  escalations?: Prisma.EscalationEventCreateNestedManyWithoutTicketInput
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutTicketInput
 }
 
 export type SupportTicketUncheckedCreateWithoutAttachmentsInput = {
@@ -985,6 +1520,10 @@ export type SupportTicketUncheckedCreateWithoutAttachmentsInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   messages?: Prisma.TicketMessageUncheckedCreateNestedManyWithoutTicketInput
+  supportAssignments?: Prisma.SupportAssignmentUncheckedCreateNestedManyWithoutTicketInput
+  internalNotes?: Prisma.InternalNoteUncheckedCreateNestedManyWithoutTicketInput
+  escalations?: Prisma.EscalationEventUncheckedCreateNestedManyWithoutTicketInput
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutTicketInput
 }
 
 export type SupportTicketCreateOrConnectWithoutAttachmentsInput = {
@@ -1018,6 +1557,10 @@ export type SupportTicketUpdateWithoutAttachmentsInput = {
   requester?: Prisma.UserUpdateOneRequiredWithoutSupportTicketsNestedInput
   project?: Prisma.ProjectUpdateOneWithoutSupportTicketsNestedInput
   messages?: Prisma.TicketMessageUpdateManyWithoutTicketNestedInput
+  supportAssignments?: Prisma.SupportAssignmentUpdateManyWithoutTicketNestedInput
+  internalNotes?: Prisma.InternalNoteUpdateManyWithoutTicketNestedInput
+  escalations?: Prisma.EscalationEventUpdateManyWithoutTicketNestedInput
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutTicketNestedInput
 }
 
 export type SupportTicketUncheckedUpdateWithoutAttachmentsInput = {
@@ -1035,6 +1578,10 @@ export type SupportTicketUncheckedUpdateWithoutAttachmentsInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   messages?: Prisma.TicketMessageUncheckedUpdateManyWithoutTicketNestedInput
+  supportAssignments?: Prisma.SupportAssignmentUncheckedUpdateManyWithoutTicketNestedInput
+  internalNotes?: Prisma.InternalNoteUncheckedUpdateManyWithoutTicketNestedInput
+  escalations?: Prisma.EscalationEventUncheckedUpdateManyWithoutTicketNestedInput
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutTicketNestedInput
 }
 
 export type SupportTicketCreateManyRequesterInput = {
@@ -1067,6 +1614,10 @@ export type SupportTicketUpdateWithoutRequesterInput = {
   project?: Prisma.ProjectUpdateOneWithoutSupportTicketsNestedInput
   messages?: Prisma.TicketMessageUpdateManyWithoutTicketNestedInput
   attachments?: Prisma.TicketAttachmentUpdateManyWithoutTicketNestedInput
+  supportAssignments?: Prisma.SupportAssignmentUpdateManyWithoutTicketNestedInput
+  internalNotes?: Prisma.InternalNoteUpdateManyWithoutTicketNestedInput
+  escalations?: Prisma.EscalationEventUpdateManyWithoutTicketNestedInput
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutTicketNestedInput
 }
 
 export type SupportTicketUncheckedUpdateWithoutRequesterInput = {
@@ -1084,6 +1635,10 @@ export type SupportTicketUncheckedUpdateWithoutRequesterInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   messages?: Prisma.TicketMessageUncheckedUpdateManyWithoutTicketNestedInput
   attachments?: Prisma.TicketAttachmentUncheckedUpdateManyWithoutTicketNestedInput
+  supportAssignments?: Prisma.SupportAssignmentUncheckedUpdateManyWithoutTicketNestedInput
+  internalNotes?: Prisma.InternalNoteUncheckedUpdateManyWithoutTicketNestedInput
+  escalations?: Prisma.EscalationEventUncheckedUpdateManyWithoutTicketNestedInput
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutTicketNestedInput
 }
 
 export type SupportTicketUncheckedUpdateManyWithoutRequesterInput = {
@@ -1131,6 +1686,10 @@ export type SupportTicketUpdateWithoutOrganizationInput = {
   project?: Prisma.ProjectUpdateOneWithoutSupportTicketsNestedInput
   messages?: Prisma.TicketMessageUpdateManyWithoutTicketNestedInput
   attachments?: Prisma.TicketAttachmentUpdateManyWithoutTicketNestedInput
+  supportAssignments?: Prisma.SupportAssignmentUpdateManyWithoutTicketNestedInput
+  internalNotes?: Prisma.InternalNoteUpdateManyWithoutTicketNestedInput
+  escalations?: Prisma.EscalationEventUpdateManyWithoutTicketNestedInput
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutTicketNestedInput
 }
 
 export type SupportTicketUncheckedUpdateWithoutOrganizationInput = {
@@ -1148,6 +1707,10 @@ export type SupportTicketUncheckedUpdateWithoutOrganizationInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   messages?: Prisma.TicketMessageUncheckedUpdateManyWithoutTicketNestedInput
   attachments?: Prisma.TicketAttachmentUncheckedUpdateManyWithoutTicketNestedInput
+  supportAssignments?: Prisma.SupportAssignmentUncheckedUpdateManyWithoutTicketNestedInput
+  internalNotes?: Prisma.InternalNoteUncheckedUpdateManyWithoutTicketNestedInput
+  escalations?: Prisma.EscalationEventUncheckedUpdateManyWithoutTicketNestedInput
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutTicketNestedInput
 }
 
 export type SupportTicketUncheckedUpdateManyWithoutOrganizationInput = {
@@ -1195,6 +1758,10 @@ export type SupportTicketUpdateWithoutProjectInput = {
   requester?: Prisma.UserUpdateOneRequiredWithoutSupportTicketsNestedInput
   messages?: Prisma.TicketMessageUpdateManyWithoutTicketNestedInput
   attachments?: Prisma.TicketAttachmentUpdateManyWithoutTicketNestedInput
+  supportAssignments?: Prisma.SupportAssignmentUpdateManyWithoutTicketNestedInput
+  internalNotes?: Prisma.InternalNoteUpdateManyWithoutTicketNestedInput
+  escalations?: Prisma.EscalationEventUpdateManyWithoutTicketNestedInput
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutTicketNestedInput
 }
 
 export type SupportTicketUncheckedUpdateWithoutProjectInput = {
@@ -1212,6 +1779,10 @@ export type SupportTicketUncheckedUpdateWithoutProjectInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   messages?: Prisma.TicketMessageUncheckedUpdateManyWithoutTicketNestedInput
   attachments?: Prisma.TicketAttachmentUncheckedUpdateManyWithoutTicketNestedInput
+  supportAssignments?: Prisma.SupportAssignmentUncheckedUpdateManyWithoutTicketNestedInput
+  internalNotes?: Prisma.InternalNoteUncheckedUpdateManyWithoutTicketNestedInput
+  escalations?: Prisma.EscalationEventUncheckedUpdateManyWithoutTicketNestedInput
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutTicketNestedInput
 }
 
 export type SupportTicketUncheckedUpdateManyWithoutProjectInput = {
@@ -1237,11 +1808,19 @@ export type SupportTicketUncheckedUpdateManyWithoutProjectInput = {
 export type SupportTicketCountOutputType = {
   messages: number
   attachments: number
+  supportAssignments: number
+  internalNotes: number
+  escalations: number
+  auditLogs: number
 }
 
 export type SupportTicketCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   messages?: boolean | SupportTicketCountOutputTypeCountMessagesArgs
   attachments?: boolean | SupportTicketCountOutputTypeCountAttachmentsArgs
+  supportAssignments?: boolean | SupportTicketCountOutputTypeCountSupportAssignmentsArgs
+  internalNotes?: boolean | SupportTicketCountOutputTypeCountInternalNotesArgs
+  escalations?: boolean | SupportTicketCountOutputTypeCountEscalationsArgs
+  auditLogs?: boolean | SupportTicketCountOutputTypeCountAuditLogsArgs
 }
 
 /**
@@ -1268,6 +1847,34 @@ export type SupportTicketCountOutputTypeCountAttachmentsArgs<ExtArgs extends run
   where?: Prisma.TicketAttachmentWhereInput
 }
 
+/**
+ * SupportTicketCountOutputType without action
+ */
+export type SupportTicketCountOutputTypeCountSupportAssignmentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.SupportAssignmentWhereInput
+}
+
+/**
+ * SupportTicketCountOutputType without action
+ */
+export type SupportTicketCountOutputTypeCountInternalNotesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.InternalNoteWhereInput
+}
+
+/**
+ * SupportTicketCountOutputType without action
+ */
+export type SupportTicketCountOutputTypeCountEscalationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.EscalationEventWhereInput
+}
+
+/**
+ * SupportTicketCountOutputType without action
+ */
+export type SupportTicketCountOutputTypeCountAuditLogsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.AuditLogWhereInput
+}
+
 
 export type SupportTicketSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -1288,6 +1895,10 @@ export type SupportTicketSelect<ExtArgs extends runtime.Types.Extensions.Interna
   project?: boolean | Prisma.SupportTicket$projectArgs<ExtArgs>
   messages?: boolean | Prisma.SupportTicket$messagesArgs<ExtArgs>
   attachments?: boolean | Prisma.SupportTicket$attachmentsArgs<ExtArgs>
+  supportAssignments?: boolean | Prisma.SupportTicket$supportAssignmentsArgs<ExtArgs>
+  internalNotes?: boolean | Prisma.SupportTicket$internalNotesArgs<ExtArgs>
+  escalations?: boolean | Prisma.SupportTicket$escalationsArgs<ExtArgs>
+  auditLogs?: boolean | Prisma.SupportTicket$auditLogsArgs<ExtArgs>
   _count?: boolean | Prisma.SupportTicketCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["supportTicket"]>
 
@@ -1352,6 +1963,10 @@ export type SupportTicketInclude<ExtArgs extends runtime.Types.Extensions.Intern
   project?: boolean | Prisma.SupportTicket$projectArgs<ExtArgs>
   messages?: boolean | Prisma.SupportTicket$messagesArgs<ExtArgs>
   attachments?: boolean | Prisma.SupportTicket$attachmentsArgs<ExtArgs>
+  supportAssignments?: boolean | Prisma.SupportTicket$supportAssignmentsArgs<ExtArgs>
+  internalNotes?: boolean | Prisma.SupportTicket$internalNotesArgs<ExtArgs>
+  escalations?: boolean | Prisma.SupportTicket$escalationsArgs<ExtArgs>
+  auditLogs?: boolean | Prisma.SupportTicket$auditLogsArgs<ExtArgs>
   _count?: boolean | Prisma.SupportTicketCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type SupportTicketIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1373,6 +1988,10 @@ export type $SupportTicketPayload<ExtArgs extends runtime.Types.Extensions.Inter
     project: Prisma.$ProjectPayload<ExtArgs> | null
     messages: Prisma.$TicketMessagePayload<ExtArgs>[]
     attachments: Prisma.$TicketAttachmentPayload<ExtArgs>[]
+    supportAssignments: Prisma.$SupportAssignmentPayload<ExtArgs>[]
+    internalNotes: Prisma.$InternalNotePayload<ExtArgs>[]
+    escalations: Prisma.$EscalationEventPayload<ExtArgs>[]
+    auditLogs: Prisma.$AuditLogPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1787,6 +2406,10 @@ export interface Prisma__SupportTicketClient<T, Null = never, ExtArgs extends ru
   project<T extends Prisma.SupportTicket$projectArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.SupportTicket$projectArgs<ExtArgs>>): Prisma.Prisma__ProjectClient<runtime.Types.Result.GetResult<Prisma.$ProjectPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   messages<T extends Prisma.SupportTicket$messagesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.SupportTicket$messagesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TicketMessagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   attachments<T extends Prisma.SupportTicket$attachmentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.SupportTicket$attachmentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TicketAttachmentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  supportAssignments<T extends Prisma.SupportTicket$supportAssignmentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.SupportTicket$supportAssignmentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SupportAssignmentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  internalNotes<T extends Prisma.SupportTicket$internalNotesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.SupportTicket$internalNotesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$InternalNotePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  escalations<T extends Prisma.SupportTicket$escalationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.SupportTicket$escalationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$EscalationEventPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  auditLogs<T extends Prisma.SupportTicket$auditLogsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.SupportTicket$auditLogsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AuditLogPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2294,6 +2917,102 @@ export type SupportTicket$attachmentsArgs<ExtArgs extends runtime.Types.Extensio
   take?: number
   skip?: number
   distinct?: Prisma.TicketAttachmentScalarFieldEnum | Prisma.TicketAttachmentScalarFieldEnum[]
+}
+
+/**
+ * SupportTicket.supportAssignments
+ */
+export type SupportTicket$supportAssignmentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the SupportAssignment
+   */
+  select?: Prisma.SupportAssignmentSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the SupportAssignment
+   */
+  omit?: Prisma.SupportAssignmentOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SupportAssignmentInclude<ExtArgs> | null
+  where?: Prisma.SupportAssignmentWhereInput
+  orderBy?: Prisma.SupportAssignmentOrderByWithRelationInput | Prisma.SupportAssignmentOrderByWithRelationInput[]
+  cursor?: Prisma.SupportAssignmentWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.SupportAssignmentScalarFieldEnum | Prisma.SupportAssignmentScalarFieldEnum[]
+}
+
+/**
+ * SupportTicket.internalNotes
+ */
+export type SupportTicket$internalNotesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the InternalNote
+   */
+  select?: Prisma.InternalNoteSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the InternalNote
+   */
+  omit?: Prisma.InternalNoteOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.InternalNoteInclude<ExtArgs> | null
+  where?: Prisma.InternalNoteWhereInput
+  orderBy?: Prisma.InternalNoteOrderByWithRelationInput | Prisma.InternalNoteOrderByWithRelationInput[]
+  cursor?: Prisma.InternalNoteWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.InternalNoteScalarFieldEnum | Prisma.InternalNoteScalarFieldEnum[]
+}
+
+/**
+ * SupportTicket.escalations
+ */
+export type SupportTicket$escalationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the EscalationEvent
+   */
+  select?: Prisma.EscalationEventSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the EscalationEvent
+   */
+  omit?: Prisma.EscalationEventOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.EscalationEventInclude<ExtArgs> | null
+  where?: Prisma.EscalationEventWhereInput
+  orderBy?: Prisma.EscalationEventOrderByWithRelationInput | Prisma.EscalationEventOrderByWithRelationInput[]
+  cursor?: Prisma.EscalationEventWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.EscalationEventScalarFieldEnum | Prisma.EscalationEventScalarFieldEnum[]
+}
+
+/**
+ * SupportTicket.auditLogs
+ */
+export type SupportTicket$auditLogsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the AuditLog
+   */
+  select?: Prisma.AuditLogSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the AuditLog
+   */
+  omit?: Prisma.AuditLogOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AuditLogInclude<ExtArgs> | null
+  where?: Prisma.AuditLogWhereInput
+  orderBy?: Prisma.AuditLogOrderByWithRelationInput | Prisma.AuditLogOrderByWithRelationInput[]
+  cursor?: Prisma.AuditLogWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.AuditLogScalarFieldEnum | Prisma.AuditLogScalarFieldEnum[]
 }
 
 /**

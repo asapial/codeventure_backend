@@ -517,10 +517,6 @@ export type EnumMaintenanceRequestTypeFieldUpdateOperationsInput = {
   set?: $Enums.MaintenanceRequestType
 }
 
-export type EnumTicketPriorityFieldUpdateOperationsInput = {
-  set?: $Enums.TicketPriority
-}
-
 export type EnumTicketStatusFieldUpdateOperationsInput = {
   set?: $Enums.TicketStatus
 }

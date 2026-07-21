@@ -193,6 +193,11 @@ export type OrganizationWhereInput = {
   contracts?: Prisma.ContractListRelationFilter
   invoices?: Prisma.InvoiceListRelationFilter
   supportTickets?: Prisma.SupportTicketListRelationFilter
+  slaPolicies?: Prisma.SlaPolicyListRelationFilter
+  supportProfile?: Prisma.XOR<Prisma.OrganizationSupportProfileNullableScalarRelationFilter, Prisma.OrganizationSupportProfileWhereInput> | null
+  customerActivities?: Prisma.CustomerActivityLogListRelationFilter
+  supportMetrics?: Prisma.SupportMetricDailyListRelationFilter
+  auditEvents?: Prisma.AuditLogListRelationFilter
 }
 
 export type OrganizationOrderByWithRelationInput = {
@@ -212,6 +217,11 @@ export type OrganizationOrderByWithRelationInput = {
   contracts?: Prisma.ContractOrderByRelationAggregateInput
   invoices?: Prisma.InvoiceOrderByRelationAggregateInput
   supportTickets?: Prisma.SupportTicketOrderByRelationAggregateInput
+  slaPolicies?: Prisma.SlaPolicyOrderByRelationAggregateInput
+  supportProfile?: Prisma.OrganizationSupportProfileOrderByWithRelationInput
+  customerActivities?: Prisma.CustomerActivityLogOrderByRelationAggregateInput
+  supportMetrics?: Prisma.SupportMetricDailyOrderByRelationAggregateInput
+  auditEvents?: Prisma.AuditLogOrderByRelationAggregateInput
 }
 
 export type OrganizationWhereUniqueInput = Prisma.AtLeast<{
@@ -234,6 +244,11 @@ export type OrganizationWhereUniqueInput = Prisma.AtLeast<{
   contracts?: Prisma.ContractListRelationFilter
   invoices?: Prisma.InvoiceListRelationFilter
   supportTickets?: Prisma.SupportTicketListRelationFilter
+  slaPolicies?: Prisma.SlaPolicyListRelationFilter
+  supportProfile?: Prisma.XOR<Prisma.OrganizationSupportProfileNullableScalarRelationFilter, Prisma.OrganizationSupportProfileWhereInput> | null
+  customerActivities?: Prisma.CustomerActivityLogListRelationFilter
+  supportMetrics?: Prisma.SupportMetricDailyListRelationFilter
+  auditEvents?: Prisma.AuditLogListRelationFilter
 }, "id" | "slug">
 
 export type OrganizationOrderByWithAggregationInput = {
@@ -275,6 +290,11 @@ export type OrganizationCreateInput = {
   contracts?: Prisma.ContractCreateNestedManyWithoutOrganizationInput
   invoices?: Prisma.InvoiceCreateNestedManyWithoutOrganizationInput
   supportTickets?: Prisma.SupportTicketCreateNestedManyWithoutOrganizationInput
+  slaPolicies?: Prisma.SlaPolicyCreateNestedManyWithoutOrganizationInput
+  supportProfile?: Prisma.OrganizationSupportProfileCreateNestedOneWithoutOrganizationInput
+  customerActivities?: Prisma.CustomerActivityLogCreateNestedManyWithoutOrganizationInput
+  supportMetrics?: Prisma.SupportMetricDailyCreateNestedManyWithoutOrganizationInput
+  auditEvents?: Prisma.AuditLogCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationUncheckedCreateInput = {
@@ -294,6 +314,11 @@ export type OrganizationUncheckedCreateInput = {
   contracts?: Prisma.ContractUncheckedCreateNestedManyWithoutOrganizationInput
   invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutOrganizationInput
   supportTickets?: Prisma.SupportTicketUncheckedCreateNestedManyWithoutOrganizationInput
+  slaPolicies?: Prisma.SlaPolicyUncheckedCreateNestedManyWithoutOrganizationInput
+  supportProfile?: Prisma.OrganizationSupportProfileUncheckedCreateNestedOneWithoutOrganizationInput
+  customerActivities?: Prisma.CustomerActivityLogUncheckedCreateNestedManyWithoutOrganizationInput
+  supportMetrics?: Prisma.SupportMetricDailyUncheckedCreateNestedManyWithoutOrganizationInput
+  auditEvents?: Prisma.AuditLogUncheckedCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationUpdateInput = {
@@ -313,6 +338,11 @@ export type OrganizationUpdateInput = {
   contracts?: Prisma.ContractUpdateManyWithoutOrganizationNestedInput
   invoices?: Prisma.InvoiceUpdateManyWithoutOrganizationNestedInput
   supportTickets?: Prisma.SupportTicketUpdateManyWithoutOrganizationNestedInput
+  slaPolicies?: Prisma.SlaPolicyUpdateManyWithoutOrganizationNestedInput
+  supportProfile?: Prisma.OrganizationSupportProfileUpdateOneWithoutOrganizationNestedInput
+  customerActivities?: Prisma.CustomerActivityLogUpdateManyWithoutOrganizationNestedInput
+  supportMetrics?: Prisma.SupportMetricDailyUpdateManyWithoutOrganizationNestedInput
+  auditEvents?: Prisma.AuditLogUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationUncheckedUpdateInput = {
@@ -332,6 +362,11 @@ export type OrganizationUncheckedUpdateInput = {
   contracts?: Prisma.ContractUncheckedUpdateManyWithoutOrganizationNestedInput
   invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutOrganizationNestedInput
   supportTickets?: Prisma.SupportTicketUncheckedUpdateManyWithoutOrganizationNestedInput
+  slaPolicies?: Prisma.SlaPolicyUncheckedUpdateManyWithoutOrganizationNestedInput
+  supportProfile?: Prisma.OrganizationSupportProfileUncheckedUpdateOneWithoutOrganizationNestedInput
+  customerActivities?: Prisma.CustomerActivityLogUncheckedUpdateManyWithoutOrganizationNestedInput
+  supportMetrics?: Prisma.SupportMetricDailyUncheckedUpdateManyWithoutOrganizationNestedInput
+  auditEvents?: Prisma.AuditLogUncheckedUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationCreateManyInput = {
@@ -434,6 +469,80 @@ export type OrganizationUpdateOneRequiredWithoutInvitationsNestedInput = {
   upsert?: Prisma.OrganizationUpsertWithoutInvitationsInput
   connect?: Prisma.OrganizationWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.OrganizationUpdateToOneWithWhereWithoutInvitationsInput, Prisma.OrganizationUpdateWithoutInvitationsInput>, Prisma.OrganizationUncheckedUpdateWithoutInvitationsInput>
+}
+
+export type OrganizationCreateNestedOneWithoutSlaPoliciesInput = {
+  create?: Prisma.XOR<Prisma.OrganizationCreateWithoutSlaPoliciesInput, Prisma.OrganizationUncheckedCreateWithoutSlaPoliciesInput>
+  connectOrCreate?: Prisma.OrganizationCreateOrConnectWithoutSlaPoliciesInput
+  connect?: Prisma.OrganizationWhereUniqueInput
+}
+
+export type OrganizationUpdateOneWithoutSlaPoliciesNestedInput = {
+  create?: Prisma.XOR<Prisma.OrganizationCreateWithoutSlaPoliciesInput, Prisma.OrganizationUncheckedCreateWithoutSlaPoliciesInput>
+  connectOrCreate?: Prisma.OrganizationCreateOrConnectWithoutSlaPoliciesInput
+  upsert?: Prisma.OrganizationUpsertWithoutSlaPoliciesInput
+  disconnect?: Prisma.OrganizationWhereInput | boolean
+  delete?: Prisma.OrganizationWhereInput | boolean
+  connect?: Prisma.OrganizationWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.OrganizationUpdateToOneWithWhereWithoutSlaPoliciesInput, Prisma.OrganizationUpdateWithoutSlaPoliciesInput>, Prisma.OrganizationUncheckedUpdateWithoutSlaPoliciesInput>
+}
+
+export type OrganizationCreateNestedOneWithoutSupportProfileInput = {
+  create?: Prisma.XOR<Prisma.OrganizationCreateWithoutSupportProfileInput, Prisma.OrganizationUncheckedCreateWithoutSupportProfileInput>
+  connectOrCreate?: Prisma.OrganizationCreateOrConnectWithoutSupportProfileInput
+  connect?: Prisma.OrganizationWhereUniqueInput
+}
+
+export type OrganizationUpdateOneRequiredWithoutSupportProfileNestedInput = {
+  create?: Prisma.XOR<Prisma.OrganizationCreateWithoutSupportProfileInput, Prisma.OrganizationUncheckedCreateWithoutSupportProfileInput>
+  connectOrCreate?: Prisma.OrganizationCreateOrConnectWithoutSupportProfileInput
+  upsert?: Prisma.OrganizationUpsertWithoutSupportProfileInput
+  connect?: Prisma.OrganizationWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.OrganizationUpdateToOneWithWhereWithoutSupportProfileInput, Prisma.OrganizationUpdateWithoutSupportProfileInput>, Prisma.OrganizationUncheckedUpdateWithoutSupportProfileInput>
+}
+
+export type OrganizationCreateNestedOneWithoutCustomerActivitiesInput = {
+  create?: Prisma.XOR<Prisma.OrganizationCreateWithoutCustomerActivitiesInput, Prisma.OrganizationUncheckedCreateWithoutCustomerActivitiesInput>
+  connectOrCreate?: Prisma.OrganizationCreateOrConnectWithoutCustomerActivitiesInput
+  connect?: Prisma.OrganizationWhereUniqueInput
+}
+
+export type OrganizationUpdateOneRequiredWithoutCustomerActivitiesNestedInput = {
+  create?: Prisma.XOR<Prisma.OrganizationCreateWithoutCustomerActivitiesInput, Prisma.OrganizationUncheckedCreateWithoutCustomerActivitiesInput>
+  connectOrCreate?: Prisma.OrganizationCreateOrConnectWithoutCustomerActivitiesInput
+  upsert?: Prisma.OrganizationUpsertWithoutCustomerActivitiesInput
+  connect?: Prisma.OrganizationWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.OrganizationUpdateToOneWithWhereWithoutCustomerActivitiesInput, Prisma.OrganizationUpdateWithoutCustomerActivitiesInput>, Prisma.OrganizationUncheckedUpdateWithoutCustomerActivitiesInput>
+}
+
+export type OrganizationCreateNestedOneWithoutSupportMetricsInput = {
+  create?: Prisma.XOR<Prisma.OrganizationCreateWithoutSupportMetricsInput, Prisma.OrganizationUncheckedCreateWithoutSupportMetricsInput>
+  connectOrCreate?: Prisma.OrganizationCreateOrConnectWithoutSupportMetricsInput
+  connect?: Prisma.OrganizationWhereUniqueInput
+}
+
+export type OrganizationUpdateOneRequiredWithoutSupportMetricsNestedInput = {
+  create?: Prisma.XOR<Prisma.OrganizationCreateWithoutSupportMetricsInput, Prisma.OrganizationUncheckedCreateWithoutSupportMetricsInput>
+  connectOrCreate?: Prisma.OrganizationCreateOrConnectWithoutSupportMetricsInput
+  upsert?: Prisma.OrganizationUpsertWithoutSupportMetricsInput
+  connect?: Prisma.OrganizationWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.OrganizationUpdateToOneWithWhereWithoutSupportMetricsInput, Prisma.OrganizationUpdateWithoutSupportMetricsInput>, Prisma.OrganizationUncheckedUpdateWithoutSupportMetricsInput>
+}
+
+export type OrganizationCreateNestedOneWithoutAuditEventsInput = {
+  create?: Prisma.XOR<Prisma.OrganizationCreateWithoutAuditEventsInput, Prisma.OrganizationUncheckedCreateWithoutAuditEventsInput>
+  connectOrCreate?: Prisma.OrganizationCreateOrConnectWithoutAuditEventsInput
+  connect?: Prisma.OrganizationWhereUniqueInput
+}
+
+export type OrganizationUpdateOneWithoutAuditEventsNestedInput = {
+  create?: Prisma.XOR<Prisma.OrganizationCreateWithoutAuditEventsInput, Prisma.OrganizationUncheckedCreateWithoutAuditEventsInput>
+  connectOrCreate?: Prisma.OrganizationCreateOrConnectWithoutAuditEventsInput
+  upsert?: Prisma.OrganizationUpsertWithoutAuditEventsInput
+  disconnect?: Prisma.OrganizationWhereInput | boolean
+  delete?: Prisma.OrganizationWhereInput | boolean
+  connect?: Prisma.OrganizationWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.OrganizationUpdateToOneWithWhereWithoutAuditEventsInput, Prisma.OrganizationUpdateWithoutAuditEventsInput>, Prisma.OrganizationUncheckedUpdateWithoutAuditEventsInput>
 }
 
 export type OrganizationCreateNestedOneWithoutBrandProfilesInput = {
@@ -566,6 +675,11 @@ export type OrganizationCreateWithoutProfilesInput = {
   contracts?: Prisma.ContractCreateNestedManyWithoutOrganizationInput
   invoices?: Prisma.InvoiceCreateNestedManyWithoutOrganizationInput
   supportTickets?: Prisma.SupportTicketCreateNestedManyWithoutOrganizationInput
+  slaPolicies?: Prisma.SlaPolicyCreateNestedManyWithoutOrganizationInput
+  supportProfile?: Prisma.OrganizationSupportProfileCreateNestedOneWithoutOrganizationInput
+  customerActivities?: Prisma.CustomerActivityLogCreateNestedManyWithoutOrganizationInput
+  supportMetrics?: Prisma.SupportMetricDailyCreateNestedManyWithoutOrganizationInput
+  auditEvents?: Prisma.AuditLogCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationUncheckedCreateWithoutProfilesInput = {
@@ -584,6 +698,11 @@ export type OrganizationUncheckedCreateWithoutProfilesInput = {
   contracts?: Prisma.ContractUncheckedCreateNestedManyWithoutOrganizationInput
   invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutOrganizationInput
   supportTickets?: Prisma.SupportTicketUncheckedCreateNestedManyWithoutOrganizationInput
+  slaPolicies?: Prisma.SlaPolicyUncheckedCreateNestedManyWithoutOrganizationInput
+  supportProfile?: Prisma.OrganizationSupportProfileUncheckedCreateNestedOneWithoutOrganizationInput
+  customerActivities?: Prisma.CustomerActivityLogUncheckedCreateNestedManyWithoutOrganizationInput
+  supportMetrics?: Prisma.SupportMetricDailyUncheckedCreateNestedManyWithoutOrganizationInput
+  auditEvents?: Prisma.AuditLogUncheckedCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationCreateOrConnectWithoutProfilesInput = {
@@ -618,6 +737,11 @@ export type OrganizationUpdateWithoutProfilesInput = {
   contracts?: Prisma.ContractUpdateManyWithoutOrganizationNestedInput
   invoices?: Prisma.InvoiceUpdateManyWithoutOrganizationNestedInput
   supportTickets?: Prisma.SupportTicketUpdateManyWithoutOrganizationNestedInput
+  slaPolicies?: Prisma.SlaPolicyUpdateManyWithoutOrganizationNestedInput
+  supportProfile?: Prisma.OrganizationSupportProfileUpdateOneWithoutOrganizationNestedInput
+  customerActivities?: Prisma.CustomerActivityLogUpdateManyWithoutOrganizationNestedInput
+  supportMetrics?: Prisma.SupportMetricDailyUpdateManyWithoutOrganizationNestedInput
+  auditEvents?: Prisma.AuditLogUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationUncheckedUpdateWithoutProfilesInput = {
@@ -636,6 +760,11 @@ export type OrganizationUncheckedUpdateWithoutProfilesInput = {
   contracts?: Prisma.ContractUncheckedUpdateManyWithoutOrganizationNestedInput
   invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutOrganizationNestedInput
   supportTickets?: Prisma.SupportTicketUncheckedUpdateManyWithoutOrganizationNestedInput
+  slaPolicies?: Prisma.SlaPolicyUncheckedUpdateManyWithoutOrganizationNestedInput
+  supportProfile?: Prisma.OrganizationSupportProfileUncheckedUpdateOneWithoutOrganizationNestedInput
+  customerActivities?: Prisma.CustomerActivityLogUncheckedUpdateManyWithoutOrganizationNestedInput
+  supportMetrics?: Prisma.SupportMetricDailyUncheckedUpdateManyWithoutOrganizationNestedInput
+  auditEvents?: Prisma.AuditLogUncheckedUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationCreateWithoutMembersInput = {
@@ -654,6 +783,11 @@ export type OrganizationCreateWithoutMembersInput = {
   contracts?: Prisma.ContractCreateNestedManyWithoutOrganizationInput
   invoices?: Prisma.InvoiceCreateNestedManyWithoutOrganizationInput
   supportTickets?: Prisma.SupportTicketCreateNestedManyWithoutOrganizationInput
+  slaPolicies?: Prisma.SlaPolicyCreateNestedManyWithoutOrganizationInput
+  supportProfile?: Prisma.OrganizationSupportProfileCreateNestedOneWithoutOrganizationInput
+  customerActivities?: Prisma.CustomerActivityLogCreateNestedManyWithoutOrganizationInput
+  supportMetrics?: Prisma.SupportMetricDailyCreateNestedManyWithoutOrganizationInput
+  auditEvents?: Prisma.AuditLogCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationUncheckedCreateWithoutMembersInput = {
@@ -672,6 +806,11 @@ export type OrganizationUncheckedCreateWithoutMembersInput = {
   contracts?: Prisma.ContractUncheckedCreateNestedManyWithoutOrganizationInput
   invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutOrganizationInput
   supportTickets?: Prisma.SupportTicketUncheckedCreateNestedManyWithoutOrganizationInput
+  slaPolicies?: Prisma.SlaPolicyUncheckedCreateNestedManyWithoutOrganizationInput
+  supportProfile?: Prisma.OrganizationSupportProfileUncheckedCreateNestedOneWithoutOrganizationInput
+  customerActivities?: Prisma.CustomerActivityLogUncheckedCreateNestedManyWithoutOrganizationInput
+  supportMetrics?: Prisma.SupportMetricDailyUncheckedCreateNestedManyWithoutOrganizationInput
+  auditEvents?: Prisma.AuditLogUncheckedCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationCreateOrConnectWithoutMembersInput = {
@@ -706,6 +845,11 @@ export type OrganizationUpdateWithoutMembersInput = {
   contracts?: Prisma.ContractUpdateManyWithoutOrganizationNestedInput
   invoices?: Prisma.InvoiceUpdateManyWithoutOrganizationNestedInput
   supportTickets?: Prisma.SupportTicketUpdateManyWithoutOrganizationNestedInput
+  slaPolicies?: Prisma.SlaPolicyUpdateManyWithoutOrganizationNestedInput
+  supportProfile?: Prisma.OrganizationSupportProfileUpdateOneWithoutOrganizationNestedInput
+  customerActivities?: Prisma.CustomerActivityLogUpdateManyWithoutOrganizationNestedInput
+  supportMetrics?: Prisma.SupportMetricDailyUpdateManyWithoutOrganizationNestedInput
+  auditEvents?: Prisma.AuditLogUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationUncheckedUpdateWithoutMembersInput = {
@@ -724,6 +868,11 @@ export type OrganizationUncheckedUpdateWithoutMembersInput = {
   contracts?: Prisma.ContractUncheckedUpdateManyWithoutOrganizationNestedInput
   invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutOrganizationNestedInput
   supportTickets?: Prisma.SupportTicketUncheckedUpdateManyWithoutOrganizationNestedInput
+  slaPolicies?: Prisma.SlaPolicyUncheckedUpdateManyWithoutOrganizationNestedInput
+  supportProfile?: Prisma.OrganizationSupportProfileUncheckedUpdateOneWithoutOrganizationNestedInput
+  customerActivities?: Prisma.CustomerActivityLogUncheckedUpdateManyWithoutOrganizationNestedInput
+  supportMetrics?: Prisma.SupportMetricDailyUncheckedUpdateManyWithoutOrganizationNestedInput
+  auditEvents?: Prisma.AuditLogUncheckedUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationCreateWithoutInvitationsInput = {
@@ -742,6 +891,11 @@ export type OrganizationCreateWithoutInvitationsInput = {
   contracts?: Prisma.ContractCreateNestedManyWithoutOrganizationInput
   invoices?: Prisma.InvoiceCreateNestedManyWithoutOrganizationInput
   supportTickets?: Prisma.SupportTicketCreateNestedManyWithoutOrganizationInput
+  slaPolicies?: Prisma.SlaPolicyCreateNestedManyWithoutOrganizationInput
+  supportProfile?: Prisma.OrganizationSupportProfileCreateNestedOneWithoutOrganizationInput
+  customerActivities?: Prisma.CustomerActivityLogCreateNestedManyWithoutOrganizationInput
+  supportMetrics?: Prisma.SupportMetricDailyCreateNestedManyWithoutOrganizationInput
+  auditEvents?: Prisma.AuditLogCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationUncheckedCreateWithoutInvitationsInput = {
@@ -760,6 +914,11 @@ export type OrganizationUncheckedCreateWithoutInvitationsInput = {
   contracts?: Prisma.ContractUncheckedCreateNestedManyWithoutOrganizationInput
   invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutOrganizationInput
   supportTickets?: Prisma.SupportTicketUncheckedCreateNestedManyWithoutOrganizationInput
+  slaPolicies?: Prisma.SlaPolicyUncheckedCreateNestedManyWithoutOrganizationInput
+  supportProfile?: Prisma.OrganizationSupportProfileUncheckedCreateNestedOneWithoutOrganizationInput
+  customerActivities?: Prisma.CustomerActivityLogUncheckedCreateNestedManyWithoutOrganizationInput
+  supportMetrics?: Prisma.SupportMetricDailyUncheckedCreateNestedManyWithoutOrganizationInput
+  auditEvents?: Prisma.AuditLogUncheckedCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationCreateOrConnectWithoutInvitationsInput = {
@@ -794,6 +953,11 @@ export type OrganizationUpdateWithoutInvitationsInput = {
   contracts?: Prisma.ContractUpdateManyWithoutOrganizationNestedInput
   invoices?: Prisma.InvoiceUpdateManyWithoutOrganizationNestedInput
   supportTickets?: Prisma.SupportTicketUpdateManyWithoutOrganizationNestedInput
+  slaPolicies?: Prisma.SlaPolicyUpdateManyWithoutOrganizationNestedInput
+  supportProfile?: Prisma.OrganizationSupportProfileUpdateOneWithoutOrganizationNestedInput
+  customerActivities?: Prisma.CustomerActivityLogUpdateManyWithoutOrganizationNestedInput
+  supportMetrics?: Prisma.SupportMetricDailyUpdateManyWithoutOrganizationNestedInput
+  auditEvents?: Prisma.AuditLogUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationUncheckedUpdateWithoutInvitationsInput = {
@@ -812,6 +976,551 @@ export type OrganizationUncheckedUpdateWithoutInvitationsInput = {
   contracts?: Prisma.ContractUncheckedUpdateManyWithoutOrganizationNestedInput
   invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutOrganizationNestedInput
   supportTickets?: Prisma.SupportTicketUncheckedUpdateManyWithoutOrganizationNestedInput
+  slaPolicies?: Prisma.SlaPolicyUncheckedUpdateManyWithoutOrganizationNestedInput
+  supportProfile?: Prisma.OrganizationSupportProfileUncheckedUpdateOneWithoutOrganizationNestedInput
+  customerActivities?: Prisma.CustomerActivityLogUncheckedUpdateManyWithoutOrganizationNestedInput
+  supportMetrics?: Prisma.SupportMetricDailyUncheckedUpdateManyWithoutOrganizationNestedInput
+  auditEvents?: Prisma.AuditLogUncheckedUpdateManyWithoutOrganizationNestedInput
+}
+
+export type OrganizationCreateWithoutSlaPoliciesInput = {
+  id?: string
+  slug: string
+  name: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  members?: Prisma.OrganizationMemberCreateNestedManyWithoutOrganizationInput
+  profiles?: Prisma.CustomerProfileCreateNestedManyWithoutOrganizationInput
+  invitations?: Prisma.InvitationCreateNestedManyWithoutOrganizationInput
+  brandProfiles?: Prisma.BrandProfileCreateNestedManyWithoutOrganizationInput
+  fileAssets?: Prisma.FileAssetCreateNestedManyWithoutOrganizationInput
+  maintenanceSubs?: Prisma.MaintenanceSubscriptionCreateNestedManyWithoutOrganizationInput
+  billingProfile?: Prisma.BillingProfileCreateNestedOneWithoutOrganizationInput
+  quotes?: Prisma.QuoteCreateNestedManyWithoutOrganizationInput
+  contracts?: Prisma.ContractCreateNestedManyWithoutOrganizationInput
+  invoices?: Prisma.InvoiceCreateNestedManyWithoutOrganizationInput
+  supportTickets?: Prisma.SupportTicketCreateNestedManyWithoutOrganizationInput
+  supportProfile?: Prisma.OrganizationSupportProfileCreateNestedOneWithoutOrganizationInput
+  customerActivities?: Prisma.CustomerActivityLogCreateNestedManyWithoutOrganizationInput
+  supportMetrics?: Prisma.SupportMetricDailyCreateNestedManyWithoutOrganizationInput
+  auditEvents?: Prisma.AuditLogCreateNestedManyWithoutOrganizationInput
+}
+
+export type OrganizationUncheckedCreateWithoutSlaPoliciesInput = {
+  id?: string
+  slug: string
+  name: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  members?: Prisma.OrganizationMemberUncheckedCreateNestedManyWithoutOrganizationInput
+  profiles?: Prisma.CustomerProfileUncheckedCreateNestedManyWithoutOrganizationInput
+  invitations?: Prisma.InvitationUncheckedCreateNestedManyWithoutOrganizationInput
+  brandProfiles?: Prisma.BrandProfileUncheckedCreateNestedManyWithoutOrganizationInput
+  fileAssets?: Prisma.FileAssetUncheckedCreateNestedManyWithoutOrganizationInput
+  maintenanceSubs?: Prisma.MaintenanceSubscriptionUncheckedCreateNestedManyWithoutOrganizationInput
+  billingProfile?: Prisma.BillingProfileUncheckedCreateNestedOneWithoutOrganizationInput
+  quotes?: Prisma.QuoteUncheckedCreateNestedManyWithoutOrganizationInput
+  contracts?: Prisma.ContractUncheckedCreateNestedManyWithoutOrganizationInput
+  invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutOrganizationInput
+  supportTickets?: Prisma.SupportTicketUncheckedCreateNestedManyWithoutOrganizationInput
+  supportProfile?: Prisma.OrganizationSupportProfileUncheckedCreateNestedOneWithoutOrganizationInput
+  customerActivities?: Prisma.CustomerActivityLogUncheckedCreateNestedManyWithoutOrganizationInput
+  supportMetrics?: Prisma.SupportMetricDailyUncheckedCreateNestedManyWithoutOrganizationInput
+  auditEvents?: Prisma.AuditLogUncheckedCreateNestedManyWithoutOrganizationInput
+}
+
+export type OrganizationCreateOrConnectWithoutSlaPoliciesInput = {
+  where: Prisma.OrganizationWhereUniqueInput
+  create: Prisma.XOR<Prisma.OrganizationCreateWithoutSlaPoliciesInput, Prisma.OrganizationUncheckedCreateWithoutSlaPoliciesInput>
+}
+
+export type OrganizationUpsertWithoutSlaPoliciesInput = {
+  update: Prisma.XOR<Prisma.OrganizationUpdateWithoutSlaPoliciesInput, Prisma.OrganizationUncheckedUpdateWithoutSlaPoliciesInput>
+  create: Prisma.XOR<Prisma.OrganizationCreateWithoutSlaPoliciesInput, Prisma.OrganizationUncheckedCreateWithoutSlaPoliciesInput>
+  where?: Prisma.OrganizationWhereInput
+}
+
+export type OrganizationUpdateToOneWithWhereWithoutSlaPoliciesInput = {
+  where?: Prisma.OrganizationWhereInput
+  data: Prisma.XOR<Prisma.OrganizationUpdateWithoutSlaPoliciesInput, Prisma.OrganizationUncheckedUpdateWithoutSlaPoliciesInput>
+}
+
+export type OrganizationUpdateWithoutSlaPoliciesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  members?: Prisma.OrganizationMemberUpdateManyWithoutOrganizationNestedInput
+  profiles?: Prisma.CustomerProfileUpdateManyWithoutOrganizationNestedInput
+  invitations?: Prisma.InvitationUpdateManyWithoutOrganizationNestedInput
+  brandProfiles?: Prisma.BrandProfileUpdateManyWithoutOrganizationNestedInput
+  fileAssets?: Prisma.FileAssetUpdateManyWithoutOrganizationNestedInput
+  maintenanceSubs?: Prisma.MaintenanceSubscriptionUpdateManyWithoutOrganizationNestedInput
+  billingProfile?: Prisma.BillingProfileUpdateOneWithoutOrganizationNestedInput
+  quotes?: Prisma.QuoteUpdateManyWithoutOrganizationNestedInput
+  contracts?: Prisma.ContractUpdateManyWithoutOrganizationNestedInput
+  invoices?: Prisma.InvoiceUpdateManyWithoutOrganizationNestedInput
+  supportTickets?: Prisma.SupportTicketUpdateManyWithoutOrganizationNestedInput
+  supportProfile?: Prisma.OrganizationSupportProfileUpdateOneWithoutOrganizationNestedInput
+  customerActivities?: Prisma.CustomerActivityLogUpdateManyWithoutOrganizationNestedInput
+  supportMetrics?: Prisma.SupportMetricDailyUpdateManyWithoutOrganizationNestedInput
+  auditEvents?: Prisma.AuditLogUpdateManyWithoutOrganizationNestedInput
+}
+
+export type OrganizationUncheckedUpdateWithoutSlaPoliciesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  members?: Prisma.OrganizationMemberUncheckedUpdateManyWithoutOrganizationNestedInput
+  profiles?: Prisma.CustomerProfileUncheckedUpdateManyWithoutOrganizationNestedInput
+  invitations?: Prisma.InvitationUncheckedUpdateManyWithoutOrganizationNestedInput
+  brandProfiles?: Prisma.BrandProfileUncheckedUpdateManyWithoutOrganizationNestedInput
+  fileAssets?: Prisma.FileAssetUncheckedUpdateManyWithoutOrganizationNestedInput
+  maintenanceSubs?: Prisma.MaintenanceSubscriptionUncheckedUpdateManyWithoutOrganizationNestedInput
+  billingProfile?: Prisma.BillingProfileUncheckedUpdateOneWithoutOrganizationNestedInput
+  quotes?: Prisma.QuoteUncheckedUpdateManyWithoutOrganizationNestedInput
+  contracts?: Prisma.ContractUncheckedUpdateManyWithoutOrganizationNestedInput
+  invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutOrganizationNestedInput
+  supportTickets?: Prisma.SupportTicketUncheckedUpdateManyWithoutOrganizationNestedInput
+  supportProfile?: Prisma.OrganizationSupportProfileUncheckedUpdateOneWithoutOrganizationNestedInput
+  customerActivities?: Prisma.CustomerActivityLogUncheckedUpdateManyWithoutOrganizationNestedInput
+  supportMetrics?: Prisma.SupportMetricDailyUncheckedUpdateManyWithoutOrganizationNestedInput
+  auditEvents?: Prisma.AuditLogUncheckedUpdateManyWithoutOrganizationNestedInput
+}
+
+export type OrganizationCreateWithoutSupportProfileInput = {
+  id?: string
+  slug: string
+  name: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  members?: Prisma.OrganizationMemberCreateNestedManyWithoutOrganizationInput
+  profiles?: Prisma.CustomerProfileCreateNestedManyWithoutOrganizationInput
+  invitations?: Prisma.InvitationCreateNestedManyWithoutOrganizationInput
+  brandProfiles?: Prisma.BrandProfileCreateNestedManyWithoutOrganizationInput
+  fileAssets?: Prisma.FileAssetCreateNestedManyWithoutOrganizationInput
+  maintenanceSubs?: Prisma.MaintenanceSubscriptionCreateNestedManyWithoutOrganizationInput
+  billingProfile?: Prisma.BillingProfileCreateNestedOneWithoutOrganizationInput
+  quotes?: Prisma.QuoteCreateNestedManyWithoutOrganizationInput
+  contracts?: Prisma.ContractCreateNestedManyWithoutOrganizationInput
+  invoices?: Prisma.InvoiceCreateNestedManyWithoutOrganizationInput
+  supportTickets?: Prisma.SupportTicketCreateNestedManyWithoutOrganizationInput
+  slaPolicies?: Prisma.SlaPolicyCreateNestedManyWithoutOrganizationInput
+  customerActivities?: Prisma.CustomerActivityLogCreateNestedManyWithoutOrganizationInput
+  supportMetrics?: Prisma.SupportMetricDailyCreateNestedManyWithoutOrganizationInput
+  auditEvents?: Prisma.AuditLogCreateNestedManyWithoutOrganizationInput
+}
+
+export type OrganizationUncheckedCreateWithoutSupportProfileInput = {
+  id?: string
+  slug: string
+  name: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  members?: Prisma.OrganizationMemberUncheckedCreateNestedManyWithoutOrganizationInput
+  profiles?: Prisma.CustomerProfileUncheckedCreateNestedManyWithoutOrganizationInput
+  invitations?: Prisma.InvitationUncheckedCreateNestedManyWithoutOrganizationInput
+  brandProfiles?: Prisma.BrandProfileUncheckedCreateNestedManyWithoutOrganizationInput
+  fileAssets?: Prisma.FileAssetUncheckedCreateNestedManyWithoutOrganizationInput
+  maintenanceSubs?: Prisma.MaintenanceSubscriptionUncheckedCreateNestedManyWithoutOrganizationInput
+  billingProfile?: Prisma.BillingProfileUncheckedCreateNestedOneWithoutOrganizationInput
+  quotes?: Prisma.QuoteUncheckedCreateNestedManyWithoutOrganizationInput
+  contracts?: Prisma.ContractUncheckedCreateNestedManyWithoutOrganizationInput
+  invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutOrganizationInput
+  supportTickets?: Prisma.SupportTicketUncheckedCreateNestedManyWithoutOrganizationInput
+  slaPolicies?: Prisma.SlaPolicyUncheckedCreateNestedManyWithoutOrganizationInput
+  customerActivities?: Prisma.CustomerActivityLogUncheckedCreateNestedManyWithoutOrganizationInput
+  supportMetrics?: Prisma.SupportMetricDailyUncheckedCreateNestedManyWithoutOrganizationInput
+  auditEvents?: Prisma.AuditLogUncheckedCreateNestedManyWithoutOrganizationInput
+}
+
+export type OrganizationCreateOrConnectWithoutSupportProfileInput = {
+  where: Prisma.OrganizationWhereUniqueInput
+  create: Prisma.XOR<Prisma.OrganizationCreateWithoutSupportProfileInput, Prisma.OrganizationUncheckedCreateWithoutSupportProfileInput>
+}
+
+export type OrganizationUpsertWithoutSupportProfileInput = {
+  update: Prisma.XOR<Prisma.OrganizationUpdateWithoutSupportProfileInput, Prisma.OrganizationUncheckedUpdateWithoutSupportProfileInput>
+  create: Prisma.XOR<Prisma.OrganizationCreateWithoutSupportProfileInput, Prisma.OrganizationUncheckedCreateWithoutSupportProfileInput>
+  where?: Prisma.OrganizationWhereInput
+}
+
+export type OrganizationUpdateToOneWithWhereWithoutSupportProfileInput = {
+  where?: Prisma.OrganizationWhereInput
+  data: Prisma.XOR<Prisma.OrganizationUpdateWithoutSupportProfileInput, Prisma.OrganizationUncheckedUpdateWithoutSupportProfileInput>
+}
+
+export type OrganizationUpdateWithoutSupportProfileInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  members?: Prisma.OrganizationMemberUpdateManyWithoutOrganizationNestedInput
+  profiles?: Prisma.CustomerProfileUpdateManyWithoutOrganizationNestedInput
+  invitations?: Prisma.InvitationUpdateManyWithoutOrganizationNestedInput
+  brandProfiles?: Prisma.BrandProfileUpdateManyWithoutOrganizationNestedInput
+  fileAssets?: Prisma.FileAssetUpdateManyWithoutOrganizationNestedInput
+  maintenanceSubs?: Prisma.MaintenanceSubscriptionUpdateManyWithoutOrganizationNestedInput
+  billingProfile?: Prisma.BillingProfileUpdateOneWithoutOrganizationNestedInput
+  quotes?: Prisma.QuoteUpdateManyWithoutOrganizationNestedInput
+  contracts?: Prisma.ContractUpdateManyWithoutOrganizationNestedInput
+  invoices?: Prisma.InvoiceUpdateManyWithoutOrganizationNestedInput
+  supportTickets?: Prisma.SupportTicketUpdateManyWithoutOrganizationNestedInput
+  slaPolicies?: Prisma.SlaPolicyUpdateManyWithoutOrganizationNestedInput
+  customerActivities?: Prisma.CustomerActivityLogUpdateManyWithoutOrganizationNestedInput
+  supportMetrics?: Prisma.SupportMetricDailyUpdateManyWithoutOrganizationNestedInput
+  auditEvents?: Prisma.AuditLogUpdateManyWithoutOrganizationNestedInput
+}
+
+export type OrganizationUncheckedUpdateWithoutSupportProfileInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  members?: Prisma.OrganizationMemberUncheckedUpdateManyWithoutOrganizationNestedInput
+  profiles?: Prisma.CustomerProfileUncheckedUpdateManyWithoutOrganizationNestedInput
+  invitations?: Prisma.InvitationUncheckedUpdateManyWithoutOrganizationNestedInput
+  brandProfiles?: Prisma.BrandProfileUncheckedUpdateManyWithoutOrganizationNestedInput
+  fileAssets?: Prisma.FileAssetUncheckedUpdateManyWithoutOrganizationNestedInput
+  maintenanceSubs?: Prisma.MaintenanceSubscriptionUncheckedUpdateManyWithoutOrganizationNestedInput
+  billingProfile?: Prisma.BillingProfileUncheckedUpdateOneWithoutOrganizationNestedInput
+  quotes?: Prisma.QuoteUncheckedUpdateManyWithoutOrganizationNestedInput
+  contracts?: Prisma.ContractUncheckedUpdateManyWithoutOrganizationNestedInput
+  invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutOrganizationNestedInput
+  supportTickets?: Prisma.SupportTicketUncheckedUpdateManyWithoutOrganizationNestedInput
+  slaPolicies?: Prisma.SlaPolicyUncheckedUpdateManyWithoutOrganizationNestedInput
+  customerActivities?: Prisma.CustomerActivityLogUncheckedUpdateManyWithoutOrganizationNestedInput
+  supportMetrics?: Prisma.SupportMetricDailyUncheckedUpdateManyWithoutOrganizationNestedInput
+  auditEvents?: Prisma.AuditLogUncheckedUpdateManyWithoutOrganizationNestedInput
+}
+
+export type OrganizationCreateWithoutCustomerActivitiesInput = {
+  id?: string
+  slug: string
+  name: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  members?: Prisma.OrganizationMemberCreateNestedManyWithoutOrganizationInput
+  profiles?: Prisma.CustomerProfileCreateNestedManyWithoutOrganizationInput
+  invitations?: Prisma.InvitationCreateNestedManyWithoutOrganizationInput
+  brandProfiles?: Prisma.BrandProfileCreateNestedManyWithoutOrganizationInput
+  fileAssets?: Prisma.FileAssetCreateNestedManyWithoutOrganizationInput
+  maintenanceSubs?: Prisma.MaintenanceSubscriptionCreateNestedManyWithoutOrganizationInput
+  billingProfile?: Prisma.BillingProfileCreateNestedOneWithoutOrganizationInput
+  quotes?: Prisma.QuoteCreateNestedManyWithoutOrganizationInput
+  contracts?: Prisma.ContractCreateNestedManyWithoutOrganizationInput
+  invoices?: Prisma.InvoiceCreateNestedManyWithoutOrganizationInput
+  supportTickets?: Prisma.SupportTicketCreateNestedManyWithoutOrganizationInput
+  slaPolicies?: Prisma.SlaPolicyCreateNestedManyWithoutOrganizationInput
+  supportProfile?: Prisma.OrganizationSupportProfileCreateNestedOneWithoutOrganizationInput
+  supportMetrics?: Prisma.SupportMetricDailyCreateNestedManyWithoutOrganizationInput
+  auditEvents?: Prisma.AuditLogCreateNestedManyWithoutOrganizationInput
+}
+
+export type OrganizationUncheckedCreateWithoutCustomerActivitiesInput = {
+  id?: string
+  slug: string
+  name: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  members?: Prisma.OrganizationMemberUncheckedCreateNestedManyWithoutOrganizationInput
+  profiles?: Prisma.CustomerProfileUncheckedCreateNestedManyWithoutOrganizationInput
+  invitations?: Prisma.InvitationUncheckedCreateNestedManyWithoutOrganizationInput
+  brandProfiles?: Prisma.BrandProfileUncheckedCreateNestedManyWithoutOrganizationInput
+  fileAssets?: Prisma.FileAssetUncheckedCreateNestedManyWithoutOrganizationInput
+  maintenanceSubs?: Prisma.MaintenanceSubscriptionUncheckedCreateNestedManyWithoutOrganizationInput
+  billingProfile?: Prisma.BillingProfileUncheckedCreateNestedOneWithoutOrganizationInput
+  quotes?: Prisma.QuoteUncheckedCreateNestedManyWithoutOrganizationInput
+  contracts?: Prisma.ContractUncheckedCreateNestedManyWithoutOrganizationInput
+  invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutOrganizationInput
+  supportTickets?: Prisma.SupportTicketUncheckedCreateNestedManyWithoutOrganizationInput
+  slaPolicies?: Prisma.SlaPolicyUncheckedCreateNestedManyWithoutOrganizationInput
+  supportProfile?: Prisma.OrganizationSupportProfileUncheckedCreateNestedOneWithoutOrganizationInput
+  supportMetrics?: Prisma.SupportMetricDailyUncheckedCreateNestedManyWithoutOrganizationInput
+  auditEvents?: Prisma.AuditLogUncheckedCreateNestedManyWithoutOrganizationInput
+}
+
+export type OrganizationCreateOrConnectWithoutCustomerActivitiesInput = {
+  where: Prisma.OrganizationWhereUniqueInput
+  create: Prisma.XOR<Prisma.OrganizationCreateWithoutCustomerActivitiesInput, Prisma.OrganizationUncheckedCreateWithoutCustomerActivitiesInput>
+}
+
+export type OrganizationUpsertWithoutCustomerActivitiesInput = {
+  update: Prisma.XOR<Prisma.OrganizationUpdateWithoutCustomerActivitiesInput, Prisma.OrganizationUncheckedUpdateWithoutCustomerActivitiesInput>
+  create: Prisma.XOR<Prisma.OrganizationCreateWithoutCustomerActivitiesInput, Prisma.OrganizationUncheckedCreateWithoutCustomerActivitiesInput>
+  where?: Prisma.OrganizationWhereInput
+}
+
+export type OrganizationUpdateToOneWithWhereWithoutCustomerActivitiesInput = {
+  where?: Prisma.OrganizationWhereInput
+  data: Prisma.XOR<Prisma.OrganizationUpdateWithoutCustomerActivitiesInput, Prisma.OrganizationUncheckedUpdateWithoutCustomerActivitiesInput>
+}
+
+export type OrganizationUpdateWithoutCustomerActivitiesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  members?: Prisma.OrganizationMemberUpdateManyWithoutOrganizationNestedInput
+  profiles?: Prisma.CustomerProfileUpdateManyWithoutOrganizationNestedInput
+  invitations?: Prisma.InvitationUpdateManyWithoutOrganizationNestedInput
+  brandProfiles?: Prisma.BrandProfileUpdateManyWithoutOrganizationNestedInput
+  fileAssets?: Prisma.FileAssetUpdateManyWithoutOrganizationNestedInput
+  maintenanceSubs?: Prisma.MaintenanceSubscriptionUpdateManyWithoutOrganizationNestedInput
+  billingProfile?: Prisma.BillingProfileUpdateOneWithoutOrganizationNestedInput
+  quotes?: Prisma.QuoteUpdateManyWithoutOrganizationNestedInput
+  contracts?: Prisma.ContractUpdateManyWithoutOrganizationNestedInput
+  invoices?: Prisma.InvoiceUpdateManyWithoutOrganizationNestedInput
+  supportTickets?: Prisma.SupportTicketUpdateManyWithoutOrganizationNestedInput
+  slaPolicies?: Prisma.SlaPolicyUpdateManyWithoutOrganizationNestedInput
+  supportProfile?: Prisma.OrganizationSupportProfileUpdateOneWithoutOrganizationNestedInput
+  supportMetrics?: Prisma.SupportMetricDailyUpdateManyWithoutOrganizationNestedInput
+  auditEvents?: Prisma.AuditLogUpdateManyWithoutOrganizationNestedInput
+}
+
+export type OrganizationUncheckedUpdateWithoutCustomerActivitiesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  members?: Prisma.OrganizationMemberUncheckedUpdateManyWithoutOrganizationNestedInput
+  profiles?: Prisma.CustomerProfileUncheckedUpdateManyWithoutOrganizationNestedInput
+  invitations?: Prisma.InvitationUncheckedUpdateManyWithoutOrganizationNestedInput
+  brandProfiles?: Prisma.BrandProfileUncheckedUpdateManyWithoutOrganizationNestedInput
+  fileAssets?: Prisma.FileAssetUncheckedUpdateManyWithoutOrganizationNestedInput
+  maintenanceSubs?: Prisma.MaintenanceSubscriptionUncheckedUpdateManyWithoutOrganizationNestedInput
+  billingProfile?: Prisma.BillingProfileUncheckedUpdateOneWithoutOrganizationNestedInput
+  quotes?: Prisma.QuoteUncheckedUpdateManyWithoutOrganizationNestedInput
+  contracts?: Prisma.ContractUncheckedUpdateManyWithoutOrganizationNestedInput
+  invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutOrganizationNestedInput
+  supportTickets?: Prisma.SupportTicketUncheckedUpdateManyWithoutOrganizationNestedInput
+  slaPolicies?: Prisma.SlaPolicyUncheckedUpdateManyWithoutOrganizationNestedInput
+  supportProfile?: Prisma.OrganizationSupportProfileUncheckedUpdateOneWithoutOrganizationNestedInput
+  supportMetrics?: Prisma.SupportMetricDailyUncheckedUpdateManyWithoutOrganizationNestedInput
+  auditEvents?: Prisma.AuditLogUncheckedUpdateManyWithoutOrganizationNestedInput
+}
+
+export type OrganizationCreateWithoutSupportMetricsInput = {
+  id?: string
+  slug: string
+  name: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  members?: Prisma.OrganizationMemberCreateNestedManyWithoutOrganizationInput
+  profiles?: Prisma.CustomerProfileCreateNestedManyWithoutOrganizationInput
+  invitations?: Prisma.InvitationCreateNestedManyWithoutOrganizationInput
+  brandProfiles?: Prisma.BrandProfileCreateNestedManyWithoutOrganizationInput
+  fileAssets?: Prisma.FileAssetCreateNestedManyWithoutOrganizationInput
+  maintenanceSubs?: Prisma.MaintenanceSubscriptionCreateNestedManyWithoutOrganizationInput
+  billingProfile?: Prisma.BillingProfileCreateNestedOneWithoutOrganizationInput
+  quotes?: Prisma.QuoteCreateNestedManyWithoutOrganizationInput
+  contracts?: Prisma.ContractCreateNestedManyWithoutOrganizationInput
+  invoices?: Prisma.InvoiceCreateNestedManyWithoutOrganizationInput
+  supportTickets?: Prisma.SupportTicketCreateNestedManyWithoutOrganizationInput
+  slaPolicies?: Prisma.SlaPolicyCreateNestedManyWithoutOrganizationInput
+  supportProfile?: Prisma.OrganizationSupportProfileCreateNestedOneWithoutOrganizationInput
+  customerActivities?: Prisma.CustomerActivityLogCreateNestedManyWithoutOrganizationInput
+  auditEvents?: Prisma.AuditLogCreateNestedManyWithoutOrganizationInput
+}
+
+export type OrganizationUncheckedCreateWithoutSupportMetricsInput = {
+  id?: string
+  slug: string
+  name: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  members?: Prisma.OrganizationMemberUncheckedCreateNestedManyWithoutOrganizationInput
+  profiles?: Prisma.CustomerProfileUncheckedCreateNestedManyWithoutOrganizationInput
+  invitations?: Prisma.InvitationUncheckedCreateNestedManyWithoutOrganizationInput
+  brandProfiles?: Prisma.BrandProfileUncheckedCreateNestedManyWithoutOrganizationInput
+  fileAssets?: Prisma.FileAssetUncheckedCreateNestedManyWithoutOrganizationInput
+  maintenanceSubs?: Prisma.MaintenanceSubscriptionUncheckedCreateNestedManyWithoutOrganizationInput
+  billingProfile?: Prisma.BillingProfileUncheckedCreateNestedOneWithoutOrganizationInput
+  quotes?: Prisma.QuoteUncheckedCreateNestedManyWithoutOrganizationInput
+  contracts?: Prisma.ContractUncheckedCreateNestedManyWithoutOrganizationInput
+  invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutOrganizationInput
+  supportTickets?: Prisma.SupportTicketUncheckedCreateNestedManyWithoutOrganizationInput
+  slaPolicies?: Prisma.SlaPolicyUncheckedCreateNestedManyWithoutOrganizationInput
+  supportProfile?: Prisma.OrganizationSupportProfileUncheckedCreateNestedOneWithoutOrganizationInput
+  customerActivities?: Prisma.CustomerActivityLogUncheckedCreateNestedManyWithoutOrganizationInput
+  auditEvents?: Prisma.AuditLogUncheckedCreateNestedManyWithoutOrganizationInput
+}
+
+export type OrganizationCreateOrConnectWithoutSupportMetricsInput = {
+  where: Prisma.OrganizationWhereUniqueInput
+  create: Prisma.XOR<Prisma.OrganizationCreateWithoutSupportMetricsInput, Prisma.OrganizationUncheckedCreateWithoutSupportMetricsInput>
+}
+
+export type OrganizationUpsertWithoutSupportMetricsInput = {
+  update: Prisma.XOR<Prisma.OrganizationUpdateWithoutSupportMetricsInput, Prisma.OrganizationUncheckedUpdateWithoutSupportMetricsInput>
+  create: Prisma.XOR<Prisma.OrganizationCreateWithoutSupportMetricsInput, Prisma.OrganizationUncheckedCreateWithoutSupportMetricsInput>
+  where?: Prisma.OrganizationWhereInput
+}
+
+export type OrganizationUpdateToOneWithWhereWithoutSupportMetricsInput = {
+  where?: Prisma.OrganizationWhereInput
+  data: Prisma.XOR<Prisma.OrganizationUpdateWithoutSupportMetricsInput, Prisma.OrganizationUncheckedUpdateWithoutSupportMetricsInput>
+}
+
+export type OrganizationUpdateWithoutSupportMetricsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  members?: Prisma.OrganizationMemberUpdateManyWithoutOrganizationNestedInput
+  profiles?: Prisma.CustomerProfileUpdateManyWithoutOrganizationNestedInput
+  invitations?: Prisma.InvitationUpdateManyWithoutOrganizationNestedInput
+  brandProfiles?: Prisma.BrandProfileUpdateManyWithoutOrganizationNestedInput
+  fileAssets?: Prisma.FileAssetUpdateManyWithoutOrganizationNestedInput
+  maintenanceSubs?: Prisma.MaintenanceSubscriptionUpdateManyWithoutOrganizationNestedInput
+  billingProfile?: Prisma.BillingProfileUpdateOneWithoutOrganizationNestedInput
+  quotes?: Prisma.QuoteUpdateManyWithoutOrganizationNestedInput
+  contracts?: Prisma.ContractUpdateManyWithoutOrganizationNestedInput
+  invoices?: Prisma.InvoiceUpdateManyWithoutOrganizationNestedInput
+  supportTickets?: Prisma.SupportTicketUpdateManyWithoutOrganizationNestedInput
+  slaPolicies?: Prisma.SlaPolicyUpdateManyWithoutOrganizationNestedInput
+  supportProfile?: Prisma.OrganizationSupportProfileUpdateOneWithoutOrganizationNestedInput
+  customerActivities?: Prisma.CustomerActivityLogUpdateManyWithoutOrganizationNestedInput
+  auditEvents?: Prisma.AuditLogUpdateManyWithoutOrganizationNestedInput
+}
+
+export type OrganizationUncheckedUpdateWithoutSupportMetricsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  members?: Prisma.OrganizationMemberUncheckedUpdateManyWithoutOrganizationNestedInput
+  profiles?: Prisma.CustomerProfileUncheckedUpdateManyWithoutOrganizationNestedInput
+  invitations?: Prisma.InvitationUncheckedUpdateManyWithoutOrganizationNestedInput
+  brandProfiles?: Prisma.BrandProfileUncheckedUpdateManyWithoutOrganizationNestedInput
+  fileAssets?: Prisma.FileAssetUncheckedUpdateManyWithoutOrganizationNestedInput
+  maintenanceSubs?: Prisma.MaintenanceSubscriptionUncheckedUpdateManyWithoutOrganizationNestedInput
+  billingProfile?: Prisma.BillingProfileUncheckedUpdateOneWithoutOrganizationNestedInput
+  quotes?: Prisma.QuoteUncheckedUpdateManyWithoutOrganizationNestedInput
+  contracts?: Prisma.ContractUncheckedUpdateManyWithoutOrganizationNestedInput
+  invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutOrganizationNestedInput
+  supportTickets?: Prisma.SupportTicketUncheckedUpdateManyWithoutOrganizationNestedInput
+  slaPolicies?: Prisma.SlaPolicyUncheckedUpdateManyWithoutOrganizationNestedInput
+  supportProfile?: Prisma.OrganizationSupportProfileUncheckedUpdateOneWithoutOrganizationNestedInput
+  customerActivities?: Prisma.CustomerActivityLogUncheckedUpdateManyWithoutOrganizationNestedInput
+  auditEvents?: Prisma.AuditLogUncheckedUpdateManyWithoutOrganizationNestedInput
+}
+
+export type OrganizationCreateWithoutAuditEventsInput = {
+  id?: string
+  slug: string
+  name: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  members?: Prisma.OrganizationMemberCreateNestedManyWithoutOrganizationInput
+  profiles?: Prisma.CustomerProfileCreateNestedManyWithoutOrganizationInput
+  invitations?: Prisma.InvitationCreateNestedManyWithoutOrganizationInput
+  brandProfiles?: Prisma.BrandProfileCreateNestedManyWithoutOrganizationInput
+  fileAssets?: Prisma.FileAssetCreateNestedManyWithoutOrganizationInput
+  maintenanceSubs?: Prisma.MaintenanceSubscriptionCreateNestedManyWithoutOrganizationInput
+  billingProfile?: Prisma.BillingProfileCreateNestedOneWithoutOrganizationInput
+  quotes?: Prisma.QuoteCreateNestedManyWithoutOrganizationInput
+  contracts?: Prisma.ContractCreateNestedManyWithoutOrganizationInput
+  invoices?: Prisma.InvoiceCreateNestedManyWithoutOrganizationInput
+  supportTickets?: Prisma.SupportTicketCreateNestedManyWithoutOrganizationInput
+  slaPolicies?: Prisma.SlaPolicyCreateNestedManyWithoutOrganizationInput
+  supportProfile?: Prisma.OrganizationSupportProfileCreateNestedOneWithoutOrganizationInput
+  customerActivities?: Prisma.CustomerActivityLogCreateNestedManyWithoutOrganizationInput
+  supportMetrics?: Prisma.SupportMetricDailyCreateNestedManyWithoutOrganizationInput
+}
+
+export type OrganizationUncheckedCreateWithoutAuditEventsInput = {
+  id?: string
+  slug: string
+  name: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  members?: Prisma.OrganizationMemberUncheckedCreateNestedManyWithoutOrganizationInput
+  profiles?: Prisma.CustomerProfileUncheckedCreateNestedManyWithoutOrganizationInput
+  invitations?: Prisma.InvitationUncheckedCreateNestedManyWithoutOrganizationInput
+  brandProfiles?: Prisma.BrandProfileUncheckedCreateNestedManyWithoutOrganizationInput
+  fileAssets?: Prisma.FileAssetUncheckedCreateNestedManyWithoutOrganizationInput
+  maintenanceSubs?: Prisma.MaintenanceSubscriptionUncheckedCreateNestedManyWithoutOrganizationInput
+  billingProfile?: Prisma.BillingProfileUncheckedCreateNestedOneWithoutOrganizationInput
+  quotes?: Prisma.QuoteUncheckedCreateNestedManyWithoutOrganizationInput
+  contracts?: Prisma.ContractUncheckedCreateNestedManyWithoutOrganizationInput
+  invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutOrganizationInput
+  supportTickets?: Prisma.SupportTicketUncheckedCreateNestedManyWithoutOrganizationInput
+  slaPolicies?: Prisma.SlaPolicyUncheckedCreateNestedManyWithoutOrganizationInput
+  supportProfile?: Prisma.OrganizationSupportProfileUncheckedCreateNestedOneWithoutOrganizationInput
+  customerActivities?: Prisma.CustomerActivityLogUncheckedCreateNestedManyWithoutOrganizationInput
+  supportMetrics?: Prisma.SupportMetricDailyUncheckedCreateNestedManyWithoutOrganizationInput
+}
+
+export type OrganizationCreateOrConnectWithoutAuditEventsInput = {
+  where: Prisma.OrganizationWhereUniqueInput
+  create: Prisma.XOR<Prisma.OrganizationCreateWithoutAuditEventsInput, Prisma.OrganizationUncheckedCreateWithoutAuditEventsInput>
+}
+
+export type OrganizationUpsertWithoutAuditEventsInput = {
+  update: Prisma.XOR<Prisma.OrganizationUpdateWithoutAuditEventsInput, Prisma.OrganizationUncheckedUpdateWithoutAuditEventsInput>
+  create: Prisma.XOR<Prisma.OrganizationCreateWithoutAuditEventsInput, Prisma.OrganizationUncheckedCreateWithoutAuditEventsInput>
+  where?: Prisma.OrganizationWhereInput
+}
+
+export type OrganizationUpdateToOneWithWhereWithoutAuditEventsInput = {
+  where?: Prisma.OrganizationWhereInput
+  data: Prisma.XOR<Prisma.OrganizationUpdateWithoutAuditEventsInput, Prisma.OrganizationUncheckedUpdateWithoutAuditEventsInput>
+}
+
+export type OrganizationUpdateWithoutAuditEventsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  members?: Prisma.OrganizationMemberUpdateManyWithoutOrganizationNestedInput
+  profiles?: Prisma.CustomerProfileUpdateManyWithoutOrganizationNestedInput
+  invitations?: Prisma.InvitationUpdateManyWithoutOrganizationNestedInput
+  brandProfiles?: Prisma.BrandProfileUpdateManyWithoutOrganizationNestedInput
+  fileAssets?: Prisma.FileAssetUpdateManyWithoutOrganizationNestedInput
+  maintenanceSubs?: Prisma.MaintenanceSubscriptionUpdateManyWithoutOrganizationNestedInput
+  billingProfile?: Prisma.BillingProfileUpdateOneWithoutOrganizationNestedInput
+  quotes?: Prisma.QuoteUpdateManyWithoutOrganizationNestedInput
+  contracts?: Prisma.ContractUpdateManyWithoutOrganizationNestedInput
+  invoices?: Prisma.InvoiceUpdateManyWithoutOrganizationNestedInput
+  supportTickets?: Prisma.SupportTicketUpdateManyWithoutOrganizationNestedInput
+  slaPolicies?: Prisma.SlaPolicyUpdateManyWithoutOrganizationNestedInput
+  supportProfile?: Prisma.OrganizationSupportProfileUpdateOneWithoutOrganizationNestedInput
+  customerActivities?: Prisma.CustomerActivityLogUpdateManyWithoutOrganizationNestedInput
+  supportMetrics?: Prisma.SupportMetricDailyUpdateManyWithoutOrganizationNestedInput
+}
+
+export type OrganizationUncheckedUpdateWithoutAuditEventsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  members?: Prisma.OrganizationMemberUncheckedUpdateManyWithoutOrganizationNestedInput
+  profiles?: Prisma.CustomerProfileUncheckedUpdateManyWithoutOrganizationNestedInput
+  invitations?: Prisma.InvitationUncheckedUpdateManyWithoutOrganizationNestedInput
+  brandProfiles?: Prisma.BrandProfileUncheckedUpdateManyWithoutOrganizationNestedInput
+  fileAssets?: Prisma.FileAssetUncheckedUpdateManyWithoutOrganizationNestedInput
+  maintenanceSubs?: Prisma.MaintenanceSubscriptionUncheckedUpdateManyWithoutOrganizationNestedInput
+  billingProfile?: Prisma.BillingProfileUncheckedUpdateOneWithoutOrganizationNestedInput
+  quotes?: Prisma.QuoteUncheckedUpdateManyWithoutOrganizationNestedInput
+  contracts?: Prisma.ContractUncheckedUpdateManyWithoutOrganizationNestedInput
+  invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutOrganizationNestedInput
+  supportTickets?: Prisma.SupportTicketUncheckedUpdateManyWithoutOrganizationNestedInput
+  slaPolicies?: Prisma.SlaPolicyUncheckedUpdateManyWithoutOrganizationNestedInput
+  supportProfile?: Prisma.OrganizationSupportProfileUncheckedUpdateOneWithoutOrganizationNestedInput
+  customerActivities?: Prisma.CustomerActivityLogUncheckedUpdateManyWithoutOrganizationNestedInput
+  supportMetrics?: Prisma.SupportMetricDailyUncheckedUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationCreateWithoutBrandProfilesInput = {
@@ -830,6 +1539,11 @@ export type OrganizationCreateWithoutBrandProfilesInput = {
   contracts?: Prisma.ContractCreateNestedManyWithoutOrganizationInput
   invoices?: Prisma.InvoiceCreateNestedManyWithoutOrganizationInput
   supportTickets?: Prisma.SupportTicketCreateNestedManyWithoutOrganizationInput
+  slaPolicies?: Prisma.SlaPolicyCreateNestedManyWithoutOrganizationInput
+  supportProfile?: Prisma.OrganizationSupportProfileCreateNestedOneWithoutOrganizationInput
+  customerActivities?: Prisma.CustomerActivityLogCreateNestedManyWithoutOrganizationInput
+  supportMetrics?: Prisma.SupportMetricDailyCreateNestedManyWithoutOrganizationInput
+  auditEvents?: Prisma.AuditLogCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationUncheckedCreateWithoutBrandProfilesInput = {
@@ -848,6 +1562,11 @@ export type OrganizationUncheckedCreateWithoutBrandProfilesInput = {
   contracts?: Prisma.ContractUncheckedCreateNestedManyWithoutOrganizationInput
   invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutOrganizationInput
   supportTickets?: Prisma.SupportTicketUncheckedCreateNestedManyWithoutOrganizationInput
+  slaPolicies?: Prisma.SlaPolicyUncheckedCreateNestedManyWithoutOrganizationInput
+  supportProfile?: Prisma.OrganizationSupportProfileUncheckedCreateNestedOneWithoutOrganizationInput
+  customerActivities?: Prisma.CustomerActivityLogUncheckedCreateNestedManyWithoutOrganizationInput
+  supportMetrics?: Prisma.SupportMetricDailyUncheckedCreateNestedManyWithoutOrganizationInput
+  auditEvents?: Prisma.AuditLogUncheckedCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationCreateOrConnectWithoutBrandProfilesInput = {
@@ -882,6 +1601,11 @@ export type OrganizationUpdateWithoutBrandProfilesInput = {
   contracts?: Prisma.ContractUpdateManyWithoutOrganizationNestedInput
   invoices?: Prisma.InvoiceUpdateManyWithoutOrganizationNestedInput
   supportTickets?: Prisma.SupportTicketUpdateManyWithoutOrganizationNestedInput
+  slaPolicies?: Prisma.SlaPolicyUpdateManyWithoutOrganizationNestedInput
+  supportProfile?: Prisma.OrganizationSupportProfileUpdateOneWithoutOrganizationNestedInput
+  customerActivities?: Prisma.CustomerActivityLogUpdateManyWithoutOrganizationNestedInput
+  supportMetrics?: Prisma.SupportMetricDailyUpdateManyWithoutOrganizationNestedInput
+  auditEvents?: Prisma.AuditLogUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationUncheckedUpdateWithoutBrandProfilesInput = {
@@ -900,6 +1624,11 @@ export type OrganizationUncheckedUpdateWithoutBrandProfilesInput = {
   contracts?: Prisma.ContractUncheckedUpdateManyWithoutOrganizationNestedInput
   invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutOrganizationNestedInput
   supportTickets?: Prisma.SupportTicketUncheckedUpdateManyWithoutOrganizationNestedInput
+  slaPolicies?: Prisma.SlaPolicyUncheckedUpdateManyWithoutOrganizationNestedInput
+  supportProfile?: Prisma.OrganizationSupportProfileUncheckedUpdateOneWithoutOrganizationNestedInput
+  customerActivities?: Prisma.CustomerActivityLogUncheckedUpdateManyWithoutOrganizationNestedInput
+  supportMetrics?: Prisma.SupportMetricDailyUncheckedUpdateManyWithoutOrganizationNestedInput
+  auditEvents?: Prisma.AuditLogUncheckedUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationCreateWithoutFileAssetsInput = {
@@ -918,6 +1647,11 @@ export type OrganizationCreateWithoutFileAssetsInput = {
   contracts?: Prisma.ContractCreateNestedManyWithoutOrganizationInput
   invoices?: Prisma.InvoiceCreateNestedManyWithoutOrganizationInput
   supportTickets?: Prisma.SupportTicketCreateNestedManyWithoutOrganizationInput
+  slaPolicies?: Prisma.SlaPolicyCreateNestedManyWithoutOrganizationInput
+  supportProfile?: Prisma.OrganizationSupportProfileCreateNestedOneWithoutOrganizationInput
+  customerActivities?: Prisma.CustomerActivityLogCreateNestedManyWithoutOrganizationInput
+  supportMetrics?: Prisma.SupportMetricDailyCreateNestedManyWithoutOrganizationInput
+  auditEvents?: Prisma.AuditLogCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationUncheckedCreateWithoutFileAssetsInput = {
@@ -936,6 +1670,11 @@ export type OrganizationUncheckedCreateWithoutFileAssetsInput = {
   contracts?: Prisma.ContractUncheckedCreateNestedManyWithoutOrganizationInput
   invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutOrganizationInput
   supportTickets?: Prisma.SupportTicketUncheckedCreateNestedManyWithoutOrganizationInput
+  slaPolicies?: Prisma.SlaPolicyUncheckedCreateNestedManyWithoutOrganizationInput
+  supportProfile?: Prisma.OrganizationSupportProfileUncheckedCreateNestedOneWithoutOrganizationInput
+  customerActivities?: Prisma.CustomerActivityLogUncheckedCreateNestedManyWithoutOrganizationInput
+  supportMetrics?: Prisma.SupportMetricDailyUncheckedCreateNestedManyWithoutOrganizationInput
+  auditEvents?: Prisma.AuditLogUncheckedCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationCreateOrConnectWithoutFileAssetsInput = {
@@ -970,6 +1709,11 @@ export type OrganizationUpdateWithoutFileAssetsInput = {
   contracts?: Prisma.ContractUpdateManyWithoutOrganizationNestedInput
   invoices?: Prisma.InvoiceUpdateManyWithoutOrganizationNestedInput
   supportTickets?: Prisma.SupportTicketUpdateManyWithoutOrganizationNestedInput
+  slaPolicies?: Prisma.SlaPolicyUpdateManyWithoutOrganizationNestedInput
+  supportProfile?: Prisma.OrganizationSupportProfileUpdateOneWithoutOrganizationNestedInput
+  customerActivities?: Prisma.CustomerActivityLogUpdateManyWithoutOrganizationNestedInput
+  supportMetrics?: Prisma.SupportMetricDailyUpdateManyWithoutOrganizationNestedInput
+  auditEvents?: Prisma.AuditLogUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationUncheckedUpdateWithoutFileAssetsInput = {
@@ -988,6 +1732,11 @@ export type OrganizationUncheckedUpdateWithoutFileAssetsInput = {
   contracts?: Prisma.ContractUncheckedUpdateManyWithoutOrganizationNestedInput
   invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutOrganizationNestedInput
   supportTickets?: Prisma.SupportTicketUncheckedUpdateManyWithoutOrganizationNestedInput
+  slaPolicies?: Prisma.SlaPolicyUncheckedUpdateManyWithoutOrganizationNestedInput
+  supportProfile?: Prisma.OrganizationSupportProfileUncheckedUpdateOneWithoutOrganizationNestedInput
+  customerActivities?: Prisma.CustomerActivityLogUncheckedUpdateManyWithoutOrganizationNestedInput
+  supportMetrics?: Prisma.SupportMetricDailyUncheckedUpdateManyWithoutOrganizationNestedInput
+  auditEvents?: Prisma.AuditLogUncheckedUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationCreateWithoutMaintenanceSubsInput = {
@@ -1006,6 +1755,11 @@ export type OrganizationCreateWithoutMaintenanceSubsInput = {
   contracts?: Prisma.ContractCreateNestedManyWithoutOrganizationInput
   invoices?: Prisma.InvoiceCreateNestedManyWithoutOrganizationInput
   supportTickets?: Prisma.SupportTicketCreateNestedManyWithoutOrganizationInput
+  slaPolicies?: Prisma.SlaPolicyCreateNestedManyWithoutOrganizationInput
+  supportProfile?: Prisma.OrganizationSupportProfileCreateNestedOneWithoutOrganizationInput
+  customerActivities?: Prisma.CustomerActivityLogCreateNestedManyWithoutOrganizationInput
+  supportMetrics?: Prisma.SupportMetricDailyCreateNestedManyWithoutOrganizationInput
+  auditEvents?: Prisma.AuditLogCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationUncheckedCreateWithoutMaintenanceSubsInput = {
@@ -1024,6 +1778,11 @@ export type OrganizationUncheckedCreateWithoutMaintenanceSubsInput = {
   contracts?: Prisma.ContractUncheckedCreateNestedManyWithoutOrganizationInput
   invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutOrganizationInput
   supportTickets?: Prisma.SupportTicketUncheckedCreateNestedManyWithoutOrganizationInput
+  slaPolicies?: Prisma.SlaPolicyUncheckedCreateNestedManyWithoutOrganizationInput
+  supportProfile?: Prisma.OrganizationSupportProfileUncheckedCreateNestedOneWithoutOrganizationInput
+  customerActivities?: Prisma.CustomerActivityLogUncheckedCreateNestedManyWithoutOrganizationInput
+  supportMetrics?: Prisma.SupportMetricDailyUncheckedCreateNestedManyWithoutOrganizationInput
+  auditEvents?: Prisma.AuditLogUncheckedCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationCreateOrConnectWithoutMaintenanceSubsInput = {
@@ -1058,6 +1817,11 @@ export type OrganizationUpdateWithoutMaintenanceSubsInput = {
   contracts?: Prisma.ContractUpdateManyWithoutOrganizationNestedInput
   invoices?: Prisma.InvoiceUpdateManyWithoutOrganizationNestedInput
   supportTickets?: Prisma.SupportTicketUpdateManyWithoutOrganizationNestedInput
+  slaPolicies?: Prisma.SlaPolicyUpdateManyWithoutOrganizationNestedInput
+  supportProfile?: Prisma.OrganizationSupportProfileUpdateOneWithoutOrganizationNestedInput
+  customerActivities?: Prisma.CustomerActivityLogUpdateManyWithoutOrganizationNestedInput
+  supportMetrics?: Prisma.SupportMetricDailyUpdateManyWithoutOrganizationNestedInput
+  auditEvents?: Prisma.AuditLogUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationUncheckedUpdateWithoutMaintenanceSubsInput = {
@@ -1076,6 +1840,11 @@ export type OrganizationUncheckedUpdateWithoutMaintenanceSubsInput = {
   contracts?: Prisma.ContractUncheckedUpdateManyWithoutOrganizationNestedInput
   invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutOrganizationNestedInput
   supportTickets?: Prisma.SupportTicketUncheckedUpdateManyWithoutOrganizationNestedInput
+  slaPolicies?: Prisma.SlaPolicyUncheckedUpdateManyWithoutOrganizationNestedInput
+  supportProfile?: Prisma.OrganizationSupportProfileUncheckedUpdateOneWithoutOrganizationNestedInput
+  customerActivities?: Prisma.CustomerActivityLogUncheckedUpdateManyWithoutOrganizationNestedInput
+  supportMetrics?: Prisma.SupportMetricDailyUncheckedUpdateManyWithoutOrganizationNestedInput
+  auditEvents?: Prisma.AuditLogUncheckedUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationCreateWithoutBillingProfileInput = {
@@ -1094,6 +1863,11 @@ export type OrganizationCreateWithoutBillingProfileInput = {
   contracts?: Prisma.ContractCreateNestedManyWithoutOrganizationInput
   invoices?: Prisma.InvoiceCreateNestedManyWithoutOrganizationInput
   supportTickets?: Prisma.SupportTicketCreateNestedManyWithoutOrganizationInput
+  slaPolicies?: Prisma.SlaPolicyCreateNestedManyWithoutOrganizationInput
+  supportProfile?: Prisma.OrganizationSupportProfileCreateNestedOneWithoutOrganizationInput
+  customerActivities?: Prisma.CustomerActivityLogCreateNestedManyWithoutOrganizationInput
+  supportMetrics?: Prisma.SupportMetricDailyCreateNestedManyWithoutOrganizationInput
+  auditEvents?: Prisma.AuditLogCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationUncheckedCreateWithoutBillingProfileInput = {
@@ -1112,6 +1886,11 @@ export type OrganizationUncheckedCreateWithoutBillingProfileInput = {
   contracts?: Prisma.ContractUncheckedCreateNestedManyWithoutOrganizationInput
   invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutOrganizationInput
   supportTickets?: Prisma.SupportTicketUncheckedCreateNestedManyWithoutOrganizationInput
+  slaPolicies?: Prisma.SlaPolicyUncheckedCreateNestedManyWithoutOrganizationInput
+  supportProfile?: Prisma.OrganizationSupportProfileUncheckedCreateNestedOneWithoutOrganizationInput
+  customerActivities?: Prisma.CustomerActivityLogUncheckedCreateNestedManyWithoutOrganizationInput
+  supportMetrics?: Prisma.SupportMetricDailyUncheckedCreateNestedManyWithoutOrganizationInput
+  auditEvents?: Prisma.AuditLogUncheckedCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationCreateOrConnectWithoutBillingProfileInput = {
@@ -1146,6 +1925,11 @@ export type OrganizationUpdateWithoutBillingProfileInput = {
   contracts?: Prisma.ContractUpdateManyWithoutOrganizationNestedInput
   invoices?: Prisma.InvoiceUpdateManyWithoutOrganizationNestedInput
   supportTickets?: Prisma.SupportTicketUpdateManyWithoutOrganizationNestedInput
+  slaPolicies?: Prisma.SlaPolicyUpdateManyWithoutOrganizationNestedInput
+  supportProfile?: Prisma.OrganizationSupportProfileUpdateOneWithoutOrganizationNestedInput
+  customerActivities?: Prisma.CustomerActivityLogUpdateManyWithoutOrganizationNestedInput
+  supportMetrics?: Prisma.SupportMetricDailyUpdateManyWithoutOrganizationNestedInput
+  auditEvents?: Prisma.AuditLogUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationUncheckedUpdateWithoutBillingProfileInput = {
@@ -1164,6 +1948,11 @@ export type OrganizationUncheckedUpdateWithoutBillingProfileInput = {
   contracts?: Prisma.ContractUncheckedUpdateManyWithoutOrganizationNestedInput
   invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutOrganizationNestedInput
   supportTickets?: Prisma.SupportTicketUncheckedUpdateManyWithoutOrganizationNestedInput
+  slaPolicies?: Prisma.SlaPolicyUncheckedUpdateManyWithoutOrganizationNestedInput
+  supportProfile?: Prisma.OrganizationSupportProfileUncheckedUpdateOneWithoutOrganizationNestedInput
+  customerActivities?: Prisma.CustomerActivityLogUncheckedUpdateManyWithoutOrganizationNestedInput
+  supportMetrics?: Prisma.SupportMetricDailyUncheckedUpdateManyWithoutOrganizationNestedInput
+  auditEvents?: Prisma.AuditLogUncheckedUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationCreateWithoutQuotesInput = {
@@ -1182,6 +1971,11 @@ export type OrganizationCreateWithoutQuotesInput = {
   contracts?: Prisma.ContractCreateNestedManyWithoutOrganizationInput
   invoices?: Prisma.InvoiceCreateNestedManyWithoutOrganizationInput
   supportTickets?: Prisma.SupportTicketCreateNestedManyWithoutOrganizationInput
+  slaPolicies?: Prisma.SlaPolicyCreateNestedManyWithoutOrganizationInput
+  supportProfile?: Prisma.OrganizationSupportProfileCreateNestedOneWithoutOrganizationInput
+  customerActivities?: Prisma.CustomerActivityLogCreateNestedManyWithoutOrganizationInput
+  supportMetrics?: Prisma.SupportMetricDailyCreateNestedManyWithoutOrganizationInput
+  auditEvents?: Prisma.AuditLogCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationUncheckedCreateWithoutQuotesInput = {
@@ -1200,6 +1994,11 @@ export type OrganizationUncheckedCreateWithoutQuotesInput = {
   contracts?: Prisma.ContractUncheckedCreateNestedManyWithoutOrganizationInput
   invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutOrganizationInput
   supportTickets?: Prisma.SupportTicketUncheckedCreateNestedManyWithoutOrganizationInput
+  slaPolicies?: Prisma.SlaPolicyUncheckedCreateNestedManyWithoutOrganizationInput
+  supportProfile?: Prisma.OrganizationSupportProfileUncheckedCreateNestedOneWithoutOrganizationInput
+  customerActivities?: Prisma.CustomerActivityLogUncheckedCreateNestedManyWithoutOrganizationInput
+  supportMetrics?: Prisma.SupportMetricDailyUncheckedCreateNestedManyWithoutOrganizationInput
+  auditEvents?: Prisma.AuditLogUncheckedCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationCreateOrConnectWithoutQuotesInput = {
@@ -1234,6 +2033,11 @@ export type OrganizationUpdateWithoutQuotesInput = {
   contracts?: Prisma.ContractUpdateManyWithoutOrganizationNestedInput
   invoices?: Prisma.InvoiceUpdateManyWithoutOrganizationNestedInput
   supportTickets?: Prisma.SupportTicketUpdateManyWithoutOrganizationNestedInput
+  slaPolicies?: Prisma.SlaPolicyUpdateManyWithoutOrganizationNestedInput
+  supportProfile?: Prisma.OrganizationSupportProfileUpdateOneWithoutOrganizationNestedInput
+  customerActivities?: Prisma.CustomerActivityLogUpdateManyWithoutOrganizationNestedInput
+  supportMetrics?: Prisma.SupportMetricDailyUpdateManyWithoutOrganizationNestedInput
+  auditEvents?: Prisma.AuditLogUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationUncheckedUpdateWithoutQuotesInput = {
@@ -1252,6 +2056,11 @@ export type OrganizationUncheckedUpdateWithoutQuotesInput = {
   contracts?: Prisma.ContractUncheckedUpdateManyWithoutOrganizationNestedInput
   invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutOrganizationNestedInput
   supportTickets?: Prisma.SupportTicketUncheckedUpdateManyWithoutOrganizationNestedInput
+  slaPolicies?: Prisma.SlaPolicyUncheckedUpdateManyWithoutOrganizationNestedInput
+  supportProfile?: Prisma.OrganizationSupportProfileUncheckedUpdateOneWithoutOrganizationNestedInput
+  customerActivities?: Prisma.CustomerActivityLogUncheckedUpdateManyWithoutOrganizationNestedInput
+  supportMetrics?: Prisma.SupportMetricDailyUncheckedUpdateManyWithoutOrganizationNestedInput
+  auditEvents?: Prisma.AuditLogUncheckedUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationCreateWithoutContractsInput = {
@@ -1270,6 +2079,11 @@ export type OrganizationCreateWithoutContractsInput = {
   quotes?: Prisma.QuoteCreateNestedManyWithoutOrganizationInput
   invoices?: Prisma.InvoiceCreateNestedManyWithoutOrganizationInput
   supportTickets?: Prisma.SupportTicketCreateNestedManyWithoutOrganizationInput
+  slaPolicies?: Prisma.SlaPolicyCreateNestedManyWithoutOrganizationInput
+  supportProfile?: Prisma.OrganizationSupportProfileCreateNestedOneWithoutOrganizationInput
+  customerActivities?: Prisma.CustomerActivityLogCreateNestedManyWithoutOrganizationInput
+  supportMetrics?: Prisma.SupportMetricDailyCreateNestedManyWithoutOrganizationInput
+  auditEvents?: Prisma.AuditLogCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationUncheckedCreateWithoutContractsInput = {
@@ -1288,6 +2102,11 @@ export type OrganizationUncheckedCreateWithoutContractsInput = {
   quotes?: Prisma.QuoteUncheckedCreateNestedManyWithoutOrganizationInput
   invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutOrganizationInput
   supportTickets?: Prisma.SupportTicketUncheckedCreateNestedManyWithoutOrganizationInput
+  slaPolicies?: Prisma.SlaPolicyUncheckedCreateNestedManyWithoutOrganizationInput
+  supportProfile?: Prisma.OrganizationSupportProfileUncheckedCreateNestedOneWithoutOrganizationInput
+  customerActivities?: Prisma.CustomerActivityLogUncheckedCreateNestedManyWithoutOrganizationInput
+  supportMetrics?: Prisma.SupportMetricDailyUncheckedCreateNestedManyWithoutOrganizationInput
+  auditEvents?: Prisma.AuditLogUncheckedCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationCreateOrConnectWithoutContractsInput = {
@@ -1322,6 +2141,11 @@ export type OrganizationUpdateWithoutContractsInput = {
   quotes?: Prisma.QuoteUpdateManyWithoutOrganizationNestedInput
   invoices?: Prisma.InvoiceUpdateManyWithoutOrganizationNestedInput
   supportTickets?: Prisma.SupportTicketUpdateManyWithoutOrganizationNestedInput
+  slaPolicies?: Prisma.SlaPolicyUpdateManyWithoutOrganizationNestedInput
+  supportProfile?: Prisma.OrganizationSupportProfileUpdateOneWithoutOrganizationNestedInput
+  customerActivities?: Prisma.CustomerActivityLogUpdateManyWithoutOrganizationNestedInput
+  supportMetrics?: Prisma.SupportMetricDailyUpdateManyWithoutOrganizationNestedInput
+  auditEvents?: Prisma.AuditLogUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationUncheckedUpdateWithoutContractsInput = {
@@ -1340,6 +2164,11 @@ export type OrganizationUncheckedUpdateWithoutContractsInput = {
   quotes?: Prisma.QuoteUncheckedUpdateManyWithoutOrganizationNestedInput
   invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutOrganizationNestedInput
   supportTickets?: Prisma.SupportTicketUncheckedUpdateManyWithoutOrganizationNestedInput
+  slaPolicies?: Prisma.SlaPolicyUncheckedUpdateManyWithoutOrganizationNestedInput
+  supportProfile?: Prisma.OrganizationSupportProfileUncheckedUpdateOneWithoutOrganizationNestedInput
+  customerActivities?: Prisma.CustomerActivityLogUncheckedUpdateManyWithoutOrganizationNestedInput
+  supportMetrics?: Prisma.SupportMetricDailyUncheckedUpdateManyWithoutOrganizationNestedInput
+  auditEvents?: Prisma.AuditLogUncheckedUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationCreateWithoutInvoicesInput = {
@@ -1358,6 +2187,11 @@ export type OrganizationCreateWithoutInvoicesInput = {
   quotes?: Prisma.QuoteCreateNestedManyWithoutOrganizationInput
   contracts?: Prisma.ContractCreateNestedManyWithoutOrganizationInput
   supportTickets?: Prisma.SupportTicketCreateNestedManyWithoutOrganizationInput
+  slaPolicies?: Prisma.SlaPolicyCreateNestedManyWithoutOrganizationInput
+  supportProfile?: Prisma.OrganizationSupportProfileCreateNestedOneWithoutOrganizationInput
+  customerActivities?: Prisma.CustomerActivityLogCreateNestedManyWithoutOrganizationInput
+  supportMetrics?: Prisma.SupportMetricDailyCreateNestedManyWithoutOrganizationInput
+  auditEvents?: Prisma.AuditLogCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationUncheckedCreateWithoutInvoicesInput = {
@@ -1376,6 +2210,11 @@ export type OrganizationUncheckedCreateWithoutInvoicesInput = {
   quotes?: Prisma.QuoteUncheckedCreateNestedManyWithoutOrganizationInput
   contracts?: Prisma.ContractUncheckedCreateNestedManyWithoutOrganizationInput
   supportTickets?: Prisma.SupportTicketUncheckedCreateNestedManyWithoutOrganizationInput
+  slaPolicies?: Prisma.SlaPolicyUncheckedCreateNestedManyWithoutOrganizationInput
+  supportProfile?: Prisma.OrganizationSupportProfileUncheckedCreateNestedOneWithoutOrganizationInput
+  customerActivities?: Prisma.CustomerActivityLogUncheckedCreateNestedManyWithoutOrganizationInput
+  supportMetrics?: Prisma.SupportMetricDailyUncheckedCreateNestedManyWithoutOrganizationInput
+  auditEvents?: Prisma.AuditLogUncheckedCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationCreateOrConnectWithoutInvoicesInput = {
@@ -1410,6 +2249,11 @@ export type OrganizationUpdateWithoutInvoicesInput = {
   quotes?: Prisma.QuoteUpdateManyWithoutOrganizationNestedInput
   contracts?: Prisma.ContractUpdateManyWithoutOrganizationNestedInput
   supportTickets?: Prisma.SupportTicketUpdateManyWithoutOrganizationNestedInput
+  slaPolicies?: Prisma.SlaPolicyUpdateManyWithoutOrganizationNestedInput
+  supportProfile?: Prisma.OrganizationSupportProfileUpdateOneWithoutOrganizationNestedInput
+  customerActivities?: Prisma.CustomerActivityLogUpdateManyWithoutOrganizationNestedInput
+  supportMetrics?: Prisma.SupportMetricDailyUpdateManyWithoutOrganizationNestedInput
+  auditEvents?: Prisma.AuditLogUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationUncheckedUpdateWithoutInvoicesInput = {
@@ -1428,6 +2272,11 @@ export type OrganizationUncheckedUpdateWithoutInvoicesInput = {
   quotes?: Prisma.QuoteUncheckedUpdateManyWithoutOrganizationNestedInput
   contracts?: Prisma.ContractUncheckedUpdateManyWithoutOrganizationNestedInput
   supportTickets?: Prisma.SupportTicketUncheckedUpdateManyWithoutOrganizationNestedInput
+  slaPolicies?: Prisma.SlaPolicyUncheckedUpdateManyWithoutOrganizationNestedInput
+  supportProfile?: Prisma.OrganizationSupportProfileUncheckedUpdateOneWithoutOrganizationNestedInput
+  customerActivities?: Prisma.CustomerActivityLogUncheckedUpdateManyWithoutOrganizationNestedInput
+  supportMetrics?: Prisma.SupportMetricDailyUncheckedUpdateManyWithoutOrganizationNestedInput
+  auditEvents?: Prisma.AuditLogUncheckedUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationCreateWithoutSupportTicketsInput = {
@@ -1446,6 +2295,11 @@ export type OrganizationCreateWithoutSupportTicketsInput = {
   quotes?: Prisma.QuoteCreateNestedManyWithoutOrganizationInput
   contracts?: Prisma.ContractCreateNestedManyWithoutOrganizationInput
   invoices?: Prisma.InvoiceCreateNestedManyWithoutOrganizationInput
+  slaPolicies?: Prisma.SlaPolicyCreateNestedManyWithoutOrganizationInput
+  supportProfile?: Prisma.OrganizationSupportProfileCreateNestedOneWithoutOrganizationInput
+  customerActivities?: Prisma.CustomerActivityLogCreateNestedManyWithoutOrganizationInput
+  supportMetrics?: Prisma.SupportMetricDailyCreateNestedManyWithoutOrganizationInput
+  auditEvents?: Prisma.AuditLogCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationUncheckedCreateWithoutSupportTicketsInput = {
@@ -1464,6 +2318,11 @@ export type OrganizationUncheckedCreateWithoutSupportTicketsInput = {
   quotes?: Prisma.QuoteUncheckedCreateNestedManyWithoutOrganizationInput
   contracts?: Prisma.ContractUncheckedCreateNestedManyWithoutOrganizationInput
   invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutOrganizationInput
+  slaPolicies?: Prisma.SlaPolicyUncheckedCreateNestedManyWithoutOrganizationInput
+  supportProfile?: Prisma.OrganizationSupportProfileUncheckedCreateNestedOneWithoutOrganizationInput
+  customerActivities?: Prisma.CustomerActivityLogUncheckedCreateNestedManyWithoutOrganizationInput
+  supportMetrics?: Prisma.SupportMetricDailyUncheckedCreateNestedManyWithoutOrganizationInput
+  auditEvents?: Prisma.AuditLogUncheckedCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationCreateOrConnectWithoutSupportTicketsInput = {
@@ -1498,6 +2357,11 @@ export type OrganizationUpdateWithoutSupportTicketsInput = {
   quotes?: Prisma.QuoteUpdateManyWithoutOrganizationNestedInput
   contracts?: Prisma.ContractUpdateManyWithoutOrganizationNestedInput
   invoices?: Prisma.InvoiceUpdateManyWithoutOrganizationNestedInput
+  slaPolicies?: Prisma.SlaPolicyUpdateManyWithoutOrganizationNestedInput
+  supportProfile?: Prisma.OrganizationSupportProfileUpdateOneWithoutOrganizationNestedInput
+  customerActivities?: Prisma.CustomerActivityLogUpdateManyWithoutOrganizationNestedInput
+  supportMetrics?: Prisma.SupportMetricDailyUpdateManyWithoutOrganizationNestedInput
+  auditEvents?: Prisma.AuditLogUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationUncheckedUpdateWithoutSupportTicketsInput = {
@@ -1516,6 +2380,11 @@ export type OrganizationUncheckedUpdateWithoutSupportTicketsInput = {
   quotes?: Prisma.QuoteUncheckedUpdateManyWithoutOrganizationNestedInput
   contracts?: Prisma.ContractUncheckedUpdateManyWithoutOrganizationNestedInput
   invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutOrganizationNestedInput
+  slaPolicies?: Prisma.SlaPolicyUncheckedUpdateManyWithoutOrganizationNestedInput
+  supportProfile?: Prisma.OrganizationSupportProfileUncheckedUpdateOneWithoutOrganizationNestedInput
+  customerActivities?: Prisma.CustomerActivityLogUncheckedUpdateManyWithoutOrganizationNestedInput
+  supportMetrics?: Prisma.SupportMetricDailyUncheckedUpdateManyWithoutOrganizationNestedInput
+  auditEvents?: Prisma.AuditLogUncheckedUpdateManyWithoutOrganizationNestedInput
 }
 
 
@@ -1534,6 +2403,10 @@ export type OrganizationCountOutputType = {
   contracts: number
   invoices: number
   supportTickets: number
+  slaPolicies: number
+  customerActivities: number
+  supportMetrics: number
+  auditEvents: number
 }
 
 export type OrganizationCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1547,6 +2420,10 @@ export type OrganizationCountOutputTypeSelect<ExtArgs extends runtime.Types.Exte
   contracts?: boolean | OrganizationCountOutputTypeCountContractsArgs
   invoices?: boolean | OrganizationCountOutputTypeCountInvoicesArgs
   supportTickets?: boolean | OrganizationCountOutputTypeCountSupportTicketsArgs
+  slaPolicies?: boolean | OrganizationCountOutputTypeCountSlaPoliciesArgs
+  customerActivities?: boolean | OrganizationCountOutputTypeCountCustomerActivitiesArgs
+  supportMetrics?: boolean | OrganizationCountOutputTypeCountSupportMetricsArgs
+  auditEvents?: boolean | OrganizationCountOutputTypeCountAuditEventsArgs
 }
 
 /**
@@ -1629,6 +2506,34 @@ export type OrganizationCountOutputTypeCountSupportTicketsArgs<ExtArgs extends r
   where?: Prisma.SupportTicketWhereInput
 }
 
+/**
+ * OrganizationCountOutputType without action
+ */
+export type OrganizationCountOutputTypeCountSlaPoliciesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.SlaPolicyWhereInput
+}
+
+/**
+ * OrganizationCountOutputType without action
+ */
+export type OrganizationCountOutputTypeCountCustomerActivitiesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.CustomerActivityLogWhereInput
+}
+
+/**
+ * OrganizationCountOutputType without action
+ */
+export type OrganizationCountOutputTypeCountSupportMetricsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.SupportMetricDailyWhereInput
+}
+
+/**
+ * OrganizationCountOutputType without action
+ */
+export type OrganizationCountOutputTypeCountAuditEventsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.AuditLogWhereInput
+}
+
 
 export type OrganizationSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -1647,6 +2552,11 @@ export type OrganizationSelect<ExtArgs extends runtime.Types.Extensions.Internal
   contracts?: boolean | Prisma.Organization$contractsArgs<ExtArgs>
   invoices?: boolean | Prisma.Organization$invoicesArgs<ExtArgs>
   supportTickets?: boolean | Prisma.Organization$supportTicketsArgs<ExtArgs>
+  slaPolicies?: boolean | Prisma.Organization$slaPoliciesArgs<ExtArgs>
+  supportProfile?: boolean | Prisma.Organization$supportProfileArgs<ExtArgs>
+  customerActivities?: boolean | Prisma.Organization$customerActivitiesArgs<ExtArgs>
+  supportMetrics?: boolean | Prisma.Organization$supportMetricsArgs<ExtArgs>
+  auditEvents?: boolean | Prisma.Organization$auditEventsArgs<ExtArgs>
   _count?: boolean | Prisma.OrganizationCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["organization"]>
 
@@ -1687,6 +2597,11 @@ export type OrganizationInclude<ExtArgs extends runtime.Types.Extensions.Interna
   contracts?: boolean | Prisma.Organization$contractsArgs<ExtArgs>
   invoices?: boolean | Prisma.Organization$invoicesArgs<ExtArgs>
   supportTickets?: boolean | Prisma.Organization$supportTicketsArgs<ExtArgs>
+  slaPolicies?: boolean | Prisma.Organization$slaPoliciesArgs<ExtArgs>
+  supportProfile?: boolean | Prisma.Organization$supportProfileArgs<ExtArgs>
+  customerActivities?: boolean | Prisma.Organization$customerActivitiesArgs<ExtArgs>
+  supportMetrics?: boolean | Prisma.Organization$supportMetricsArgs<ExtArgs>
+  auditEvents?: boolean | Prisma.Organization$auditEventsArgs<ExtArgs>
   _count?: boolean | Prisma.OrganizationCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type OrganizationIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -1706,6 +2621,11 @@ export type $OrganizationPayload<ExtArgs extends runtime.Types.Extensions.Intern
     contracts: Prisma.$ContractPayload<ExtArgs>[]
     invoices: Prisma.$InvoicePayload<ExtArgs>[]
     supportTickets: Prisma.$SupportTicketPayload<ExtArgs>[]
+    slaPolicies: Prisma.$SlaPolicyPayload<ExtArgs>[]
+    supportProfile: Prisma.$OrganizationSupportProfilePayload<ExtArgs> | null
+    customerActivities: Prisma.$CustomerActivityLogPayload<ExtArgs>[]
+    supportMetrics: Prisma.$SupportMetricDailyPayload<ExtArgs>[]
+    auditEvents: Prisma.$AuditLogPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -2118,6 +3038,11 @@ export interface Prisma__OrganizationClient<T, Null = never, ExtArgs extends run
   contracts<T extends Prisma.Organization$contractsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Organization$contractsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ContractPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   invoices<T extends Prisma.Organization$invoicesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Organization$invoicesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$InvoicePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   supportTickets<T extends Prisma.Organization$supportTicketsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Organization$supportTicketsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SupportTicketPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  slaPolicies<T extends Prisma.Organization$slaPoliciesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Organization$slaPoliciesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SlaPolicyPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  supportProfile<T extends Prisma.Organization$supportProfileArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Organization$supportProfileArgs<ExtArgs>>): Prisma.Prisma__OrganizationSupportProfileClient<runtime.Types.Result.GetResult<Prisma.$OrganizationSupportProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  customerActivities<T extends Prisma.Organization$customerActivitiesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Organization$customerActivitiesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CustomerActivityLogPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  supportMetrics<T extends Prisma.Organization$supportMetricsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Organization$supportMetricsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SupportMetricDailyPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  auditEvents<T extends Prisma.Organization$auditEventsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Organization$auditEventsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AuditLogPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2801,6 +3726,121 @@ export type Organization$supportTicketsArgs<ExtArgs extends runtime.Types.Extens
   take?: number
   skip?: number
   distinct?: Prisma.SupportTicketScalarFieldEnum | Prisma.SupportTicketScalarFieldEnum[]
+}
+
+/**
+ * Organization.slaPolicies
+ */
+export type Organization$slaPoliciesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the SlaPolicy
+   */
+  select?: Prisma.SlaPolicySelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the SlaPolicy
+   */
+  omit?: Prisma.SlaPolicyOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SlaPolicyInclude<ExtArgs> | null
+  where?: Prisma.SlaPolicyWhereInput
+  orderBy?: Prisma.SlaPolicyOrderByWithRelationInput | Prisma.SlaPolicyOrderByWithRelationInput[]
+  cursor?: Prisma.SlaPolicyWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.SlaPolicyScalarFieldEnum | Prisma.SlaPolicyScalarFieldEnum[]
+}
+
+/**
+ * Organization.supportProfile
+ */
+export type Organization$supportProfileArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the OrganizationSupportProfile
+   */
+  select?: Prisma.OrganizationSupportProfileSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the OrganizationSupportProfile
+   */
+  omit?: Prisma.OrganizationSupportProfileOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.OrganizationSupportProfileInclude<ExtArgs> | null
+  where?: Prisma.OrganizationSupportProfileWhereInput
+}
+
+/**
+ * Organization.customerActivities
+ */
+export type Organization$customerActivitiesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the CustomerActivityLog
+   */
+  select?: Prisma.CustomerActivityLogSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the CustomerActivityLog
+   */
+  omit?: Prisma.CustomerActivityLogOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CustomerActivityLogInclude<ExtArgs> | null
+  where?: Prisma.CustomerActivityLogWhereInput
+  orderBy?: Prisma.CustomerActivityLogOrderByWithRelationInput | Prisma.CustomerActivityLogOrderByWithRelationInput[]
+  cursor?: Prisma.CustomerActivityLogWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.CustomerActivityLogScalarFieldEnum | Prisma.CustomerActivityLogScalarFieldEnum[]
+}
+
+/**
+ * Organization.supportMetrics
+ */
+export type Organization$supportMetricsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the SupportMetricDaily
+   */
+  select?: Prisma.SupportMetricDailySelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the SupportMetricDaily
+   */
+  omit?: Prisma.SupportMetricDailyOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SupportMetricDailyInclude<ExtArgs> | null
+  where?: Prisma.SupportMetricDailyWhereInput
+  orderBy?: Prisma.SupportMetricDailyOrderByWithRelationInput | Prisma.SupportMetricDailyOrderByWithRelationInput[]
+  cursor?: Prisma.SupportMetricDailyWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.SupportMetricDailyScalarFieldEnum | Prisma.SupportMetricDailyScalarFieldEnum[]
+}
+
+/**
+ * Organization.auditEvents
+ */
+export type Organization$auditEventsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the AuditLog
+   */
+  select?: Prisma.AuditLogSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the AuditLog
+   */
+  omit?: Prisma.AuditLogOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AuditLogInclude<ExtArgs> | null
+  where?: Prisma.AuditLogWhereInput
+  orderBy?: Prisma.AuditLogOrderByWithRelationInput | Prisma.AuditLogOrderByWithRelationInput[]
+  cursor?: Prisma.AuditLogWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.AuditLogScalarFieldEnum | Prisma.AuditLogScalarFieldEnum[]
 }
 
 /**
