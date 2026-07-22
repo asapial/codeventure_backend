@@ -1,0 +1,3093 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "CodeVenture Admin API",
+    "version": "2026-07-22"
+  },
+  "paths": {
+    "/api/v1/admin/dashboard": {
+      "get": {
+        "operationId": "getAdminDashboard",
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Normalized admin response"
+          },
+          "400": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "401": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "403": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "404": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "409": {
+            "$ref": "#/components/responses/AdminError"
+          }
+        }
+      }
+    },
+    "/api/v1/admin/leads": {
+      "get": {
+        "operationId": "getAdminLeads",
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Normalized admin response"
+          },
+          "400": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "401": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "403": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "404": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "409": {
+            "$ref": "#/components/responses/AdminError"
+          }
+        }
+      },
+      "post": {
+        "operationId": "postAdminLeads",
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Normalized admin response"
+          },
+          "400": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "401": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "403": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "404": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "409": {
+            "$ref": "#/components/responses/AdminError"
+          }
+        }
+      }
+    },
+    "/api/v1/admin/leads/{id}": {
+      "get": {
+        "operationId": "getAdminLeadsByid",
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Normalized admin response"
+          },
+          "400": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "401": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "403": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "404": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "409": {
+            "$ref": "#/components/responses/AdminError"
+          }
+        }
+      },
+      "patch": {
+        "operationId": "patchAdminLeadsByid",
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Normalized admin response"
+          },
+          "400": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "401": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "403": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "404": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "409": {
+            "$ref": "#/components/responses/AdminError"
+          }
+        }
+      }
+    },
+    "/api/v1/admin/leads/{id}/assign": {
+      "patch": {
+        "operationId": "patchAdminLeadsByidAssign",
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Normalized admin response"
+          },
+          "400": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "401": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "403": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "404": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "409": {
+            "$ref": "#/components/responses/AdminError"
+          }
+        }
+      }
+    },
+    "/api/v1/admin/leads/bulk": {
+      "patch": {
+        "operationId": "patchAdminLeadsBulk",
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Normalized admin response"
+          },
+          "400": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "401": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "403": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "404": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "409": {
+            "$ref": "#/components/responses/AdminError"
+          }
+        }
+      }
+    },
+    "/api/v1/admin/leads/{id}/activities": {
+      "post": {
+        "operationId": "postAdminLeadsByidActivities",
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Normalized admin response"
+          },
+          "400": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "401": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "403": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "404": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "409": {
+            "$ref": "#/components/responses/AdminError"
+          }
+        }
+      }
+    },
+    "/api/v1/admin/leads/{id}/convert": {
+      "post": {
+        "operationId": "postAdminLeadsByidConvert",
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Normalized admin response"
+          },
+          "400": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "401": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "403": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "404": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "409": {
+            "$ref": "#/components/responses/AdminError"
+          }
+        }
+      }
+    },
+    "/api/v1/admin/leads/{id}/create-quote": {
+      "post": {
+        "operationId": "postAdminLeadsByidCreateQuote",
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Normalized admin response"
+          },
+          "400": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "401": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "403": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "404": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "409": {
+            "$ref": "#/components/responses/AdminError"
+          }
+        }
+      }
+    },
+    "/api/v1/admin/quotes": {
+      "get": {
+        "operationId": "getAdminQuotes",
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Normalized admin response"
+          },
+          "400": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "401": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "403": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "404": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "409": {
+            "$ref": "#/components/responses/AdminError"
+          }
+        }
+      },
+      "post": {
+        "operationId": "postAdminQuotes",
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Normalized admin response"
+          },
+          "400": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "401": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "403": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "404": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "409": {
+            "$ref": "#/components/responses/AdminError"
+          }
+        }
+      }
+    },
+    "/api/v1/admin/quotes/{id}": {
+      "get": {
+        "operationId": "getAdminQuotesByid",
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Normalized admin response"
+          },
+          "400": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "401": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "403": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "404": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "409": {
+            "$ref": "#/components/responses/AdminError"
+          }
+        }
+      },
+      "put": {
+        "operationId": "putAdminQuotesByid",
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Normalized admin response"
+          },
+          "400": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "401": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "403": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "404": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "409": {
+            "$ref": "#/components/responses/AdminError"
+          }
+        }
+      }
+    },
+    "/api/v1/admin/quotes/{id}/revisions": {
+      "post": {
+        "operationId": "postAdminQuotesByidRevisions",
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Normalized admin response"
+          },
+          "400": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "401": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "403": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "404": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "409": {
+            "$ref": "#/components/responses/AdminError"
+          }
+        }
+      }
+    },
+    "/api/v1/admin/quotes/{id}/send": {
+      "post": {
+        "operationId": "postAdminQuotesByidSend",
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Normalized admin response"
+          },
+          "400": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "401": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "403": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "404": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "409": {
+            "$ref": "#/components/responses/AdminError"
+          }
+        }
+      }
+    },
+    "/api/v1/admin/quotes/{id}/convert": {
+      "post": {
+        "operationId": "postAdminQuotesByidConvert",
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Normalized admin response"
+          },
+          "400": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "401": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "403": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "404": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "409": {
+            "$ref": "#/components/responses/AdminError"
+          }
+        }
+      }
+    },
+    "/api/v1/admin/customers": {
+      "get": {
+        "operationId": "getAdminCustomers",
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Normalized admin response"
+          },
+          "400": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "401": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "403": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "404": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "409": {
+            "$ref": "#/components/responses/AdminError"
+          }
+        }
+      },
+      "post": {
+        "operationId": "postAdminCustomers",
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Normalized admin response"
+          },
+          "400": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "401": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "403": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "404": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "409": {
+            "$ref": "#/components/responses/AdminError"
+          }
+        }
+      }
+    },
+    "/api/v1/admin/customers/{id}": {
+      "get": {
+        "operationId": "getAdminCustomersByid",
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Normalized admin response"
+          },
+          "400": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "401": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "403": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "404": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "409": {
+            "$ref": "#/components/responses/AdminError"
+          }
+        }
+      }
+    },
+    "/api/v1/admin/customers/{id}/status": {
+      "patch": {
+        "operationId": "patchAdminCustomersByidStatus",
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Normalized admin response"
+          },
+          "400": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "401": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "403": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "404": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "409": {
+            "$ref": "#/components/responses/AdminError"
+          }
+        }
+      }
+    },
+    "/api/v1/admin/customers/{id}/invitations": {
+      "post": {
+        "operationId": "postAdminCustomersByidInvitations",
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Normalized admin response"
+          },
+          "400": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "401": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "403": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "404": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "409": {
+            "$ref": "#/components/responses/AdminError"
+          }
+        }
+      }
+    },
+    "/api/v1/admin/customers/{id}/impersonation": {
+      "post": {
+        "operationId": "postAdminCustomersByidImpersonation",
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Normalized admin response"
+          },
+          "400": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "401": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "403": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "404": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "409": {
+            "$ref": "#/components/responses/AdminError"
+          }
+        }
+      }
+    },
+    "/api/v1/admin/projects": {
+      "get": {
+        "operationId": "getAdminProjects",
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Normalized admin response"
+          },
+          "400": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "401": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "403": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "404": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "409": {
+            "$ref": "#/components/responses/AdminError"
+          }
+        }
+      },
+      "post": {
+        "operationId": "postAdminProjects",
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Normalized admin response"
+          },
+          "400": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "401": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "403": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "404": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "409": {
+            "$ref": "#/components/responses/AdminError"
+          }
+        }
+      }
+    },
+    "/api/v1/admin/projects/bulk": {
+      "patch": {
+        "operationId": "patchAdminProjectsBulk",
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Normalized admin response"
+          },
+          "400": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "401": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "403": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "404": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "409": {
+            "$ref": "#/components/responses/AdminError"
+          }
+        }
+      }
+    },
+    "/api/v1/admin/projects/{id}": {
+      "get": {
+        "operationId": "getAdminProjectsByid",
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Normalized admin response"
+          },
+          "400": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "401": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "403": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "404": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "409": {
+            "$ref": "#/components/responses/AdminError"
+          }
+        }
+      },
+      "put": {
+        "operationId": "putAdminProjectsByid",
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Normalized admin response"
+          },
+          "400": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "401": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "403": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "404": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "409": {
+            "$ref": "#/components/responses/AdminError"
+          }
+        }
+      }
+    },
+    "/api/v1/admin/projects/{id}/status": {
+      "patch": {
+        "operationId": "patchAdminProjectsByidStatus",
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Normalized admin response"
+          },
+          "400": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "401": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "403": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "404": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "409": {
+            "$ref": "#/components/responses/AdminError"
+          }
+        }
+      }
+    },
+    "/api/v1/admin/projects/{id}/milestones": {
+      "post": {
+        "operationId": "postAdminProjectsByidMilestones",
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Normalized admin response"
+          },
+          "400": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "401": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "403": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "404": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "409": {
+            "$ref": "#/components/responses/AdminError"
+          }
+        }
+      }
+    },
+    "/api/v1/admin/projects/{id}/tasks": {
+      "post": {
+        "operationId": "postAdminProjectsByidTasks",
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Normalized admin response"
+          },
+          "400": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "401": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "403": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "404": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "409": {
+            "$ref": "#/components/responses/AdminError"
+          }
+        }
+      }
+    },
+    "/api/v1/admin/projects/{id}/approvals": {
+      "post": {
+        "operationId": "postAdminProjectsByidApprovals",
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Normalized admin response"
+          },
+          "400": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "401": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "403": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "404": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "409": {
+            "$ref": "#/components/responses/AdminError"
+          }
+        }
+      }
+    },
+    "/api/v1/admin/projects/{id}/change-orders": {
+      "post": {
+        "operationId": "postAdminProjectsByidChangeOrders",
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Normalized admin response"
+          },
+          "400": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "401": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "403": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "404": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "409": {
+            "$ref": "#/components/responses/AdminError"
+          }
+        }
+      }
+    },
+    "/api/v1/admin/catalog": {
+      "get": {
+        "operationId": "getAdminCatalog",
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Normalized admin response"
+          },
+          "400": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "401": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "403": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "404": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "409": {
+            "$ref": "#/components/responses/AdminError"
+          }
+        }
+      }
+    },
+    "/api/v1/admin/services": {
+      "post": {
+        "operationId": "postAdminServices",
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Normalized admin response"
+          },
+          "400": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "401": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "403": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "404": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "409": {
+            "$ref": "#/components/responses/AdminError"
+          }
+        }
+      }
+    },
+    "/api/v1/admin/services/{id}": {
+      "put": {
+        "operationId": "putAdminServicesByid",
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Normalized admin response"
+          },
+          "400": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "401": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "403": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "404": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "409": {
+            "$ref": "#/components/responses/AdminError"
+          }
+        }
+      }
+    },
+    "/api/v1/admin/packages": {
+      "post": {
+        "operationId": "postAdminPackages",
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Normalized admin response"
+          },
+          "400": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "401": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "403": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "404": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "409": {
+            "$ref": "#/components/responses/AdminError"
+          }
+        }
+      }
+    },
+    "/api/v1/admin/maintenance-plans/{id}": {
+      "put": {
+        "operationId": "putAdminMaintenancePlansByid",
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Normalized admin response"
+          },
+          "400": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "401": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "403": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "404": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "409": {
+            "$ref": "#/components/responses/AdminError"
+          }
+        }
+      }
+    },
+    "/api/v1/admin/billing": {
+      "get": {
+        "operationId": "getAdminBilling",
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Normalized admin response"
+          },
+          "400": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "401": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "403": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "404": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "409": {
+            "$ref": "#/components/responses/AdminError"
+          }
+        }
+      }
+    },
+    "/api/v1/admin/invoices": {
+      "post": {
+        "operationId": "postAdminInvoices",
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Normalized admin response"
+          },
+          "400": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "401": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "403": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "404": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "409": {
+            "$ref": "#/components/responses/AdminError"
+          }
+        }
+      }
+    },
+    "/api/v1/admin/invoices/{id}/send": {
+      "post": {
+        "operationId": "postAdminInvoicesByidSend",
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Normalized admin response"
+          },
+          "400": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "401": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "403": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "404": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "409": {
+            "$ref": "#/components/responses/AdminError"
+          }
+        }
+      }
+    },
+    "/api/v1/admin/payments/offline": {
+      "post": {
+        "operationId": "postAdminPaymentsOffline",
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Normalized admin response"
+          },
+          "400": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "401": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "403": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "404": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "409": {
+            "$ref": "#/components/responses/AdminError"
+          }
+        }
+      }
+    },
+    "/api/v1/admin/payments/{id}/refund": {
+      "post": {
+        "operationId": "postAdminPaymentsByidRefund",
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Normalized admin response"
+          },
+          "400": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "401": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "403": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "404": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "409": {
+            "$ref": "#/components/responses/AdminError"
+          }
+        }
+      }
+    },
+    "/api/v1/admin/billing/reconcile": {
+      "post": {
+        "operationId": "postAdminBillingReconcile",
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Normalized admin response"
+          },
+          "400": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "401": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "403": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "404": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "409": {
+            "$ref": "#/components/responses/AdminError"
+          }
+        }
+      }
+    },
+    "/api/v1/admin/team": {
+      "get": {
+        "operationId": "getAdminTeam",
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Normalized admin response"
+          },
+          "400": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "401": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "403": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "404": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "409": {
+            "$ref": "#/components/responses/AdminError"
+          }
+        }
+      }
+    },
+    "/api/v1/admin/permissions": {
+      "get": {
+        "operationId": "getAdminPermissions",
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Normalized admin response"
+          },
+          "400": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "401": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "403": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "404": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "409": {
+            "$ref": "#/components/responses/AdminError"
+          }
+        }
+      }
+    },
+    "/api/v1/admin/team/invitations": {
+      "post": {
+        "operationId": "postAdminTeamInvitations",
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Normalized admin response"
+          },
+          "400": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "401": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "403": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "404": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "409": {
+            "$ref": "#/components/responses/AdminError"
+          }
+        }
+      }
+    },
+    "/api/v1/admin/team/{id}": {
+      "patch": {
+        "operationId": "patchAdminTeamByid",
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Normalized admin response"
+          },
+          "400": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "401": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "403": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "404": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "409": {
+            "$ref": "#/components/responses/AdminError"
+          }
+        }
+      }
+    },
+    "/api/v1/admin/roles/{id}": {
+      "put": {
+        "operationId": "putAdminRolesByid",
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Normalized admin response"
+          },
+          "400": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "401": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "403": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "404": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "409": {
+            "$ref": "#/components/responses/AdminError"
+          }
+        }
+      }
+    },
+    "/api/v1/admin/content": {
+      "get": {
+        "operationId": "getAdminContent",
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Normalized admin response"
+          },
+          "400": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "401": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "403": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "404": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "409": {
+            "$ref": "#/components/responses/AdminError"
+          }
+        }
+      }
+    },
+    "/api/v1/admin/content/{type}": {
+      "post": {
+        "operationId": "postAdminContentBytype",
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [
+          {
+            "name": "type",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Normalized admin response"
+          },
+          "400": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "401": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "403": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "404": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "409": {
+            "$ref": "#/components/responses/AdminError"
+          }
+        }
+      }
+    },
+    "/api/v1/admin/content/{type}/{id}": {
+      "put": {
+        "operationId": "putAdminContentBytypeByid",
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [
+          {
+            "name": "type",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Normalized admin response"
+          },
+          "400": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "401": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "403": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "404": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "409": {
+            "$ref": "#/components/responses/AdminError"
+          }
+        }
+      }
+    },
+    "/api/v1/admin/content/{type}/{id}/submit-review": {
+      "post": {
+        "operationId": "postAdminContentBytypeByidSubmitReview",
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [
+          {
+            "name": "type",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Normalized admin response"
+          },
+          "400": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "401": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "403": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "404": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "409": {
+            "$ref": "#/components/responses/AdminError"
+          }
+        }
+      }
+    },
+    "/api/v1/admin/content/{type}/{id}/publish": {
+      "post": {
+        "operationId": "postAdminContentBytypeByidPublish",
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [
+          {
+            "name": "type",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Normalized admin response"
+          },
+          "400": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "401": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "403": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "404": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "409": {
+            "$ref": "#/components/responses/AdminError"
+          }
+        }
+      }
+    },
+    "/api/v1/admin/content/{type}/{id}/revisions": {
+      "get": {
+        "operationId": "getAdminContentBytypeByidRevisions",
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [
+          {
+            "name": "type",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Normalized admin response"
+          },
+          "400": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "401": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "403": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "404": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "409": {
+            "$ref": "#/components/responses/AdminError"
+          }
+        }
+      }
+    },
+    "/api/v1/admin/analytics": {
+      "get": {
+        "operationId": "getAdminAnalytics",
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Normalized admin response"
+          },
+          "400": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "401": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "403": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "404": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "409": {
+            "$ref": "#/components/responses/AdminError"
+          }
+        }
+      }
+    },
+    "/api/v1/admin/analytics/export": {
+      "post": {
+        "operationId": "postAdminAnalyticsExport",
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Normalized admin response"
+          },
+          "400": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "401": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "403": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "404": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "409": {
+            "$ref": "#/components/responses/AdminError"
+          }
+        }
+      }
+    },
+    "/api/v1/admin/settings": {
+      "get": {
+        "operationId": "getAdminSettings",
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Normalized admin response"
+          },
+          "400": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "401": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "403": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "404": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "409": {
+            "$ref": "#/components/responses/AdminError"
+          }
+        }
+      },
+      "put": {
+        "operationId": "putAdminSettings",
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Normalized admin response"
+          },
+          "400": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "401": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "403": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "404": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "409": {
+            "$ref": "#/components/responses/AdminError"
+          }
+        }
+      }
+    },
+    "/api/v1/admin/integrations": {
+      "get": {
+        "operationId": "getAdminIntegrations",
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Normalized admin response"
+          },
+          "400": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "401": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "403": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "404": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "409": {
+            "$ref": "#/components/responses/AdminError"
+          }
+        }
+      }
+    },
+    "/api/v1/admin/integrations/{key}": {
+      "put": {
+        "operationId": "putAdminIntegrationsBykey",
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [
+          {
+            "name": "key",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Normalized admin response"
+          },
+          "400": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "401": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "403": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "404": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "409": {
+            "$ref": "#/components/responses/AdminError"
+          }
+        }
+      }
+    },
+    "/api/v1/admin/integrations/{key}/test": {
+      "post": {
+        "operationId": "postAdminIntegrationsBykeyTest",
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [
+          {
+            "name": "key",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Normalized admin response"
+          },
+          "400": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "401": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "403": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "404": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "409": {
+            "$ref": "#/components/responses/AdminError"
+          }
+        }
+      }
+    },
+    "/api/v1/admin/webhooks/{id}/replay": {
+      "post": {
+        "operationId": "postAdminWebhooksByidReplay",
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Normalized admin response"
+          },
+          "400": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "401": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "403": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "404": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "409": {
+            "$ref": "#/components/responses/AdminError"
+          }
+        }
+      }
+    },
+    "/api/v1/admin/notifications": {
+      "get": {
+        "operationId": "getAdminNotifications",
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Normalized admin response"
+          },
+          "400": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "401": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "403": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "404": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "409": {
+            "$ref": "#/components/responses/AdminError"
+          }
+        }
+      }
+    },
+    "/api/v1/admin/notifications/deliveries": {
+      "get": {
+        "operationId": "getAdminNotificationsDeliveries",
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Normalized admin response"
+          },
+          "400": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "401": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "403": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "404": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "409": {
+            "$ref": "#/components/responses/AdminError"
+          }
+        }
+      }
+    },
+    "/api/v1/admin/notifications/templates/{id}": {
+      "put": {
+        "operationId": "putAdminNotificationsTemplatesByid",
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Normalized admin response"
+          },
+          "400": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "401": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "403": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "404": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "409": {
+            "$ref": "#/components/responses/AdminError"
+          }
+        }
+      }
+    },
+    "/api/v1/admin/notifications/templates/{id}/test": {
+      "post": {
+        "operationId": "postAdminNotificationsTemplatesByidTest",
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Normalized admin response"
+          },
+          "400": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "401": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "403": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "404": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "409": {
+            "$ref": "#/components/responses/AdminError"
+          }
+        }
+      }
+    },
+    "/api/v1/admin/feature-flags": {
+      "get": {
+        "operationId": "getAdminFeatureFlags",
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Normalized admin response"
+          },
+          "400": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "401": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "403": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "404": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "409": {
+            "$ref": "#/components/responses/AdminError"
+          }
+        }
+      },
+      "post": {
+        "operationId": "postAdminFeatureFlags",
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Normalized admin response"
+          },
+          "400": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "401": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "403": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "404": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "409": {
+            "$ref": "#/components/responses/AdminError"
+          }
+        }
+      }
+    },
+    "/api/v1/admin/feature-flags/{id}": {
+      "put": {
+        "operationId": "putAdminFeatureFlagsByid",
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Normalized admin response"
+          },
+          "400": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "401": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "403": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "404": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "409": {
+            "$ref": "#/components/responses/AdminError"
+          }
+        }
+      }
+    },
+    "/api/v1/admin/security": {
+      "get": {
+        "operationId": "getAdminSecurity",
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Normalized admin response"
+          },
+          "400": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "401": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "403": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "404": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "409": {
+            "$ref": "#/components/responses/AdminError"
+          }
+        }
+      }
+    },
+    "/api/v1/admin/security/alerts": {
+      "get": {
+        "operationId": "getAdminSecurityAlerts",
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Normalized admin response"
+          },
+          "400": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "401": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "403": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "404": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "409": {
+            "$ref": "#/components/responses/AdminError"
+          }
+        }
+      }
+    },
+    "/api/v1/admin/security/alerts/{id}": {
+      "patch": {
+        "operationId": "patchAdminSecurityAlertsByid",
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Normalized admin response"
+          },
+          "400": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "401": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "403": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "404": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "409": {
+            "$ref": "#/components/responses/AdminError"
+          }
+        }
+      }
+    },
+    "/api/v1/admin/security/sessions": {
+      "get": {
+        "operationId": "getAdminSecuritySessions",
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Normalized admin response"
+          },
+          "400": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "401": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "403": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "404": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "409": {
+            "$ref": "#/components/responses/AdminError"
+          }
+        }
+      }
+    },
+    "/api/v1/admin/security/revoke-sessions": {
+      "post": {
+        "operationId": "postAdminSecurityRevokeSessions",
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Normalized admin response"
+          },
+          "400": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "401": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "403": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "404": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "409": {
+            "$ref": "#/components/responses/AdminError"
+          }
+        }
+      }
+    },
+    "/api/v1/admin/security/api-keys": {
+      "get": {
+        "operationId": "getAdminSecurityApiKeys",
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Normalized admin response"
+          },
+          "400": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "401": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "403": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "404": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "409": {
+            "$ref": "#/components/responses/AdminError"
+          }
+        }
+      },
+      "post": {
+        "operationId": "postAdminSecurityApiKeys",
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Normalized admin response"
+          },
+          "400": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "401": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "403": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "404": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "409": {
+            "$ref": "#/components/responses/AdminError"
+          }
+        }
+      }
+    },
+    "/api/v1/admin/security/api-keys/{id}": {
+      "delete": {
+        "operationId": "deleteAdminSecurityApiKeysByid",
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Normalized admin response"
+          },
+          "400": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "401": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "403": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "404": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "409": {
+            "$ref": "#/components/responses/AdminError"
+          }
+        }
+      }
+    },
+    "/api/v1/admin/security/rate-limits": {
+      "put": {
+        "operationId": "putAdminSecurityRateLimits",
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Normalized admin response"
+          },
+          "400": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "401": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "403": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "404": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "409": {
+            "$ref": "#/components/responses/AdminError"
+          }
+        }
+      }
+    },
+    "/api/v1/admin/audit-log": {
+      "get": {
+        "operationId": "getAdminAuditLog",
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Normalized admin response"
+          },
+          "400": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "401": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "403": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "404": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "409": {
+            "$ref": "#/components/responses/AdminError"
+          }
+        }
+      }
+    },
+    "/api/v1/admin/audit-log/export": {
+      "post": {
+        "operationId": "postAdminAuditLogExport",
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Normalized admin response"
+          },
+          "400": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "401": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "403": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "404": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "409": {
+            "$ref": "#/components/responses/AdminError"
+          }
+        }
+      }
+    },
+    "/api/v1/admin/backups": {
+      "get": {
+        "operationId": "getAdminBackups",
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Normalized admin response"
+          },
+          "400": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "401": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "403": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "404": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "409": {
+            "$ref": "#/components/responses/AdminError"
+          }
+        }
+      },
+      "post": {
+        "operationId": "postAdminBackups",
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Normalized admin response"
+          },
+          "400": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "401": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "403": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "404": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "409": {
+            "$ref": "#/components/responses/AdminError"
+          }
+        }
+      }
+    },
+    "/api/v1/admin/backups/{id}/verify": {
+      "post": {
+        "operationId": "postAdminBackupsByidVerify",
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Normalized admin response"
+          },
+          "400": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "401": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "403": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "404": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "409": {
+            "$ref": "#/components/responses/AdminError"
+          }
+        }
+      }
+    },
+    "/api/v1/admin/backups/{id}/restore-drill": {
+      "post": {
+        "operationId": "postAdminBackupsByidRestoreDrill",
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Normalized admin response"
+          },
+          "400": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "401": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "403": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "404": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "409": {
+            "$ref": "#/components/responses/AdminError"
+          }
+        }
+      }
+    },
+    "/api/v1/admin/system/health": {
+      "get": {
+        "operationId": "getAdminSystemHealth",
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Normalized admin response"
+          },
+          "400": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "401": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "403": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "404": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "409": {
+            "$ref": "#/components/responses/AdminError"
+          }
+        }
+      }
+    },
+    "/api/v1/admin/system/jobs": {
+      "get": {
+        "operationId": "getAdminSystemJobs",
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Normalized admin response"
+          },
+          "400": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "401": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "403": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "404": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "409": {
+            "$ref": "#/components/responses/AdminError"
+          }
+        }
+      }
+    },
+    "/api/v1/admin/system/jobs/{id}/retry": {
+      "post": {
+        "operationId": "postAdminSystemJobsByidRetry",
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Normalized admin response"
+          },
+          "400": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "401": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "403": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "404": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "409": {
+            "$ref": "#/components/responses/AdminError"
+          }
+        }
+      }
+    },
+    "/api/v1/admin/system/queues/{name}/pause": {
+      "post": {
+        "operationId": "postAdminSystemQueuesBynamePause",
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Normalized admin response"
+          },
+          "400": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "401": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "403": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "404": {
+            "$ref": "#/components/responses/AdminError"
+          },
+          "409": {
+            "$ref": "#/components/responses/AdminError"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "responses": {
+      "AdminError": {
+        "description": "Normalized error envelope",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorEnvelope"
+            }
+          }
+        }
+      }
+    },
+    "schemas": {
+      "ErrorEnvelope": {
+        "type": "object",
+        "required": [
+          "error"
+        ],
+        "properties": {
+          "error": {
+            "type": "object",
+            "required": [
+              "code",
+              "message",
+              "requestId"
+            ],
+            "properties": {
+              "code": {
+                "type": "string"
+              },
+              "message": {
+                "type": "string"
+              },
+              "fieldErrors": {
+                "type": "object",
+                "additionalProperties": true
+              },
+              "requestId": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
