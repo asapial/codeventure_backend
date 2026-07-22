@@ -185,6 +185,61 @@ export type LegalDocumentVersion = Prisma.LegalDocumentVersionModel
  */
 export type UserConsent = Prisma.UserConsentModel
 /**
+ * Model BlogPost
+ * Blog post reviewable by a moderator. Mirrors the public BlogPost
+ * "shape" we expose, but is internal — a single ModerationReview row
+ * per blog post (1:1, enforced by `postSlug @unique`).
+ */
+export type BlogPost = Prisma.BlogPostModel
+/**
+ * Model PortfolioCaseStudy
+ * Portfolio case study reviewable by a moderator. Carries the consent
+ * scope the client has granted for public display.
+ */
+export type PortfolioCaseStudy = Prisma.PortfolioCaseStudyModel
+/**
+ * Model ClientPublicationApproval
+ * A single client's signed-off scope for one case study. One row per
+ * (caseStudyId, clientName) pair. Used by M4 + M2 to decide whether a
+ * case may be promoted to "public-featured".
+ */
+export type ClientPublicationApproval = Prisma.ClientPublicationApprovalModel
+/**
+ * Model Testimonial
+ * Customer testimonial reviewable by a moderator. The author has
+ * already given a `TestimonialConsent` row, so consent scope is denormalised
+ * here for fast filter UX.
+ */
+export type Testimonial = Prisma.TestimonialModel
+/**
+ * Model TestimonialConsent
+ * Author-side consent record. Many rows over the life of one
+ * testimonial (renewals, scope changes). M5 surfaces the most recent
+ * row in the audit panel.
+ */
+export type TestimonialConsent = Prisma.TestimonialConsentModel
+/**
+ * Model MalwareScan
+ * Thin row that points a moderation case at a FileAsset. We don't
+ * re-declare the file metadata (size, mime, checksum) here — those
+ * live on `FileAsset` and are joined in for the M6 list/detail views.
+ */
+export type MalwareScan = Prisma.MalwareScanModel
+/**
+ * Model FileUsage
+ * Many-to-many between FileAsset and the surfaces that use it
+ * (BlogPost.coverAsset, PortfolioCaseStudy.heroAsset, Testimonial.avatar,
+ * etc). We model usage as a join so the M6 page can answer "what uses
+ * this file?" without scanning each surface table.
+ */
+export type FileUsage = Prisma.FileUsageModel
+/**
+ * Model ModerationReview
+ * One row per review decision. Multiple reviews per surface item are
+ * allowed (re-review after changes, escalation to leadership, etc).
+ */
+export type ModerationReview = Prisma.ModerationReviewModel
+/**
  * Model SupportAssignment
  * Agent ↔ ticket assignment. Many rows over time per ticket (audit trail).
  * We also expose a `current` flag per agent row, but the canonical

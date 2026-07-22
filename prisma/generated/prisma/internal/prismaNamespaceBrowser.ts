@@ -78,6 +78,14 @@ export const ModelName = {
   LegalDocument: 'LegalDocument',
   LegalDocumentVersion: 'LegalDocumentVersion',
   UserConsent: 'UserConsent',
+  BlogPost: 'BlogPost',
+  PortfolioCaseStudy: 'PortfolioCaseStudy',
+  ClientPublicationApproval: 'ClientPublicationApproval',
+  Testimonial: 'Testimonial',
+  TestimonialConsent: 'TestimonialConsent',
+  MalwareScan: 'MalwareScan',
+  FileUsage: 'FileUsage',
+  ModerationReview: 'ModerationReview',
   SupportAssignment: 'SupportAssignment',
   InternalNote: 'InternalNote',
   EscalationEvent: 'EscalationEvent',
@@ -530,6 +538,161 @@ export const UserConsentScalarFieldEnum = {
 } as const
 
 export type UserConsentScalarFieldEnum = (typeof UserConsentScalarFieldEnum)[keyof typeof UserConsentScalarFieldEnum]
+
+
+export const BlogPostScalarFieldEnum = {
+  id: 'id',
+  postSlug: 'postSlug',
+  title: 'title',
+  authorName: 'authorName',
+  wordCount: 'wordCount',
+  regions: 'regions',
+  coverAssetId: 'coverAssetId',
+  status: 'status',
+  riskLevel: 'riskLevel',
+  lastReasonCode: 'lastReasonCode',
+  lastReasonNote: 'lastReasonNote',
+  lastReviewedAt: 'lastReviewedAt',
+  lastReviewedById: 'lastReviewedById',
+  version: 'version',
+  lastDecisionKey: 'lastDecisionKey',
+  submittedById: 'submittedById',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type BlogPostScalarFieldEnum = (typeof BlogPostScalarFieldEnum)[keyof typeof BlogPostScalarFieldEnum]
+
+
+export const PortfolioCaseStudyScalarFieldEnum = {
+  id: 'id',
+  caseSlug: 'caseSlug',
+  title: 'title',
+  clientName: 'clientName',
+  industry: 'industry',
+  tags: 'tags',
+  heroAssetId: 'heroAssetId',
+  status: 'status',
+  riskLevel: 'riskLevel',
+  consentScope: 'consentScope',
+  consentMissing: 'consentMissing',
+  lastReasonCode: 'lastReasonCode',
+  lastReasonNote: 'lastReasonNote',
+  lastReviewedAt: 'lastReviewedAt',
+  lastReviewedById: 'lastReviewedById',
+  version: 'version',
+  lastDecisionKey: 'lastDecisionKey',
+  submittedById: 'submittedById',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type PortfolioCaseStudyScalarFieldEnum = (typeof PortfolioCaseStudyScalarFieldEnum)[keyof typeof PortfolioCaseStudyScalarFieldEnum]
+
+
+export const ClientPublicationApprovalScalarFieldEnum = {
+  id: 'id',
+  caseStudyId: 'caseStudyId',
+  clientName: 'clientName',
+  approvedScope: 'approvedScope',
+  approvedAt: 'approvedAt',
+  expiresAt: 'expiresAt',
+  signedDocumentAssetId: 'signedDocumentAssetId',
+  recordedById: 'recordedById',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ClientPublicationApprovalScalarFieldEnum = (typeof ClientPublicationApprovalScalarFieldEnum)[keyof typeof ClientPublicationApprovalScalarFieldEnum]
+
+
+export const TestimonialScalarFieldEnum = {
+  id: 'id',
+  handle: 'handle',
+  customerName: 'customerName',
+  customerCompany: 'customerCompany',
+  customerRole: 'customerRole',
+  rating: 'rating',
+  body: 'body',
+  countryCode: 'countryCode',
+  avatarAssetId: 'avatarAssetId',
+  status: 'status',
+  consentScope: 'consentScope',
+  consentVerified: 'consentVerified',
+  lastReasonCode: 'lastReasonCode',
+  lastReasonNote: 'lastReasonNote',
+  lastReviewedAt: 'lastReviewedAt',
+  lastReviewedById: 'lastReviewedById',
+  version: 'version',
+  lastDecisionKey: 'lastDecisionKey',
+  submittedById: 'submittedById',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type TestimonialScalarFieldEnum = (typeof TestimonialScalarFieldEnum)[keyof typeof TestimonialScalarFieldEnum]
+
+
+export const TestimonialConsentScalarFieldEnum = {
+  id: 'id',
+  testimonialId: 'testimonialId',
+  scope: 'scope',
+  verified: 'verified',
+  signedAssetId: 'signedAssetId',
+  ipAddress: 'ipAddress',
+  userAgent: 'userAgent',
+  capturedAt: 'capturedAt',
+  capturedById: 'capturedById',
+  createdAt: 'createdAt'
+} as const
+
+export type TestimonialConsentScalarFieldEnum = (typeof TestimonialConsentScalarFieldEnum)[keyof typeof TestimonialConsentScalarFieldEnum]
+
+
+export const MalwareScanScalarFieldEnum = {
+  id: 'id',
+  fileAssetId: 'fileAssetId',
+  status: 'status',
+  vendor: 'vendor',
+  vendorRef: 'vendorRef',
+  resultJson: 'resultJson',
+  startedAt: 'startedAt',
+  completedAt: 'completedAt'
+} as const
+
+export type MalwareScanScalarFieldEnum = (typeof MalwareScanScalarFieldEnum)[keyof typeof MalwareScanScalarFieldEnum]
+
+
+export const FileUsageScalarFieldEnum = {
+  id: 'id',
+  fileAssetId: 'fileAssetId',
+  surface: 'surface',
+  surfaceRef: 'surfaceRef',
+  visibility: 'visibility',
+  createdAt: 'createdAt'
+} as const
+
+export type FileUsageScalarFieldEnum = (typeof FileUsageScalarFieldEnum)[keyof typeof FileUsageScalarFieldEnum]
+
+
+export const ModerationReviewScalarFieldEnum = {
+  id: 'id',
+  contentType: 'contentType',
+  blogPostId: 'blogPostId',
+  caseStudyId: 'caseStudyId',
+  testimonialId: 'testimonialId',
+  fileAssetTargetRef: 'fileAssetTargetRef',
+  reviewerId: 'reviewerId',
+  decision: 'decision',
+  reasonCode: 'reasonCode',
+  reasonNote: 'reasonNote',
+  expectedVersion: 'expectedVersion',
+  idempotencyKey: 'idempotencyKey',
+  changeSet: 'changeSet',
+  createdAt: 'createdAt'
+} as const
+
+export type ModerationReviewScalarFieldEnum = (typeof ModerationReviewScalarFieldEnum)[keyof typeof ModerationReviewScalarFieldEnum]
 
 
 export const SupportAssignmentScalarFieldEnum = {

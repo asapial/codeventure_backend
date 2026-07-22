@@ -335,6 +335,15 @@ export type UserWhereInput = {
   articleUploads?: Prisma.ArticleAttachmentListRelationFilter
   auditEventsAuthored?: Prisma.AuditLogListRelationFilter
   supportJobsRequested?: Prisma.SupportJobRunListRelationFilter
+  blogPostsSubmitted?: Prisma.BlogPostListRelationFilter
+  blogPostsLastReviewed?: Prisma.BlogPostListRelationFilter
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyListRelationFilter
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyListRelationFilter
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalListRelationFilter
+  testimonialsSubmitted?: Prisma.TestimonialListRelationFilter
+  testimonialsLastReviewed?: Prisma.TestimonialListRelationFilter
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentListRelationFilter
+  moderationReviewsAuthored?: Prisma.ModerationReviewListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
@@ -398,6 +407,15 @@ export type UserOrderByWithRelationInput = {
   articleUploads?: Prisma.ArticleAttachmentOrderByRelationAggregateInput
   auditEventsAuthored?: Prisma.AuditLogOrderByRelationAggregateInput
   supportJobsRequested?: Prisma.SupportJobRunOrderByRelationAggregateInput
+  blogPostsSubmitted?: Prisma.BlogPostOrderByRelationAggregateInput
+  blogPostsLastReviewed?: Prisma.BlogPostOrderByRelationAggregateInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyOrderByRelationAggregateInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyOrderByRelationAggregateInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalOrderByRelationAggregateInput
+  testimonialsSubmitted?: Prisma.TestimonialOrderByRelationAggregateInput
+  testimonialsLastReviewed?: Prisma.TestimonialOrderByRelationAggregateInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentOrderByRelationAggregateInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewOrderByRelationAggregateInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -464,6 +482,15 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   articleUploads?: Prisma.ArticleAttachmentListRelationFilter
   auditEventsAuthored?: Prisma.AuditLogListRelationFilter
   supportJobsRequested?: Prisma.SupportJobRunListRelationFilter
+  blogPostsSubmitted?: Prisma.BlogPostListRelationFilter
+  blogPostsLastReviewed?: Prisma.BlogPostListRelationFilter
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyListRelationFilter
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyListRelationFilter
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalListRelationFilter
+  testimonialsSubmitted?: Prisma.TestimonialListRelationFilter
+  testimonialsLastReviewed?: Prisma.TestimonialListRelationFilter
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentListRelationFilter
+  moderationReviewsAuthored?: Prisma.ModerationReviewListRelationFilter
 }, "id" | "email">
 
 export type UserOrderByWithAggregationInput = {
@@ -577,6 +604,15 @@ export type UserCreateInput = {
   articleUploads?: Prisma.ArticleAttachmentCreateNestedManyWithoutUploaderInput
   auditEventsAuthored?: Prisma.AuditLogCreateNestedManyWithoutActorInput
   supportJobsRequested?: Prisma.SupportJobRunCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewCreateNestedManyWithoutReviewerInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -640,6 +676,15 @@ export type UserUncheckedCreateInput = {
   articleUploads?: Prisma.ArticleAttachmentUncheckedCreateNestedManyWithoutUploaderInput
   auditEventsAuthored?: Prisma.AuditLogUncheckedCreateNestedManyWithoutActorInput
   supportJobsRequested?: Prisma.SupportJobRunUncheckedCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedCreateNestedManyWithoutReviewerInput
 }
 
 export type UserUpdateInput = {
@@ -703,6 +748,15 @@ export type UserUpdateInput = {
   articleUploads?: Prisma.ArticleAttachmentUpdateManyWithoutUploaderNestedInput
   auditEventsAuthored?: Prisma.AuditLogUpdateManyWithoutActorNestedInput
   supportJobsRequested?: Prisma.SupportJobRunUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUpdateManyWithoutReviewerNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -766,6 +820,15 @@ export type UserUncheckedUpdateInput = {
   articleUploads?: Prisma.ArticleAttachmentUncheckedUpdateManyWithoutUploaderNestedInput
   auditEventsAuthored?: Prisma.AuditLogUncheckedUpdateManyWithoutActorNestedInput
   supportJobsRequested?: Prisma.SupportJobRunUncheckedUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedUpdateManyWithoutReviewerNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -1186,6 +1249,148 @@ export type UserUpdateOneRequiredWithoutConsentsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutConsentsInput, Prisma.UserUpdateWithoutConsentsInput>, Prisma.UserUncheckedUpdateWithoutConsentsInput>
 }
 
+export type UserCreateNestedOneWithoutBlogPostsLastReviewedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutBlogPostsLastReviewedInput, Prisma.UserUncheckedCreateWithoutBlogPostsLastReviewedInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutBlogPostsLastReviewedInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserCreateNestedOneWithoutBlogPostsSubmittedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutBlogPostsSubmittedInput, Prisma.UserUncheckedCreateWithoutBlogPostsSubmittedInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutBlogPostsSubmittedInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneWithoutBlogPostsLastReviewedNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutBlogPostsLastReviewedInput, Prisma.UserUncheckedCreateWithoutBlogPostsLastReviewedInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutBlogPostsLastReviewedInput
+  upsert?: Prisma.UserUpsertWithoutBlogPostsLastReviewedInput
+  disconnect?: Prisma.UserWhereInput | boolean
+  delete?: Prisma.UserWhereInput | boolean
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutBlogPostsLastReviewedInput, Prisma.UserUpdateWithoutBlogPostsLastReviewedInput>, Prisma.UserUncheckedUpdateWithoutBlogPostsLastReviewedInput>
+}
+
+export type UserUpdateOneWithoutBlogPostsSubmittedNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutBlogPostsSubmittedInput, Prisma.UserUncheckedCreateWithoutBlogPostsSubmittedInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutBlogPostsSubmittedInput
+  upsert?: Prisma.UserUpsertWithoutBlogPostsSubmittedInput
+  disconnect?: Prisma.UserWhereInput | boolean
+  delete?: Prisma.UserWhereInput | boolean
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutBlogPostsSubmittedInput, Prisma.UserUpdateWithoutBlogPostsSubmittedInput>, Prisma.UserUncheckedUpdateWithoutBlogPostsSubmittedInput>
+}
+
+export type UserCreateNestedOneWithoutCaseStudiesLastReviewedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutCaseStudiesLastReviewedInput, Prisma.UserUncheckedCreateWithoutCaseStudiesLastReviewedInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutCaseStudiesLastReviewedInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserCreateNestedOneWithoutCaseStudiesSubmittedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutCaseStudiesSubmittedInput, Prisma.UserUncheckedCreateWithoutCaseStudiesSubmittedInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutCaseStudiesSubmittedInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneWithoutCaseStudiesLastReviewedNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutCaseStudiesLastReviewedInput, Prisma.UserUncheckedCreateWithoutCaseStudiesLastReviewedInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutCaseStudiesLastReviewedInput
+  upsert?: Prisma.UserUpsertWithoutCaseStudiesLastReviewedInput
+  disconnect?: Prisma.UserWhereInput | boolean
+  delete?: Prisma.UserWhereInput | boolean
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutCaseStudiesLastReviewedInput, Prisma.UserUpdateWithoutCaseStudiesLastReviewedInput>, Prisma.UserUncheckedUpdateWithoutCaseStudiesLastReviewedInput>
+}
+
+export type UserUpdateOneWithoutCaseStudiesSubmittedNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutCaseStudiesSubmittedInput, Prisma.UserUncheckedCreateWithoutCaseStudiesSubmittedInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutCaseStudiesSubmittedInput
+  upsert?: Prisma.UserUpsertWithoutCaseStudiesSubmittedInput
+  disconnect?: Prisma.UserWhereInput | boolean
+  delete?: Prisma.UserWhereInput | boolean
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutCaseStudiesSubmittedInput, Prisma.UserUpdateWithoutCaseStudiesSubmittedInput>, Prisma.UserUncheckedUpdateWithoutCaseStudiesSubmittedInput>
+}
+
+export type UserCreateNestedOneWithoutClientApprovalsRecordedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutClientApprovalsRecordedInput, Prisma.UserUncheckedCreateWithoutClientApprovalsRecordedInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutClientApprovalsRecordedInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneWithoutClientApprovalsRecordedNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutClientApprovalsRecordedInput, Prisma.UserUncheckedCreateWithoutClientApprovalsRecordedInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutClientApprovalsRecordedInput
+  upsert?: Prisma.UserUpsertWithoutClientApprovalsRecordedInput
+  disconnect?: Prisma.UserWhereInput | boolean
+  delete?: Prisma.UserWhereInput | boolean
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutClientApprovalsRecordedInput, Prisma.UserUpdateWithoutClientApprovalsRecordedInput>, Prisma.UserUncheckedUpdateWithoutClientApprovalsRecordedInput>
+}
+
+export type UserCreateNestedOneWithoutTestimonialsLastReviewedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutTestimonialsLastReviewedInput, Prisma.UserUncheckedCreateWithoutTestimonialsLastReviewedInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutTestimonialsLastReviewedInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserCreateNestedOneWithoutTestimonialsSubmittedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutTestimonialsSubmittedInput, Prisma.UserUncheckedCreateWithoutTestimonialsSubmittedInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutTestimonialsSubmittedInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneWithoutTestimonialsLastReviewedNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutTestimonialsLastReviewedInput, Prisma.UserUncheckedCreateWithoutTestimonialsLastReviewedInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutTestimonialsLastReviewedInput
+  upsert?: Prisma.UserUpsertWithoutTestimonialsLastReviewedInput
+  disconnect?: Prisma.UserWhereInput | boolean
+  delete?: Prisma.UserWhereInput | boolean
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutTestimonialsLastReviewedInput, Prisma.UserUpdateWithoutTestimonialsLastReviewedInput>, Prisma.UserUncheckedUpdateWithoutTestimonialsLastReviewedInput>
+}
+
+export type UserUpdateOneWithoutTestimonialsSubmittedNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutTestimonialsSubmittedInput, Prisma.UserUncheckedCreateWithoutTestimonialsSubmittedInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutTestimonialsSubmittedInput
+  upsert?: Prisma.UserUpsertWithoutTestimonialsSubmittedInput
+  disconnect?: Prisma.UserWhereInput | boolean
+  delete?: Prisma.UserWhereInput | boolean
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutTestimonialsSubmittedInput, Prisma.UserUpdateWithoutTestimonialsSubmittedInput>, Prisma.UserUncheckedUpdateWithoutTestimonialsSubmittedInput>
+}
+
+export type UserCreateNestedOneWithoutTestimonialConsentsCapturedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutTestimonialConsentsCapturedInput, Prisma.UserUncheckedCreateWithoutTestimonialConsentsCapturedInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutTestimonialConsentsCapturedInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneWithoutTestimonialConsentsCapturedNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutTestimonialConsentsCapturedInput, Prisma.UserUncheckedCreateWithoutTestimonialConsentsCapturedInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutTestimonialConsentsCapturedInput
+  upsert?: Prisma.UserUpsertWithoutTestimonialConsentsCapturedInput
+  disconnect?: Prisma.UserWhereInput | boolean
+  delete?: Prisma.UserWhereInput | boolean
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutTestimonialConsentsCapturedInput, Prisma.UserUpdateWithoutTestimonialConsentsCapturedInput>, Prisma.UserUncheckedUpdateWithoutTestimonialConsentsCapturedInput>
+}
+
+export type UserCreateNestedOneWithoutModerationReviewsAuthoredInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutModerationReviewsAuthoredInput, Prisma.UserUncheckedCreateWithoutModerationReviewsAuthoredInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutModerationReviewsAuthoredInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutModerationReviewsAuthoredNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutModerationReviewsAuthoredInput, Prisma.UserUncheckedCreateWithoutModerationReviewsAuthoredInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutModerationReviewsAuthoredInput
+  upsert?: Prisma.UserUpsertWithoutModerationReviewsAuthoredInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutModerationReviewsAuthoredInput, Prisma.UserUpdateWithoutModerationReviewsAuthoredInput>, Prisma.UserUncheckedUpdateWithoutModerationReviewsAuthoredInput>
+}
+
 export type UserCreateNestedOneWithoutSupportAssignmentsInput = {
   create?: Prisma.XOR<Prisma.UserCreateWithoutSupportAssignmentsInput, Prisma.UserUncheckedCreateWithoutSupportAssignmentsInput>
   connectOrCreate?: Prisma.UserCreateOrConnectWithoutSupportAssignmentsInput
@@ -1596,6 +1801,15 @@ export type UserCreateWithoutSessionsInput = {
   articleUploads?: Prisma.ArticleAttachmentCreateNestedManyWithoutUploaderInput
   auditEventsAuthored?: Prisma.AuditLogCreateNestedManyWithoutActorInput
   supportJobsRequested?: Prisma.SupportJobRunCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewCreateNestedManyWithoutReviewerInput
 }
 
 export type UserUncheckedCreateWithoutSessionsInput = {
@@ -1658,6 +1872,15 @@ export type UserUncheckedCreateWithoutSessionsInput = {
   articleUploads?: Prisma.ArticleAttachmentUncheckedCreateNestedManyWithoutUploaderInput
   auditEventsAuthored?: Prisma.AuditLogUncheckedCreateNestedManyWithoutActorInput
   supportJobsRequested?: Prisma.SupportJobRunUncheckedCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedCreateNestedManyWithoutReviewerInput
 }
 
 export type UserCreateOrConnectWithoutSessionsInput = {
@@ -1736,6 +1959,15 @@ export type UserUpdateWithoutSessionsInput = {
   articleUploads?: Prisma.ArticleAttachmentUpdateManyWithoutUploaderNestedInput
   auditEventsAuthored?: Prisma.AuditLogUpdateManyWithoutActorNestedInput
   supportJobsRequested?: Prisma.SupportJobRunUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUpdateManyWithoutReviewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSessionsInput = {
@@ -1798,6 +2030,15 @@ export type UserUncheckedUpdateWithoutSessionsInput = {
   articleUploads?: Prisma.ArticleAttachmentUncheckedUpdateManyWithoutUploaderNestedInput
   auditEventsAuthored?: Prisma.AuditLogUncheckedUpdateManyWithoutActorNestedInput
   supportJobsRequested?: Prisma.SupportJobRunUncheckedUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedUpdateManyWithoutReviewerNestedInput
 }
 
 export type UserCreateWithoutAccountsInput = {
@@ -1860,6 +2101,15 @@ export type UserCreateWithoutAccountsInput = {
   articleUploads?: Prisma.ArticleAttachmentCreateNestedManyWithoutUploaderInput
   auditEventsAuthored?: Prisma.AuditLogCreateNestedManyWithoutActorInput
   supportJobsRequested?: Prisma.SupportJobRunCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewCreateNestedManyWithoutReviewerInput
 }
 
 export type UserUncheckedCreateWithoutAccountsInput = {
@@ -1922,6 +2172,15 @@ export type UserUncheckedCreateWithoutAccountsInput = {
   articleUploads?: Prisma.ArticleAttachmentUncheckedCreateNestedManyWithoutUploaderInput
   auditEventsAuthored?: Prisma.AuditLogUncheckedCreateNestedManyWithoutActorInput
   supportJobsRequested?: Prisma.SupportJobRunUncheckedCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedCreateNestedManyWithoutReviewerInput
 }
 
 export type UserCreateOrConnectWithoutAccountsInput = {
@@ -2000,6 +2259,15 @@ export type UserUpdateWithoutAccountsInput = {
   articleUploads?: Prisma.ArticleAttachmentUpdateManyWithoutUploaderNestedInput
   auditEventsAuthored?: Prisma.AuditLogUpdateManyWithoutActorNestedInput
   supportJobsRequested?: Prisma.SupportJobRunUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUpdateManyWithoutReviewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutAccountsInput = {
@@ -2062,6 +2330,15 @@ export type UserUncheckedUpdateWithoutAccountsInput = {
   articleUploads?: Prisma.ArticleAttachmentUncheckedUpdateManyWithoutUploaderNestedInput
   auditEventsAuthored?: Prisma.AuditLogUncheckedUpdateManyWithoutActorNestedInput
   supportJobsRequested?: Prisma.SupportJobRunUncheckedUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedUpdateManyWithoutReviewerNestedInput
 }
 
 export type UserCreateWithoutPasswordResetTokensInput = {
@@ -2124,6 +2401,15 @@ export type UserCreateWithoutPasswordResetTokensInput = {
   articleUploads?: Prisma.ArticleAttachmentCreateNestedManyWithoutUploaderInput
   auditEventsAuthored?: Prisma.AuditLogCreateNestedManyWithoutActorInput
   supportJobsRequested?: Prisma.SupportJobRunCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewCreateNestedManyWithoutReviewerInput
 }
 
 export type UserUncheckedCreateWithoutPasswordResetTokensInput = {
@@ -2186,6 +2472,15 @@ export type UserUncheckedCreateWithoutPasswordResetTokensInput = {
   articleUploads?: Prisma.ArticleAttachmentUncheckedCreateNestedManyWithoutUploaderInput
   auditEventsAuthored?: Prisma.AuditLogUncheckedCreateNestedManyWithoutActorInput
   supportJobsRequested?: Prisma.SupportJobRunUncheckedCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedCreateNestedManyWithoutReviewerInput
 }
 
 export type UserCreateOrConnectWithoutPasswordResetTokensInput = {
@@ -2264,6 +2559,15 @@ export type UserUpdateWithoutPasswordResetTokensInput = {
   articleUploads?: Prisma.ArticleAttachmentUpdateManyWithoutUploaderNestedInput
   auditEventsAuthored?: Prisma.AuditLogUpdateManyWithoutActorNestedInput
   supportJobsRequested?: Prisma.SupportJobRunUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUpdateManyWithoutReviewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutPasswordResetTokensInput = {
@@ -2326,6 +2630,15 @@ export type UserUncheckedUpdateWithoutPasswordResetTokensInput = {
   articleUploads?: Prisma.ArticleAttachmentUncheckedUpdateManyWithoutUploaderNestedInput
   auditEventsAuthored?: Prisma.AuditLogUncheckedUpdateManyWithoutActorNestedInput
   supportJobsRequested?: Prisma.SupportJobRunUncheckedUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedUpdateManyWithoutReviewerNestedInput
 }
 
 export type UserCreateWithoutAuthChallengesInput = {
@@ -2388,6 +2701,15 @@ export type UserCreateWithoutAuthChallengesInput = {
   articleUploads?: Prisma.ArticleAttachmentCreateNestedManyWithoutUploaderInput
   auditEventsAuthored?: Prisma.AuditLogCreateNestedManyWithoutActorInput
   supportJobsRequested?: Prisma.SupportJobRunCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewCreateNestedManyWithoutReviewerInput
 }
 
 export type UserUncheckedCreateWithoutAuthChallengesInput = {
@@ -2450,6 +2772,15 @@ export type UserUncheckedCreateWithoutAuthChallengesInput = {
   articleUploads?: Prisma.ArticleAttachmentUncheckedCreateNestedManyWithoutUploaderInput
   auditEventsAuthored?: Prisma.AuditLogUncheckedCreateNestedManyWithoutActorInput
   supportJobsRequested?: Prisma.SupportJobRunUncheckedCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedCreateNestedManyWithoutReviewerInput
 }
 
 export type UserCreateOrConnectWithoutAuthChallengesInput = {
@@ -2528,6 +2859,15 @@ export type UserUpdateWithoutAuthChallengesInput = {
   articleUploads?: Prisma.ArticleAttachmentUpdateManyWithoutUploaderNestedInput
   auditEventsAuthored?: Prisma.AuditLogUpdateManyWithoutActorNestedInput
   supportJobsRequested?: Prisma.SupportJobRunUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUpdateManyWithoutReviewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutAuthChallengesInput = {
@@ -2590,6 +2930,15 @@ export type UserUncheckedUpdateWithoutAuthChallengesInput = {
   articleUploads?: Prisma.ArticleAttachmentUncheckedUpdateManyWithoutUploaderNestedInput
   auditEventsAuthored?: Prisma.AuditLogUncheckedUpdateManyWithoutActorNestedInput
   supportJobsRequested?: Prisma.SupportJobRunUncheckedUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedUpdateManyWithoutReviewerNestedInput
 }
 
 export type UserCreateWithoutOtpCodesInput = {
@@ -2652,6 +3001,15 @@ export type UserCreateWithoutOtpCodesInput = {
   articleUploads?: Prisma.ArticleAttachmentCreateNestedManyWithoutUploaderInput
   auditEventsAuthored?: Prisma.AuditLogCreateNestedManyWithoutActorInput
   supportJobsRequested?: Prisma.SupportJobRunCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewCreateNestedManyWithoutReviewerInput
 }
 
 export type UserUncheckedCreateWithoutOtpCodesInput = {
@@ -2714,6 +3072,15 @@ export type UserUncheckedCreateWithoutOtpCodesInput = {
   articleUploads?: Prisma.ArticleAttachmentUncheckedCreateNestedManyWithoutUploaderInput
   auditEventsAuthored?: Prisma.AuditLogUncheckedCreateNestedManyWithoutActorInput
   supportJobsRequested?: Prisma.SupportJobRunUncheckedCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedCreateNestedManyWithoutReviewerInput
 }
 
 export type UserCreateOrConnectWithoutOtpCodesInput = {
@@ -2792,6 +3159,15 @@ export type UserUpdateWithoutOtpCodesInput = {
   articleUploads?: Prisma.ArticleAttachmentUpdateManyWithoutUploaderNestedInput
   auditEventsAuthored?: Prisma.AuditLogUpdateManyWithoutActorNestedInput
   supportJobsRequested?: Prisma.SupportJobRunUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUpdateManyWithoutReviewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutOtpCodesInput = {
@@ -2854,6 +3230,15 @@ export type UserUncheckedUpdateWithoutOtpCodesInput = {
   articleUploads?: Prisma.ArticleAttachmentUncheckedUpdateManyWithoutUploaderNestedInput
   auditEventsAuthored?: Prisma.AuditLogUncheckedUpdateManyWithoutActorNestedInput
   supportJobsRequested?: Prisma.SupportJobRunUncheckedUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedUpdateManyWithoutReviewerNestedInput
 }
 
 export type UserCreateWithoutRecoveryCodesInput = {
@@ -2916,6 +3301,15 @@ export type UserCreateWithoutRecoveryCodesInput = {
   articleUploads?: Prisma.ArticleAttachmentCreateNestedManyWithoutUploaderInput
   auditEventsAuthored?: Prisma.AuditLogCreateNestedManyWithoutActorInput
   supportJobsRequested?: Prisma.SupportJobRunCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewCreateNestedManyWithoutReviewerInput
 }
 
 export type UserUncheckedCreateWithoutRecoveryCodesInput = {
@@ -2978,6 +3372,15 @@ export type UserUncheckedCreateWithoutRecoveryCodesInput = {
   articleUploads?: Prisma.ArticleAttachmentUncheckedCreateNestedManyWithoutUploaderInput
   auditEventsAuthored?: Prisma.AuditLogUncheckedCreateNestedManyWithoutActorInput
   supportJobsRequested?: Prisma.SupportJobRunUncheckedCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedCreateNestedManyWithoutReviewerInput
 }
 
 export type UserCreateOrConnectWithoutRecoveryCodesInput = {
@@ -3056,6 +3459,15 @@ export type UserUpdateWithoutRecoveryCodesInput = {
   articleUploads?: Prisma.ArticleAttachmentUpdateManyWithoutUploaderNestedInput
   auditEventsAuthored?: Prisma.AuditLogUpdateManyWithoutActorNestedInput
   supportJobsRequested?: Prisma.SupportJobRunUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUpdateManyWithoutReviewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutRecoveryCodesInput = {
@@ -3118,6 +3530,15 @@ export type UserUncheckedUpdateWithoutRecoveryCodesInput = {
   articleUploads?: Prisma.ArticleAttachmentUncheckedUpdateManyWithoutUploaderNestedInput
   auditEventsAuthored?: Prisma.AuditLogUncheckedUpdateManyWithoutActorNestedInput
   supportJobsRequested?: Prisma.SupportJobRunUncheckedUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedUpdateManyWithoutReviewerNestedInput
 }
 
 export type UserCreateWithoutLoginDevicesInput = {
@@ -3180,6 +3601,15 @@ export type UserCreateWithoutLoginDevicesInput = {
   articleUploads?: Prisma.ArticleAttachmentCreateNestedManyWithoutUploaderInput
   auditEventsAuthored?: Prisma.AuditLogCreateNestedManyWithoutActorInput
   supportJobsRequested?: Prisma.SupportJobRunCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewCreateNestedManyWithoutReviewerInput
 }
 
 export type UserUncheckedCreateWithoutLoginDevicesInput = {
@@ -3242,6 +3672,15 @@ export type UserUncheckedCreateWithoutLoginDevicesInput = {
   articleUploads?: Prisma.ArticleAttachmentUncheckedCreateNestedManyWithoutUploaderInput
   auditEventsAuthored?: Prisma.AuditLogUncheckedCreateNestedManyWithoutActorInput
   supportJobsRequested?: Prisma.SupportJobRunUncheckedCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedCreateNestedManyWithoutReviewerInput
 }
 
 export type UserCreateOrConnectWithoutLoginDevicesInput = {
@@ -3320,6 +3759,15 @@ export type UserUpdateWithoutLoginDevicesInput = {
   articleUploads?: Prisma.ArticleAttachmentUpdateManyWithoutUploaderNestedInput
   auditEventsAuthored?: Prisma.AuditLogUpdateManyWithoutActorNestedInput
   supportJobsRequested?: Prisma.SupportJobRunUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUpdateManyWithoutReviewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutLoginDevicesInput = {
@@ -3382,6 +3830,15 @@ export type UserUncheckedUpdateWithoutLoginDevicesInput = {
   articleUploads?: Prisma.ArticleAttachmentUncheckedUpdateManyWithoutUploaderNestedInput
   auditEventsAuthored?: Prisma.AuditLogUncheckedUpdateManyWithoutActorNestedInput
   supportJobsRequested?: Prisma.SupportJobRunUncheckedUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedUpdateManyWithoutReviewerNestedInput
 }
 
 export type UserCreateWithoutSecurityAlertsInput = {
@@ -3444,6 +3901,15 @@ export type UserCreateWithoutSecurityAlertsInput = {
   articleUploads?: Prisma.ArticleAttachmentCreateNestedManyWithoutUploaderInput
   auditEventsAuthored?: Prisma.AuditLogCreateNestedManyWithoutActorInput
   supportJobsRequested?: Prisma.SupportJobRunCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewCreateNestedManyWithoutReviewerInput
 }
 
 export type UserUncheckedCreateWithoutSecurityAlertsInput = {
@@ -3506,6 +3972,15 @@ export type UserUncheckedCreateWithoutSecurityAlertsInput = {
   articleUploads?: Prisma.ArticleAttachmentUncheckedCreateNestedManyWithoutUploaderInput
   auditEventsAuthored?: Prisma.AuditLogUncheckedCreateNestedManyWithoutActorInput
   supportJobsRequested?: Prisma.SupportJobRunUncheckedCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedCreateNestedManyWithoutReviewerInput
 }
 
 export type UserCreateOrConnectWithoutSecurityAlertsInput = {
@@ -3584,6 +4059,15 @@ export type UserUpdateWithoutSecurityAlertsInput = {
   articleUploads?: Prisma.ArticleAttachmentUpdateManyWithoutUploaderNestedInput
   auditEventsAuthored?: Prisma.AuditLogUpdateManyWithoutActorNestedInput
   supportJobsRequested?: Prisma.SupportJobRunUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUpdateManyWithoutReviewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSecurityAlertsInput = {
@@ -3646,6 +4130,15 @@ export type UserUncheckedUpdateWithoutSecurityAlertsInput = {
   articleUploads?: Prisma.ArticleAttachmentUncheckedUpdateManyWithoutUploaderNestedInput
   auditEventsAuthored?: Prisma.AuditLogUncheckedUpdateManyWithoutActorNestedInput
   supportJobsRequested?: Prisma.SupportJobRunUncheckedUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedUpdateManyWithoutReviewerNestedInput
 }
 
 export type UserCreateWithoutNotificationsInput = {
@@ -3708,6 +4201,15 @@ export type UserCreateWithoutNotificationsInput = {
   articleUploads?: Prisma.ArticleAttachmentCreateNestedManyWithoutUploaderInput
   auditEventsAuthored?: Prisma.AuditLogCreateNestedManyWithoutActorInput
   supportJobsRequested?: Prisma.SupportJobRunCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewCreateNestedManyWithoutReviewerInput
 }
 
 export type UserUncheckedCreateWithoutNotificationsInput = {
@@ -3770,6 +4272,15 @@ export type UserUncheckedCreateWithoutNotificationsInput = {
   articleUploads?: Prisma.ArticleAttachmentUncheckedCreateNestedManyWithoutUploaderInput
   auditEventsAuthored?: Prisma.AuditLogUncheckedCreateNestedManyWithoutActorInput
   supportJobsRequested?: Prisma.SupportJobRunUncheckedCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedCreateNestedManyWithoutReviewerInput
 }
 
 export type UserCreateOrConnectWithoutNotificationsInput = {
@@ -3848,6 +4359,15 @@ export type UserUpdateWithoutNotificationsInput = {
   articleUploads?: Prisma.ArticleAttachmentUpdateManyWithoutUploaderNestedInput
   auditEventsAuthored?: Prisma.AuditLogUpdateManyWithoutActorNestedInput
   supportJobsRequested?: Prisma.SupportJobRunUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUpdateManyWithoutReviewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutNotificationsInput = {
@@ -3910,6 +4430,15 @@ export type UserUncheckedUpdateWithoutNotificationsInput = {
   articleUploads?: Prisma.ArticleAttachmentUncheckedUpdateManyWithoutUploaderNestedInput
   auditEventsAuthored?: Prisma.AuditLogUncheckedUpdateManyWithoutActorNestedInput
   supportJobsRequested?: Prisma.SupportJobRunUncheckedUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedUpdateManyWithoutReviewerNestedInput
 }
 
 export type UserCreateWithoutCustomerProfileInput = {
@@ -3972,6 +4501,15 @@ export type UserCreateWithoutCustomerProfileInput = {
   articleUploads?: Prisma.ArticleAttachmentCreateNestedManyWithoutUploaderInput
   auditEventsAuthored?: Prisma.AuditLogCreateNestedManyWithoutActorInput
   supportJobsRequested?: Prisma.SupportJobRunCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewCreateNestedManyWithoutReviewerInput
 }
 
 export type UserUncheckedCreateWithoutCustomerProfileInput = {
@@ -4034,6 +4572,15 @@ export type UserUncheckedCreateWithoutCustomerProfileInput = {
   articleUploads?: Prisma.ArticleAttachmentUncheckedCreateNestedManyWithoutUploaderInput
   auditEventsAuthored?: Prisma.AuditLogUncheckedCreateNestedManyWithoutActorInput
   supportJobsRequested?: Prisma.SupportJobRunUncheckedCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedCreateNestedManyWithoutReviewerInput
 }
 
 export type UserCreateOrConnectWithoutCustomerProfileInput = {
@@ -4112,6 +4659,15 @@ export type UserUpdateWithoutCustomerProfileInput = {
   articleUploads?: Prisma.ArticleAttachmentUpdateManyWithoutUploaderNestedInput
   auditEventsAuthored?: Prisma.AuditLogUpdateManyWithoutActorNestedInput
   supportJobsRequested?: Prisma.SupportJobRunUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUpdateManyWithoutReviewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCustomerProfileInput = {
@@ -4174,6 +4730,15 @@ export type UserUncheckedUpdateWithoutCustomerProfileInput = {
   articleUploads?: Prisma.ArticleAttachmentUncheckedUpdateManyWithoutUploaderNestedInput
   auditEventsAuthored?: Prisma.AuditLogUncheckedUpdateManyWithoutActorNestedInput
   supportJobsRequested?: Prisma.SupportJobRunUncheckedUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedUpdateManyWithoutReviewerNestedInput
 }
 
 export type UserCreateWithoutOrgMembershipsInput = {
@@ -4236,6 +4801,15 @@ export type UserCreateWithoutOrgMembershipsInput = {
   articleUploads?: Prisma.ArticleAttachmentCreateNestedManyWithoutUploaderInput
   auditEventsAuthored?: Prisma.AuditLogCreateNestedManyWithoutActorInput
   supportJobsRequested?: Prisma.SupportJobRunCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewCreateNestedManyWithoutReviewerInput
 }
 
 export type UserUncheckedCreateWithoutOrgMembershipsInput = {
@@ -4298,6 +4872,15 @@ export type UserUncheckedCreateWithoutOrgMembershipsInput = {
   articleUploads?: Prisma.ArticleAttachmentUncheckedCreateNestedManyWithoutUploaderInput
   auditEventsAuthored?: Prisma.AuditLogUncheckedCreateNestedManyWithoutActorInput
   supportJobsRequested?: Prisma.SupportJobRunUncheckedCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedCreateNestedManyWithoutReviewerInput
 }
 
 export type UserCreateOrConnectWithoutOrgMembershipsInput = {
@@ -4376,6 +4959,15 @@ export type UserUpdateWithoutOrgMembershipsInput = {
   articleUploads?: Prisma.ArticleAttachmentUpdateManyWithoutUploaderNestedInput
   auditEventsAuthored?: Prisma.AuditLogUpdateManyWithoutActorNestedInput
   supportJobsRequested?: Prisma.SupportJobRunUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUpdateManyWithoutReviewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutOrgMembershipsInput = {
@@ -4438,6 +5030,15 @@ export type UserUncheckedUpdateWithoutOrgMembershipsInput = {
   articleUploads?: Prisma.ArticleAttachmentUncheckedUpdateManyWithoutUploaderNestedInput
   auditEventsAuthored?: Prisma.AuditLogUncheckedUpdateManyWithoutActorNestedInput
   supportJobsRequested?: Prisma.SupportJobRunUncheckedUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedUpdateManyWithoutReviewerNestedInput
 }
 
 export type UserCreateWithoutInvitationsCreatedInput = {
@@ -4500,6 +5101,15 @@ export type UserCreateWithoutInvitationsCreatedInput = {
   articleUploads?: Prisma.ArticleAttachmentCreateNestedManyWithoutUploaderInput
   auditEventsAuthored?: Prisma.AuditLogCreateNestedManyWithoutActorInput
   supportJobsRequested?: Prisma.SupportJobRunCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewCreateNestedManyWithoutReviewerInput
 }
 
 export type UserUncheckedCreateWithoutInvitationsCreatedInput = {
@@ -4562,6 +5172,15 @@ export type UserUncheckedCreateWithoutInvitationsCreatedInput = {
   articleUploads?: Prisma.ArticleAttachmentUncheckedCreateNestedManyWithoutUploaderInput
   auditEventsAuthored?: Prisma.AuditLogUncheckedCreateNestedManyWithoutActorInput
   supportJobsRequested?: Prisma.SupportJobRunUncheckedCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedCreateNestedManyWithoutReviewerInput
 }
 
 export type UserCreateOrConnectWithoutInvitationsCreatedInput = {
@@ -4640,6 +5259,15 @@ export type UserUpdateWithoutInvitationsCreatedInput = {
   articleUploads?: Prisma.ArticleAttachmentUpdateManyWithoutUploaderNestedInput
   auditEventsAuthored?: Prisma.AuditLogUpdateManyWithoutActorNestedInput
   supportJobsRequested?: Prisma.SupportJobRunUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUpdateManyWithoutReviewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutInvitationsCreatedInput = {
@@ -4702,6 +5330,15 @@ export type UserUncheckedUpdateWithoutInvitationsCreatedInput = {
   articleUploads?: Prisma.ArticleAttachmentUncheckedUpdateManyWithoutUploaderNestedInput
   auditEventsAuthored?: Prisma.AuditLogUncheckedUpdateManyWithoutActorNestedInput
   supportJobsRequested?: Prisma.SupportJobRunUncheckedUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedUpdateManyWithoutReviewerNestedInput
 }
 
 export type UserCreateWithoutOwnedProjectsInput = {
@@ -4764,6 +5401,15 @@ export type UserCreateWithoutOwnedProjectsInput = {
   articleUploads?: Prisma.ArticleAttachmentCreateNestedManyWithoutUploaderInput
   auditEventsAuthored?: Prisma.AuditLogCreateNestedManyWithoutActorInput
   supportJobsRequested?: Prisma.SupportJobRunCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewCreateNestedManyWithoutReviewerInput
 }
 
 export type UserUncheckedCreateWithoutOwnedProjectsInput = {
@@ -4826,6 +5472,15 @@ export type UserUncheckedCreateWithoutOwnedProjectsInput = {
   articleUploads?: Prisma.ArticleAttachmentUncheckedCreateNestedManyWithoutUploaderInput
   auditEventsAuthored?: Prisma.AuditLogUncheckedCreateNestedManyWithoutActorInput
   supportJobsRequested?: Prisma.SupportJobRunUncheckedCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedCreateNestedManyWithoutReviewerInput
 }
 
 export type UserCreateOrConnectWithoutOwnedProjectsInput = {
@@ -4904,6 +5559,15 @@ export type UserUpdateWithoutOwnedProjectsInput = {
   articleUploads?: Prisma.ArticleAttachmentUpdateManyWithoutUploaderNestedInput
   auditEventsAuthored?: Prisma.AuditLogUpdateManyWithoutActorNestedInput
   supportJobsRequested?: Prisma.SupportJobRunUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUpdateManyWithoutReviewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutOwnedProjectsInput = {
@@ -4966,6 +5630,15 @@ export type UserUncheckedUpdateWithoutOwnedProjectsInput = {
   articleUploads?: Prisma.ArticleAttachmentUncheckedUpdateManyWithoutUploaderNestedInput
   auditEventsAuthored?: Prisma.AuditLogUncheckedUpdateManyWithoutActorNestedInput
   supportJobsRequested?: Prisma.SupportJobRunUncheckedUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedUpdateManyWithoutReviewerNestedInput
 }
 
 export type UserCreateWithoutProjectMembershipsInput = {
@@ -5028,6 +5701,15 @@ export type UserCreateWithoutProjectMembershipsInput = {
   articleUploads?: Prisma.ArticleAttachmentCreateNestedManyWithoutUploaderInput
   auditEventsAuthored?: Prisma.AuditLogCreateNestedManyWithoutActorInput
   supportJobsRequested?: Prisma.SupportJobRunCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewCreateNestedManyWithoutReviewerInput
 }
 
 export type UserUncheckedCreateWithoutProjectMembershipsInput = {
@@ -5090,6 +5772,15 @@ export type UserUncheckedCreateWithoutProjectMembershipsInput = {
   articleUploads?: Prisma.ArticleAttachmentUncheckedCreateNestedManyWithoutUploaderInput
   auditEventsAuthored?: Prisma.AuditLogUncheckedCreateNestedManyWithoutActorInput
   supportJobsRequested?: Prisma.SupportJobRunUncheckedCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedCreateNestedManyWithoutReviewerInput
 }
 
 export type UserCreateOrConnectWithoutProjectMembershipsInput = {
@@ -5168,6 +5859,15 @@ export type UserUpdateWithoutProjectMembershipsInput = {
   articleUploads?: Prisma.ArticleAttachmentUpdateManyWithoutUploaderNestedInput
   auditEventsAuthored?: Prisma.AuditLogUpdateManyWithoutActorNestedInput
   supportJobsRequested?: Prisma.SupportJobRunUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUpdateManyWithoutReviewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutProjectMembershipsInput = {
@@ -5230,6 +5930,15 @@ export type UserUncheckedUpdateWithoutProjectMembershipsInput = {
   articleUploads?: Prisma.ArticleAttachmentUncheckedUpdateManyWithoutUploaderNestedInput
   auditEventsAuthored?: Prisma.AuditLogUncheckedUpdateManyWithoutActorNestedInput
   supportJobsRequested?: Prisma.SupportJobRunUncheckedUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedUpdateManyWithoutReviewerNestedInput
 }
 
 export type UserCreateWithoutActivityEventsInput = {
@@ -5292,6 +6001,15 @@ export type UserCreateWithoutActivityEventsInput = {
   articleUploads?: Prisma.ArticleAttachmentCreateNestedManyWithoutUploaderInput
   auditEventsAuthored?: Prisma.AuditLogCreateNestedManyWithoutActorInput
   supportJobsRequested?: Prisma.SupportJobRunCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewCreateNestedManyWithoutReviewerInput
 }
 
 export type UserUncheckedCreateWithoutActivityEventsInput = {
@@ -5354,6 +6072,15 @@ export type UserUncheckedCreateWithoutActivityEventsInput = {
   articleUploads?: Prisma.ArticleAttachmentUncheckedCreateNestedManyWithoutUploaderInput
   auditEventsAuthored?: Prisma.AuditLogUncheckedCreateNestedManyWithoutActorInput
   supportJobsRequested?: Prisma.SupportJobRunUncheckedCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedCreateNestedManyWithoutReviewerInput
 }
 
 export type UserCreateOrConnectWithoutActivityEventsInput = {
@@ -5432,6 +6159,15 @@ export type UserUpdateWithoutActivityEventsInput = {
   articleUploads?: Prisma.ArticleAttachmentUpdateManyWithoutUploaderNestedInput
   auditEventsAuthored?: Prisma.AuditLogUpdateManyWithoutActorNestedInput
   supportJobsRequested?: Prisma.SupportJobRunUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUpdateManyWithoutReviewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutActivityEventsInput = {
@@ -5494,6 +6230,15 @@ export type UserUncheckedUpdateWithoutActivityEventsInput = {
   articleUploads?: Prisma.ArticleAttachmentUncheckedUpdateManyWithoutUploaderNestedInput
   auditEventsAuthored?: Prisma.AuditLogUncheckedUpdateManyWithoutActorNestedInput
   supportJobsRequested?: Prisma.SupportJobRunUncheckedUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedUpdateManyWithoutReviewerNestedInput
 }
 
 export type UserCreateWithoutAccountMembershipsInput = {
@@ -5556,6 +6301,15 @@ export type UserCreateWithoutAccountMembershipsInput = {
   articleUploads?: Prisma.ArticleAttachmentCreateNestedManyWithoutUploaderInput
   auditEventsAuthored?: Prisma.AuditLogCreateNestedManyWithoutActorInput
   supportJobsRequested?: Prisma.SupportJobRunCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewCreateNestedManyWithoutReviewerInput
 }
 
 export type UserUncheckedCreateWithoutAccountMembershipsInput = {
@@ -5618,6 +6372,15 @@ export type UserUncheckedCreateWithoutAccountMembershipsInput = {
   articleUploads?: Prisma.ArticleAttachmentUncheckedCreateNestedManyWithoutUploaderInput
   auditEventsAuthored?: Prisma.AuditLogUncheckedCreateNestedManyWithoutActorInput
   supportJobsRequested?: Prisma.SupportJobRunUncheckedCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedCreateNestedManyWithoutReviewerInput
 }
 
 export type UserCreateOrConnectWithoutAccountMembershipsInput = {
@@ -5696,6 +6459,15 @@ export type UserUpdateWithoutAccountMembershipsInput = {
   articleUploads?: Prisma.ArticleAttachmentUpdateManyWithoutUploaderNestedInput
   auditEventsAuthored?: Prisma.AuditLogUpdateManyWithoutActorNestedInput
   supportJobsRequested?: Prisma.SupportJobRunUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUpdateManyWithoutReviewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutAccountMembershipsInput = {
@@ -5758,6 +6530,15 @@ export type UserUncheckedUpdateWithoutAccountMembershipsInput = {
   articleUploads?: Prisma.ArticleAttachmentUncheckedUpdateManyWithoutUploaderNestedInput
   auditEventsAuthored?: Prisma.AuditLogUncheckedUpdateManyWithoutActorNestedInput
   supportJobsRequested?: Prisma.SupportJobRunUncheckedUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedUpdateManyWithoutReviewerNestedInput
 }
 
 export type UserCreateWithoutConsentsInput = {
@@ -5820,6 +6601,15 @@ export type UserCreateWithoutConsentsInput = {
   articleUploads?: Prisma.ArticleAttachmentCreateNestedManyWithoutUploaderInput
   auditEventsAuthored?: Prisma.AuditLogCreateNestedManyWithoutActorInput
   supportJobsRequested?: Prisma.SupportJobRunCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewCreateNestedManyWithoutReviewerInput
 }
 
 export type UserUncheckedCreateWithoutConsentsInput = {
@@ -5882,6 +6672,15 @@ export type UserUncheckedCreateWithoutConsentsInput = {
   articleUploads?: Prisma.ArticleAttachmentUncheckedCreateNestedManyWithoutUploaderInput
   auditEventsAuthored?: Prisma.AuditLogUncheckedCreateNestedManyWithoutActorInput
   supportJobsRequested?: Prisma.SupportJobRunUncheckedCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedCreateNestedManyWithoutReviewerInput
 }
 
 export type UserCreateOrConnectWithoutConsentsInput = {
@@ -5960,6 +6759,15 @@ export type UserUpdateWithoutConsentsInput = {
   articleUploads?: Prisma.ArticleAttachmentUpdateManyWithoutUploaderNestedInput
   auditEventsAuthored?: Prisma.AuditLogUpdateManyWithoutActorNestedInput
   supportJobsRequested?: Prisma.SupportJobRunUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUpdateManyWithoutReviewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutConsentsInput = {
@@ -6022,6 +6830,2715 @@ export type UserUncheckedUpdateWithoutConsentsInput = {
   articleUploads?: Prisma.ArticleAttachmentUncheckedUpdateManyWithoutUploaderNestedInput
   auditEventsAuthored?: Prisma.AuditLogUncheckedUpdateManyWithoutActorNestedInput
   supportJobsRequested?: Prisma.SupportJobRunUncheckedUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedUpdateManyWithoutReviewerNestedInput
+}
+
+export type UserCreateWithoutBlogPostsLastReviewedInput = {
+  id: string
+  name: string
+  email: string
+  emailVerified?: boolean
+  image?: string | null
+  password?: string | null
+  role?: $Enums.Role
+  accountRole?: $Enums.AccountRole
+  isActive?: boolean
+  isDeleted?: boolean
+  jobTitle?: string | null
+  bio?: string | null
+  location?: string | null
+  twoFactorEnabled?: boolean
+  twoFactorMethod?: $Enums.TwoFactorMethod | null
+  twoFactorEnrolledAt?: Date | string | null
+  twoFactorSecret?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
+  accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
+  passwordResetTokens?: Prisma.PasswordResetTokenCreateNestedManyWithoutUserInput
+  ownedProjects?: Prisma.ProjectCreateNestedManyWithoutOwnerInput
+  projectMemberships?: Prisma.ProjectMemberCreateNestedManyWithoutUserInput
+  activityEvents?: Prisma.ActivityEventCreateNestedManyWithoutActorInput
+  accountMemberships?: Prisma.AccountMembershipCreateNestedManyWithoutUserInput
+  authChallenges?: Prisma.AuthChallengeCreateNestedManyWithoutUserInput
+  otpCodes?: Prisma.OtpCodeCreateNestedManyWithoutUserInput
+  recoveryCodes?: Prisma.RecoveryCodeCreateNestedManyWithoutUserInput
+  loginDevices?: Prisma.LoginDeviceCreateNestedManyWithoutUserInput
+  securityAlerts?: Prisma.SecurityAlertCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  customerProfile?: Prisma.CustomerProfileCreateNestedOneWithoutUserInput
+  consents?: Prisma.UserConsentCreateNestedManyWithoutUserInput
+  orgMemberships?: Prisma.OrganizationMemberCreateNestedManyWithoutUserInput
+  invitationsCreated?: Prisma.InvitationCreateNestedManyWithoutInvitedByInput
+  onboarding?: Prisma.OnboardingProfileCreateNestedOneWithoutUserInput
+  approvalResponses?: Prisma.ApprovalResponseCreateNestedManyWithoutResponderInput
+  projectComments?: Prisma.ProjectCommentCreateNestedManyWithoutAuthorInput
+  projectFiles?: Prisma.ProjectFileCreateNestedManyWithoutUploaderInput
+  fileAssets?: Prisma.FileAssetCreateNestedManyWithoutOwnerInput
+  maintenanceRequests?: Prisma.MaintenanceRequestCreateNestedManyWithoutRequesterInput
+  supportTickets?: Prisma.SupportTicketCreateNestedManyWithoutRequesterInput
+  ticketMessages?: Prisma.TicketMessageCreateNestedManyWithoutAuthorInput
+  ticketAttachments?: Prisma.TicketAttachmentCreateNestedManyWithoutUploaderInput
+  notificationPreference?: Prisma.NotificationPreferenceCreateNestedOneWithoutUserInput
+  dataExportJobs?: Prisma.DataExportJobCreateNestedManyWithoutUserInput
+  helpArticlesAuthored?: Prisma.HelpArticleCreateNestedManyWithoutAuthorInput
+  supportAssignments?: Prisma.SupportAssignmentCreateNestedManyWithoutAgentInput
+  supportAssignmentsMade?: Prisma.SupportAssignmentCreateNestedManyWithoutAssignedByInput
+  internalNotesAuthored?: Prisma.InternalNoteCreateNestedManyWithoutAuthorInput
+  escalationsTriggered?: Prisma.EscalationEventCreateNestedManyWithoutTriggeredByInput
+  cannedResponsesAuthored?: Prisma.CannedResponseCreateNestedManyWithoutAuthorInput
+  supportProfilesTouched?: Prisma.OrganizationSupportProfileCreateNestedManyWithoutLastTouchedByInput
+  customerActivityEvents?: Prisma.CustomerActivityLogCreateNestedManyWithoutActorInput
+  contentRevisionsAuthored?: Prisma.ContentRevisionCreateNestedManyWithoutAuthorInput
+  knowledgeFeedback?: Prisma.KnowledgeFeedbackCreateNestedManyWithoutUserInput
+  articleUploads?: Prisma.ArticleAttachmentCreateNestedManyWithoutUploaderInput
+  auditEventsAuthored?: Prisma.AuditLogCreateNestedManyWithoutActorInput
+  supportJobsRequested?: Prisma.SupportJobRunCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostCreateNestedManyWithoutSubmittedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewCreateNestedManyWithoutReviewerInput
+}
+
+export type UserUncheckedCreateWithoutBlogPostsLastReviewedInput = {
+  id: string
+  name: string
+  email: string
+  emailVerified?: boolean
+  image?: string | null
+  password?: string | null
+  role?: $Enums.Role
+  accountRole?: $Enums.AccountRole
+  isActive?: boolean
+  isDeleted?: boolean
+  jobTitle?: string | null
+  bio?: string | null
+  location?: string | null
+  twoFactorEnabled?: boolean
+  twoFactorMethod?: $Enums.TwoFactorMethod | null
+  twoFactorEnrolledAt?: Date | string | null
+  twoFactorSecret?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
+  accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
+  passwordResetTokens?: Prisma.PasswordResetTokenUncheckedCreateNestedManyWithoutUserInput
+  ownedProjects?: Prisma.ProjectUncheckedCreateNestedManyWithoutOwnerInput
+  projectMemberships?: Prisma.ProjectMemberUncheckedCreateNestedManyWithoutUserInput
+  activityEvents?: Prisma.ActivityEventUncheckedCreateNestedManyWithoutActorInput
+  accountMemberships?: Prisma.AccountMembershipUncheckedCreateNestedManyWithoutUserInput
+  authChallenges?: Prisma.AuthChallengeUncheckedCreateNestedManyWithoutUserInput
+  otpCodes?: Prisma.OtpCodeUncheckedCreateNestedManyWithoutUserInput
+  recoveryCodes?: Prisma.RecoveryCodeUncheckedCreateNestedManyWithoutUserInput
+  loginDevices?: Prisma.LoginDeviceUncheckedCreateNestedManyWithoutUserInput
+  securityAlerts?: Prisma.SecurityAlertUncheckedCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  customerProfile?: Prisma.CustomerProfileUncheckedCreateNestedOneWithoutUserInput
+  consents?: Prisma.UserConsentUncheckedCreateNestedManyWithoutUserInput
+  orgMemberships?: Prisma.OrganizationMemberUncheckedCreateNestedManyWithoutUserInput
+  invitationsCreated?: Prisma.InvitationUncheckedCreateNestedManyWithoutInvitedByInput
+  onboarding?: Prisma.OnboardingProfileUncheckedCreateNestedOneWithoutUserInput
+  approvalResponses?: Prisma.ApprovalResponseUncheckedCreateNestedManyWithoutResponderInput
+  projectComments?: Prisma.ProjectCommentUncheckedCreateNestedManyWithoutAuthorInput
+  projectFiles?: Prisma.ProjectFileUncheckedCreateNestedManyWithoutUploaderInput
+  fileAssets?: Prisma.FileAssetUncheckedCreateNestedManyWithoutOwnerInput
+  maintenanceRequests?: Prisma.MaintenanceRequestUncheckedCreateNestedManyWithoutRequesterInput
+  supportTickets?: Prisma.SupportTicketUncheckedCreateNestedManyWithoutRequesterInput
+  ticketMessages?: Prisma.TicketMessageUncheckedCreateNestedManyWithoutAuthorInput
+  ticketAttachments?: Prisma.TicketAttachmentUncheckedCreateNestedManyWithoutUploaderInput
+  notificationPreference?: Prisma.NotificationPreferenceUncheckedCreateNestedOneWithoutUserInput
+  dataExportJobs?: Prisma.DataExportJobUncheckedCreateNestedManyWithoutUserInput
+  helpArticlesAuthored?: Prisma.HelpArticleUncheckedCreateNestedManyWithoutAuthorInput
+  supportAssignments?: Prisma.SupportAssignmentUncheckedCreateNestedManyWithoutAgentInput
+  supportAssignmentsMade?: Prisma.SupportAssignmentUncheckedCreateNestedManyWithoutAssignedByInput
+  internalNotesAuthored?: Prisma.InternalNoteUncheckedCreateNestedManyWithoutAuthorInput
+  escalationsTriggered?: Prisma.EscalationEventUncheckedCreateNestedManyWithoutTriggeredByInput
+  cannedResponsesAuthored?: Prisma.CannedResponseUncheckedCreateNestedManyWithoutAuthorInput
+  supportProfilesTouched?: Prisma.OrganizationSupportProfileUncheckedCreateNestedManyWithoutLastTouchedByInput
+  customerActivityEvents?: Prisma.CustomerActivityLogUncheckedCreateNestedManyWithoutActorInput
+  contentRevisionsAuthored?: Prisma.ContentRevisionUncheckedCreateNestedManyWithoutAuthorInput
+  knowledgeFeedback?: Prisma.KnowledgeFeedbackUncheckedCreateNestedManyWithoutUserInput
+  articleUploads?: Prisma.ArticleAttachmentUncheckedCreateNestedManyWithoutUploaderInput
+  auditEventsAuthored?: Prisma.AuditLogUncheckedCreateNestedManyWithoutActorInput
+  supportJobsRequested?: Prisma.SupportJobRunUncheckedCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedCreateNestedManyWithoutSubmittedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedCreateNestedManyWithoutReviewerInput
+}
+
+export type UserCreateOrConnectWithoutBlogPostsLastReviewedInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutBlogPostsLastReviewedInput, Prisma.UserUncheckedCreateWithoutBlogPostsLastReviewedInput>
+}
+
+export type UserCreateWithoutBlogPostsSubmittedInput = {
+  id: string
+  name: string
+  email: string
+  emailVerified?: boolean
+  image?: string | null
+  password?: string | null
+  role?: $Enums.Role
+  accountRole?: $Enums.AccountRole
+  isActive?: boolean
+  isDeleted?: boolean
+  jobTitle?: string | null
+  bio?: string | null
+  location?: string | null
+  twoFactorEnabled?: boolean
+  twoFactorMethod?: $Enums.TwoFactorMethod | null
+  twoFactorEnrolledAt?: Date | string | null
+  twoFactorSecret?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
+  accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
+  passwordResetTokens?: Prisma.PasswordResetTokenCreateNestedManyWithoutUserInput
+  ownedProjects?: Prisma.ProjectCreateNestedManyWithoutOwnerInput
+  projectMemberships?: Prisma.ProjectMemberCreateNestedManyWithoutUserInput
+  activityEvents?: Prisma.ActivityEventCreateNestedManyWithoutActorInput
+  accountMemberships?: Prisma.AccountMembershipCreateNestedManyWithoutUserInput
+  authChallenges?: Prisma.AuthChallengeCreateNestedManyWithoutUserInput
+  otpCodes?: Prisma.OtpCodeCreateNestedManyWithoutUserInput
+  recoveryCodes?: Prisma.RecoveryCodeCreateNestedManyWithoutUserInput
+  loginDevices?: Prisma.LoginDeviceCreateNestedManyWithoutUserInput
+  securityAlerts?: Prisma.SecurityAlertCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  customerProfile?: Prisma.CustomerProfileCreateNestedOneWithoutUserInput
+  consents?: Prisma.UserConsentCreateNestedManyWithoutUserInput
+  orgMemberships?: Prisma.OrganizationMemberCreateNestedManyWithoutUserInput
+  invitationsCreated?: Prisma.InvitationCreateNestedManyWithoutInvitedByInput
+  onboarding?: Prisma.OnboardingProfileCreateNestedOneWithoutUserInput
+  approvalResponses?: Prisma.ApprovalResponseCreateNestedManyWithoutResponderInput
+  projectComments?: Prisma.ProjectCommentCreateNestedManyWithoutAuthorInput
+  projectFiles?: Prisma.ProjectFileCreateNestedManyWithoutUploaderInput
+  fileAssets?: Prisma.FileAssetCreateNestedManyWithoutOwnerInput
+  maintenanceRequests?: Prisma.MaintenanceRequestCreateNestedManyWithoutRequesterInput
+  supportTickets?: Prisma.SupportTicketCreateNestedManyWithoutRequesterInput
+  ticketMessages?: Prisma.TicketMessageCreateNestedManyWithoutAuthorInput
+  ticketAttachments?: Prisma.TicketAttachmentCreateNestedManyWithoutUploaderInput
+  notificationPreference?: Prisma.NotificationPreferenceCreateNestedOneWithoutUserInput
+  dataExportJobs?: Prisma.DataExportJobCreateNestedManyWithoutUserInput
+  helpArticlesAuthored?: Prisma.HelpArticleCreateNestedManyWithoutAuthorInput
+  supportAssignments?: Prisma.SupportAssignmentCreateNestedManyWithoutAgentInput
+  supportAssignmentsMade?: Prisma.SupportAssignmentCreateNestedManyWithoutAssignedByInput
+  internalNotesAuthored?: Prisma.InternalNoteCreateNestedManyWithoutAuthorInput
+  escalationsTriggered?: Prisma.EscalationEventCreateNestedManyWithoutTriggeredByInput
+  cannedResponsesAuthored?: Prisma.CannedResponseCreateNestedManyWithoutAuthorInput
+  supportProfilesTouched?: Prisma.OrganizationSupportProfileCreateNestedManyWithoutLastTouchedByInput
+  customerActivityEvents?: Prisma.CustomerActivityLogCreateNestedManyWithoutActorInput
+  contentRevisionsAuthored?: Prisma.ContentRevisionCreateNestedManyWithoutAuthorInput
+  knowledgeFeedback?: Prisma.KnowledgeFeedbackCreateNestedManyWithoutUserInput
+  articleUploads?: Prisma.ArticleAttachmentCreateNestedManyWithoutUploaderInput
+  auditEventsAuthored?: Prisma.AuditLogCreateNestedManyWithoutActorInput
+  supportJobsRequested?: Prisma.SupportJobRunCreateNestedManyWithoutRequestedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewCreateNestedManyWithoutReviewerInput
+}
+
+export type UserUncheckedCreateWithoutBlogPostsSubmittedInput = {
+  id: string
+  name: string
+  email: string
+  emailVerified?: boolean
+  image?: string | null
+  password?: string | null
+  role?: $Enums.Role
+  accountRole?: $Enums.AccountRole
+  isActive?: boolean
+  isDeleted?: boolean
+  jobTitle?: string | null
+  bio?: string | null
+  location?: string | null
+  twoFactorEnabled?: boolean
+  twoFactorMethod?: $Enums.TwoFactorMethod | null
+  twoFactorEnrolledAt?: Date | string | null
+  twoFactorSecret?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
+  accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
+  passwordResetTokens?: Prisma.PasswordResetTokenUncheckedCreateNestedManyWithoutUserInput
+  ownedProjects?: Prisma.ProjectUncheckedCreateNestedManyWithoutOwnerInput
+  projectMemberships?: Prisma.ProjectMemberUncheckedCreateNestedManyWithoutUserInput
+  activityEvents?: Prisma.ActivityEventUncheckedCreateNestedManyWithoutActorInput
+  accountMemberships?: Prisma.AccountMembershipUncheckedCreateNestedManyWithoutUserInput
+  authChallenges?: Prisma.AuthChallengeUncheckedCreateNestedManyWithoutUserInput
+  otpCodes?: Prisma.OtpCodeUncheckedCreateNestedManyWithoutUserInput
+  recoveryCodes?: Prisma.RecoveryCodeUncheckedCreateNestedManyWithoutUserInput
+  loginDevices?: Prisma.LoginDeviceUncheckedCreateNestedManyWithoutUserInput
+  securityAlerts?: Prisma.SecurityAlertUncheckedCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  customerProfile?: Prisma.CustomerProfileUncheckedCreateNestedOneWithoutUserInput
+  consents?: Prisma.UserConsentUncheckedCreateNestedManyWithoutUserInput
+  orgMemberships?: Prisma.OrganizationMemberUncheckedCreateNestedManyWithoutUserInput
+  invitationsCreated?: Prisma.InvitationUncheckedCreateNestedManyWithoutInvitedByInput
+  onboarding?: Prisma.OnboardingProfileUncheckedCreateNestedOneWithoutUserInput
+  approvalResponses?: Prisma.ApprovalResponseUncheckedCreateNestedManyWithoutResponderInput
+  projectComments?: Prisma.ProjectCommentUncheckedCreateNestedManyWithoutAuthorInput
+  projectFiles?: Prisma.ProjectFileUncheckedCreateNestedManyWithoutUploaderInput
+  fileAssets?: Prisma.FileAssetUncheckedCreateNestedManyWithoutOwnerInput
+  maintenanceRequests?: Prisma.MaintenanceRequestUncheckedCreateNestedManyWithoutRequesterInput
+  supportTickets?: Prisma.SupportTicketUncheckedCreateNestedManyWithoutRequesterInput
+  ticketMessages?: Prisma.TicketMessageUncheckedCreateNestedManyWithoutAuthorInput
+  ticketAttachments?: Prisma.TicketAttachmentUncheckedCreateNestedManyWithoutUploaderInput
+  notificationPreference?: Prisma.NotificationPreferenceUncheckedCreateNestedOneWithoutUserInput
+  dataExportJobs?: Prisma.DataExportJobUncheckedCreateNestedManyWithoutUserInput
+  helpArticlesAuthored?: Prisma.HelpArticleUncheckedCreateNestedManyWithoutAuthorInput
+  supportAssignments?: Prisma.SupportAssignmentUncheckedCreateNestedManyWithoutAgentInput
+  supportAssignmentsMade?: Prisma.SupportAssignmentUncheckedCreateNestedManyWithoutAssignedByInput
+  internalNotesAuthored?: Prisma.InternalNoteUncheckedCreateNestedManyWithoutAuthorInput
+  escalationsTriggered?: Prisma.EscalationEventUncheckedCreateNestedManyWithoutTriggeredByInput
+  cannedResponsesAuthored?: Prisma.CannedResponseUncheckedCreateNestedManyWithoutAuthorInput
+  supportProfilesTouched?: Prisma.OrganizationSupportProfileUncheckedCreateNestedManyWithoutLastTouchedByInput
+  customerActivityEvents?: Prisma.CustomerActivityLogUncheckedCreateNestedManyWithoutActorInput
+  contentRevisionsAuthored?: Prisma.ContentRevisionUncheckedCreateNestedManyWithoutAuthorInput
+  knowledgeFeedback?: Prisma.KnowledgeFeedbackUncheckedCreateNestedManyWithoutUserInput
+  articleUploads?: Prisma.ArticleAttachmentUncheckedCreateNestedManyWithoutUploaderInput
+  auditEventsAuthored?: Prisma.AuditLogUncheckedCreateNestedManyWithoutActorInput
+  supportJobsRequested?: Prisma.SupportJobRunUncheckedCreateNestedManyWithoutRequestedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedCreateNestedManyWithoutReviewerInput
+}
+
+export type UserCreateOrConnectWithoutBlogPostsSubmittedInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutBlogPostsSubmittedInput, Prisma.UserUncheckedCreateWithoutBlogPostsSubmittedInput>
+}
+
+export type UserUpsertWithoutBlogPostsLastReviewedInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutBlogPostsLastReviewedInput, Prisma.UserUncheckedUpdateWithoutBlogPostsLastReviewedInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutBlogPostsLastReviewedInput, Prisma.UserUncheckedCreateWithoutBlogPostsLastReviewedInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutBlogPostsLastReviewedInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutBlogPostsLastReviewedInput, Prisma.UserUncheckedUpdateWithoutBlogPostsLastReviewedInput>
+}
+
+export type UserUpdateWithoutBlogPostsLastReviewedInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  accountRole?: Prisma.EnumAccountRoleFieldUpdateOperationsInput | $Enums.AccountRole
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  jobTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorMethod?: Prisma.NullableEnumTwoFactorMethodFieldUpdateOperationsInput | $Enums.TwoFactorMethod | null
+  twoFactorEnrolledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorSecret?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
+  accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
+  passwordResetTokens?: Prisma.PasswordResetTokenUpdateManyWithoutUserNestedInput
+  ownedProjects?: Prisma.ProjectUpdateManyWithoutOwnerNestedInput
+  projectMemberships?: Prisma.ProjectMemberUpdateManyWithoutUserNestedInput
+  activityEvents?: Prisma.ActivityEventUpdateManyWithoutActorNestedInput
+  accountMemberships?: Prisma.AccountMembershipUpdateManyWithoutUserNestedInput
+  authChallenges?: Prisma.AuthChallengeUpdateManyWithoutUserNestedInput
+  otpCodes?: Prisma.OtpCodeUpdateManyWithoutUserNestedInput
+  recoveryCodes?: Prisma.RecoveryCodeUpdateManyWithoutUserNestedInput
+  loginDevices?: Prisma.LoginDeviceUpdateManyWithoutUserNestedInput
+  securityAlerts?: Prisma.SecurityAlertUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  customerProfile?: Prisma.CustomerProfileUpdateOneWithoutUserNestedInput
+  consents?: Prisma.UserConsentUpdateManyWithoutUserNestedInput
+  orgMemberships?: Prisma.OrganizationMemberUpdateManyWithoutUserNestedInput
+  invitationsCreated?: Prisma.InvitationUpdateManyWithoutInvitedByNestedInput
+  onboarding?: Prisma.OnboardingProfileUpdateOneWithoutUserNestedInput
+  approvalResponses?: Prisma.ApprovalResponseUpdateManyWithoutResponderNestedInput
+  projectComments?: Prisma.ProjectCommentUpdateManyWithoutAuthorNestedInput
+  projectFiles?: Prisma.ProjectFileUpdateManyWithoutUploaderNestedInput
+  fileAssets?: Prisma.FileAssetUpdateManyWithoutOwnerNestedInput
+  maintenanceRequests?: Prisma.MaintenanceRequestUpdateManyWithoutRequesterNestedInput
+  supportTickets?: Prisma.SupportTicketUpdateManyWithoutRequesterNestedInput
+  ticketMessages?: Prisma.TicketMessageUpdateManyWithoutAuthorNestedInput
+  ticketAttachments?: Prisma.TicketAttachmentUpdateManyWithoutUploaderNestedInput
+  notificationPreference?: Prisma.NotificationPreferenceUpdateOneWithoutUserNestedInput
+  dataExportJobs?: Prisma.DataExportJobUpdateManyWithoutUserNestedInput
+  helpArticlesAuthored?: Prisma.HelpArticleUpdateManyWithoutAuthorNestedInput
+  supportAssignments?: Prisma.SupportAssignmentUpdateManyWithoutAgentNestedInput
+  supportAssignmentsMade?: Prisma.SupportAssignmentUpdateManyWithoutAssignedByNestedInput
+  internalNotesAuthored?: Prisma.InternalNoteUpdateManyWithoutAuthorNestedInput
+  escalationsTriggered?: Prisma.EscalationEventUpdateManyWithoutTriggeredByNestedInput
+  cannedResponsesAuthored?: Prisma.CannedResponseUpdateManyWithoutAuthorNestedInput
+  supportProfilesTouched?: Prisma.OrganizationSupportProfileUpdateManyWithoutLastTouchedByNestedInput
+  customerActivityEvents?: Prisma.CustomerActivityLogUpdateManyWithoutActorNestedInput
+  contentRevisionsAuthored?: Prisma.ContentRevisionUpdateManyWithoutAuthorNestedInput
+  knowledgeFeedback?: Prisma.KnowledgeFeedbackUpdateManyWithoutUserNestedInput
+  articleUploads?: Prisma.ArticleAttachmentUpdateManyWithoutUploaderNestedInput
+  auditEventsAuthored?: Prisma.AuditLogUpdateManyWithoutActorNestedInput
+  supportJobsRequested?: Prisma.SupportJobRunUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUpdateManyWithoutReviewerNestedInput
+}
+
+export type UserUncheckedUpdateWithoutBlogPostsLastReviewedInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  accountRole?: Prisma.EnumAccountRoleFieldUpdateOperationsInput | $Enums.AccountRole
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  jobTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorMethod?: Prisma.NullableEnumTwoFactorMethodFieldUpdateOperationsInput | $Enums.TwoFactorMethod | null
+  twoFactorEnrolledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorSecret?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
+  accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
+  passwordResetTokens?: Prisma.PasswordResetTokenUncheckedUpdateManyWithoutUserNestedInput
+  ownedProjects?: Prisma.ProjectUncheckedUpdateManyWithoutOwnerNestedInput
+  projectMemberships?: Prisma.ProjectMemberUncheckedUpdateManyWithoutUserNestedInput
+  activityEvents?: Prisma.ActivityEventUncheckedUpdateManyWithoutActorNestedInput
+  accountMemberships?: Prisma.AccountMembershipUncheckedUpdateManyWithoutUserNestedInput
+  authChallenges?: Prisma.AuthChallengeUncheckedUpdateManyWithoutUserNestedInput
+  otpCodes?: Prisma.OtpCodeUncheckedUpdateManyWithoutUserNestedInput
+  recoveryCodes?: Prisma.RecoveryCodeUncheckedUpdateManyWithoutUserNestedInput
+  loginDevices?: Prisma.LoginDeviceUncheckedUpdateManyWithoutUserNestedInput
+  securityAlerts?: Prisma.SecurityAlertUncheckedUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  customerProfile?: Prisma.CustomerProfileUncheckedUpdateOneWithoutUserNestedInput
+  consents?: Prisma.UserConsentUncheckedUpdateManyWithoutUserNestedInput
+  orgMemberships?: Prisma.OrganizationMemberUncheckedUpdateManyWithoutUserNestedInput
+  invitationsCreated?: Prisma.InvitationUncheckedUpdateManyWithoutInvitedByNestedInput
+  onboarding?: Prisma.OnboardingProfileUncheckedUpdateOneWithoutUserNestedInput
+  approvalResponses?: Prisma.ApprovalResponseUncheckedUpdateManyWithoutResponderNestedInput
+  projectComments?: Prisma.ProjectCommentUncheckedUpdateManyWithoutAuthorNestedInput
+  projectFiles?: Prisma.ProjectFileUncheckedUpdateManyWithoutUploaderNestedInput
+  fileAssets?: Prisma.FileAssetUncheckedUpdateManyWithoutOwnerNestedInput
+  maintenanceRequests?: Prisma.MaintenanceRequestUncheckedUpdateManyWithoutRequesterNestedInput
+  supportTickets?: Prisma.SupportTicketUncheckedUpdateManyWithoutRequesterNestedInput
+  ticketMessages?: Prisma.TicketMessageUncheckedUpdateManyWithoutAuthorNestedInput
+  ticketAttachments?: Prisma.TicketAttachmentUncheckedUpdateManyWithoutUploaderNestedInput
+  notificationPreference?: Prisma.NotificationPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  dataExportJobs?: Prisma.DataExportJobUncheckedUpdateManyWithoutUserNestedInput
+  helpArticlesAuthored?: Prisma.HelpArticleUncheckedUpdateManyWithoutAuthorNestedInput
+  supportAssignments?: Prisma.SupportAssignmentUncheckedUpdateManyWithoutAgentNestedInput
+  supportAssignmentsMade?: Prisma.SupportAssignmentUncheckedUpdateManyWithoutAssignedByNestedInput
+  internalNotesAuthored?: Prisma.InternalNoteUncheckedUpdateManyWithoutAuthorNestedInput
+  escalationsTriggered?: Prisma.EscalationEventUncheckedUpdateManyWithoutTriggeredByNestedInput
+  cannedResponsesAuthored?: Prisma.CannedResponseUncheckedUpdateManyWithoutAuthorNestedInput
+  supportProfilesTouched?: Prisma.OrganizationSupportProfileUncheckedUpdateManyWithoutLastTouchedByNestedInput
+  customerActivityEvents?: Prisma.CustomerActivityLogUncheckedUpdateManyWithoutActorNestedInput
+  contentRevisionsAuthored?: Prisma.ContentRevisionUncheckedUpdateManyWithoutAuthorNestedInput
+  knowledgeFeedback?: Prisma.KnowledgeFeedbackUncheckedUpdateManyWithoutUserNestedInput
+  articleUploads?: Prisma.ArticleAttachmentUncheckedUpdateManyWithoutUploaderNestedInput
+  auditEventsAuthored?: Prisma.AuditLogUncheckedUpdateManyWithoutActorNestedInput
+  supportJobsRequested?: Prisma.SupportJobRunUncheckedUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedUpdateManyWithoutReviewerNestedInput
+}
+
+export type UserUpsertWithoutBlogPostsSubmittedInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutBlogPostsSubmittedInput, Prisma.UserUncheckedUpdateWithoutBlogPostsSubmittedInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutBlogPostsSubmittedInput, Prisma.UserUncheckedCreateWithoutBlogPostsSubmittedInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutBlogPostsSubmittedInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutBlogPostsSubmittedInput, Prisma.UserUncheckedUpdateWithoutBlogPostsSubmittedInput>
+}
+
+export type UserUpdateWithoutBlogPostsSubmittedInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  accountRole?: Prisma.EnumAccountRoleFieldUpdateOperationsInput | $Enums.AccountRole
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  jobTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorMethod?: Prisma.NullableEnumTwoFactorMethodFieldUpdateOperationsInput | $Enums.TwoFactorMethod | null
+  twoFactorEnrolledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorSecret?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
+  accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
+  passwordResetTokens?: Prisma.PasswordResetTokenUpdateManyWithoutUserNestedInput
+  ownedProjects?: Prisma.ProjectUpdateManyWithoutOwnerNestedInput
+  projectMemberships?: Prisma.ProjectMemberUpdateManyWithoutUserNestedInput
+  activityEvents?: Prisma.ActivityEventUpdateManyWithoutActorNestedInput
+  accountMemberships?: Prisma.AccountMembershipUpdateManyWithoutUserNestedInput
+  authChallenges?: Prisma.AuthChallengeUpdateManyWithoutUserNestedInput
+  otpCodes?: Prisma.OtpCodeUpdateManyWithoutUserNestedInput
+  recoveryCodes?: Prisma.RecoveryCodeUpdateManyWithoutUserNestedInput
+  loginDevices?: Prisma.LoginDeviceUpdateManyWithoutUserNestedInput
+  securityAlerts?: Prisma.SecurityAlertUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  customerProfile?: Prisma.CustomerProfileUpdateOneWithoutUserNestedInput
+  consents?: Prisma.UserConsentUpdateManyWithoutUserNestedInput
+  orgMemberships?: Prisma.OrganizationMemberUpdateManyWithoutUserNestedInput
+  invitationsCreated?: Prisma.InvitationUpdateManyWithoutInvitedByNestedInput
+  onboarding?: Prisma.OnboardingProfileUpdateOneWithoutUserNestedInput
+  approvalResponses?: Prisma.ApprovalResponseUpdateManyWithoutResponderNestedInput
+  projectComments?: Prisma.ProjectCommentUpdateManyWithoutAuthorNestedInput
+  projectFiles?: Prisma.ProjectFileUpdateManyWithoutUploaderNestedInput
+  fileAssets?: Prisma.FileAssetUpdateManyWithoutOwnerNestedInput
+  maintenanceRequests?: Prisma.MaintenanceRequestUpdateManyWithoutRequesterNestedInput
+  supportTickets?: Prisma.SupportTicketUpdateManyWithoutRequesterNestedInput
+  ticketMessages?: Prisma.TicketMessageUpdateManyWithoutAuthorNestedInput
+  ticketAttachments?: Prisma.TicketAttachmentUpdateManyWithoutUploaderNestedInput
+  notificationPreference?: Prisma.NotificationPreferenceUpdateOneWithoutUserNestedInput
+  dataExportJobs?: Prisma.DataExportJobUpdateManyWithoutUserNestedInput
+  helpArticlesAuthored?: Prisma.HelpArticleUpdateManyWithoutAuthorNestedInput
+  supportAssignments?: Prisma.SupportAssignmentUpdateManyWithoutAgentNestedInput
+  supportAssignmentsMade?: Prisma.SupportAssignmentUpdateManyWithoutAssignedByNestedInput
+  internalNotesAuthored?: Prisma.InternalNoteUpdateManyWithoutAuthorNestedInput
+  escalationsTriggered?: Prisma.EscalationEventUpdateManyWithoutTriggeredByNestedInput
+  cannedResponsesAuthored?: Prisma.CannedResponseUpdateManyWithoutAuthorNestedInput
+  supportProfilesTouched?: Prisma.OrganizationSupportProfileUpdateManyWithoutLastTouchedByNestedInput
+  customerActivityEvents?: Prisma.CustomerActivityLogUpdateManyWithoutActorNestedInput
+  contentRevisionsAuthored?: Prisma.ContentRevisionUpdateManyWithoutAuthorNestedInput
+  knowledgeFeedback?: Prisma.KnowledgeFeedbackUpdateManyWithoutUserNestedInput
+  articleUploads?: Prisma.ArticleAttachmentUpdateManyWithoutUploaderNestedInput
+  auditEventsAuthored?: Prisma.AuditLogUpdateManyWithoutActorNestedInput
+  supportJobsRequested?: Prisma.SupportJobRunUpdateManyWithoutRequestedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUpdateManyWithoutReviewerNestedInput
+}
+
+export type UserUncheckedUpdateWithoutBlogPostsSubmittedInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  accountRole?: Prisma.EnumAccountRoleFieldUpdateOperationsInput | $Enums.AccountRole
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  jobTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorMethod?: Prisma.NullableEnumTwoFactorMethodFieldUpdateOperationsInput | $Enums.TwoFactorMethod | null
+  twoFactorEnrolledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorSecret?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
+  accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
+  passwordResetTokens?: Prisma.PasswordResetTokenUncheckedUpdateManyWithoutUserNestedInput
+  ownedProjects?: Prisma.ProjectUncheckedUpdateManyWithoutOwnerNestedInput
+  projectMemberships?: Prisma.ProjectMemberUncheckedUpdateManyWithoutUserNestedInput
+  activityEvents?: Prisma.ActivityEventUncheckedUpdateManyWithoutActorNestedInput
+  accountMemberships?: Prisma.AccountMembershipUncheckedUpdateManyWithoutUserNestedInput
+  authChallenges?: Prisma.AuthChallengeUncheckedUpdateManyWithoutUserNestedInput
+  otpCodes?: Prisma.OtpCodeUncheckedUpdateManyWithoutUserNestedInput
+  recoveryCodes?: Prisma.RecoveryCodeUncheckedUpdateManyWithoutUserNestedInput
+  loginDevices?: Prisma.LoginDeviceUncheckedUpdateManyWithoutUserNestedInput
+  securityAlerts?: Prisma.SecurityAlertUncheckedUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  customerProfile?: Prisma.CustomerProfileUncheckedUpdateOneWithoutUserNestedInput
+  consents?: Prisma.UserConsentUncheckedUpdateManyWithoutUserNestedInput
+  orgMemberships?: Prisma.OrganizationMemberUncheckedUpdateManyWithoutUserNestedInput
+  invitationsCreated?: Prisma.InvitationUncheckedUpdateManyWithoutInvitedByNestedInput
+  onboarding?: Prisma.OnboardingProfileUncheckedUpdateOneWithoutUserNestedInput
+  approvalResponses?: Prisma.ApprovalResponseUncheckedUpdateManyWithoutResponderNestedInput
+  projectComments?: Prisma.ProjectCommentUncheckedUpdateManyWithoutAuthorNestedInput
+  projectFiles?: Prisma.ProjectFileUncheckedUpdateManyWithoutUploaderNestedInput
+  fileAssets?: Prisma.FileAssetUncheckedUpdateManyWithoutOwnerNestedInput
+  maintenanceRequests?: Prisma.MaintenanceRequestUncheckedUpdateManyWithoutRequesterNestedInput
+  supportTickets?: Prisma.SupportTicketUncheckedUpdateManyWithoutRequesterNestedInput
+  ticketMessages?: Prisma.TicketMessageUncheckedUpdateManyWithoutAuthorNestedInput
+  ticketAttachments?: Prisma.TicketAttachmentUncheckedUpdateManyWithoutUploaderNestedInput
+  notificationPreference?: Prisma.NotificationPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  dataExportJobs?: Prisma.DataExportJobUncheckedUpdateManyWithoutUserNestedInput
+  helpArticlesAuthored?: Prisma.HelpArticleUncheckedUpdateManyWithoutAuthorNestedInput
+  supportAssignments?: Prisma.SupportAssignmentUncheckedUpdateManyWithoutAgentNestedInput
+  supportAssignmentsMade?: Prisma.SupportAssignmentUncheckedUpdateManyWithoutAssignedByNestedInput
+  internalNotesAuthored?: Prisma.InternalNoteUncheckedUpdateManyWithoutAuthorNestedInput
+  escalationsTriggered?: Prisma.EscalationEventUncheckedUpdateManyWithoutTriggeredByNestedInput
+  cannedResponsesAuthored?: Prisma.CannedResponseUncheckedUpdateManyWithoutAuthorNestedInput
+  supportProfilesTouched?: Prisma.OrganizationSupportProfileUncheckedUpdateManyWithoutLastTouchedByNestedInput
+  customerActivityEvents?: Prisma.CustomerActivityLogUncheckedUpdateManyWithoutActorNestedInput
+  contentRevisionsAuthored?: Prisma.ContentRevisionUncheckedUpdateManyWithoutAuthorNestedInput
+  knowledgeFeedback?: Prisma.KnowledgeFeedbackUncheckedUpdateManyWithoutUserNestedInput
+  articleUploads?: Prisma.ArticleAttachmentUncheckedUpdateManyWithoutUploaderNestedInput
+  auditEventsAuthored?: Prisma.AuditLogUncheckedUpdateManyWithoutActorNestedInput
+  supportJobsRequested?: Prisma.SupportJobRunUncheckedUpdateManyWithoutRequestedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedUpdateManyWithoutReviewerNestedInput
+}
+
+export type UserCreateWithoutCaseStudiesLastReviewedInput = {
+  id: string
+  name: string
+  email: string
+  emailVerified?: boolean
+  image?: string | null
+  password?: string | null
+  role?: $Enums.Role
+  accountRole?: $Enums.AccountRole
+  isActive?: boolean
+  isDeleted?: boolean
+  jobTitle?: string | null
+  bio?: string | null
+  location?: string | null
+  twoFactorEnabled?: boolean
+  twoFactorMethod?: $Enums.TwoFactorMethod | null
+  twoFactorEnrolledAt?: Date | string | null
+  twoFactorSecret?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
+  accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
+  passwordResetTokens?: Prisma.PasswordResetTokenCreateNestedManyWithoutUserInput
+  ownedProjects?: Prisma.ProjectCreateNestedManyWithoutOwnerInput
+  projectMemberships?: Prisma.ProjectMemberCreateNestedManyWithoutUserInput
+  activityEvents?: Prisma.ActivityEventCreateNestedManyWithoutActorInput
+  accountMemberships?: Prisma.AccountMembershipCreateNestedManyWithoutUserInput
+  authChallenges?: Prisma.AuthChallengeCreateNestedManyWithoutUserInput
+  otpCodes?: Prisma.OtpCodeCreateNestedManyWithoutUserInput
+  recoveryCodes?: Prisma.RecoveryCodeCreateNestedManyWithoutUserInput
+  loginDevices?: Prisma.LoginDeviceCreateNestedManyWithoutUserInput
+  securityAlerts?: Prisma.SecurityAlertCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  customerProfile?: Prisma.CustomerProfileCreateNestedOneWithoutUserInput
+  consents?: Prisma.UserConsentCreateNestedManyWithoutUserInput
+  orgMemberships?: Prisma.OrganizationMemberCreateNestedManyWithoutUserInput
+  invitationsCreated?: Prisma.InvitationCreateNestedManyWithoutInvitedByInput
+  onboarding?: Prisma.OnboardingProfileCreateNestedOneWithoutUserInput
+  approvalResponses?: Prisma.ApprovalResponseCreateNestedManyWithoutResponderInput
+  projectComments?: Prisma.ProjectCommentCreateNestedManyWithoutAuthorInput
+  projectFiles?: Prisma.ProjectFileCreateNestedManyWithoutUploaderInput
+  fileAssets?: Prisma.FileAssetCreateNestedManyWithoutOwnerInput
+  maintenanceRequests?: Prisma.MaintenanceRequestCreateNestedManyWithoutRequesterInput
+  supportTickets?: Prisma.SupportTicketCreateNestedManyWithoutRequesterInput
+  ticketMessages?: Prisma.TicketMessageCreateNestedManyWithoutAuthorInput
+  ticketAttachments?: Prisma.TicketAttachmentCreateNestedManyWithoutUploaderInput
+  notificationPreference?: Prisma.NotificationPreferenceCreateNestedOneWithoutUserInput
+  dataExportJobs?: Prisma.DataExportJobCreateNestedManyWithoutUserInput
+  helpArticlesAuthored?: Prisma.HelpArticleCreateNestedManyWithoutAuthorInput
+  supportAssignments?: Prisma.SupportAssignmentCreateNestedManyWithoutAgentInput
+  supportAssignmentsMade?: Prisma.SupportAssignmentCreateNestedManyWithoutAssignedByInput
+  internalNotesAuthored?: Prisma.InternalNoteCreateNestedManyWithoutAuthorInput
+  escalationsTriggered?: Prisma.EscalationEventCreateNestedManyWithoutTriggeredByInput
+  cannedResponsesAuthored?: Prisma.CannedResponseCreateNestedManyWithoutAuthorInput
+  supportProfilesTouched?: Prisma.OrganizationSupportProfileCreateNestedManyWithoutLastTouchedByInput
+  customerActivityEvents?: Prisma.CustomerActivityLogCreateNestedManyWithoutActorInput
+  contentRevisionsAuthored?: Prisma.ContentRevisionCreateNestedManyWithoutAuthorInput
+  knowledgeFeedback?: Prisma.KnowledgeFeedbackCreateNestedManyWithoutUserInput
+  articleUploads?: Prisma.ArticleAttachmentCreateNestedManyWithoutUploaderInput
+  auditEventsAuthored?: Prisma.AuditLogCreateNestedManyWithoutActorInput
+  supportJobsRequested?: Prisma.SupportJobRunCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutSubmittedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewCreateNestedManyWithoutReviewerInput
+}
+
+export type UserUncheckedCreateWithoutCaseStudiesLastReviewedInput = {
+  id: string
+  name: string
+  email: string
+  emailVerified?: boolean
+  image?: string | null
+  password?: string | null
+  role?: $Enums.Role
+  accountRole?: $Enums.AccountRole
+  isActive?: boolean
+  isDeleted?: boolean
+  jobTitle?: string | null
+  bio?: string | null
+  location?: string | null
+  twoFactorEnabled?: boolean
+  twoFactorMethod?: $Enums.TwoFactorMethod | null
+  twoFactorEnrolledAt?: Date | string | null
+  twoFactorSecret?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
+  accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
+  passwordResetTokens?: Prisma.PasswordResetTokenUncheckedCreateNestedManyWithoutUserInput
+  ownedProjects?: Prisma.ProjectUncheckedCreateNestedManyWithoutOwnerInput
+  projectMemberships?: Prisma.ProjectMemberUncheckedCreateNestedManyWithoutUserInput
+  activityEvents?: Prisma.ActivityEventUncheckedCreateNestedManyWithoutActorInput
+  accountMemberships?: Prisma.AccountMembershipUncheckedCreateNestedManyWithoutUserInput
+  authChallenges?: Prisma.AuthChallengeUncheckedCreateNestedManyWithoutUserInput
+  otpCodes?: Prisma.OtpCodeUncheckedCreateNestedManyWithoutUserInput
+  recoveryCodes?: Prisma.RecoveryCodeUncheckedCreateNestedManyWithoutUserInput
+  loginDevices?: Prisma.LoginDeviceUncheckedCreateNestedManyWithoutUserInput
+  securityAlerts?: Prisma.SecurityAlertUncheckedCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  customerProfile?: Prisma.CustomerProfileUncheckedCreateNestedOneWithoutUserInput
+  consents?: Prisma.UserConsentUncheckedCreateNestedManyWithoutUserInput
+  orgMemberships?: Prisma.OrganizationMemberUncheckedCreateNestedManyWithoutUserInput
+  invitationsCreated?: Prisma.InvitationUncheckedCreateNestedManyWithoutInvitedByInput
+  onboarding?: Prisma.OnboardingProfileUncheckedCreateNestedOneWithoutUserInput
+  approvalResponses?: Prisma.ApprovalResponseUncheckedCreateNestedManyWithoutResponderInput
+  projectComments?: Prisma.ProjectCommentUncheckedCreateNestedManyWithoutAuthorInput
+  projectFiles?: Prisma.ProjectFileUncheckedCreateNestedManyWithoutUploaderInput
+  fileAssets?: Prisma.FileAssetUncheckedCreateNestedManyWithoutOwnerInput
+  maintenanceRequests?: Prisma.MaintenanceRequestUncheckedCreateNestedManyWithoutRequesterInput
+  supportTickets?: Prisma.SupportTicketUncheckedCreateNestedManyWithoutRequesterInput
+  ticketMessages?: Prisma.TicketMessageUncheckedCreateNestedManyWithoutAuthorInput
+  ticketAttachments?: Prisma.TicketAttachmentUncheckedCreateNestedManyWithoutUploaderInput
+  notificationPreference?: Prisma.NotificationPreferenceUncheckedCreateNestedOneWithoutUserInput
+  dataExportJobs?: Prisma.DataExportJobUncheckedCreateNestedManyWithoutUserInput
+  helpArticlesAuthored?: Prisma.HelpArticleUncheckedCreateNestedManyWithoutAuthorInput
+  supportAssignments?: Prisma.SupportAssignmentUncheckedCreateNestedManyWithoutAgentInput
+  supportAssignmentsMade?: Prisma.SupportAssignmentUncheckedCreateNestedManyWithoutAssignedByInput
+  internalNotesAuthored?: Prisma.InternalNoteUncheckedCreateNestedManyWithoutAuthorInput
+  escalationsTriggered?: Prisma.EscalationEventUncheckedCreateNestedManyWithoutTriggeredByInput
+  cannedResponsesAuthored?: Prisma.CannedResponseUncheckedCreateNestedManyWithoutAuthorInput
+  supportProfilesTouched?: Prisma.OrganizationSupportProfileUncheckedCreateNestedManyWithoutLastTouchedByInput
+  customerActivityEvents?: Prisma.CustomerActivityLogUncheckedCreateNestedManyWithoutActorInput
+  contentRevisionsAuthored?: Prisma.ContentRevisionUncheckedCreateNestedManyWithoutAuthorInput
+  knowledgeFeedback?: Prisma.KnowledgeFeedbackUncheckedCreateNestedManyWithoutUserInput
+  articleUploads?: Prisma.ArticleAttachmentUncheckedCreateNestedManyWithoutUploaderInput
+  auditEventsAuthored?: Prisma.AuditLogUncheckedCreateNestedManyWithoutActorInput
+  supportJobsRequested?: Prisma.SupportJobRunUncheckedCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutSubmittedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedCreateNestedManyWithoutReviewerInput
+}
+
+export type UserCreateOrConnectWithoutCaseStudiesLastReviewedInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutCaseStudiesLastReviewedInput, Prisma.UserUncheckedCreateWithoutCaseStudiesLastReviewedInput>
+}
+
+export type UserCreateWithoutCaseStudiesSubmittedInput = {
+  id: string
+  name: string
+  email: string
+  emailVerified?: boolean
+  image?: string | null
+  password?: string | null
+  role?: $Enums.Role
+  accountRole?: $Enums.AccountRole
+  isActive?: boolean
+  isDeleted?: boolean
+  jobTitle?: string | null
+  bio?: string | null
+  location?: string | null
+  twoFactorEnabled?: boolean
+  twoFactorMethod?: $Enums.TwoFactorMethod | null
+  twoFactorEnrolledAt?: Date | string | null
+  twoFactorSecret?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
+  accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
+  passwordResetTokens?: Prisma.PasswordResetTokenCreateNestedManyWithoutUserInput
+  ownedProjects?: Prisma.ProjectCreateNestedManyWithoutOwnerInput
+  projectMemberships?: Prisma.ProjectMemberCreateNestedManyWithoutUserInput
+  activityEvents?: Prisma.ActivityEventCreateNestedManyWithoutActorInput
+  accountMemberships?: Prisma.AccountMembershipCreateNestedManyWithoutUserInput
+  authChallenges?: Prisma.AuthChallengeCreateNestedManyWithoutUserInput
+  otpCodes?: Prisma.OtpCodeCreateNestedManyWithoutUserInput
+  recoveryCodes?: Prisma.RecoveryCodeCreateNestedManyWithoutUserInput
+  loginDevices?: Prisma.LoginDeviceCreateNestedManyWithoutUserInput
+  securityAlerts?: Prisma.SecurityAlertCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  customerProfile?: Prisma.CustomerProfileCreateNestedOneWithoutUserInput
+  consents?: Prisma.UserConsentCreateNestedManyWithoutUserInput
+  orgMemberships?: Prisma.OrganizationMemberCreateNestedManyWithoutUserInput
+  invitationsCreated?: Prisma.InvitationCreateNestedManyWithoutInvitedByInput
+  onboarding?: Prisma.OnboardingProfileCreateNestedOneWithoutUserInput
+  approvalResponses?: Prisma.ApprovalResponseCreateNestedManyWithoutResponderInput
+  projectComments?: Prisma.ProjectCommentCreateNestedManyWithoutAuthorInput
+  projectFiles?: Prisma.ProjectFileCreateNestedManyWithoutUploaderInput
+  fileAssets?: Prisma.FileAssetCreateNestedManyWithoutOwnerInput
+  maintenanceRequests?: Prisma.MaintenanceRequestCreateNestedManyWithoutRequesterInput
+  supportTickets?: Prisma.SupportTicketCreateNestedManyWithoutRequesterInput
+  ticketMessages?: Prisma.TicketMessageCreateNestedManyWithoutAuthorInput
+  ticketAttachments?: Prisma.TicketAttachmentCreateNestedManyWithoutUploaderInput
+  notificationPreference?: Prisma.NotificationPreferenceCreateNestedOneWithoutUserInput
+  dataExportJobs?: Prisma.DataExportJobCreateNestedManyWithoutUserInput
+  helpArticlesAuthored?: Prisma.HelpArticleCreateNestedManyWithoutAuthorInput
+  supportAssignments?: Prisma.SupportAssignmentCreateNestedManyWithoutAgentInput
+  supportAssignmentsMade?: Prisma.SupportAssignmentCreateNestedManyWithoutAssignedByInput
+  internalNotesAuthored?: Prisma.InternalNoteCreateNestedManyWithoutAuthorInput
+  escalationsTriggered?: Prisma.EscalationEventCreateNestedManyWithoutTriggeredByInput
+  cannedResponsesAuthored?: Prisma.CannedResponseCreateNestedManyWithoutAuthorInput
+  supportProfilesTouched?: Prisma.OrganizationSupportProfileCreateNestedManyWithoutLastTouchedByInput
+  customerActivityEvents?: Prisma.CustomerActivityLogCreateNestedManyWithoutActorInput
+  contentRevisionsAuthored?: Prisma.ContentRevisionCreateNestedManyWithoutAuthorInput
+  knowledgeFeedback?: Prisma.KnowledgeFeedbackCreateNestedManyWithoutUserInput
+  articleUploads?: Prisma.ArticleAttachmentCreateNestedManyWithoutUploaderInput
+  auditEventsAuthored?: Prisma.AuditLogCreateNestedManyWithoutActorInput
+  supportJobsRequested?: Prisma.SupportJobRunCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewCreateNestedManyWithoutReviewerInput
+}
+
+export type UserUncheckedCreateWithoutCaseStudiesSubmittedInput = {
+  id: string
+  name: string
+  email: string
+  emailVerified?: boolean
+  image?: string | null
+  password?: string | null
+  role?: $Enums.Role
+  accountRole?: $Enums.AccountRole
+  isActive?: boolean
+  isDeleted?: boolean
+  jobTitle?: string | null
+  bio?: string | null
+  location?: string | null
+  twoFactorEnabled?: boolean
+  twoFactorMethod?: $Enums.TwoFactorMethod | null
+  twoFactorEnrolledAt?: Date | string | null
+  twoFactorSecret?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
+  accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
+  passwordResetTokens?: Prisma.PasswordResetTokenUncheckedCreateNestedManyWithoutUserInput
+  ownedProjects?: Prisma.ProjectUncheckedCreateNestedManyWithoutOwnerInput
+  projectMemberships?: Prisma.ProjectMemberUncheckedCreateNestedManyWithoutUserInput
+  activityEvents?: Prisma.ActivityEventUncheckedCreateNestedManyWithoutActorInput
+  accountMemberships?: Prisma.AccountMembershipUncheckedCreateNestedManyWithoutUserInput
+  authChallenges?: Prisma.AuthChallengeUncheckedCreateNestedManyWithoutUserInput
+  otpCodes?: Prisma.OtpCodeUncheckedCreateNestedManyWithoutUserInput
+  recoveryCodes?: Prisma.RecoveryCodeUncheckedCreateNestedManyWithoutUserInput
+  loginDevices?: Prisma.LoginDeviceUncheckedCreateNestedManyWithoutUserInput
+  securityAlerts?: Prisma.SecurityAlertUncheckedCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  customerProfile?: Prisma.CustomerProfileUncheckedCreateNestedOneWithoutUserInput
+  consents?: Prisma.UserConsentUncheckedCreateNestedManyWithoutUserInput
+  orgMemberships?: Prisma.OrganizationMemberUncheckedCreateNestedManyWithoutUserInput
+  invitationsCreated?: Prisma.InvitationUncheckedCreateNestedManyWithoutInvitedByInput
+  onboarding?: Prisma.OnboardingProfileUncheckedCreateNestedOneWithoutUserInput
+  approvalResponses?: Prisma.ApprovalResponseUncheckedCreateNestedManyWithoutResponderInput
+  projectComments?: Prisma.ProjectCommentUncheckedCreateNestedManyWithoutAuthorInput
+  projectFiles?: Prisma.ProjectFileUncheckedCreateNestedManyWithoutUploaderInput
+  fileAssets?: Prisma.FileAssetUncheckedCreateNestedManyWithoutOwnerInput
+  maintenanceRequests?: Prisma.MaintenanceRequestUncheckedCreateNestedManyWithoutRequesterInput
+  supportTickets?: Prisma.SupportTicketUncheckedCreateNestedManyWithoutRequesterInput
+  ticketMessages?: Prisma.TicketMessageUncheckedCreateNestedManyWithoutAuthorInput
+  ticketAttachments?: Prisma.TicketAttachmentUncheckedCreateNestedManyWithoutUploaderInput
+  notificationPreference?: Prisma.NotificationPreferenceUncheckedCreateNestedOneWithoutUserInput
+  dataExportJobs?: Prisma.DataExportJobUncheckedCreateNestedManyWithoutUserInput
+  helpArticlesAuthored?: Prisma.HelpArticleUncheckedCreateNestedManyWithoutAuthorInput
+  supportAssignments?: Prisma.SupportAssignmentUncheckedCreateNestedManyWithoutAgentInput
+  supportAssignmentsMade?: Prisma.SupportAssignmentUncheckedCreateNestedManyWithoutAssignedByInput
+  internalNotesAuthored?: Prisma.InternalNoteUncheckedCreateNestedManyWithoutAuthorInput
+  escalationsTriggered?: Prisma.EscalationEventUncheckedCreateNestedManyWithoutTriggeredByInput
+  cannedResponsesAuthored?: Prisma.CannedResponseUncheckedCreateNestedManyWithoutAuthorInput
+  supportProfilesTouched?: Prisma.OrganizationSupportProfileUncheckedCreateNestedManyWithoutLastTouchedByInput
+  customerActivityEvents?: Prisma.CustomerActivityLogUncheckedCreateNestedManyWithoutActorInput
+  contentRevisionsAuthored?: Prisma.ContentRevisionUncheckedCreateNestedManyWithoutAuthorInput
+  knowledgeFeedback?: Prisma.KnowledgeFeedbackUncheckedCreateNestedManyWithoutUserInput
+  articleUploads?: Prisma.ArticleAttachmentUncheckedCreateNestedManyWithoutUploaderInput
+  auditEventsAuthored?: Prisma.AuditLogUncheckedCreateNestedManyWithoutActorInput
+  supportJobsRequested?: Prisma.SupportJobRunUncheckedCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedCreateNestedManyWithoutReviewerInput
+}
+
+export type UserCreateOrConnectWithoutCaseStudiesSubmittedInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutCaseStudiesSubmittedInput, Prisma.UserUncheckedCreateWithoutCaseStudiesSubmittedInput>
+}
+
+export type UserUpsertWithoutCaseStudiesLastReviewedInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutCaseStudiesLastReviewedInput, Prisma.UserUncheckedUpdateWithoutCaseStudiesLastReviewedInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutCaseStudiesLastReviewedInput, Prisma.UserUncheckedCreateWithoutCaseStudiesLastReviewedInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutCaseStudiesLastReviewedInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutCaseStudiesLastReviewedInput, Prisma.UserUncheckedUpdateWithoutCaseStudiesLastReviewedInput>
+}
+
+export type UserUpdateWithoutCaseStudiesLastReviewedInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  accountRole?: Prisma.EnumAccountRoleFieldUpdateOperationsInput | $Enums.AccountRole
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  jobTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorMethod?: Prisma.NullableEnumTwoFactorMethodFieldUpdateOperationsInput | $Enums.TwoFactorMethod | null
+  twoFactorEnrolledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorSecret?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
+  accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
+  passwordResetTokens?: Prisma.PasswordResetTokenUpdateManyWithoutUserNestedInput
+  ownedProjects?: Prisma.ProjectUpdateManyWithoutOwnerNestedInput
+  projectMemberships?: Prisma.ProjectMemberUpdateManyWithoutUserNestedInput
+  activityEvents?: Prisma.ActivityEventUpdateManyWithoutActorNestedInput
+  accountMemberships?: Prisma.AccountMembershipUpdateManyWithoutUserNestedInput
+  authChallenges?: Prisma.AuthChallengeUpdateManyWithoutUserNestedInput
+  otpCodes?: Prisma.OtpCodeUpdateManyWithoutUserNestedInput
+  recoveryCodes?: Prisma.RecoveryCodeUpdateManyWithoutUserNestedInput
+  loginDevices?: Prisma.LoginDeviceUpdateManyWithoutUserNestedInput
+  securityAlerts?: Prisma.SecurityAlertUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  customerProfile?: Prisma.CustomerProfileUpdateOneWithoutUserNestedInput
+  consents?: Prisma.UserConsentUpdateManyWithoutUserNestedInput
+  orgMemberships?: Prisma.OrganizationMemberUpdateManyWithoutUserNestedInput
+  invitationsCreated?: Prisma.InvitationUpdateManyWithoutInvitedByNestedInput
+  onboarding?: Prisma.OnboardingProfileUpdateOneWithoutUserNestedInput
+  approvalResponses?: Prisma.ApprovalResponseUpdateManyWithoutResponderNestedInput
+  projectComments?: Prisma.ProjectCommentUpdateManyWithoutAuthorNestedInput
+  projectFiles?: Prisma.ProjectFileUpdateManyWithoutUploaderNestedInput
+  fileAssets?: Prisma.FileAssetUpdateManyWithoutOwnerNestedInput
+  maintenanceRequests?: Prisma.MaintenanceRequestUpdateManyWithoutRequesterNestedInput
+  supportTickets?: Prisma.SupportTicketUpdateManyWithoutRequesterNestedInput
+  ticketMessages?: Prisma.TicketMessageUpdateManyWithoutAuthorNestedInput
+  ticketAttachments?: Prisma.TicketAttachmentUpdateManyWithoutUploaderNestedInput
+  notificationPreference?: Prisma.NotificationPreferenceUpdateOneWithoutUserNestedInput
+  dataExportJobs?: Prisma.DataExportJobUpdateManyWithoutUserNestedInput
+  helpArticlesAuthored?: Prisma.HelpArticleUpdateManyWithoutAuthorNestedInput
+  supportAssignments?: Prisma.SupportAssignmentUpdateManyWithoutAgentNestedInput
+  supportAssignmentsMade?: Prisma.SupportAssignmentUpdateManyWithoutAssignedByNestedInput
+  internalNotesAuthored?: Prisma.InternalNoteUpdateManyWithoutAuthorNestedInput
+  escalationsTriggered?: Prisma.EscalationEventUpdateManyWithoutTriggeredByNestedInput
+  cannedResponsesAuthored?: Prisma.CannedResponseUpdateManyWithoutAuthorNestedInput
+  supportProfilesTouched?: Prisma.OrganizationSupportProfileUpdateManyWithoutLastTouchedByNestedInput
+  customerActivityEvents?: Prisma.CustomerActivityLogUpdateManyWithoutActorNestedInput
+  contentRevisionsAuthored?: Prisma.ContentRevisionUpdateManyWithoutAuthorNestedInput
+  knowledgeFeedback?: Prisma.KnowledgeFeedbackUpdateManyWithoutUserNestedInput
+  articleUploads?: Prisma.ArticleAttachmentUpdateManyWithoutUploaderNestedInput
+  auditEventsAuthored?: Prisma.AuditLogUpdateManyWithoutActorNestedInput
+  supportJobsRequested?: Prisma.SupportJobRunUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUpdateManyWithoutSubmittedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUpdateManyWithoutReviewerNestedInput
+}
+
+export type UserUncheckedUpdateWithoutCaseStudiesLastReviewedInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  accountRole?: Prisma.EnumAccountRoleFieldUpdateOperationsInput | $Enums.AccountRole
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  jobTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorMethod?: Prisma.NullableEnumTwoFactorMethodFieldUpdateOperationsInput | $Enums.TwoFactorMethod | null
+  twoFactorEnrolledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorSecret?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
+  accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
+  passwordResetTokens?: Prisma.PasswordResetTokenUncheckedUpdateManyWithoutUserNestedInput
+  ownedProjects?: Prisma.ProjectUncheckedUpdateManyWithoutOwnerNestedInput
+  projectMemberships?: Prisma.ProjectMemberUncheckedUpdateManyWithoutUserNestedInput
+  activityEvents?: Prisma.ActivityEventUncheckedUpdateManyWithoutActorNestedInput
+  accountMemberships?: Prisma.AccountMembershipUncheckedUpdateManyWithoutUserNestedInput
+  authChallenges?: Prisma.AuthChallengeUncheckedUpdateManyWithoutUserNestedInput
+  otpCodes?: Prisma.OtpCodeUncheckedUpdateManyWithoutUserNestedInput
+  recoveryCodes?: Prisma.RecoveryCodeUncheckedUpdateManyWithoutUserNestedInput
+  loginDevices?: Prisma.LoginDeviceUncheckedUpdateManyWithoutUserNestedInput
+  securityAlerts?: Prisma.SecurityAlertUncheckedUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  customerProfile?: Prisma.CustomerProfileUncheckedUpdateOneWithoutUserNestedInput
+  consents?: Prisma.UserConsentUncheckedUpdateManyWithoutUserNestedInput
+  orgMemberships?: Prisma.OrganizationMemberUncheckedUpdateManyWithoutUserNestedInput
+  invitationsCreated?: Prisma.InvitationUncheckedUpdateManyWithoutInvitedByNestedInput
+  onboarding?: Prisma.OnboardingProfileUncheckedUpdateOneWithoutUserNestedInput
+  approvalResponses?: Prisma.ApprovalResponseUncheckedUpdateManyWithoutResponderNestedInput
+  projectComments?: Prisma.ProjectCommentUncheckedUpdateManyWithoutAuthorNestedInput
+  projectFiles?: Prisma.ProjectFileUncheckedUpdateManyWithoutUploaderNestedInput
+  fileAssets?: Prisma.FileAssetUncheckedUpdateManyWithoutOwnerNestedInput
+  maintenanceRequests?: Prisma.MaintenanceRequestUncheckedUpdateManyWithoutRequesterNestedInput
+  supportTickets?: Prisma.SupportTicketUncheckedUpdateManyWithoutRequesterNestedInput
+  ticketMessages?: Prisma.TicketMessageUncheckedUpdateManyWithoutAuthorNestedInput
+  ticketAttachments?: Prisma.TicketAttachmentUncheckedUpdateManyWithoutUploaderNestedInput
+  notificationPreference?: Prisma.NotificationPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  dataExportJobs?: Prisma.DataExportJobUncheckedUpdateManyWithoutUserNestedInput
+  helpArticlesAuthored?: Prisma.HelpArticleUncheckedUpdateManyWithoutAuthorNestedInput
+  supportAssignments?: Prisma.SupportAssignmentUncheckedUpdateManyWithoutAgentNestedInput
+  supportAssignmentsMade?: Prisma.SupportAssignmentUncheckedUpdateManyWithoutAssignedByNestedInput
+  internalNotesAuthored?: Prisma.InternalNoteUncheckedUpdateManyWithoutAuthorNestedInput
+  escalationsTriggered?: Prisma.EscalationEventUncheckedUpdateManyWithoutTriggeredByNestedInput
+  cannedResponsesAuthored?: Prisma.CannedResponseUncheckedUpdateManyWithoutAuthorNestedInput
+  supportProfilesTouched?: Prisma.OrganizationSupportProfileUncheckedUpdateManyWithoutLastTouchedByNestedInput
+  customerActivityEvents?: Prisma.CustomerActivityLogUncheckedUpdateManyWithoutActorNestedInput
+  contentRevisionsAuthored?: Prisma.ContentRevisionUncheckedUpdateManyWithoutAuthorNestedInput
+  knowledgeFeedback?: Prisma.KnowledgeFeedbackUncheckedUpdateManyWithoutUserNestedInput
+  articleUploads?: Prisma.ArticleAttachmentUncheckedUpdateManyWithoutUploaderNestedInput
+  auditEventsAuthored?: Prisma.AuditLogUncheckedUpdateManyWithoutActorNestedInput
+  supportJobsRequested?: Prisma.SupportJobRunUncheckedUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutSubmittedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedUpdateManyWithoutReviewerNestedInput
+}
+
+export type UserUpsertWithoutCaseStudiesSubmittedInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutCaseStudiesSubmittedInput, Prisma.UserUncheckedUpdateWithoutCaseStudiesSubmittedInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutCaseStudiesSubmittedInput, Prisma.UserUncheckedCreateWithoutCaseStudiesSubmittedInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutCaseStudiesSubmittedInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutCaseStudiesSubmittedInput, Prisma.UserUncheckedUpdateWithoutCaseStudiesSubmittedInput>
+}
+
+export type UserUpdateWithoutCaseStudiesSubmittedInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  accountRole?: Prisma.EnumAccountRoleFieldUpdateOperationsInput | $Enums.AccountRole
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  jobTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorMethod?: Prisma.NullableEnumTwoFactorMethodFieldUpdateOperationsInput | $Enums.TwoFactorMethod | null
+  twoFactorEnrolledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorSecret?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
+  accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
+  passwordResetTokens?: Prisma.PasswordResetTokenUpdateManyWithoutUserNestedInput
+  ownedProjects?: Prisma.ProjectUpdateManyWithoutOwnerNestedInput
+  projectMemberships?: Prisma.ProjectMemberUpdateManyWithoutUserNestedInput
+  activityEvents?: Prisma.ActivityEventUpdateManyWithoutActorNestedInput
+  accountMemberships?: Prisma.AccountMembershipUpdateManyWithoutUserNestedInput
+  authChallenges?: Prisma.AuthChallengeUpdateManyWithoutUserNestedInput
+  otpCodes?: Prisma.OtpCodeUpdateManyWithoutUserNestedInput
+  recoveryCodes?: Prisma.RecoveryCodeUpdateManyWithoutUserNestedInput
+  loginDevices?: Prisma.LoginDeviceUpdateManyWithoutUserNestedInput
+  securityAlerts?: Prisma.SecurityAlertUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  customerProfile?: Prisma.CustomerProfileUpdateOneWithoutUserNestedInput
+  consents?: Prisma.UserConsentUpdateManyWithoutUserNestedInput
+  orgMemberships?: Prisma.OrganizationMemberUpdateManyWithoutUserNestedInput
+  invitationsCreated?: Prisma.InvitationUpdateManyWithoutInvitedByNestedInput
+  onboarding?: Prisma.OnboardingProfileUpdateOneWithoutUserNestedInput
+  approvalResponses?: Prisma.ApprovalResponseUpdateManyWithoutResponderNestedInput
+  projectComments?: Prisma.ProjectCommentUpdateManyWithoutAuthorNestedInput
+  projectFiles?: Prisma.ProjectFileUpdateManyWithoutUploaderNestedInput
+  fileAssets?: Prisma.FileAssetUpdateManyWithoutOwnerNestedInput
+  maintenanceRequests?: Prisma.MaintenanceRequestUpdateManyWithoutRequesterNestedInput
+  supportTickets?: Prisma.SupportTicketUpdateManyWithoutRequesterNestedInput
+  ticketMessages?: Prisma.TicketMessageUpdateManyWithoutAuthorNestedInput
+  ticketAttachments?: Prisma.TicketAttachmentUpdateManyWithoutUploaderNestedInput
+  notificationPreference?: Prisma.NotificationPreferenceUpdateOneWithoutUserNestedInput
+  dataExportJobs?: Prisma.DataExportJobUpdateManyWithoutUserNestedInput
+  helpArticlesAuthored?: Prisma.HelpArticleUpdateManyWithoutAuthorNestedInput
+  supportAssignments?: Prisma.SupportAssignmentUpdateManyWithoutAgentNestedInput
+  supportAssignmentsMade?: Prisma.SupportAssignmentUpdateManyWithoutAssignedByNestedInput
+  internalNotesAuthored?: Prisma.InternalNoteUpdateManyWithoutAuthorNestedInput
+  escalationsTriggered?: Prisma.EscalationEventUpdateManyWithoutTriggeredByNestedInput
+  cannedResponsesAuthored?: Prisma.CannedResponseUpdateManyWithoutAuthorNestedInput
+  supportProfilesTouched?: Prisma.OrganizationSupportProfileUpdateManyWithoutLastTouchedByNestedInput
+  customerActivityEvents?: Prisma.CustomerActivityLogUpdateManyWithoutActorNestedInput
+  contentRevisionsAuthored?: Prisma.ContentRevisionUpdateManyWithoutAuthorNestedInput
+  knowledgeFeedback?: Prisma.KnowledgeFeedbackUpdateManyWithoutUserNestedInput
+  articleUploads?: Prisma.ArticleAttachmentUpdateManyWithoutUploaderNestedInput
+  auditEventsAuthored?: Prisma.AuditLogUpdateManyWithoutActorNestedInput
+  supportJobsRequested?: Prisma.SupportJobRunUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUpdateManyWithoutReviewerNestedInput
+}
+
+export type UserUncheckedUpdateWithoutCaseStudiesSubmittedInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  accountRole?: Prisma.EnumAccountRoleFieldUpdateOperationsInput | $Enums.AccountRole
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  jobTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorMethod?: Prisma.NullableEnumTwoFactorMethodFieldUpdateOperationsInput | $Enums.TwoFactorMethod | null
+  twoFactorEnrolledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorSecret?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
+  accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
+  passwordResetTokens?: Prisma.PasswordResetTokenUncheckedUpdateManyWithoutUserNestedInput
+  ownedProjects?: Prisma.ProjectUncheckedUpdateManyWithoutOwnerNestedInput
+  projectMemberships?: Prisma.ProjectMemberUncheckedUpdateManyWithoutUserNestedInput
+  activityEvents?: Prisma.ActivityEventUncheckedUpdateManyWithoutActorNestedInput
+  accountMemberships?: Prisma.AccountMembershipUncheckedUpdateManyWithoutUserNestedInput
+  authChallenges?: Prisma.AuthChallengeUncheckedUpdateManyWithoutUserNestedInput
+  otpCodes?: Prisma.OtpCodeUncheckedUpdateManyWithoutUserNestedInput
+  recoveryCodes?: Prisma.RecoveryCodeUncheckedUpdateManyWithoutUserNestedInput
+  loginDevices?: Prisma.LoginDeviceUncheckedUpdateManyWithoutUserNestedInput
+  securityAlerts?: Prisma.SecurityAlertUncheckedUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  customerProfile?: Prisma.CustomerProfileUncheckedUpdateOneWithoutUserNestedInput
+  consents?: Prisma.UserConsentUncheckedUpdateManyWithoutUserNestedInput
+  orgMemberships?: Prisma.OrganizationMemberUncheckedUpdateManyWithoutUserNestedInput
+  invitationsCreated?: Prisma.InvitationUncheckedUpdateManyWithoutInvitedByNestedInput
+  onboarding?: Prisma.OnboardingProfileUncheckedUpdateOneWithoutUserNestedInput
+  approvalResponses?: Prisma.ApprovalResponseUncheckedUpdateManyWithoutResponderNestedInput
+  projectComments?: Prisma.ProjectCommentUncheckedUpdateManyWithoutAuthorNestedInput
+  projectFiles?: Prisma.ProjectFileUncheckedUpdateManyWithoutUploaderNestedInput
+  fileAssets?: Prisma.FileAssetUncheckedUpdateManyWithoutOwnerNestedInput
+  maintenanceRequests?: Prisma.MaintenanceRequestUncheckedUpdateManyWithoutRequesterNestedInput
+  supportTickets?: Prisma.SupportTicketUncheckedUpdateManyWithoutRequesterNestedInput
+  ticketMessages?: Prisma.TicketMessageUncheckedUpdateManyWithoutAuthorNestedInput
+  ticketAttachments?: Prisma.TicketAttachmentUncheckedUpdateManyWithoutUploaderNestedInput
+  notificationPreference?: Prisma.NotificationPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  dataExportJobs?: Prisma.DataExportJobUncheckedUpdateManyWithoutUserNestedInput
+  helpArticlesAuthored?: Prisma.HelpArticleUncheckedUpdateManyWithoutAuthorNestedInput
+  supportAssignments?: Prisma.SupportAssignmentUncheckedUpdateManyWithoutAgentNestedInput
+  supportAssignmentsMade?: Prisma.SupportAssignmentUncheckedUpdateManyWithoutAssignedByNestedInput
+  internalNotesAuthored?: Prisma.InternalNoteUncheckedUpdateManyWithoutAuthorNestedInput
+  escalationsTriggered?: Prisma.EscalationEventUncheckedUpdateManyWithoutTriggeredByNestedInput
+  cannedResponsesAuthored?: Prisma.CannedResponseUncheckedUpdateManyWithoutAuthorNestedInput
+  supportProfilesTouched?: Prisma.OrganizationSupportProfileUncheckedUpdateManyWithoutLastTouchedByNestedInput
+  customerActivityEvents?: Prisma.CustomerActivityLogUncheckedUpdateManyWithoutActorNestedInput
+  contentRevisionsAuthored?: Prisma.ContentRevisionUncheckedUpdateManyWithoutAuthorNestedInput
+  knowledgeFeedback?: Prisma.KnowledgeFeedbackUncheckedUpdateManyWithoutUserNestedInput
+  articleUploads?: Prisma.ArticleAttachmentUncheckedUpdateManyWithoutUploaderNestedInput
+  auditEventsAuthored?: Prisma.AuditLogUncheckedUpdateManyWithoutActorNestedInput
+  supportJobsRequested?: Prisma.SupportJobRunUncheckedUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedUpdateManyWithoutReviewerNestedInput
+}
+
+export type UserCreateWithoutClientApprovalsRecordedInput = {
+  id: string
+  name: string
+  email: string
+  emailVerified?: boolean
+  image?: string | null
+  password?: string | null
+  role?: $Enums.Role
+  accountRole?: $Enums.AccountRole
+  isActive?: boolean
+  isDeleted?: boolean
+  jobTitle?: string | null
+  bio?: string | null
+  location?: string | null
+  twoFactorEnabled?: boolean
+  twoFactorMethod?: $Enums.TwoFactorMethod | null
+  twoFactorEnrolledAt?: Date | string | null
+  twoFactorSecret?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
+  accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
+  passwordResetTokens?: Prisma.PasswordResetTokenCreateNestedManyWithoutUserInput
+  ownedProjects?: Prisma.ProjectCreateNestedManyWithoutOwnerInput
+  projectMemberships?: Prisma.ProjectMemberCreateNestedManyWithoutUserInput
+  activityEvents?: Prisma.ActivityEventCreateNestedManyWithoutActorInput
+  accountMemberships?: Prisma.AccountMembershipCreateNestedManyWithoutUserInput
+  authChallenges?: Prisma.AuthChallengeCreateNestedManyWithoutUserInput
+  otpCodes?: Prisma.OtpCodeCreateNestedManyWithoutUserInput
+  recoveryCodes?: Prisma.RecoveryCodeCreateNestedManyWithoutUserInput
+  loginDevices?: Prisma.LoginDeviceCreateNestedManyWithoutUserInput
+  securityAlerts?: Prisma.SecurityAlertCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  customerProfile?: Prisma.CustomerProfileCreateNestedOneWithoutUserInput
+  consents?: Prisma.UserConsentCreateNestedManyWithoutUserInput
+  orgMemberships?: Prisma.OrganizationMemberCreateNestedManyWithoutUserInput
+  invitationsCreated?: Prisma.InvitationCreateNestedManyWithoutInvitedByInput
+  onboarding?: Prisma.OnboardingProfileCreateNestedOneWithoutUserInput
+  approvalResponses?: Prisma.ApprovalResponseCreateNestedManyWithoutResponderInput
+  projectComments?: Prisma.ProjectCommentCreateNestedManyWithoutAuthorInput
+  projectFiles?: Prisma.ProjectFileCreateNestedManyWithoutUploaderInput
+  fileAssets?: Prisma.FileAssetCreateNestedManyWithoutOwnerInput
+  maintenanceRequests?: Prisma.MaintenanceRequestCreateNestedManyWithoutRequesterInput
+  supportTickets?: Prisma.SupportTicketCreateNestedManyWithoutRequesterInput
+  ticketMessages?: Prisma.TicketMessageCreateNestedManyWithoutAuthorInput
+  ticketAttachments?: Prisma.TicketAttachmentCreateNestedManyWithoutUploaderInput
+  notificationPreference?: Prisma.NotificationPreferenceCreateNestedOneWithoutUserInput
+  dataExportJobs?: Prisma.DataExportJobCreateNestedManyWithoutUserInput
+  helpArticlesAuthored?: Prisma.HelpArticleCreateNestedManyWithoutAuthorInput
+  supportAssignments?: Prisma.SupportAssignmentCreateNestedManyWithoutAgentInput
+  supportAssignmentsMade?: Prisma.SupportAssignmentCreateNestedManyWithoutAssignedByInput
+  internalNotesAuthored?: Prisma.InternalNoteCreateNestedManyWithoutAuthorInput
+  escalationsTriggered?: Prisma.EscalationEventCreateNestedManyWithoutTriggeredByInput
+  cannedResponsesAuthored?: Prisma.CannedResponseCreateNestedManyWithoutAuthorInput
+  supportProfilesTouched?: Prisma.OrganizationSupportProfileCreateNestedManyWithoutLastTouchedByInput
+  customerActivityEvents?: Prisma.CustomerActivityLogCreateNestedManyWithoutActorInput
+  contentRevisionsAuthored?: Prisma.ContentRevisionCreateNestedManyWithoutAuthorInput
+  knowledgeFeedback?: Prisma.KnowledgeFeedbackCreateNestedManyWithoutUserInput
+  articleUploads?: Prisma.ArticleAttachmentCreateNestedManyWithoutUploaderInput
+  auditEventsAuthored?: Prisma.AuditLogCreateNestedManyWithoutActorInput
+  supportJobsRequested?: Prisma.SupportJobRunCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutLastReviewedByInput
+  testimonialsSubmitted?: Prisma.TestimonialCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewCreateNestedManyWithoutReviewerInput
+}
+
+export type UserUncheckedCreateWithoutClientApprovalsRecordedInput = {
+  id: string
+  name: string
+  email: string
+  emailVerified?: boolean
+  image?: string | null
+  password?: string | null
+  role?: $Enums.Role
+  accountRole?: $Enums.AccountRole
+  isActive?: boolean
+  isDeleted?: boolean
+  jobTitle?: string | null
+  bio?: string | null
+  location?: string | null
+  twoFactorEnabled?: boolean
+  twoFactorMethod?: $Enums.TwoFactorMethod | null
+  twoFactorEnrolledAt?: Date | string | null
+  twoFactorSecret?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
+  accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
+  passwordResetTokens?: Prisma.PasswordResetTokenUncheckedCreateNestedManyWithoutUserInput
+  ownedProjects?: Prisma.ProjectUncheckedCreateNestedManyWithoutOwnerInput
+  projectMemberships?: Prisma.ProjectMemberUncheckedCreateNestedManyWithoutUserInput
+  activityEvents?: Prisma.ActivityEventUncheckedCreateNestedManyWithoutActorInput
+  accountMemberships?: Prisma.AccountMembershipUncheckedCreateNestedManyWithoutUserInput
+  authChallenges?: Prisma.AuthChallengeUncheckedCreateNestedManyWithoutUserInput
+  otpCodes?: Prisma.OtpCodeUncheckedCreateNestedManyWithoutUserInput
+  recoveryCodes?: Prisma.RecoveryCodeUncheckedCreateNestedManyWithoutUserInput
+  loginDevices?: Prisma.LoginDeviceUncheckedCreateNestedManyWithoutUserInput
+  securityAlerts?: Prisma.SecurityAlertUncheckedCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  customerProfile?: Prisma.CustomerProfileUncheckedCreateNestedOneWithoutUserInput
+  consents?: Prisma.UserConsentUncheckedCreateNestedManyWithoutUserInput
+  orgMemberships?: Prisma.OrganizationMemberUncheckedCreateNestedManyWithoutUserInput
+  invitationsCreated?: Prisma.InvitationUncheckedCreateNestedManyWithoutInvitedByInput
+  onboarding?: Prisma.OnboardingProfileUncheckedCreateNestedOneWithoutUserInput
+  approvalResponses?: Prisma.ApprovalResponseUncheckedCreateNestedManyWithoutResponderInput
+  projectComments?: Prisma.ProjectCommentUncheckedCreateNestedManyWithoutAuthorInput
+  projectFiles?: Prisma.ProjectFileUncheckedCreateNestedManyWithoutUploaderInput
+  fileAssets?: Prisma.FileAssetUncheckedCreateNestedManyWithoutOwnerInput
+  maintenanceRequests?: Prisma.MaintenanceRequestUncheckedCreateNestedManyWithoutRequesterInput
+  supportTickets?: Prisma.SupportTicketUncheckedCreateNestedManyWithoutRequesterInput
+  ticketMessages?: Prisma.TicketMessageUncheckedCreateNestedManyWithoutAuthorInput
+  ticketAttachments?: Prisma.TicketAttachmentUncheckedCreateNestedManyWithoutUploaderInput
+  notificationPreference?: Prisma.NotificationPreferenceUncheckedCreateNestedOneWithoutUserInput
+  dataExportJobs?: Prisma.DataExportJobUncheckedCreateNestedManyWithoutUserInput
+  helpArticlesAuthored?: Prisma.HelpArticleUncheckedCreateNestedManyWithoutAuthorInput
+  supportAssignments?: Prisma.SupportAssignmentUncheckedCreateNestedManyWithoutAgentInput
+  supportAssignmentsMade?: Prisma.SupportAssignmentUncheckedCreateNestedManyWithoutAssignedByInput
+  internalNotesAuthored?: Prisma.InternalNoteUncheckedCreateNestedManyWithoutAuthorInput
+  escalationsTriggered?: Prisma.EscalationEventUncheckedCreateNestedManyWithoutTriggeredByInput
+  cannedResponsesAuthored?: Prisma.CannedResponseUncheckedCreateNestedManyWithoutAuthorInput
+  supportProfilesTouched?: Prisma.OrganizationSupportProfileUncheckedCreateNestedManyWithoutLastTouchedByInput
+  customerActivityEvents?: Prisma.CustomerActivityLogUncheckedCreateNestedManyWithoutActorInput
+  contentRevisionsAuthored?: Prisma.ContentRevisionUncheckedCreateNestedManyWithoutAuthorInput
+  knowledgeFeedback?: Prisma.KnowledgeFeedbackUncheckedCreateNestedManyWithoutUserInput
+  articleUploads?: Prisma.ArticleAttachmentUncheckedCreateNestedManyWithoutUploaderInput
+  auditEventsAuthored?: Prisma.AuditLogUncheckedCreateNestedManyWithoutActorInput
+  supportJobsRequested?: Prisma.SupportJobRunUncheckedCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutLastReviewedByInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedCreateNestedManyWithoutReviewerInput
+}
+
+export type UserCreateOrConnectWithoutClientApprovalsRecordedInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutClientApprovalsRecordedInput, Prisma.UserUncheckedCreateWithoutClientApprovalsRecordedInput>
+}
+
+export type UserUpsertWithoutClientApprovalsRecordedInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutClientApprovalsRecordedInput, Prisma.UserUncheckedUpdateWithoutClientApprovalsRecordedInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutClientApprovalsRecordedInput, Prisma.UserUncheckedCreateWithoutClientApprovalsRecordedInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutClientApprovalsRecordedInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutClientApprovalsRecordedInput, Prisma.UserUncheckedUpdateWithoutClientApprovalsRecordedInput>
+}
+
+export type UserUpdateWithoutClientApprovalsRecordedInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  accountRole?: Prisma.EnumAccountRoleFieldUpdateOperationsInput | $Enums.AccountRole
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  jobTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorMethod?: Prisma.NullableEnumTwoFactorMethodFieldUpdateOperationsInput | $Enums.TwoFactorMethod | null
+  twoFactorEnrolledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorSecret?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
+  accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
+  passwordResetTokens?: Prisma.PasswordResetTokenUpdateManyWithoutUserNestedInput
+  ownedProjects?: Prisma.ProjectUpdateManyWithoutOwnerNestedInput
+  projectMemberships?: Prisma.ProjectMemberUpdateManyWithoutUserNestedInput
+  activityEvents?: Prisma.ActivityEventUpdateManyWithoutActorNestedInput
+  accountMemberships?: Prisma.AccountMembershipUpdateManyWithoutUserNestedInput
+  authChallenges?: Prisma.AuthChallengeUpdateManyWithoutUserNestedInput
+  otpCodes?: Prisma.OtpCodeUpdateManyWithoutUserNestedInput
+  recoveryCodes?: Prisma.RecoveryCodeUpdateManyWithoutUserNestedInput
+  loginDevices?: Prisma.LoginDeviceUpdateManyWithoutUserNestedInput
+  securityAlerts?: Prisma.SecurityAlertUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  customerProfile?: Prisma.CustomerProfileUpdateOneWithoutUserNestedInput
+  consents?: Prisma.UserConsentUpdateManyWithoutUserNestedInput
+  orgMemberships?: Prisma.OrganizationMemberUpdateManyWithoutUserNestedInput
+  invitationsCreated?: Prisma.InvitationUpdateManyWithoutInvitedByNestedInput
+  onboarding?: Prisma.OnboardingProfileUpdateOneWithoutUserNestedInput
+  approvalResponses?: Prisma.ApprovalResponseUpdateManyWithoutResponderNestedInput
+  projectComments?: Prisma.ProjectCommentUpdateManyWithoutAuthorNestedInput
+  projectFiles?: Prisma.ProjectFileUpdateManyWithoutUploaderNestedInput
+  fileAssets?: Prisma.FileAssetUpdateManyWithoutOwnerNestedInput
+  maintenanceRequests?: Prisma.MaintenanceRequestUpdateManyWithoutRequesterNestedInput
+  supportTickets?: Prisma.SupportTicketUpdateManyWithoutRequesterNestedInput
+  ticketMessages?: Prisma.TicketMessageUpdateManyWithoutAuthorNestedInput
+  ticketAttachments?: Prisma.TicketAttachmentUpdateManyWithoutUploaderNestedInput
+  notificationPreference?: Prisma.NotificationPreferenceUpdateOneWithoutUserNestedInput
+  dataExportJobs?: Prisma.DataExportJobUpdateManyWithoutUserNestedInput
+  helpArticlesAuthored?: Prisma.HelpArticleUpdateManyWithoutAuthorNestedInput
+  supportAssignments?: Prisma.SupportAssignmentUpdateManyWithoutAgentNestedInput
+  supportAssignmentsMade?: Prisma.SupportAssignmentUpdateManyWithoutAssignedByNestedInput
+  internalNotesAuthored?: Prisma.InternalNoteUpdateManyWithoutAuthorNestedInput
+  escalationsTriggered?: Prisma.EscalationEventUpdateManyWithoutTriggeredByNestedInput
+  cannedResponsesAuthored?: Prisma.CannedResponseUpdateManyWithoutAuthorNestedInput
+  supportProfilesTouched?: Prisma.OrganizationSupportProfileUpdateManyWithoutLastTouchedByNestedInput
+  customerActivityEvents?: Prisma.CustomerActivityLogUpdateManyWithoutActorNestedInput
+  contentRevisionsAuthored?: Prisma.ContentRevisionUpdateManyWithoutAuthorNestedInput
+  knowledgeFeedback?: Prisma.KnowledgeFeedbackUpdateManyWithoutUserNestedInput
+  articleUploads?: Prisma.ArticleAttachmentUpdateManyWithoutUploaderNestedInput
+  auditEventsAuthored?: Prisma.AuditLogUpdateManyWithoutActorNestedInput
+  supportJobsRequested?: Prisma.SupportJobRunUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUpdateManyWithoutLastReviewedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUpdateManyWithoutReviewerNestedInput
+}
+
+export type UserUncheckedUpdateWithoutClientApprovalsRecordedInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  accountRole?: Prisma.EnumAccountRoleFieldUpdateOperationsInput | $Enums.AccountRole
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  jobTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorMethod?: Prisma.NullableEnumTwoFactorMethodFieldUpdateOperationsInput | $Enums.TwoFactorMethod | null
+  twoFactorEnrolledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorSecret?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
+  accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
+  passwordResetTokens?: Prisma.PasswordResetTokenUncheckedUpdateManyWithoutUserNestedInput
+  ownedProjects?: Prisma.ProjectUncheckedUpdateManyWithoutOwnerNestedInput
+  projectMemberships?: Prisma.ProjectMemberUncheckedUpdateManyWithoutUserNestedInput
+  activityEvents?: Prisma.ActivityEventUncheckedUpdateManyWithoutActorNestedInput
+  accountMemberships?: Prisma.AccountMembershipUncheckedUpdateManyWithoutUserNestedInput
+  authChallenges?: Prisma.AuthChallengeUncheckedUpdateManyWithoutUserNestedInput
+  otpCodes?: Prisma.OtpCodeUncheckedUpdateManyWithoutUserNestedInput
+  recoveryCodes?: Prisma.RecoveryCodeUncheckedUpdateManyWithoutUserNestedInput
+  loginDevices?: Prisma.LoginDeviceUncheckedUpdateManyWithoutUserNestedInput
+  securityAlerts?: Prisma.SecurityAlertUncheckedUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  customerProfile?: Prisma.CustomerProfileUncheckedUpdateOneWithoutUserNestedInput
+  consents?: Prisma.UserConsentUncheckedUpdateManyWithoutUserNestedInput
+  orgMemberships?: Prisma.OrganizationMemberUncheckedUpdateManyWithoutUserNestedInput
+  invitationsCreated?: Prisma.InvitationUncheckedUpdateManyWithoutInvitedByNestedInput
+  onboarding?: Prisma.OnboardingProfileUncheckedUpdateOneWithoutUserNestedInput
+  approvalResponses?: Prisma.ApprovalResponseUncheckedUpdateManyWithoutResponderNestedInput
+  projectComments?: Prisma.ProjectCommentUncheckedUpdateManyWithoutAuthorNestedInput
+  projectFiles?: Prisma.ProjectFileUncheckedUpdateManyWithoutUploaderNestedInput
+  fileAssets?: Prisma.FileAssetUncheckedUpdateManyWithoutOwnerNestedInput
+  maintenanceRequests?: Prisma.MaintenanceRequestUncheckedUpdateManyWithoutRequesterNestedInput
+  supportTickets?: Prisma.SupportTicketUncheckedUpdateManyWithoutRequesterNestedInput
+  ticketMessages?: Prisma.TicketMessageUncheckedUpdateManyWithoutAuthorNestedInput
+  ticketAttachments?: Prisma.TicketAttachmentUncheckedUpdateManyWithoutUploaderNestedInput
+  notificationPreference?: Prisma.NotificationPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  dataExportJobs?: Prisma.DataExportJobUncheckedUpdateManyWithoutUserNestedInput
+  helpArticlesAuthored?: Prisma.HelpArticleUncheckedUpdateManyWithoutAuthorNestedInput
+  supportAssignments?: Prisma.SupportAssignmentUncheckedUpdateManyWithoutAgentNestedInput
+  supportAssignmentsMade?: Prisma.SupportAssignmentUncheckedUpdateManyWithoutAssignedByNestedInput
+  internalNotesAuthored?: Prisma.InternalNoteUncheckedUpdateManyWithoutAuthorNestedInput
+  escalationsTriggered?: Prisma.EscalationEventUncheckedUpdateManyWithoutTriggeredByNestedInput
+  cannedResponsesAuthored?: Prisma.CannedResponseUncheckedUpdateManyWithoutAuthorNestedInput
+  supportProfilesTouched?: Prisma.OrganizationSupportProfileUncheckedUpdateManyWithoutLastTouchedByNestedInput
+  customerActivityEvents?: Prisma.CustomerActivityLogUncheckedUpdateManyWithoutActorNestedInput
+  contentRevisionsAuthored?: Prisma.ContentRevisionUncheckedUpdateManyWithoutAuthorNestedInput
+  knowledgeFeedback?: Prisma.KnowledgeFeedbackUncheckedUpdateManyWithoutUserNestedInput
+  articleUploads?: Prisma.ArticleAttachmentUncheckedUpdateManyWithoutUploaderNestedInput
+  auditEventsAuthored?: Prisma.AuditLogUncheckedUpdateManyWithoutActorNestedInput
+  supportJobsRequested?: Prisma.SupportJobRunUncheckedUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedUpdateManyWithoutReviewerNestedInput
+}
+
+export type UserCreateWithoutTestimonialsLastReviewedInput = {
+  id: string
+  name: string
+  email: string
+  emailVerified?: boolean
+  image?: string | null
+  password?: string | null
+  role?: $Enums.Role
+  accountRole?: $Enums.AccountRole
+  isActive?: boolean
+  isDeleted?: boolean
+  jobTitle?: string | null
+  bio?: string | null
+  location?: string | null
+  twoFactorEnabled?: boolean
+  twoFactorMethod?: $Enums.TwoFactorMethod | null
+  twoFactorEnrolledAt?: Date | string | null
+  twoFactorSecret?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
+  accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
+  passwordResetTokens?: Prisma.PasswordResetTokenCreateNestedManyWithoutUserInput
+  ownedProjects?: Prisma.ProjectCreateNestedManyWithoutOwnerInput
+  projectMemberships?: Prisma.ProjectMemberCreateNestedManyWithoutUserInput
+  activityEvents?: Prisma.ActivityEventCreateNestedManyWithoutActorInput
+  accountMemberships?: Prisma.AccountMembershipCreateNestedManyWithoutUserInput
+  authChallenges?: Prisma.AuthChallengeCreateNestedManyWithoutUserInput
+  otpCodes?: Prisma.OtpCodeCreateNestedManyWithoutUserInput
+  recoveryCodes?: Prisma.RecoveryCodeCreateNestedManyWithoutUserInput
+  loginDevices?: Prisma.LoginDeviceCreateNestedManyWithoutUserInput
+  securityAlerts?: Prisma.SecurityAlertCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  customerProfile?: Prisma.CustomerProfileCreateNestedOneWithoutUserInput
+  consents?: Prisma.UserConsentCreateNestedManyWithoutUserInput
+  orgMemberships?: Prisma.OrganizationMemberCreateNestedManyWithoutUserInput
+  invitationsCreated?: Prisma.InvitationCreateNestedManyWithoutInvitedByInput
+  onboarding?: Prisma.OnboardingProfileCreateNestedOneWithoutUserInput
+  approvalResponses?: Prisma.ApprovalResponseCreateNestedManyWithoutResponderInput
+  projectComments?: Prisma.ProjectCommentCreateNestedManyWithoutAuthorInput
+  projectFiles?: Prisma.ProjectFileCreateNestedManyWithoutUploaderInput
+  fileAssets?: Prisma.FileAssetCreateNestedManyWithoutOwnerInput
+  maintenanceRequests?: Prisma.MaintenanceRequestCreateNestedManyWithoutRequesterInput
+  supportTickets?: Prisma.SupportTicketCreateNestedManyWithoutRequesterInput
+  ticketMessages?: Prisma.TicketMessageCreateNestedManyWithoutAuthorInput
+  ticketAttachments?: Prisma.TicketAttachmentCreateNestedManyWithoutUploaderInput
+  notificationPreference?: Prisma.NotificationPreferenceCreateNestedOneWithoutUserInput
+  dataExportJobs?: Prisma.DataExportJobCreateNestedManyWithoutUserInput
+  helpArticlesAuthored?: Prisma.HelpArticleCreateNestedManyWithoutAuthorInput
+  supportAssignments?: Prisma.SupportAssignmentCreateNestedManyWithoutAgentInput
+  supportAssignmentsMade?: Prisma.SupportAssignmentCreateNestedManyWithoutAssignedByInput
+  internalNotesAuthored?: Prisma.InternalNoteCreateNestedManyWithoutAuthorInput
+  escalationsTriggered?: Prisma.EscalationEventCreateNestedManyWithoutTriggeredByInput
+  cannedResponsesAuthored?: Prisma.CannedResponseCreateNestedManyWithoutAuthorInput
+  supportProfilesTouched?: Prisma.OrganizationSupportProfileCreateNestedManyWithoutLastTouchedByInput
+  customerActivityEvents?: Prisma.CustomerActivityLogCreateNestedManyWithoutActorInput
+  contentRevisionsAuthored?: Prisma.ContentRevisionCreateNestedManyWithoutAuthorInput
+  knowledgeFeedback?: Prisma.KnowledgeFeedbackCreateNestedManyWithoutUserInput
+  articleUploads?: Prisma.ArticleAttachmentCreateNestedManyWithoutUploaderInput
+  auditEventsAuthored?: Prisma.AuditLogCreateNestedManyWithoutActorInput
+  supportJobsRequested?: Prisma.SupportJobRunCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialCreateNestedManyWithoutSubmittedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewCreateNestedManyWithoutReviewerInput
+}
+
+export type UserUncheckedCreateWithoutTestimonialsLastReviewedInput = {
+  id: string
+  name: string
+  email: string
+  emailVerified?: boolean
+  image?: string | null
+  password?: string | null
+  role?: $Enums.Role
+  accountRole?: $Enums.AccountRole
+  isActive?: boolean
+  isDeleted?: boolean
+  jobTitle?: string | null
+  bio?: string | null
+  location?: string | null
+  twoFactorEnabled?: boolean
+  twoFactorMethod?: $Enums.TwoFactorMethod | null
+  twoFactorEnrolledAt?: Date | string | null
+  twoFactorSecret?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
+  accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
+  passwordResetTokens?: Prisma.PasswordResetTokenUncheckedCreateNestedManyWithoutUserInput
+  ownedProjects?: Prisma.ProjectUncheckedCreateNestedManyWithoutOwnerInput
+  projectMemberships?: Prisma.ProjectMemberUncheckedCreateNestedManyWithoutUserInput
+  activityEvents?: Prisma.ActivityEventUncheckedCreateNestedManyWithoutActorInput
+  accountMemberships?: Prisma.AccountMembershipUncheckedCreateNestedManyWithoutUserInput
+  authChallenges?: Prisma.AuthChallengeUncheckedCreateNestedManyWithoutUserInput
+  otpCodes?: Prisma.OtpCodeUncheckedCreateNestedManyWithoutUserInput
+  recoveryCodes?: Prisma.RecoveryCodeUncheckedCreateNestedManyWithoutUserInput
+  loginDevices?: Prisma.LoginDeviceUncheckedCreateNestedManyWithoutUserInput
+  securityAlerts?: Prisma.SecurityAlertUncheckedCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  customerProfile?: Prisma.CustomerProfileUncheckedCreateNestedOneWithoutUserInput
+  consents?: Prisma.UserConsentUncheckedCreateNestedManyWithoutUserInput
+  orgMemberships?: Prisma.OrganizationMemberUncheckedCreateNestedManyWithoutUserInput
+  invitationsCreated?: Prisma.InvitationUncheckedCreateNestedManyWithoutInvitedByInput
+  onboarding?: Prisma.OnboardingProfileUncheckedCreateNestedOneWithoutUserInput
+  approvalResponses?: Prisma.ApprovalResponseUncheckedCreateNestedManyWithoutResponderInput
+  projectComments?: Prisma.ProjectCommentUncheckedCreateNestedManyWithoutAuthorInput
+  projectFiles?: Prisma.ProjectFileUncheckedCreateNestedManyWithoutUploaderInput
+  fileAssets?: Prisma.FileAssetUncheckedCreateNestedManyWithoutOwnerInput
+  maintenanceRequests?: Prisma.MaintenanceRequestUncheckedCreateNestedManyWithoutRequesterInput
+  supportTickets?: Prisma.SupportTicketUncheckedCreateNestedManyWithoutRequesterInput
+  ticketMessages?: Prisma.TicketMessageUncheckedCreateNestedManyWithoutAuthorInput
+  ticketAttachments?: Prisma.TicketAttachmentUncheckedCreateNestedManyWithoutUploaderInput
+  notificationPreference?: Prisma.NotificationPreferenceUncheckedCreateNestedOneWithoutUserInput
+  dataExportJobs?: Prisma.DataExportJobUncheckedCreateNestedManyWithoutUserInput
+  helpArticlesAuthored?: Prisma.HelpArticleUncheckedCreateNestedManyWithoutAuthorInput
+  supportAssignments?: Prisma.SupportAssignmentUncheckedCreateNestedManyWithoutAgentInput
+  supportAssignmentsMade?: Prisma.SupportAssignmentUncheckedCreateNestedManyWithoutAssignedByInput
+  internalNotesAuthored?: Prisma.InternalNoteUncheckedCreateNestedManyWithoutAuthorInput
+  escalationsTriggered?: Prisma.EscalationEventUncheckedCreateNestedManyWithoutTriggeredByInput
+  cannedResponsesAuthored?: Prisma.CannedResponseUncheckedCreateNestedManyWithoutAuthorInput
+  supportProfilesTouched?: Prisma.OrganizationSupportProfileUncheckedCreateNestedManyWithoutLastTouchedByInput
+  customerActivityEvents?: Prisma.CustomerActivityLogUncheckedCreateNestedManyWithoutActorInput
+  contentRevisionsAuthored?: Prisma.ContentRevisionUncheckedCreateNestedManyWithoutAuthorInput
+  knowledgeFeedback?: Prisma.KnowledgeFeedbackUncheckedCreateNestedManyWithoutUserInput
+  articleUploads?: Prisma.ArticleAttachmentUncheckedCreateNestedManyWithoutUploaderInput
+  auditEventsAuthored?: Prisma.AuditLogUncheckedCreateNestedManyWithoutActorInput
+  supportJobsRequested?: Prisma.SupportJobRunUncheckedCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedCreateNestedManyWithoutSubmittedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedCreateNestedManyWithoutReviewerInput
+}
+
+export type UserCreateOrConnectWithoutTestimonialsLastReviewedInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutTestimonialsLastReviewedInput, Prisma.UserUncheckedCreateWithoutTestimonialsLastReviewedInput>
+}
+
+export type UserCreateWithoutTestimonialsSubmittedInput = {
+  id: string
+  name: string
+  email: string
+  emailVerified?: boolean
+  image?: string | null
+  password?: string | null
+  role?: $Enums.Role
+  accountRole?: $Enums.AccountRole
+  isActive?: boolean
+  isDeleted?: boolean
+  jobTitle?: string | null
+  bio?: string | null
+  location?: string | null
+  twoFactorEnabled?: boolean
+  twoFactorMethod?: $Enums.TwoFactorMethod | null
+  twoFactorEnrolledAt?: Date | string | null
+  twoFactorSecret?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
+  accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
+  passwordResetTokens?: Prisma.PasswordResetTokenCreateNestedManyWithoutUserInput
+  ownedProjects?: Prisma.ProjectCreateNestedManyWithoutOwnerInput
+  projectMemberships?: Prisma.ProjectMemberCreateNestedManyWithoutUserInput
+  activityEvents?: Prisma.ActivityEventCreateNestedManyWithoutActorInput
+  accountMemberships?: Prisma.AccountMembershipCreateNestedManyWithoutUserInput
+  authChallenges?: Prisma.AuthChallengeCreateNestedManyWithoutUserInput
+  otpCodes?: Prisma.OtpCodeCreateNestedManyWithoutUserInput
+  recoveryCodes?: Prisma.RecoveryCodeCreateNestedManyWithoutUserInput
+  loginDevices?: Prisma.LoginDeviceCreateNestedManyWithoutUserInput
+  securityAlerts?: Prisma.SecurityAlertCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  customerProfile?: Prisma.CustomerProfileCreateNestedOneWithoutUserInput
+  consents?: Prisma.UserConsentCreateNestedManyWithoutUserInput
+  orgMemberships?: Prisma.OrganizationMemberCreateNestedManyWithoutUserInput
+  invitationsCreated?: Prisma.InvitationCreateNestedManyWithoutInvitedByInput
+  onboarding?: Prisma.OnboardingProfileCreateNestedOneWithoutUserInput
+  approvalResponses?: Prisma.ApprovalResponseCreateNestedManyWithoutResponderInput
+  projectComments?: Prisma.ProjectCommentCreateNestedManyWithoutAuthorInput
+  projectFiles?: Prisma.ProjectFileCreateNestedManyWithoutUploaderInput
+  fileAssets?: Prisma.FileAssetCreateNestedManyWithoutOwnerInput
+  maintenanceRequests?: Prisma.MaintenanceRequestCreateNestedManyWithoutRequesterInput
+  supportTickets?: Prisma.SupportTicketCreateNestedManyWithoutRequesterInput
+  ticketMessages?: Prisma.TicketMessageCreateNestedManyWithoutAuthorInput
+  ticketAttachments?: Prisma.TicketAttachmentCreateNestedManyWithoutUploaderInput
+  notificationPreference?: Prisma.NotificationPreferenceCreateNestedOneWithoutUserInput
+  dataExportJobs?: Prisma.DataExportJobCreateNestedManyWithoutUserInput
+  helpArticlesAuthored?: Prisma.HelpArticleCreateNestedManyWithoutAuthorInput
+  supportAssignments?: Prisma.SupportAssignmentCreateNestedManyWithoutAgentInput
+  supportAssignmentsMade?: Prisma.SupportAssignmentCreateNestedManyWithoutAssignedByInput
+  internalNotesAuthored?: Prisma.InternalNoteCreateNestedManyWithoutAuthorInput
+  escalationsTriggered?: Prisma.EscalationEventCreateNestedManyWithoutTriggeredByInput
+  cannedResponsesAuthored?: Prisma.CannedResponseCreateNestedManyWithoutAuthorInput
+  supportProfilesTouched?: Prisma.OrganizationSupportProfileCreateNestedManyWithoutLastTouchedByInput
+  customerActivityEvents?: Prisma.CustomerActivityLogCreateNestedManyWithoutActorInput
+  contentRevisionsAuthored?: Prisma.ContentRevisionCreateNestedManyWithoutAuthorInput
+  knowledgeFeedback?: Prisma.KnowledgeFeedbackCreateNestedManyWithoutUserInput
+  articleUploads?: Prisma.ArticleAttachmentCreateNestedManyWithoutUploaderInput
+  auditEventsAuthored?: Prisma.AuditLogCreateNestedManyWithoutActorInput
+  supportJobsRequested?: Prisma.SupportJobRunCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalCreateNestedManyWithoutRecordedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewCreateNestedManyWithoutReviewerInput
+}
+
+export type UserUncheckedCreateWithoutTestimonialsSubmittedInput = {
+  id: string
+  name: string
+  email: string
+  emailVerified?: boolean
+  image?: string | null
+  password?: string | null
+  role?: $Enums.Role
+  accountRole?: $Enums.AccountRole
+  isActive?: boolean
+  isDeleted?: boolean
+  jobTitle?: string | null
+  bio?: string | null
+  location?: string | null
+  twoFactorEnabled?: boolean
+  twoFactorMethod?: $Enums.TwoFactorMethod | null
+  twoFactorEnrolledAt?: Date | string | null
+  twoFactorSecret?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
+  accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
+  passwordResetTokens?: Prisma.PasswordResetTokenUncheckedCreateNestedManyWithoutUserInput
+  ownedProjects?: Prisma.ProjectUncheckedCreateNestedManyWithoutOwnerInput
+  projectMemberships?: Prisma.ProjectMemberUncheckedCreateNestedManyWithoutUserInput
+  activityEvents?: Prisma.ActivityEventUncheckedCreateNestedManyWithoutActorInput
+  accountMemberships?: Prisma.AccountMembershipUncheckedCreateNestedManyWithoutUserInput
+  authChallenges?: Prisma.AuthChallengeUncheckedCreateNestedManyWithoutUserInput
+  otpCodes?: Prisma.OtpCodeUncheckedCreateNestedManyWithoutUserInput
+  recoveryCodes?: Prisma.RecoveryCodeUncheckedCreateNestedManyWithoutUserInput
+  loginDevices?: Prisma.LoginDeviceUncheckedCreateNestedManyWithoutUserInput
+  securityAlerts?: Prisma.SecurityAlertUncheckedCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  customerProfile?: Prisma.CustomerProfileUncheckedCreateNestedOneWithoutUserInput
+  consents?: Prisma.UserConsentUncheckedCreateNestedManyWithoutUserInput
+  orgMemberships?: Prisma.OrganizationMemberUncheckedCreateNestedManyWithoutUserInput
+  invitationsCreated?: Prisma.InvitationUncheckedCreateNestedManyWithoutInvitedByInput
+  onboarding?: Prisma.OnboardingProfileUncheckedCreateNestedOneWithoutUserInput
+  approvalResponses?: Prisma.ApprovalResponseUncheckedCreateNestedManyWithoutResponderInput
+  projectComments?: Prisma.ProjectCommentUncheckedCreateNestedManyWithoutAuthorInput
+  projectFiles?: Prisma.ProjectFileUncheckedCreateNestedManyWithoutUploaderInput
+  fileAssets?: Prisma.FileAssetUncheckedCreateNestedManyWithoutOwnerInput
+  maintenanceRequests?: Prisma.MaintenanceRequestUncheckedCreateNestedManyWithoutRequesterInput
+  supportTickets?: Prisma.SupportTicketUncheckedCreateNestedManyWithoutRequesterInput
+  ticketMessages?: Prisma.TicketMessageUncheckedCreateNestedManyWithoutAuthorInput
+  ticketAttachments?: Prisma.TicketAttachmentUncheckedCreateNestedManyWithoutUploaderInput
+  notificationPreference?: Prisma.NotificationPreferenceUncheckedCreateNestedOneWithoutUserInput
+  dataExportJobs?: Prisma.DataExportJobUncheckedCreateNestedManyWithoutUserInput
+  helpArticlesAuthored?: Prisma.HelpArticleUncheckedCreateNestedManyWithoutAuthorInput
+  supportAssignments?: Prisma.SupportAssignmentUncheckedCreateNestedManyWithoutAgentInput
+  supportAssignmentsMade?: Prisma.SupportAssignmentUncheckedCreateNestedManyWithoutAssignedByInput
+  internalNotesAuthored?: Prisma.InternalNoteUncheckedCreateNestedManyWithoutAuthorInput
+  escalationsTriggered?: Prisma.EscalationEventUncheckedCreateNestedManyWithoutTriggeredByInput
+  cannedResponsesAuthored?: Prisma.CannedResponseUncheckedCreateNestedManyWithoutAuthorInput
+  supportProfilesTouched?: Prisma.OrganizationSupportProfileUncheckedCreateNestedManyWithoutLastTouchedByInput
+  customerActivityEvents?: Prisma.CustomerActivityLogUncheckedCreateNestedManyWithoutActorInput
+  contentRevisionsAuthored?: Prisma.ContentRevisionUncheckedCreateNestedManyWithoutAuthorInput
+  knowledgeFeedback?: Prisma.KnowledgeFeedbackUncheckedCreateNestedManyWithoutUserInput
+  articleUploads?: Prisma.ArticleAttachmentUncheckedCreateNestedManyWithoutUploaderInput
+  auditEventsAuthored?: Prisma.AuditLogUncheckedCreateNestedManyWithoutActorInput
+  supportJobsRequested?: Prisma.SupportJobRunUncheckedCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedCreateNestedManyWithoutRecordedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedCreateNestedManyWithoutReviewerInput
+}
+
+export type UserCreateOrConnectWithoutTestimonialsSubmittedInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutTestimonialsSubmittedInput, Prisma.UserUncheckedCreateWithoutTestimonialsSubmittedInput>
+}
+
+export type UserUpsertWithoutTestimonialsLastReviewedInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutTestimonialsLastReviewedInput, Prisma.UserUncheckedUpdateWithoutTestimonialsLastReviewedInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutTestimonialsLastReviewedInput, Prisma.UserUncheckedCreateWithoutTestimonialsLastReviewedInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutTestimonialsLastReviewedInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutTestimonialsLastReviewedInput, Prisma.UserUncheckedUpdateWithoutTestimonialsLastReviewedInput>
+}
+
+export type UserUpdateWithoutTestimonialsLastReviewedInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  accountRole?: Prisma.EnumAccountRoleFieldUpdateOperationsInput | $Enums.AccountRole
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  jobTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorMethod?: Prisma.NullableEnumTwoFactorMethodFieldUpdateOperationsInput | $Enums.TwoFactorMethod | null
+  twoFactorEnrolledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorSecret?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
+  accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
+  passwordResetTokens?: Prisma.PasswordResetTokenUpdateManyWithoutUserNestedInput
+  ownedProjects?: Prisma.ProjectUpdateManyWithoutOwnerNestedInput
+  projectMemberships?: Prisma.ProjectMemberUpdateManyWithoutUserNestedInput
+  activityEvents?: Prisma.ActivityEventUpdateManyWithoutActorNestedInput
+  accountMemberships?: Prisma.AccountMembershipUpdateManyWithoutUserNestedInput
+  authChallenges?: Prisma.AuthChallengeUpdateManyWithoutUserNestedInput
+  otpCodes?: Prisma.OtpCodeUpdateManyWithoutUserNestedInput
+  recoveryCodes?: Prisma.RecoveryCodeUpdateManyWithoutUserNestedInput
+  loginDevices?: Prisma.LoginDeviceUpdateManyWithoutUserNestedInput
+  securityAlerts?: Prisma.SecurityAlertUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  customerProfile?: Prisma.CustomerProfileUpdateOneWithoutUserNestedInput
+  consents?: Prisma.UserConsentUpdateManyWithoutUserNestedInput
+  orgMemberships?: Prisma.OrganizationMemberUpdateManyWithoutUserNestedInput
+  invitationsCreated?: Prisma.InvitationUpdateManyWithoutInvitedByNestedInput
+  onboarding?: Prisma.OnboardingProfileUpdateOneWithoutUserNestedInput
+  approvalResponses?: Prisma.ApprovalResponseUpdateManyWithoutResponderNestedInput
+  projectComments?: Prisma.ProjectCommentUpdateManyWithoutAuthorNestedInput
+  projectFiles?: Prisma.ProjectFileUpdateManyWithoutUploaderNestedInput
+  fileAssets?: Prisma.FileAssetUpdateManyWithoutOwnerNestedInput
+  maintenanceRequests?: Prisma.MaintenanceRequestUpdateManyWithoutRequesterNestedInput
+  supportTickets?: Prisma.SupportTicketUpdateManyWithoutRequesterNestedInput
+  ticketMessages?: Prisma.TicketMessageUpdateManyWithoutAuthorNestedInput
+  ticketAttachments?: Prisma.TicketAttachmentUpdateManyWithoutUploaderNestedInput
+  notificationPreference?: Prisma.NotificationPreferenceUpdateOneWithoutUserNestedInput
+  dataExportJobs?: Prisma.DataExportJobUpdateManyWithoutUserNestedInput
+  helpArticlesAuthored?: Prisma.HelpArticleUpdateManyWithoutAuthorNestedInput
+  supportAssignments?: Prisma.SupportAssignmentUpdateManyWithoutAgentNestedInput
+  supportAssignmentsMade?: Prisma.SupportAssignmentUpdateManyWithoutAssignedByNestedInput
+  internalNotesAuthored?: Prisma.InternalNoteUpdateManyWithoutAuthorNestedInput
+  escalationsTriggered?: Prisma.EscalationEventUpdateManyWithoutTriggeredByNestedInput
+  cannedResponsesAuthored?: Prisma.CannedResponseUpdateManyWithoutAuthorNestedInput
+  supportProfilesTouched?: Prisma.OrganizationSupportProfileUpdateManyWithoutLastTouchedByNestedInput
+  customerActivityEvents?: Prisma.CustomerActivityLogUpdateManyWithoutActorNestedInput
+  contentRevisionsAuthored?: Prisma.ContentRevisionUpdateManyWithoutAuthorNestedInput
+  knowledgeFeedback?: Prisma.KnowledgeFeedbackUpdateManyWithoutUserNestedInput
+  articleUploads?: Prisma.ArticleAttachmentUpdateManyWithoutUploaderNestedInput
+  auditEventsAuthored?: Prisma.AuditLogUpdateManyWithoutActorNestedInput
+  supportJobsRequested?: Prisma.SupportJobRunUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUpdateManyWithoutSubmittedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUpdateManyWithoutReviewerNestedInput
+}
+
+export type UserUncheckedUpdateWithoutTestimonialsLastReviewedInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  accountRole?: Prisma.EnumAccountRoleFieldUpdateOperationsInput | $Enums.AccountRole
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  jobTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorMethod?: Prisma.NullableEnumTwoFactorMethodFieldUpdateOperationsInput | $Enums.TwoFactorMethod | null
+  twoFactorEnrolledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorSecret?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
+  accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
+  passwordResetTokens?: Prisma.PasswordResetTokenUncheckedUpdateManyWithoutUserNestedInput
+  ownedProjects?: Prisma.ProjectUncheckedUpdateManyWithoutOwnerNestedInput
+  projectMemberships?: Prisma.ProjectMemberUncheckedUpdateManyWithoutUserNestedInput
+  activityEvents?: Prisma.ActivityEventUncheckedUpdateManyWithoutActorNestedInput
+  accountMemberships?: Prisma.AccountMembershipUncheckedUpdateManyWithoutUserNestedInput
+  authChallenges?: Prisma.AuthChallengeUncheckedUpdateManyWithoutUserNestedInput
+  otpCodes?: Prisma.OtpCodeUncheckedUpdateManyWithoutUserNestedInput
+  recoveryCodes?: Prisma.RecoveryCodeUncheckedUpdateManyWithoutUserNestedInput
+  loginDevices?: Prisma.LoginDeviceUncheckedUpdateManyWithoutUserNestedInput
+  securityAlerts?: Prisma.SecurityAlertUncheckedUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  customerProfile?: Prisma.CustomerProfileUncheckedUpdateOneWithoutUserNestedInput
+  consents?: Prisma.UserConsentUncheckedUpdateManyWithoutUserNestedInput
+  orgMemberships?: Prisma.OrganizationMemberUncheckedUpdateManyWithoutUserNestedInput
+  invitationsCreated?: Prisma.InvitationUncheckedUpdateManyWithoutInvitedByNestedInput
+  onboarding?: Prisma.OnboardingProfileUncheckedUpdateOneWithoutUserNestedInput
+  approvalResponses?: Prisma.ApprovalResponseUncheckedUpdateManyWithoutResponderNestedInput
+  projectComments?: Prisma.ProjectCommentUncheckedUpdateManyWithoutAuthorNestedInput
+  projectFiles?: Prisma.ProjectFileUncheckedUpdateManyWithoutUploaderNestedInput
+  fileAssets?: Prisma.FileAssetUncheckedUpdateManyWithoutOwnerNestedInput
+  maintenanceRequests?: Prisma.MaintenanceRequestUncheckedUpdateManyWithoutRequesterNestedInput
+  supportTickets?: Prisma.SupportTicketUncheckedUpdateManyWithoutRequesterNestedInput
+  ticketMessages?: Prisma.TicketMessageUncheckedUpdateManyWithoutAuthorNestedInput
+  ticketAttachments?: Prisma.TicketAttachmentUncheckedUpdateManyWithoutUploaderNestedInput
+  notificationPreference?: Prisma.NotificationPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  dataExportJobs?: Prisma.DataExportJobUncheckedUpdateManyWithoutUserNestedInput
+  helpArticlesAuthored?: Prisma.HelpArticleUncheckedUpdateManyWithoutAuthorNestedInput
+  supportAssignments?: Prisma.SupportAssignmentUncheckedUpdateManyWithoutAgentNestedInput
+  supportAssignmentsMade?: Prisma.SupportAssignmentUncheckedUpdateManyWithoutAssignedByNestedInput
+  internalNotesAuthored?: Prisma.InternalNoteUncheckedUpdateManyWithoutAuthorNestedInput
+  escalationsTriggered?: Prisma.EscalationEventUncheckedUpdateManyWithoutTriggeredByNestedInput
+  cannedResponsesAuthored?: Prisma.CannedResponseUncheckedUpdateManyWithoutAuthorNestedInput
+  supportProfilesTouched?: Prisma.OrganizationSupportProfileUncheckedUpdateManyWithoutLastTouchedByNestedInput
+  customerActivityEvents?: Prisma.CustomerActivityLogUncheckedUpdateManyWithoutActorNestedInput
+  contentRevisionsAuthored?: Prisma.ContentRevisionUncheckedUpdateManyWithoutAuthorNestedInput
+  knowledgeFeedback?: Prisma.KnowledgeFeedbackUncheckedUpdateManyWithoutUserNestedInput
+  articleUploads?: Prisma.ArticleAttachmentUncheckedUpdateManyWithoutUploaderNestedInput
+  auditEventsAuthored?: Prisma.AuditLogUncheckedUpdateManyWithoutActorNestedInput
+  supportJobsRequested?: Prisma.SupportJobRunUncheckedUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedUpdateManyWithoutSubmittedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedUpdateManyWithoutReviewerNestedInput
+}
+
+export type UserUpsertWithoutTestimonialsSubmittedInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutTestimonialsSubmittedInput, Prisma.UserUncheckedUpdateWithoutTestimonialsSubmittedInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutTestimonialsSubmittedInput, Prisma.UserUncheckedCreateWithoutTestimonialsSubmittedInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutTestimonialsSubmittedInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutTestimonialsSubmittedInput, Prisma.UserUncheckedUpdateWithoutTestimonialsSubmittedInput>
+}
+
+export type UserUpdateWithoutTestimonialsSubmittedInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  accountRole?: Prisma.EnumAccountRoleFieldUpdateOperationsInput | $Enums.AccountRole
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  jobTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorMethod?: Prisma.NullableEnumTwoFactorMethodFieldUpdateOperationsInput | $Enums.TwoFactorMethod | null
+  twoFactorEnrolledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorSecret?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
+  accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
+  passwordResetTokens?: Prisma.PasswordResetTokenUpdateManyWithoutUserNestedInput
+  ownedProjects?: Prisma.ProjectUpdateManyWithoutOwnerNestedInput
+  projectMemberships?: Prisma.ProjectMemberUpdateManyWithoutUserNestedInput
+  activityEvents?: Prisma.ActivityEventUpdateManyWithoutActorNestedInput
+  accountMemberships?: Prisma.AccountMembershipUpdateManyWithoutUserNestedInput
+  authChallenges?: Prisma.AuthChallengeUpdateManyWithoutUserNestedInput
+  otpCodes?: Prisma.OtpCodeUpdateManyWithoutUserNestedInput
+  recoveryCodes?: Prisma.RecoveryCodeUpdateManyWithoutUserNestedInput
+  loginDevices?: Prisma.LoginDeviceUpdateManyWithoutUserNestedInput
+  securityAlerts?: Prisma.SecurityAlertUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  customerProfile?: Prisma.CustomerProfileUpdateOneWithoutUserNestedInput
+  consents?: Prisma.UserConsentUpdateManyWithoutUserNestedInput
+  orgMemberships?: Prisma.OrganizationMemberUpdateManyWithoutUserNestedInput
+  invitationsCreated?: Prisma.InvitationUpdateManyWithoutInvitedByNestedInput
+  onboarding?: Prisma.OnboardingProfileUpdateOneWithoutUserNestedInput
+  approvalResponses?: Prisma.ApprovalResponseUpdateManyWithoutResponderNestedInput
+  projectComments?: Prisma.ProjectCommentUpdateManyWithoutAuthorNestedInput
+  projectFiles?: Prisma.ProjectFileUpdateManyWithoutUploaderNestedInput
+  fileAssets?: Prisma.FileAssetUpdateManyWithoutOwnerNestedInput
+  maintenanceRequests?: Prisma.MaintenanceRequestUpdateManyWithoutRequesterNestedInput
+  supportTickets?: Prisma.SupportTicketUpdateManyWithoutRequesterNestedInput
+  ticketMessages?: Prisma.TicketMessageUpdateManyWithoutAuthorNestedInput
+  ticketAttachments?: Prisma.TicketAttachmentUpdateManyWithoutUploaderNestedInput
+  notificationPreference?: Prisma.NotificationPreferenceUpdateOneWithoutUserNestedInput
+  dataExportJobs?: Prisma.DataExportJobUpdateManyWithoutUserNestedInput
+  helpArticlesAuthored?: Prisma.HelpArticleUpdateManyWithoutAuthorNestedInput
+  supportAssignments?: Prisma.SupportAssignmentUpdateManyWithoutAgentNestedInput
+  supportAssignmentsMade?: Prisma.SupportAssignmentUpdateManyWithoutAssignedByNestedInput
+  internalNotesAuthored?: Prisma.InternalNoteUpdateManyWithoutAuthorNestedInput
+  escalationsTriggered?: Prisma.EscalationEventUpdateManyWithoutTriggeredByNestedInput
+  cannedResponsesAuthored?: Prisma.CannedResponseUpdateManyWithoutAuthorNestedInput
+  supportProfilesTouched?: Prisma.OrganizationSupportProfileUpdateManyWithoutLastTouchedByNestedInput
+  customerActivityEvents?: Prisma.CustomerActivityLogUpdateManyWithoutActorNestedInput
+  contentRevisionsAuthored?: Prisma.ContentRevisionUpdateManyWithoutAuthorNestedInput
+  knowledgeFeedback?: Prisma.KnowledgeFeedbackUpdateManyWithoutUserNestedInput
+  articleUploads?: Prisma.ArticleAttachmentUpdateManyWithoutUploaderNestedInput
+  auditEventsAuthored?: Prisma.AuditLogUpdateManyWithoutActorNestedInput
+  supportJobsRequested?: Prisma.SupportJobRunUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUpdateManyWithoutRecordedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUpdateManyWithoutReviewerNestedInput
+}
+
+export type UserUncheckedUpdateWithoutTestimonialsSubmittedInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  accountRole?: Prisma.EnumAccountRoleFieldUpdateOperationsInput | $Enums.AccountRole
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  jobTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorMethod?: Prisma.NullableEnumTwoFactorMethodFieldUpdateOperationsInput | $Enums.TwoFactorMethod | null
+  twoFactorEnrolledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorSecret?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
+  accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
+  passwordResetTokens?: Prisma.PasswordResetTokenUncheckedUpdateManyWithoutUserNestedInput
+  ownedProjects?: Prisma.ProjectUncheckedUpdateManyWithoutOwnerNestedInput
+  projectMemberships?: Prisma.ProjectMemberUncheckedUpdateManyWithoutUserNestedInput
+  activityEvents?: Prisma.ActivityEventUncheckedUpdateManyWithoutActorNestedInput
+  accountMemberships?: Prisma.AccountMembershipUncheckedUpdateManyWithoutUserNestedInput
+  authChallenges?: Prisma.AuthChallengeUncheckedUpdateManyWithoutUserNestedInput
+  otpCodes?: Prisma.OtpCodeUncheckedUpdateManyWithoutUserNestedInput
+  recoveryCodes?: Prisma.RecoveryCodeUncheckedUpdateManyWithoutUserNestedInput
+  loginDevices?: Prisma.LoginDeviceUncheckedUpdateManyWithoutUserNestedInput
+  securityAlerts?: Prisma.SecurityAlertUncheckedUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  customerProfile?: Prisma.CustomerProfileUncheckedUpdateOneWithoutUserNestedInput
+  consents?: Prisma.UserConsentUncheckedUpdateManyWithoutUserNestedInput
+  orgMemberships?: Prisma.OrganizationMemberUncheckedUpdateManyWithoutUserNestedInput
+  invitationsCreated?: Prisma.InvitationUncheckedUpdateManyWithoutInvitedByNestedInput
+  onboarding?: Prisma.OnboardingProfileUncheckedUpdateOneWithoutUserNestedInput
+  approvalResponses?: Prisma.ApprovalResponseUncheckedUpdateManyWithoutResponderNestedInput
+  projectComments?: Prisma.ProjectCommentUncheckedUpdateManyWithoutAuthorNestedInput
+  projectFiles?: Prisma.ProjectFileUncheckedUpdateManyWithoutUploaderNestedInput
+  fileAssets?: Prisma.FileAssetUncheckedUpdateManyWithoutOwnerNestedInput
+  maintenanceRequests?: Prisma.MaintenanceRequestUncheckedUpdateManyWithoutRequesterNestedInput
+  supportTickets?: Prisma.SupportTicketUncheckedUpdateManyWithoutRequesterNestedInput
+  ticketMessages?: Prisma.TicketMessageUncheckedUpdateManyWithoutAuthorNestedInput
+  ticketAttachments?: Prisma.TicketAttachmentUncheckedUpdateManyWithoutUploaderNestedInput
+  notificationPreference?: Prisma.NotificationPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  dataExportJobs?: Prisma.DataExportJobUncheckedUpdateManyWithoutUserNestedInput
+  helpArticlesAuthored?: Prisma.HelpArticleUncheckedUpdateManyWithoutAuthorNestedInput
+  supportAssignments?: Prisma.SupportAssignmentUncheckedUpdateManyWithoutAgentNestedInput
+  supportAssignmentsMade?: Prisma.SupportAssignmentUncheckedUpdateManyWithoutAssignedByNestedInput
+  internalNotesAuthored?: Prisma.InternalNoteUncheckedUpdateManyWithoutAuthorNestedInput
+  escalationsTriggered?: Prisma.EscalationEventUncheckedUpdateManyWithoutTriggeredByNestedInput
+  cannedResponsesAuthored?: Prisma.CannedResponseUncheckedUpdateManyWithoutAuthorNestedInput
+  supportProfilesTouched?: Prisma.OrganizationSupportProfileUncheckedUpdateManyWithoutLastTouchedByNestedInput
+  customerActivityEvents?: Prisma.CustomerActivityLogUncheckedUpdateManyWithoutActorNestedInput
+  contentRevisionsAuthored?: Prisma.ContentRevisionUncheckedUpdateManyWithoutAuthorNestedInput
+  knowledgeFeedback?: Prisma.KnowledgeFeedbackUncheckedUpdateManyWithoutUserNestedInput
+  articleUploads?: Prisma.ArticleAttachmentUncheckedUpdateManyWithoutUploaderNestedInput
+  auditEventsAuthored?: Prisma.AuditLogUncheckedUpdateManyWithoutActorNestedInput
+  supportJobsRequested?: Prisma.SupportJobRunUncheckedUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedUpdateManyWithoutRecordedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedUpdateManyWithoutReviewerNestedInput
+}
+
+export type UserCreateWithoutTestimonialConsentsCapturedInput = {
+  id: string
+  name: string
+  email: string
+  emailVerified?: boolean
+  image?: string | null
+  password?: string | null
+  role?: $Enums.Role
+  accountRole?: $Enums.AccountRole
+  isActive?: boolean
+  isDeleted?: boolean
+  jobTitle?: string | null
+  bio?: string | null
+  location?: string | null
+  twoFactorEnabled?: boolean
+  twoFactorMethod?: $Enums.TwoFactorMethod | null
+  twoFactorEnrolledAt?: Date | string | null
+  twoFactorSecret?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
+  accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
+  passwordResetTokens?: Prisma.PasswordResetTokenCreateNestedManyWithoutUserInput
+  ownedProjects?: Prisma.ProjectCreateNestedManyWithoutOwnerInput
+  projectMemberships?: Prisma.ProjectMemberCreateNestedManyWithoutUserInput
+  activityEvents?: Prisma.ActivityEventCreateNestedManyWithoutActorInput
+  accountMemberships?: Prisma.AccountMembershipCreateNestedManyWithoutUserInput
+  authChallenges?: Prisma.AuthChallengeCreateNestedManyWithoutUserInput
+  otpCodes?: Prisma.OtpCodeCreateNestedManyWithoutUserInput
+  recoveryCodes?: Prisma.RecoveryCodeCreateNestedManyWithoutUserInput
+  loginDevices?: Prisma.LoginDeviceCreateNestedManyWithoutUserInput
+  securityAlerts?: Prisma.SecurityAlertCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  customerProfile?: Prisma.CustomerProfileCreateNestedOneWithoutUserInput
+  consents?: Prisma.UserConsentCreateNestedManyWithoutUserInput
+  orgMemberships?: Prisma.OrganizationMemberCreateNestedManyWithoutUserInput
+  invitationsCreated?: Prisma.InvitationCreateNestedManyWithoutInvitedByInput
+  onboarding?: Prisma.OnboardingProfileCreateNestedOneWithoutUserInput
+  approvalResponses?: Prisma.ApprovalResponseCreateNestedManyWithoutResponderInput
+  projectComments?: Prisma.ProjectCommentCreateNestedManyWithoutAuthorInput
+  projectFiles?: Prisma.ProjectFileCreateNestedManyWithoutUploaderInput
+  fileAssets?: Prisma.FileAssetCreateNestedManyWithoutOwnerInput
+  maintenanceRequests?: Prisma.MaintenanceRequestCreateNestedManyWithoutRequesterInput
+  supportTickets?: Prisma.SupportTicketCreateNestedManyWithoutRequesterInput
+  ticketMessages?: Prisma.TicketMessageCreateNestedManyWithoutAuthorInput
+  ticketAttachments?: Prisma.TicketAttachmentCreateNestedManyWithoutUploaderInput
+  notificationPreference?: Prisma.NotificationPreferenceCreateNestedOneWithoutUserInput
+  dataExportJobs?: Prisma.DataExportJobCreateNestedManyWithoutUserInput
+  helpArticlesAuthored?: Prisma.HelpArticleCreateNestedManyWithoutAuthorInput
+  supportAssignments?: Prisma.SupportAssignmentCreateNestedManyWithoutAgentInput
+  supportAssignmentsMade?: Prisma.SupportAssignmentCreateNestedManyWithoutAssignedByInput
+  internalNotesAuthored?: Prisma.InternalNoteCreateNestedManyWithoutAuthorInput
+  escalationsTriggered?: Prisma.EscalationEventCreateNestedManyWithoutTriggeredByInput
+  cannedResponsesAuthored?: Prisma.CannedResponseCreateNestedManyWithoutAuthorInput
+  supportProfilesTouched?: Prisma.OrganizationSupportProfileCreateNestedManyWithoutLastTouchedByInput
+  customerActivityEvents?: Prisma.CustomerActivityLogCreateNestedManyWithoutActorInput
+  contentRevisionsAuthored?: Prisma.ContentRevisionCreateNestedManyWithoutAuthorInput
+  knowledgeFeedback?: Prisma.KnowledgeFeedbackCreateNestedManyWithoutUserInput
+  articleUploads?: Prisma.ArticleAttachmentCreateNestedManyWithoutUploaderInput
+  auditEventsAuthored?: Prisma.AuditLogCreateNestedManyWithoutActorInput
+  supportJobsRequested?: Prisma.SupportJobRunCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialCreateNestedManyWithoutLastReviewedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewCreateNestedManyWithoutReviewerInput
+}
+
+export type UserUncheckedCreateWithoutTestimonialConsentsCapturedInput = {
+  id: string
+  name: string
+  email: string
+  emailVerified?: boolean
+  image?: string | null
+  password?: string | null
+  role?: $Enums.Role
+  accountRole?: $Enums.AccountRole
+  isActive?: boolean
+  isDeleted?: boolean
+  jobTitle?: string | null
+  bio?: string | null
+  location?: string | null
+  twoFactorEnabled?: boolean
+  twoFactorMethod?: $Enums.TwoFactorMethod | null
+  twoFactorEnrolledAt?: Date | string | null
+  twoFactorSecret?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
+  accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
+  passwordResetTokens?: Prisma.PasswordResetTokenUncheckedCreateNestedManyWithoutUserInput
+  ownedProjects?: Prisma.ProjectUncheckedCreateNestedManyWithoutOwnerInput
+  projectMemberships?: Prisma.ProjectMemberUncheckedCreateNestedManyWithoutUserInput
+  activityEvents?: Prisma.ActivityEventUncheckedCreateNestedManyWithoutActorInput
+  accountMemberships?: Prisma.AccountMembershipUncheckedCreateNestedManyWithoutUserInput
+  authChallenges?: Prisma.AuthChallengeUncheckedCreateNestedManyWithoutUserInput
+  otpCodes?: Prisma.OtpCodeUncheckedCreateNestedManyWithoutUserInput
+  recoveryCodes?: Prisma.RecoveryCodeUncheckedCreateNestedManyWithoutUserInput
+  loginDevices?: Prisma.LoginDeviceUncheckedCreateNestedManyWithoutUserInput
+  securityAlerts?: Prisma.SecurityAlertUncheckedCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  customerProfile?: Prisma.CustomerProfileUncheckedCreateNestedOneWithoutUserInput
+  consents?: Prisma.UserConsentUncheckedCreateNestedManyWithoutUserInput
+  orgMemberships?: Prisma.OrganizationMemberUncheckedCreateNestedManyWithoutUserInput
+  invitationsCreated?: Prisma.InvitationUncheckedCreateNestedManyWithoutInvitedByInput
+  onboarding?: Prisma.OnboardingProfileUncheckedCreateNestedOneWithoutUserInput
+  approvalResponses?: Prisma.ApprovalResponseUncheckedCreateNestedManyWithoutResponderInput
+  projectComments?: Prisma.ProjectCommentUncheckedCreateNestedManyWithoutAuthorInput
+  projectFiles?: Prisma.ProjectFileUncheckedCreateNestedManyWithoutUploaderInput
+  fileAssets?: Prisma.FileAssetUncheckedCreateNestedManyWithoutOwnerInput
+  maintenanceRequests?: Prisma.MaintenanceRequestUncheckedCreateNestedManyWithoutRequesterInput
+  supportTickets?: Prisma.SupportTicketUncheckedCreateNestedManyWithoutRequesterInput
+  ticketMessages?: Prisma.TicketMessageUncheckedCreateNestedManyWithoutAuthorInput
+  ticketAttachments?: Prisma.TicketAttachmentUncheckedCreateNestedManyWithoutUploaderInput
+  notificationPreference?: Prisma.NotificationPreferenceUncheckedCreateNestedOneWithoutUserInput
+  dataExportJobs?: Prisma.DataExportJobUncheckedCreateNestedManyWithoutUserInput
+  helpArticlesAuthored?: Prisma.HelpArticleUncheckedCreateNestedManyWithoutAuthorInput
+  supportAssignments?: Prisma.SupportAssignmentUncheckedCreateNestedManyWithoutAgentInput
+  supportAssignmentsMade?: Prisma.SupportAssignmentUncheckedCreateNestedManyWithoutAssignedByInput
+  internalNotesAuthored?: Prisma.InternalNoteUncheckedCreateNestedManyWithoutAuthorInput
+  escalationsTriggered?: Prisma.EscalationEventUncheckedCreateNestedManyWithoutTriggeredByInput
+  cannedResponsesAuthored?: Prisma.CannedResponseUncheckedCreateNestedManyWithoutAuthorInput
+  supportProfilesTouched?: Prisma.OrganizationSupportProfileUncheckedCreateNestedManyWithoutLastTouchedByInput
+  customerActivityEvents?: Prisma.CustomerActivityLogUncheckedCreateNestedManyWithoutActorInput
+  contentRevisionsAuthored?: Prisma.ContentRevisionUncheckedCreateNestedManyWithoutAuthorInput
+  knowledgeFeedback?: Prisma.KnowledgeFeedbackUncheckedCreateNestedManyWithoutUserInput
+  articleUploads?: Prisma.ArticleAttachmentUncheckedCreateNestedManyWithoutUploaderInput
+  auditEventsAuthored?: Prisma.AuditLogUncheckedCreateNestedManyWithoutActorInput
+  supportJobsRequested?: Prisma.SupportJobRunUncheckedCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedCreateNestedManyWithoutLastReviewedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedCreateNestedManyWithoutReviewerInput
+}
+
+export type UserCreateOrConnectWithoutTestimonialConsentsCapturedInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutTestimonialConsentsCapturedInput, Prisma.UserUncheckedCreateWithoutTestimonialConsentsCapturedInput>
+}
+
+export type UserUpsertWithoutTestimonialConsentsCapturedInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutTestimonialConsentsCapturedInput, Prisma.UserUncheckedUpdateWithoutTestimonialConsentsCapturedInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutTestimonialConsentsCapturedInput, Prisma.UserUncheckedCreateWithoutTestimonialConsentsCapturedInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutTestimonialConsentsCapturedInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutTestimonialConsentsCapturedInput, Prisma.UserUncheckedUpdateWithoutTestimonialConsentsCapturedInput>
+}
+
+export type UserUpdateWithoutTestimonialConsentsCapturedInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  accountRole?: Prisma.EnumAccountRoleFieldUpdateOperationsInput | $Enums.AccountRole
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  jobTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorMethod?: Prisma.NullableEnumTwoFactorMethodFieldUpdateOperationsInput | $Enums.TwoFactorMethod | null
+  twoFactorEnrolledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorSecret?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
+  accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
+  passwordResetTokens?: Prisma.PasswordResetTokenUpdateManyWithoutUserNestedInput
+  ownedProjects?: Prisma.ProjectUpdateManyWithoutOwnerNestedInput
+  projectMemberships?: Prisma.ProjectMemberUpdateManyWithoutUserNestedInput
+  activityEvents?: Prisma.ActivityEventUpdateManyWithoutActorNestedInput
+  accountMemberships?: Prisma.AccountMembershipUpdateManyWithoutUserNestedInput
+  authChallenges?: Prisma.AuthChallengeUpdateManyWithoutUserNestedInput
+  otpCodes?: Prisma.OtpCodeUpdateManyWithoutUserNestedInput
+  recoveryCodes?: Prisma.RecoveryCodeUpdateManyWithoutUserNestedInput
+  loginDevices?: Prisma.LoginDeviceUpdateManyWithoutUserNestedInput
+  securityAlerts?: Prisma.SecurityAlertUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  customerProfile?: Prisma.CustomerProfileUpdateOneWithoutUserNestedInput
+  consents?: Prisma.UserConsentUpdateManyWithoutUserNestedInput
+  orgMemberships?: Prisma.OrganizationMemberUpdateManyWithoutUserNestedInput
+  invitationsCreated?: Prisma.InvitationUpdateManyWithoutInvitedByNestedInput
+  onboarding?: Prisma.OnboardingProfileUpdateOneWithoutUserNestedInput
+  approvalResponses?: Prisma.ApprovalResponseUpdateManyWithoutResponderNestedInput
+  projectComments?: Prisma.ProjectCommentUpdateManyWithoutAuthorNestedInput
+  projectFiles?: Prisma.ProjectFileUpdateManyWithoutUploaderNestedInput
+  fileAssets?: Prisma.FileAssetUpdateManyWithoutOwnerNestedInput
+  maintenanceRequests?: Prisma.MaintenanceRequestUpdateManyWithoutRequesterNestedInput
+  supportTickets?: Prisma.SupportTicketUpdateManyWithoutRequesterNestedInput
+  ticketMessages?: Prisma.TicketMessageUpdateManyWithoutAuthorNestedInput
+  ticketAttachments?: Prisma.TicketAttachmentUpdateManyWithoutUploaderNestedInput
+  notificationPreference?: Prisma.NotificationPreferenceUpdateOneWithoutUserNestedInput
+  dataExportJobs?: Prisma.DataExportJobUpdateManyWithoutUserNestedInput
+  helpArticlesAuthored?: Prisma.HelpArticleUpdateManyWithoutAuthorNestedInput
+  supportAssignments?: Prisma.SupportAssignmentUpdateManyWithoutAgentNestedInput
+  supportAssignmentsMade?: Prisma.SupportAssignmentUpdateManyWithoutAssignedByNestedInput
+  internalNotesAuthored?: Prisma.InternalNoteUpdateManyWithoutAuthorNestedInput
+  escalationsTriggered?: Prisma.EscalationEventUpdateManyWithoutTriggeredByNestedInput
+  cannedResponsesAuthored?: Prisma.CannedResponseUpdateManyWithoutAuthorNestedInput
+  supportProfilesTouched?: Prisma.OrganizationSupportProfileUpdateManyWithoutLastTouchedByNestedInput
+  customerActivityEvents?: Prisma.CustomerActivityLogUpdateManyWithoutActorNestedInput
+  contentRevisionsAuthored?: Prisma.ContentRevisionUpdateManyWithoutAuthorNestedInput
+  knowledgeFeedback?: Prisma.KnowledgeFeedbackUpdateManyWithoutUserNestedInput
+  articleUploads?: Prisma.ArticleAttachmentUpdateManyWithoutUploaderNestedInput
+  auditEventsAuthored?: Prisma.AuditLogUpdateManyWithoutActorNestedInput
+  supportJobsRequested?: Prisma.SupportJobRunUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUpdateManyWithoutLastReviewedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUpdateManyWithoutReviewerNestedInput
+}
+
+export type UserUncheckedUpdateWithoutTestimonialConsentsCapturedInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  accountRole?: Prisma.EnumAccountRoleFieldUpdateOperationsInput | $Enums.AccountRole
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  jobTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorMethod?: Prisma.NullableEnumTwoFactorMethodFieldUpdateOperationsInput | $Enums.TwoFactorMethod | null
+  twoFactorEnrolledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorSecret?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
+  accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
+  passwordResetTokens?: Prisma.PasswordResetTokenUncheckedUpdateManyWithoutUserNestedInput
+  ownedProjects?: Prisma.ProjectUncheckedUpdateManyWithoutOwnerNestedInput
+  projectMemberships?: Prisma.ProjectMemberUncheckedUpdateManyWithoutUserNestedInput
+  activityEvents?: Prisma.ActivityEventUncheckedUpdateManyWithoutActorNestedInput
+  accountMemberships?: Prisma.AccountMembershipUncheckedUpdateManyWithoutUserNestedInput
+  authChallenges?: Prisma.AuthChallengeUncheckedUpdateManyWithoutUserNestedInput
+  otpCodes?: Prisma.OtpCodeUncheckedUpdateManyWithoutUserNestedInput
+  recoveryCodes?: Prisma.RecoveryCodeUncheckedUpdateManyWithoutUserNestedInput
+  loginDevices?: Prisma.LoginDeviceUncheckedUpdateManyWithoutUserNestedInput
+  securityAlerts?: Prisma.SecurityAlertUncheckedUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  customerProfile?: Prisma.CustomerProfileUncheckedUpdateOneWithoutUserNestedInput
+  consents?: Prisma.UserConsentUncheckedUpdateManyWithoutUserNestedInput
+  orgMemberships?: Prisma.OrganizationMemberUncheckedUpdateManyWithoutUserNestedInput
+  invitationsCreated?: Prisma.InvitationUncheckedUpdateManyWithoutInvitedByNestedInput
+  onboarding?: Prisma.OnboardingProfileUncheckedUpdateOneWithoutUserNestedInput
+  approvalResponses?: Prisma.ApprovalResponseUncheckedUpdateManyWithoutResponderNestedInput
+  projectComments?: Prisma.ProjectCommentUncheckedUpdateManyWithoutAuthorNestedInput
+  projectFiles?: Prisma.ProjectFileUncheckedUpdateManyWithoutUploaderNestedInput
+  fileAssets?: Prisma.FileAssetUncheckedUpdateManyWithoutOwnerNestedInput
+  maintenanceRequests?: Prisma.MaintenanceRequestUncheckedUpdateManyWithoutRequesterNestedInput
+  supportTickets?: Prisma.SupportTicketUncheckedUpdateManyWithoutRequesterNestedInput
+  ticketMessages?: Prisma.TicketMessageUncheckedUpdateManyWithoutAuthorNestedInput
+  ticketAttachments?: Prisma.TicketAttachmentUncheckedUpdateManyWithoutUploaderNestedInput
+  notificationPreference?: Prisma.NotificationPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  dataExportJobs?: Prisma.DataExportJobUncheckedUpdateManyWithoutUserNestedInput
+  helpArticlesAuthored?: Prisma.HelpArticleUncheckedUpdateManyWithoutAuthorNestedInput
+  supportAssignments?: Prisma.SupportAssignmentUncheckedUpdateManyWithoutAgentNestedInput
+  supportAssignmentsMade?: Prisma.SupportAssignmentUncheckedUpdateManyWithoutAssignedByNestedInput
+  internalNotesAuthored?: Prisma.InternalNoteUncheckedUpdateManyWithoutAuthorNestedInput
+  escalationsTriggered?: Prisma.EscalationEventUncheckedUpdateManyWithoutTriggeredByNestedInput
+  cannedResponsesAuthored?: Prisma.CannedResponseUncheckedUpdateManyWithoutAuthorNestedInput
+  supportProfilesTouched?: Prisma.OrganizationSupportProfileUncheckedUpdateManyWithoutLastTouchedByNestedInput
+  customerActivityEvents?: Prisma.CustomerActivityLogUncheckedUpdateManyWithoutActorNestedInput
+  contentRevisionsAuthored?: Prisma.ContentRevisionUncheckedUpdateManyWithoutAuthorNestedInput
+  knowledgeFeedback?: Prisma.KnowledgeFeedbackUncheckedUpdateManyWithoutUserNestedInput
+  articleUploads?: Prisma.ArticleAttachmentUncheckedUpdateManyWithoutUploaderNestedInput
+  auditEventsAuthored?: Prisma.AuditLogUncheckedUpdateManyWithoutActorNestedInput
+  supportJobsRequested?: Prisma.SupportJobRunUncheckedUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedUpdateManyWithoutReviewerNestedInput
+}
+
+export type UserCreateWithoutModerationReviewsAuthoredInput = {
+  id: string
+  name: string
+  email: string
+  emailVerified?: boolean
+  image?: string | null
+  password?: string | null
+  role?: $Enums.Role
+  accountRole?: $Enums.AccountRole
+  isActive?: boolean
+  isDeleted?: boolean
+  jobTitle?: string | null
+  bio?: string | null
+  location?: string | null
+  twoFactorEnabled?: boolean
+  twoFactorMethod?: $Enums.TwoFactorMethod | null
+  twoFactorEnrolledAt?: Date | string | null
+  twoFactorSecret?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
+  accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
+  passwordResetTokens?: Prisma.PasswordResetTokenCreateNestedManyWithoutUserInput
+  ownedProjects?: Prisma.ProjectCreateNestedManyWithoutOwnerInput
+  projectMemberships?: Prisma.ProjectMemberCreateNestedManyWithoutUserInput
+  activityEvents?: Prisma.ActivityEventCreateNestedManyWithoutActorInput
+  accountMemberships?: Prisma.AccountMembershipCreateNestedManyWithoutUserInput
+  authChallenges?: Prisma.AuthChallengeCreateNestedManyWithoutUserInput
+  otpCodes?: Prisma.OtpCodeCreateNestedManyWithoutUserInput
+  recoveryCodes?: Prisma.RecoveryCodeCreateNestedManyWithoutUserInput
+  loginDevices?: Prisma.LoginDeviceCreateNestedManyWithoutUserInput
+  securityAlerts?: Prisma.SecurityAlertCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  customerProfile?: Prisma.CustomerProfileCreateNestedOneWithoutUserInput
+  consents?: Prisma.UserConsentCreateNestedManyWithoutUserInput
+  orgMemberships?: Prisma.OrganizationMemberCreateNestedManyWithoutUserInput
+  invitationsCreated?: Prisma.InvitationCreateNestedManyWithoutInvitedByInput
+  onboarding?: Prisma.OnboardingProfileCreateNestedOneWithoutUserInput
+  approvalResponses?: Prisma.ApprovalResponseCreateNestedManyWithoutResponderInput
+  projectComments?: Prisma.ProjectCommentCreateNestedManyWithoutAuthorInput
+  projectFiles?: Prisma.ProjectFileCreateNestedManyWithoutUploaderInput
+  fileAssets?: Prisma.FileAssetCreateNestedManyWithoutOwnerInput
+  maintenanceRequests?: Prisma.MaintenanceRequestCreateNestedManyWithoutRequesterInput
+  supportTickets?: Prisma.SupportTicketCreateNestedManyWithoutRequesterInput
+  ticketMessages?: Prisma.TicketMessageCreateNestedManyWithoutAuthorInput
+  ticketAttachments?: Prisma.TicketAttachmentCreateNestedManyWithoutUploaderInput
+  notificationPreference?: Prisma.NotificationPreferenceCreateNestedOneWithoutUserInput
+  dataExportJobs?: Prisma.DataExportJobCreateNestedManyWithoutUserInput
+  helpArticlesAuthored?: Prisma.HelpArticleCreateNestedManyWithoutAuthorInput
+  supportAssignments?: Prisma.SupportAssignmentCreateNestedManyWithoutAgentInput
+  supportAssignmentsMade?: Prisma.SupportAssignmentCreateNestedManyWithoutAssignedByInput
+  internalNotesAuthored?: Prisma.InternalNoteCreateNestedManyWithoutAuthorInput
+  escalationsTriggered?: Prisma.EscalationEventCreateNestedManyWithoutTriggeredByInput
+  cannedResponsesAuthored?: Prisma.CannedResponseCreateNestedManyWithoutAuthorInput
+  supportProfilesTouched?: Prisma.OrganizationSupportProfileCreateNestedManyWithoutLastTouchedByInput
+  customerActivityEvents?: Prisma.CustomerActivityLogCreateNestedManyWithoutActorInput
+  contentRevisionsAuthored?: Prisma.ContentRevisionCreateNestedManyWithoutAuthorInput
+  knowledgeFeedback?: Prisma.KnowledgeFeedbackCreateNestedManyWithoutUserInput
+  articleUploads?: Prisma.ArticleAttachmentCreateNestedManyWithoutUploaderInput
+  auditEventsAuthored?: Prisma.AuditLogCreateNestedManyWithoutActorInput
+  supportJobsRequested?: Prisma.SupportJobRunCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentCreateNestedManyWithoutCapturedByInput
+}
+
+export type UserUncheckedCreateWithoutModerationReviewsAuthoredInput = {
+  id: string
+  name: string
+  email: string
+  emailVerified?: boolean
+  image?: string | null
+  password?: string | null
+  role?: $Enums.Role
+  accountRole?: $Enums.AccountRole
+  isActive?: boolean
+  isDeleted?: boolean
+  jobTitle?: string | null
+  bio?: string | null
+  location?: string | null
+  twoFactorEnabled?: boolean
+  twoFactorMethod?: $Enums.TwoFactorMethod | null
+  twoFactorEnrolledAt?: Date | string | null
+  twoFactorSecret?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
+  accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
+  passwordResetTokens?: Prisma.PasswordResetTokenUncheckedCreateNestedManyWithoutUserInput
+  ownedProjects?: Prisma.ProjectUncheckedCreateNestedManyWithoutOwnerInput
+  projectMemberships?: Prisma.ProjectMemberUncheckedCreateNestedManyWithoutUserInput
+  activityEvents?: Prisma.ActivityEventUncheckedCreateNestedManyWithoutActorInput
+  accountMemberships?: Prisma.AccountMembershipUncheckedCreateNestedManyWithoutUserInput
+  authChallenges?: Prisma.AuthChallengeUncheckedCreateNestedManyWithoutUserInput
+  otpCodes?: Prisma.OtpCodeUncheckedCreateNestedManyWithoutUserInput
+  recoveryCodes?: Prisma.RecoveryCodeUncheckedCreateNestedManyWithoutUserInput
+  loginDevices?: Prisma.LoginDeviceUncheckedCreateNestedManyWithoutUserInput
+  securityAlerts?: Prisma.SecurityAlertUncheckedCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  customerProfile?: Prisma.CustomerProfileUncheckedCreateNestedOneWithoutUserInput
+  consents?: Prisma.UserConsentUncheckedCreateNestedManyWithoutUserInput
+  orgMemberships?: Prisma.OrganizationMemberUncheckedCreateNestedManyWithoutUserInput
+  invitationsCreated?: Prisma.InvitationUncheckedCreateNestedManyWithoutInvitedByInput
+  onboarding?: Prisma.OnboardingProfileUncheckedCreateNestedOneWithoutUserInput
+  approvalResponses?: Prisma.ApprovalResponseUncheckedCreateNestedManyWithoutResponderInput
+  projectComments?: Prisma.ProjectCommentUncheckedCreateNestedManyWithoutAuthorInput
+  projectFiles?: Prisma.ProjectFileUncheckedCreateNestedManyWithoutUploaderInput
+  fileAssets?: Prisma.FileAssetUncheckedCreateNestedManyWithoutOwnerInput
+  maintenanceRequests?: Prisma.MaintenanceRequestUncheckedCreateNestedManyWithoutRequesterInput
+  supportTickets?: Prisma.SupportTicketUncheckedCreateNestedManyWithoutRequesterInput
+  ticketMessages?: Prisma.TicketMessageUncheckedCreateNestedManyWithoutAuthorInput
+  ticketAttachments?: Prisma.TicketAttachmentUncheckedCreateNestedManyWithoutUploaderInput
+  notificationPreference?: Prisma.NotificationPreferenceUncheckedCreateNestedOneWithoutUserInput
+  dataExportJobs?: Prisma.DataExportJobUncheckedCreateNestedManyWithoutUserInput
+  helpArticlesAuthored?: Prisma.HelpArticleUncheckedCreateNestedManyWithoutAuthorInput
+  supportAssignments?: Prisma.SupportAssignmentUncheckedCreateNestedManyWithoutAgentInput
+  supportAssignmentsMade?: Prisma.SupportAssignmentUncheckedCreateNestedManyWithoutAssignedByInput
+  internalNotesAuthored?: Prisma.InternalNoteUncheckedCreateNestedManyWithoutAuthorInput
+  escalationsTriggered?: Prisma.EscalationEventUncheckedCreateNestedManyWithoutTriggeredByInput
+  cannedResponsesAuthored?: Prisma.CannedResponseUncheckedCreateNestedManyWithoutAuthorInput
+  supportProfilesTouched?: Prisma.OrganizationSupportProfileUncheckedCreateNestedManyWithoutLastTouchedByInput
+  customerActivityEvents?: Prisma.CustomerActivityLogUncheckedCreateNestedManyWithoutActorInput
+  contentRevisionsAuthored?: Prisma.ContentRevisionUncheckedCreateNestedManyWithoutAuthorInput
+  knowledgeFeedback?: Prisma.KnowledgeFeedbackUncheckedCreateNestedManyWithoutUserInput
+  articleUploads?: Prisma.ArticleAttachmentUncheckedCreateNestedManyWithoutUploaderInput
+  auditEventsAuthored?: Prisma.AuditLogUncheckedCreateNestedManyWithoutActorInput
+  supportJobsRequested?: Prisma.SupportJobRunUncheckedCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedCreateNestedManyWithoutCapturedByInput
+}
+
+export type UserCreateOrConnectWithoutModerationReviewsAuthoredInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutModerationReviewsAuthoredInput, Prisma.UserUncheckedCreateWithoutModerationReviewsAuthoredInput>
+}
+
+export type UserUpsertWithoutModerationReviewsAuthoredInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutModerationReviewsAuthoredInput, Prisma.UserUncheckedUpdateWithoutModerationReviewsAuthoredInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutModerationReviewsAuthoredInput, Prisma.UserUncheckedCreateWithoutModerationReviewsAuthoredInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutModerationReviewsAuthoredInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutModerationReviewsAuthoredInput, Prisma.UserUncheckedUpdateWithoutModerationReviewsAuthoredInput>
+}
+
+export type UserUpdateWithoutModerationReviewsAuthoredInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  accountRole?: Prisma.EnumAccountRoleFieldUpdateOperationsInput | $Enums.AccountRole
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  jobTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorMethod?: Prisma.NullableEnumTwoFactorMethodFieldUpdateOperationsInput | $Enums.TwoFactorMethod | null
+  twoFactorEnrolledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorSecret?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
+  accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
+  passwordResetTokens?: Prisma.PasswordResetTokenUpdateManyWithoutUserNestedInput
+  ownedProjects?: Prisma.ProjectUpdateManyWithoutOwnerNestedInput
+  projectMemberships?: Prisma.ProjectMemberUpdateManyWithoutUserNestedInput
+  activityEvents?: Prisma.ActivityEventUpdateManyWithoutActorNestedInput
+  accountMemberships?: Prisma.AccountMembershipUpdateManyWithoutUserNestedInput
+  authChallenges?: Prisma.AuthChallengeUpdateManyWithoutUserNestedInput
+  otpCodes?: Prisma.OtpCodeUpdateManyWithoutUserNestedInput
+  recoveryCodes?: Prisma.RecoveryCodeUpdateManyWithoutUserNestedInput
+  loginDevices?: Prisma.LoginDeviceUpdateManyWithoutUserNestedInput
+  securityAlerts?: Prisma.SecurityAlertUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  customerProfile?: Prisma.CustomerProfileUpdateOneWithoutUserNestedInput
+  consents?: Prisma.UserConsentUpdateManyWithoutUserNestedInput
+  orgMemberships?: Prisma.OrganizationMemberUpdateManyWithoutUserNestedInput
+  invitationsCreated?: Prisma.InvitationUpdateManyWithoutInvitedByNestedInput
+  onboarding?: Prisma.OnboardingProfileUpdateOneWithoutUserNestedInput
+  approvalResponses?: Prisma.ApprovalResponseUpdateManyWithoutResponderNestedInput
+  projectComments?: Prisma.ProjectCommentUpdateManyWithoutAuthorNestedInput
+  projectFiles?: Prisma.ProjectFileUpdateManyWithoutUploaderNestedInput
+  fileAssets?: Prisma.FileAssetUpdateManyWithoutOwnerNestedInput
+  maintenanceRequests?: Prisma.MaintenanceRequestUpdateManyWithoutRequesterNestedInput
+  supportTickets?: Prisma.SupportTicketUpdateManyWithoutRequesterNestedInput
+  ticketMessages?: Prisma.TicketMessageUpdateManyWithoutAuthorNestedInput
+  ticketAttachments?: Prisma.TicketAttachmentUpdateManyWithoutUploaderNestedInput
+  notificationPreference?: Prisma.NotificationPreferenceUpdateOneWithoutUserNestedInput
+  dataExportJobs?: Prisma.DataExportJobUpdateManyWithoutUserNestedInput
+  helpArticlesAuthored?: Prisma.HelpArticleUpdateManyWithoutAuthorNestedInput
+  supportAssignments?: Prisma.SupportAssignmentUpdateManyWithoutAgentNestedInput
+  supportAssignmentsMade?: Prisma.SupportAssignmentUpdateManyWithoutAssignedByNestedInput
+  internalNotesAuthored?: Prisma.InternalNoteUpdateManyWithoutAuthorNestedInput
+  escalationsTriggered?: Prisma.EscalationEventUpdateManyWithoutTriggeredByNestedInput
+  cannedResponsesAuthored?: Prisma.CannedResponseUpdateManyWithoutAuthorNestedInput
+  supportProfilesTouched?: Prisma.OrganizationSupportProfileUpdateManyWithoutLastTouchedByNestedInput
+  customerActivityEvents?: Prisma.CustomerActivityLogUpdateManyWithoutActorNestedInput
+  contentRevisionsAuthored?: Prisma.ContentRevisionUpdateManyWithoutAuthorNestedInput
+  knowledgeFeedback?: Prisma.KnowledgeFeedbackUpdateManyWithoutUserNestedInput
+  articleUploads?: Prisma.ArticleAttachmentUpdateManyWithoutUploaderNestedInput
+  auditEventsAuthored?: Prisma.AuditLogUpdateManyWithoutActorNestedInput
+  supportJobsRequested?: Prisma.SupportJobRunUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUpdateManyWithoutCapturedByNestedInput
+}
+
+export type UserUncheckedUpdateWithoutModerationReviewsAuthoredInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  accountRole?: Prisma.EnumAccountRoleFieldUpdateOperationsInput | $Enums.AccountRole
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  jobTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorMethod?: Prisma.NullableEnumTwoFactorMethodFieldUpdateOperationsInput | $Enums.TwoFactorMethod | null
+  twoFactorEnrolledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorSecret?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
+  accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
+  passwordResetTokens?: Prisma.PasswordResetTokenUncheckedUpdateManyWithoutUserNestedInput
+  ownedProjects?: Prisma.ProjectUncheckedUpdateManyWithoutOwnerNestedInput
+  projectMemberships?: Prisma.ProjectMemberUncheckedUpdateManyWithoutUserNestedInput
+  activityEvents?: Prisma.ActivityEventUncheckedUpdateManyWithoutActorNestedInput
+  accountMemberships?: Prisma.AccountMembershipUncheckedUpdateManyWithoutUserNestedInput
+  authChallenges?: Prisma.AuthChallengeUncheckedUpdateManyWithoutUserNestedInput
+  otpCodes?: Prisma.OtpCodeUncheckedUpdateManyWithoutUserNestedInput
+  recoveryCodes?: Prisma.RecoveryCodeUncheckedUpdateManyWithoutUserNestedInput
+  loginDevices?: Prisma.LoginDeviceUncheckedUpdateManyWithoutUserNestedInput
+  securityAlerts?: Prisma.SecurityAlertUncheckedUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  customerProfile?: Prisma.CustomerProfileUncheckedUpdateOneWithoutUserNestedInput
+  consents?: Prisma.UserConsentUncheckedUpdateManyWithoutUserNestedInput
+  orgMemberships?: Prisma.OrganizationMemberUncheckedUpdateManyWithoutUserNestedInput
+  invitationsCreated?: Prisma.InvitationUncheckedUpdateManyWithoutInvitedByNestedInput
+  onboarding?: Prisma.OnboardingProfileUncheckedUpdateOneWithoutUserNestedInput
+  approvalResponses?: Prisma.ApprovalResponseUncheckedUpdateManyWithoutResponderNestedInput
+  projectComments?: Prisma.ProjectCommentUncheckedUpdateManyWithoutAuthorNestedInput
+  projectFiles?: Prisma.ProjectFileUncheckedUpdateManyWithoutUploaderNestedInput
+  fileAssets?: Prisma.FileAssetUncheckedUpdateManyWithoutOwnerNestedInput
+  maintenanceRequests?: Prisma.MaintenanceRequestUncheckedUpdateManyWithoutRequesterNestedInput
+  supportTickets?: Prisma.SupportTicketUncheckedUpdateManyWithoutRequesterNestedInput
+  ticketMessages?: Prisma.TicketMessageUncheckedUpdateManyWithoutAuthorNestedInput
+  ticketAttachments?: Prisma.TicketAttachmentUncheckedUpdateManyWithoutUploaderNestedInput
+  notificationPreference?: Prisma.NotificationPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  dataExportJobs?: Prisma.DataExportJobUncheckedUpdateManyWithoutUserNestedInput
+  helpArticlesAuthored?: Prisma.HelpArticleUncheckedUpdateManyWithoutAuthorNestedInput
+  supportAssignments?: Prisma.SupportAssignmentUncheckedUpdateManyWithoutAgentNestedInput
+  supportAssignmentsMade?: Prisma.SupportAssignmentUncheckedUpdateManyWithoutAssignedByNestedInput
+  internalNotesAuthored?: Prisma.InternalNoteUncheckedUpdateManyWithoutAuthorNestedInput
+  escalationsTriggered?: Prisma.EscalationEventUncheckedUpdateManyWithoutTriggeredByNestedInput
+  cannedResponsesAuthored?: Prisma.CannedResponseUncheckedUpdateManyWithoutAuthorNestedInput
+  supportProfilesTouched?: Prisma.OrganizationSupportProfileUncheckedUpdateManyWithoutLastTouchedByNestedInput
+  customerActivityEvents?: Prisma.CustomerActivityLogUncheckedUpdateManyWithoutActorNestedInput
+  contentRevisionsAuthored?: Prisma.ContentRevisionUncheckedUpdateManyWithoutAuthorNestedInput
+  knowledgeFeedback?: Prisma.KnowledgeFeedbackUncheckedUpdateManyWithoutUserNestedInput
+  articleUploads?: Prisma.ArticleAttachmentUncheckedUpdateManyWithoutUploaderNestedInput
+  auditEventsAuthored?: Prisma.AuditLogUncheckedUpdateManyWithoutActorNestedInput
+  supportJobsRequested?: Prisma.SupportJobRunUncheckedUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedUpdateManyWithoutCapturedByNestedInput
 }
 
 export type UserCreateWithoutSupportAssignmentsInput = {
@@ -6084,6 +9601,15 @@ export type UserCreateWithoutSupportAssignmentsInput = {
   articleUploads?: Prisma.ArticleAttachmentCreateNestedManyWithoutUploaderInput
   auditEventsAuthored?: Prisma.AuditLogCreateNestedManyWithoutActorInput
   supportJobsRequested?: Prisma.SupportJobRunCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewCreateNestedManyWithoutReviewerInput
 }
 
 export type UserUncheckedCreateWithoutSupportAssignmentsInput = {
@@ -6146,6 +9672,15 @@ export type UserUncheckedCreateWithoutSupportAssignmentsInput = {
   articleUploads?: Prisma.ArticleAttachmentUncheckedCreateNestedManyWithoutUploaderInput
   auditEventsAuthored?: Prisma.AuditLogUncheckedCreateNestedManyWithoutActorInput
   supportJobsRequested?: Prisma.SupportJobRunUncheckedCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedCreateNestedManyWithoutReviewerInput
 }
 
 export type UserCreateOrConnectWithoutSupportAssignmentsInput = {
@@ -6213,6 +9748,15 @@ export type UserCreateWithoutSupportAssignmentsMadeInput = {
   articleUploads?: Prisma.ArticleAttachmentCreateNestedManyWithoutUploaderInput
   auditEventsAuthored?: Prisma.AuditLogCreateNestedManyWithoutActorInput
   supportJobsRequested?: Prisma.SupportJobRunCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewCreateNestedManyWithoutReviewerInput
 }
 
 export type UserUncheckedCreateWithoutSupportAssignmentsMadeInput = {
@@ -6275,6 +9819,15 @@ export type UserUncheckedCreateWithoutSupportAssignmentsMadeInput = {
   articleUploads?: Prisma.ArticleAttachmentUncheckedCreateNestedManyWithoutUploaderInput
   auditEventsAuthored?: Prisma.AuditLogUncheckedCreateNestedManyWithoutActorInput
   supportJobsRequested?: Prisma.SupportJobRunUncheckedCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedCreateNestedManyWithoutReviewerInput
 }
 
 export type UserCreateOrConnectWithoutSupportAssignmentsMadeInput = {
@@ -6353,6 +9906,15 @@ export type UserUpdateWithoutSupportAssignmentsInput = {
   articleUploads?: Prisma.ArticleAttachmentUpdateManyWithoutUploaderNestedInput
   auditEventsAuthored?: Prisma.AuditLogUpdateManyWithoutActorNestedInput
   supportJobsRequested?: Prisma.SupportJobRunUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUpdateManyWithoutReviewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSupportAssignmentsInput = {
@@ -6415,6 +9977,15 @@ export type UserUncheckedUpdateWithoutSupportAssignmentsInput = {
   articleUploads?: Prisma.ArticleAttachmentUncheckedUpdateManyWithoutUploaderNestedInput
   auditEventsAuthored?: Prisma.AuditLogUncheckedUpdateManyWithoutActorNestedInput
   supportJobsRequested?: Prisma.SupportJobRunUncheckedUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedUpdateManyWithoutReviewerNestedInput
 }
 
 export type UserUpsertWithoutSupportAssignmentsMadeInput = {
@@ -6488,6 +10059,15 @@ export type UserUpdateWithoutSupportAssignmentsMadeInput = {
   articleUploads?: Prisma.ArticleAttachmentUpdateManyWithoutUploaderNestedInput
   auditEventsAuthored?: Prisma.AuditLogUpdateManyWithoutActorNestedInput
   supportJobsRequested?: Prisma.SupportJobRunUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUpdateManyWithoutReviewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSupportAssignmentsMadeInput = {
@@ -6550,6 +10130,15 @@ export type UserUncheckedUpdateWithoutSupportAssignmentsMadeInput = {
   articleUploads?: Prisma.ArticleAttachmentUncheckedUpdateManyWithoutUploaderNestedInput
   auditEventsAuthored?: Prisma.AuditLogUncheckedUpdateManyWithoutActorNestedInput
   supportJobsRequested?: Prisma.SupportJobRunUncheckedUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedUpdateManyWithoutReviewerNestedInput
 }
 
 export type UserCreateWithoutInternalNotesAuthoredInput = {
@@ -6612,6 +10201,15 @@ export type UserCreateWithoutInternalNotesAuthoredInput = {
   articleUploads?: Prisma.ArticleAttachmentCreateNestedManyWithoutUploaderInput
   auditEventsAuthored?: Prisma.AuditLogCreateNestedManyWithoutActorInput
   supportJobsRequested?: Prisma.SupportJobRunCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewCreateNestedManyWithoutReviewerInput
 }
 
 export type UserUncheckedCreateWithoutInternalNotesAuthoredInput = {
@@ -6674,6 +10272,15 @@ export type UserUncheckedCreateWithoutInternalNotesAuthoredInput = {
   articleUploads?: Prisma.ArticleAttachmentUncheckedCreateNestedManyWithoutUploaderInput
   auditEventsAuthored?: Prisma.AuditLogUncheckedCreateNestedManyWithoutActorInput
   supportJobsRequested?: Prisma.SupportJobRunUncheckedCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedCreateNestedManyWithoutReviewerInput
 }
 
 export type UserCreateOrConnectWithoutInternalNotesAuthoredInput = {
@@ -6752,6 +10359,15 @@ export type UserUpdateWithoutInternalNotesAuthoredInput = {
   articleUploads?: Prisma.ArticleAttachmentUpdateManyWithoutUploaderNestedInput
   auditEventsAuthored?: Prisma.AuditLogUpdateManyWithoutActorNestedInput
   supportJobsRequested?: Prisma.SupportJobRunUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUpdateManyWithoutReviewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutInternalNotesAuthoredInput = {
@@ -6814,6 +10430,15 @@ export type UserUncheckedUpdateWithoutInternalNotesAuthoredInput = {
   articleUploads?: Prisma.ArticleAttachmentUncheckedUpdateManyWithoutUploaderNestedInput
   auditEventsAuthored?: Prisma.AuditLogUncheckedUpdateManyWithoutActorNestedInput
   supportJobsRequested?: Prisma.SupportJobRunUncheckedUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedUpdateManyWithoutReviewerNestedInput
 }
 
 export type UserCreateWithoutEscalationsTriggeredInput = {
@@ -6876,6 +10501,15 @@ export type UserCreateWithoutEscalationsTriggeredInput = {
   articleUploads?: Prisma.ArticleAttachmentCreateNestedManyWithoutUploaderInput
   auditEventsAuthored?: Prisma.AuditLogCreateNestedManyWithoutActorInput
   supportJobsRequested?: Prisma.SupportJobRunCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewCreateNestedManyWithoutReviewerInput
 }
 
 export type UserUncheckedCreateWithoutEscalationsTriggeredInput = {
@@ -6938,6 +10572,15 @@ export type UserUncheckedCreateWithoutEscalationsTriggeredInput = {
   articleUploads?: Prisma.ArticleAttachmentUncheckedCreateNestedManyWithoutUploaderInput
   auditEventsAuthored?: Prisma.AuditLogUncheckedCreateNestedManyWithoutActorInput
   supportJobsRequested?: Prisma.SupportJobRunUncheckedCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedCreateNestedManyWithoutReviewerInput
 }
 
 export type UserCreateOrConnectWithoutEscalationsTriggeredInput = {
@@ -7016,6 +10659,15 @@ export type UserUpdateWithoutEscalationsTriggeredInput = {
   articleUploads?: Prisma.ArticleAttachmentUpdateManyWithoutUploaderNestedInput
   auditEventsAuthored?: Prisma.AuditLogUpdateManyWithoutActorNestedInput
   supportJobsRequested?: Prisma.SupportJobRunUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUpdateManyWithoutReviewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutEscalationsTriggeredInput = {
@@ -7078,6 +10730,15 @@ export type UserUncheckedUpdateWithoutEscalationsTriggeredInput = {
   articleUploads?: Prisma.ArticleAttachmentUncheckedUpdateManyWithoutUploaderNestedInput
   auditEventsAuthored?: Prisma.AuditLogUncheckedUpdateManyWithoutActorNestedInput
   supportJobsRequested?: Prisma.SupportJobRunUncheckedUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedUpdateManyWithoutReviewerNestedInput
 }
 
 export type UserCreateWithoutCannedResponsesAuthoredInput = {
@@ -7140,6 +10801,15 @@ export type UserCreateWithoutCannedResponsesAuthoredInput = {
   articleUploads?: Prisma.ArticleAttachmentCreateNestedManyWithoutUploaderInput
   auditEventsAuthored?: Prisma.AuditLogCreateNestedManyWithoutActorInput
   supportJobsRequested?: Prisma.SupportJobRunCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewCreateNestedManyWithoutReviewerInput
 }
 
 export type UserUncheckedCreateWithoutCannedResponsesAuthoredInput = {
@@ -7202,6 +10872,15 @@ export type UserUncheckedCreateWithoutCannedResponsesAuthoredInput = {
   articleUploads?: Prisma.ArticleAttachmentUncheckedCreateNestedManyWithoutUploaderInput
   auditEventsAuthored?: Prisma.AuditLogUncheckedCreateNestedManyWithoutActorInput
   supportJobsRequested?: Prisma.SupportJobRunUncheckedCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedCreateNestedManyWithoutReviewerInput
 }
 
 export type UserCreateOrConnectWithoutCannedResponsesAuthoredInput = {
@@ -7280,6 +10959,15 @@ export type UserUpdateWithoutCannedResponsesAuthoredInput = {
   articleUploads?: Prisma.ArticleAttachmentUpdateManyWithoutUploaderNestedInput
   auditEventsAuthored?: Prisma.AuditLogUpdateManyWithoutActorNestedInput
   supportJobsRequested?: Prisma.SupportJobRunUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUpdateManyWithoutReviewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCannedResponsesAuthoredInput = {
@@ -7342,6 +11030,15 @@ export type UserUncheckedUpdateWithoutCannedResponsesAuthoredInput = {
   articleUploads?: Prisma.ArticleAttachmentUncheckedUpdateManyWithoutUploaderNestedInput
   auditEventsAuthored?: Prisma.AuditLogUncheckedUpdateManyWithoutActorNestedInput
   supportJobsRequested?: Prisma.SupportJobRunUncheckedUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedUpdateManyWithoutReviewerNestedInput
 }
 
 export type UserCreateWithoutSupportProfilesTouchedInput = {
@@ -7404,6 +11101,15 @@ export type UserCreateWithoutSupportProfilesTouchedInput = {
   articleUploads?: Prisma.ArticleAttachmentCreateNestedManyWithoutUploaderInput
   auditEventsAuthored?: Prisma.AuditLogCreateNestedManyWithoutActorInput
   supportJobsRequested?: Prisma.SupportJobRunCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewCreateNestedManyWithoutReviewerInput
 }
 
 export type UserUncheckedCreateWithoutSupportProfilesTouchedInput = {
@@ -7466,6 +11172,15 @@ export type UserUncheckedCreateWithoutSupportProfilesTouchedInput = {
   articleUploads?: Prisma.ArticleAttachmentUncheckedCreateNestedManyWithoutUploaderInput
   auditEventsAuthored?: Prisma.AuditLogUncheckedCreateNestedManyWithoutActorInput
   supportJobsRequested?: Prisma.SupportJobRunUncheckedCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedCreateNestedManyWithoutReviewerInput
 }
 
 export type UserCreateOrConnectWithoutSupportProfilesTouchedInput = {
@@ -7544,6 +11259,15 @@ export type UserUpdateWithoutSupportProfilesTouchedInput = {
   articleUploads?: Prisma.ArticleAttachmentUpdateManyWithoutUploaderNestedInput
   auditEventsAuthored?: Prisma.AuditLogUpdateManyWithoutActorNestedInput
   supportJobsRequested?: Prisma.SupportJobRunUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUpdateManyWithoutReviewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSupportProfilesTouchedInput = {
@@ -7606,6 +11330,15 @@ export type UserUncheckedUpdateWithoutSupportProfilesTouchedInput = {
   articleUploads?: Prisma.ArticleAttachmentUncheckedUpdateManyWithoutUploaderNestedInput
   auditEventsAuthored?: Prisma.AuditLogUncheckedUpdateManyWithoutActorNestedInput
   supportJobsRequested?: Prisma.SupportJobRunUncheckedUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedUpdateManyWithoutReviewerNestedInput
 }
 
 export type UserCreateWithoutCustomerActivityEventsInput = {
@@ -7668,6 +11401,15 @@ export type UserCreateWithoutCustomerActivityEventsInput = {
   articleUploads?: Prisma.ArticleAttachmentCreateNestedManyWithoutUploaderInput
   auditEventsAuthored?: Prisma.AuditLogCreateNestedManyWithoutActorInput
   supportJobsRequested?: Prisma.SupportJobRunCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewCreateNestedManyWithoutReviewerInput
 }
 
 export type UserUncheckedCreateWithoutCustomerActivityEventsInput = {
@@ -7730,6 +11472,15 @@ export type UserUncheckedCreateWithoutCustomerActivityEventsInput = {
   articleUploads?: Prisma.ArticleAttachmentUncheckedCreateNestedManyWithoutUploaderInput
   auditEventsAuthored?: Prisma.AuditLogUncheckedCreateNestedManyWithoutActorInput
   supportJobsRequested?: Prisma.SupportJobRunUncheckedCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedCreateNestedManyWithoutReviewerInput
 }
 
 export type UserCreateOrConnectWithoutCustomerActivityEventsInput = {
@@ -7808,6 +11559,15 @@ export type UserUpdateWithoutCustomerActivityEventsInput = {
   articleUploads?: Prisma.ArticleAttachmentUpdateManyWithoutUploaderNestedInput
   auditEventsAuthored?: Prisma.AuditLogUpdateManyWithoutActorNestedInput
   supportJobsRequested?: Prisma.SupportJobRunUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUpdateManyWithoutReviewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCustomerActivityEventsInput = {
@@ -7870,6 +11630,15 @@ export type UserUncheckedUpdateWithoutCustomerActivityEventsInput = {
   articleUploads?: Prisma.ArticleAttachmentUncheckedUpdateManyWithoutUploaderNestedInput
   auditEventsAuthored?: Prisma.AuditLogUncheckedUpdateManyWithoutActorNestedInput
   supportJobsRequested?: Prisma.SupportJobRunUncheckedUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedUpdateManyWithoutReviewerNestedInput
 }
 
 export type UserCreateWithoutContentRevisionsAuthoredInput = {
@@ -7932,6 +11701,15 @@ export type UserCreateWithoutContentRevisionsAuthoredInput = {
   articleUploads?: Prisma.ArticleAttachmentCreateNestedManyWithoutUploaderInput
   auditEventsAuthored?: Prisma.AuditLogCreateNestedManyWithoutActorInput
   supportJobsRequested?: Prisma.SupportJobRunCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewCreateNestedManyWithoutReviewerInput
 }
 
 export type UserUncheckedCreateWithoutContentRevisionsAuthoredInput = {
@@ -7994,6 +11772,15 @@ export type UserUncheckedCreateWithoutContentRevisionsAuthoredInput = {
   articleUploads?: Prisma.ArticleAttachmentUncheckedCreateNestedManyWithoutUploaderInput
   auditEventsAuthored?: Prisma.AuditLogUncheckedCreateNestedManyWithoutActorInput
   supportJobsRequested?: Prisma.SupportJobRunUncheckedCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedCreateNestedManyWithoutReviewerInput
 }
 
 export type UserCreateOrConnectWithoutContentRevisionsAuthoredInput = {
@@ -8072,6 +11859,15 @@ export type UserUpdateWithoutContentRevisionsAuthoredInput = {
   articleUploads?: Prisma.ArticleAttachmentUpdateManyWithoutUploaderNestedInput
   auditEventsAuthored?: Prisma.AuditLogUpdateManyWithoutActorNestedInput
   supportJobsRequested?: Prisma.SupportJobRunUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUpdateManyWithoutReviewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutContentRevisionsAuthoredInput = {
@@ -8134,6 +11930,15 @@ export type UserUncheckedUpdateWithoutContentRevisionsAuthoredInput = {
   articleUploads?: Prisma.ArticleAttachmentUncheckedUpdateManyWithoutUploaderNestedInput
   auditEventsAuthored?: Prisma.AuditLogUncheckedUpdateManyWithoutActorNestedInput
   supportJobsRequested?: Prisma.SupportJobRunUncheckedUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedUpdateManyWithoutReviewerNestedInput
 }
 
 export type UserCreateWithoutKnowledgeFeedbackInput = {
@@ -8196,6 +12001,15 @@ export type UserCreateWithoutKnowledgeFeedbackInput = {
   articleUploads?: Prisma.ArticleAttachmentCreateNestedManyWithoutUploaderInput
   auditEventsAuthored?: Prisma.AuditLogCreateNestedManyWithoutActorInput
   supportJobsRequested?: Prisma.SupportJobRunCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewCreateNestedManyWithoutReviewerInput
 }
 
 export type UserUncheckedCreateWithoutKnowledgeFeedbackInput = {
@@ -8258,6 +12072,15 @@ export type UserUncheckedCreateWithoutKnowledgeFeedbackInput = {
   articleUploads?: Prisma.ArticleAttachmentUncheckedCreateNestedManyWithoutUploaderInput
   auditEventsAuthored?: Prisma.AuditLogUncheckedCreateNestedManyWithoutActorInput
   supportJobsRequested?: Prisma.SupportJobRunUncheckedCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedCreateNestedManyWithoutReviewerInput
 }
 
 export type UserCreateOrConnectWithoutKnowledgeFeedbackInput = {
@@ -8336,6 +12159,15 @@ export type UserUpdateWithoutKnowledgeFeedbackInput = {
   articleUploads?: Prisma.ArticleAttachmentUpdateManyWithoutUploaderNestedInput
   auditEventsAuthored?: Prisma.AuditLogUpdateManyWithoutActorNestedInput
   supportJobsRequested?: Prisma.SupportJobRunUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUpdateManyWithoutReviewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutKnowledgeFeedbackInput = {
@@ -8398,6 +12230,15 @@ export type UserUncheckedUpdateWithoutKnowledgeFeedbackInput = {
   articleUploads?: Prisma.ArticleAttachmentUncheckedUpdateManyWithoutUploaderNestedInput
   auditEventsAuthored?: Prisma.AuditLogUncheckedUpdateManyWithoutActorNestedInput
   supportJobsRequested?: Prisma.SupportJobRunUncheckedUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedUpdateManyWithoutReviewerNestedInput
 }
 
 export type UserCreateWithoutArticleUploadsInput = {
@@ -8460,6 +12301,15 @@ export type UserCreateWithoutArticleUploadsInput = {
   knowledgeFeedback?: Prisma.KnowledgeFeedbackCreateNestedManyWithoutUserInput
   auditEventsAuthored?: Prisma.AuditLogCreateNestedManyWithoutActorInput
   supportJobsRequested?: Prisma.SupportJobRunCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewCreateNestedManyWithoutReviewerInput
 }
 
 export type UserUncheckedCreateWithoutArticleUploadsInput = {
@@ -8522,6 +12372,15 @@ export type UserUncheckedCreateWithoutArticleUploadsInput = {
   knowledgeFeedback?: Prisma.KnowledgeFeedbackUncheckedCreateNestedManyWithoutUserInput
   auditEventsAuthored?: Prisma.AuditLogUncheckedCreateNestedManyWithoutActorInput
   supportJobsRequested?: Prisma.SupportJobRunUncheckedCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedCreateNestedManyWithoutReviewerInput
 }
 
 export type UserCreateOrConnectWithoutArticleUploadsInput = {
@@ -8600,6 +12459,15 @@ export type UserUpdateWithoutArticleUploadsInput = {
   knowledgeFeedback?: Prisma.KnowledgeFeedbackUpdateManyWithoutUserNestedInput
   auditEventsAuthored?: Prisma.AuditLogUpdateManyWithoutActorNestedInput
   supportJobsRequested?: Prisma.SupportJobRunUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUpdateManyWithoutReviewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutArticleUploadsInput = {
@@ -8662,6 +12530,15 @@ export type UserUncheckedUpdateWithoutArticleUploadsInput = {
   knowledgeFeedback?: Prisma.KnowledgeFeedbackUncheckedUpdateManyWithoutUserNestedInput
   auditEventsAuthored?: Prisma.AuditLogUncheckedUpdateManyWithoutActorNestedInput
   supportJobsRequested?: Prisma.SupportJobRunUncheckedUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedUpdateManyWithoutReviewerNestedInput
 }
 
 export type UserCreateWithoutAuditEventsAuthoredInput = {
@@ -8724,6 +12601,15 @@ export type UserCreateWithoutAuditEventsAuthoredInput = {
   knowledgeFeedback?: Prisma.KnowledgeFeedbackCreateNestedManyWithoutUserInput
   articleUploads?: Prisma.ArticleAttachmentCreateNestedManyWithoutUploaderInput
   supportJobsRequested?: Prisma.SupportJobRunCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewCreateNestedManyWithoutReviewerInput
 }
 
 export type UserUncheckedCreateWithoutAuditEventsAuthoredInput = {
@@ -8786,6 +12672,15 @@ export type UserUncheckedCreateWithoutAuditEventsAuthoredInput = {
   knowledgeFeedback?: Prisma.KnowledgeFeedbackUncheckedCreateNestedManyWithoutUserInput
   articleUploads?: Prisma.ArticleAttachmentUncheckedCreateNestedManyWithoutUploaderInput
   supportJobsRequested?: Prisma.SupportJobRunUncheckedCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedCreateNestedManyWithoutReviewerInput
 }
 
 export type UserCreateOrConnectWithoutAuditEventsAuthoredInput = {
@@ -8864,6 +12759,15 @@ export type UserUpdateWithoutAuditEventsAuthoredInput = {
   knowledgeFeedback?: Prisma.KnowledgeFeedbackUpdateManyWithoutUserNestedInput
   articleUploads?: Prisma.ArticleAttachmentUpdateManyWithoutUploaderNestedInput
   supportJobsRequested?: Prisma.SupportJobRunUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUpdateManyWithoutReviewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutAuditEventsAuthoredInput = {
@@ -8926,6 +12830,15 @@ export type UserUncheckedUpdateWithoutAuditEventsAuthoredInput = {
   knowledgeFeedback?: Prisma.KnowledgeFeedbackUncheckedUpdateManyWithoutUserNestedInput
   articleUploads?: Prisma.ArticleAttachmentUncheckedUpdateManyWithoutUploaderNestedInput
   supportJobsRequested?: Prisma.SupportJobRunUncheckedUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedUpdateManyWithoutReviewerNestedInput
 }
 
 export type UserCreateWithoutSupportJobsRequestedInput = {
@@ -8988,6 +12901,15 @@ export type UserCreateWithoutSupportJobsRequestedInput = {
   knowledgeFeedback?: Prisma.KnowledgeFeedbackCreateNestedManyWithoutUserInput
   articleUploads?: Prisma.ArticleAttachmentCreateNestedManyWithoutUploaderInput
   auditEventsAuthored?: Prisma.AuditLogCreateNestedManyWithoutActorInput
+  blogPostsSubmitted?: Prisma.BlogPostCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewCreateNestedManyWithoutReviewerInput
 }
 
 export type UserUncheckedCreateWithoutSupportJobsRequestedInput = {
@@ -9050,6 +12972,15 @@ export type UserUncheckedCreateWithoutSupportJobsRequestedInput = {
   knowledgeFeedback?: Prisma.KnowledgeFeedbackUncheckedCreateNestedManyWithoutUserInput
   articleUploads?: Prisma.ArticleAttachmentUncheckedCreateNestedManyWithoutUploaderInput
   auditEventsAuthored?: Prisma.AuditLogUncheckedCreateNestedManyWithoutActorInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedCreateNestedManyWithoutReviewerInput
 }
 
 export type UserCreateOrConnectWithoutSupportJobsRequestedInput = {
@@ -9128,6 +13059,15 @@ export type UserUpdateWithoutSupportJobsRequestedInput = {
   knowledgeFeedback?: Prisma.KnowledgeFeedbackUpdateManyWithoutUserNestedInput
   articleUploads?: Prisma.ArticleAttachmentUpdateManyWithoutUploaderNestedInput
   auditEventsAuthored?: Prisma.AuditLogUpdateManyWithoutActorNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUpdateManyWithoutReviewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSupportJobsRequestedInput = {
@@ -9190,6 +13130,15 @@ export type UserUncheckedUpdateWithoutSupportJobsRequestedInput = {
   knowledgeFeedback?: Prisma.KnowledgeFeedbackUncheckedUpdateManyWithoutUserNestedInput
   articleUploads?: Prisma.ArticleAttachmentUncheckedUpdateManyWithoutUploaderNestedInput
   auditEventsAuthored?: Prisma.AuditLogUncheckedUpdateManyWithoutActorNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedUpdateManyWithoutReviewerNestedInput
 }
 
 export type UserCreateWithoutOnboardingInput = {
@@ -9252,6 +13201,15 @@ export type UserCreateWithoutOnboardingInput = {
   articleUploads?: Prisma.ArticleAttachmentCreateNestedManyWithoutUploaderInput
   auditEventsAuthored?: Prisma.AuditLogCreateNestedManyWithoutActorInput
   supportJobsRequested?: Prisma.SupportJobRunCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewCreateNestedManyWithoutReviewerInput
 }
 
 export type UserUncheckedCreateWithoutOnboardingInput = {
@@ -9314,6 +13272,15 @@ export type UserUncheckedCreateWithoutOnboardingInput = {
   articleUploads?: Prisma.ArticleAttachmentUncheckedCreateNestedManyWithoutUploaderInput
   auditEventsAuthored?: Prisma.AuditLogUncheckedCreateNestedManyWithoutActorInput
   supportJobsRequested?: Prisma.SupportJobRunUncheckedCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedCreateNestedManyWithoutReviewerInput
 }
 
 export type UserCreateOrConnectWithoutOnboardingInput = {
@@ -9392,6 +13359,15 @@ export type UserUpdateWithoutOnboardingInput = {
   articleUploads?: Prisma.ArticleAttachmentUpdateManyWithoutUploaderNestedInput
   auditEventsAuthored?: Prisma.AuditLogUpdateManyWithoutActorNestedInput
   supportJobsRequested?: Prisma.SupportJobRunUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUpdateManyWithoutReviewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutOnboardingInput = {
@@ -9454,6 +13430,15 @@ export type UserUncheckedUpdateWithoutOnboardingInput = {
   articleUploads?: Prisma.ArticleAttachmentUncheckedUpdateManyWithoutUploaderNestedInput
   auditEventsAuthored?: Prisma.AuditLogUncheckedUpdateManyWithoutActorNestedInput
   supportJobsRequested?: Prisma.SupportJobRunUncheckedUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedUpdateManyWithoutReviewerNestedInput
 }
 
 export type UserCreateWithoutFileAssetsInput = {
@@ -9516,6 +13501,15 @@ export type UserCreateWithoutFileAssetsInput = {
   articleUploads?: Prisma.ArticleAttachmentCreateNestedManyWithoutUploaderInput
   auditEventsAuthored?: Prisma.AuditLogCreateNestedManyWithoutActorInput
   supportJobsRequested?: Prisma.SupportJobRunCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewCreateNestedManyWithoutReviewerInput
 }
 
 export type UserUncheckedCreateWithoutFileAssetsInput = {
@@ -9578,6 +13572,15 @@ export type UserUncheckedCreateWithoutFileAssetsInput = {
   articleUploads?: Prisma.ArticleAttachmentUncheckedCreateNestedManyWithoutUploaderInput
   auditEventsAuthored?: Prisma.AuditLogUncheckedCreateNestedManyWithoutActorInput
   supportJobsRequested?: Prisma.SupportJobRunUncheckedCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedCreateNestedManyWithoutReviewerInput
 }
 
 export type UserCreateOrConnectWithoutFileAssetsInput = {
@@ -9656,6 +13659,15 @@ export type UserUpdateWithoutFileAssetsInput = {
   articleUploads?: Prisma.ArticleAttachmentUpdateManyWithoutUploaderNestedInput
   auditEventsAuthored?: Prisma.AuditLogUpdateManyWithoutActorNestedInput
   supportJobsRequested?: Prisma.SupportJobRunUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUpdateManyWithoutReviewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutFileAssetsInput = {
@@ -9718,6 +13730,15 @@ export type UserUncheckedUpdateWithoutFileAssetsInput = {
   articleUploads?: Prisma.ArticleAttachmentUncheckedUpdateManyWithoutUploaderNestedInput
   auditEventsAuthored?: Prisma.AuditLogUncheckedUpdateManyWithoutActorNestedInput
   supportJobsRequested?: Prisma.SupportJobRunUncheckedUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedUpdateManyWithoutReviewerNestedInput
 }
 
 export type UserCreateWithoutApprovalResponsesInput = {
@@ -9780,6 +13801,15 @@ export type UserCreateWithoutApprovalResponsesInput = {
   articleUploads?: Prisma.ArticleAttachmentCreateNestedManyWithoutUploaderInput
   auditEventsAuthored?: Prisma.AuditLogCreateNestedManyWithoutActorInput
   supportJobsRequested?: Prisma.SupportJobRunCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewCreateNestedManyWithoutReviewerInput
 }
 
 export type UserUncheckedCreateWithoutApprovalResponsesInput = {
@@ -9842,6 +13872,15 @@ export type UserUncheckedCreateWithoutApprovalResponsesInput = {
   articleUploads?: Prisma.ArticleAttachmentUncheckedCreateNestedManyWithoutUploaderInput
   auditEventsAuthored?: Prisma.AuditLogUncheckedCreateNestedManyWithoutActorInput
   supportJobsRequested?: Prisma.SupportJobRunUncheckedCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedCreateNestedManyWithoutReviewerInput
 }
 
 export type UserCreateOrConnectWithoutApprovalResponsesInput = {
@@ -9920,6 +13959,15 @@ export type UserUpdateWithoutApprovalResponsesInput = {
   articleUploads?: Prisma.ArticleAttachmentUpdateManyWithoutUploaderNestedInput
   auditEventsAuthored?: Prisma.AuditLogUpdateManyWithoutActorNestedInput
   supportJobsRequested?: Prisma.SupportJobRunUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUpdateManyWithoutReviewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutApprovalResponsesInput = {
@@ -9982,6 +14030,15 @@ export type UserUncheckedUpdateWithoutApprovalResponsesInput = {
   articleUploads?: Prisma.ArticleAttachmentUncheckedUpdateManyWithoutUploaderNestedInput
   auditEventsAuthored?: Prisma.AuditLogUncheckedUpdateManyWithoutActorNestedInput
   supportJobsRequested?: Prisma.SupportJobRunUncheckedUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedUpdateManyWithoutReviewerNestedInput
 }
 
 export type UserCreateWithoutProjectCommentsInput = {
@@ -10044,6 +14101,15 @@ export type UserCreateWithoutProjectCommentsInput = {
   articleUploads?: Prisma.ArticleAttachmentCreateNestedManyWithoutUploaderInput
   auditEventsAuthored?: Prisma.AuditLogCreateNestedManyWithoutActorInput
   supportJobsRequested?: Prisma.SupportJobRunCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewCreateNestedManyWithoutReviewerInput
 }
 
 export type UserUncheckedCreateWithoutProjectCommentsInput = {
@@ -10106,6 +14172,15 @@ export type UserUncheckedCreateWithoutProjectCommentsInput = {
   articleUploads?: Prisma.ArticleAttachmentUncheckedCreateNestedManyWithoutUploaderInput
   auditEventsAuthored?: Prisma.AuditLogUncheckedCreateNestedManyWithoutActorInput
   supportJobsRequested?: Prisma.SupportJobRunUncheckedCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedCreateNestedManyWithoutReviewerInput
 }
 
 export type UserCreateOrConnectWithoutProjectCommentsInput = {
@@ -10184,6 +14259,15 @@ export type UserUpdateWithoutProjectCommentsInput = {
   articleUploads?: Prisma.ArticleAttachmentUpdateManyWithoutUploaderNestedInput
   auditEventsAuthored?: Prisma.AuditLogUpdateManyWithoutActorNestedInput
   supportJobsRequested?: Prisma.SupportJobRunUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUpdateManyWithoutReviewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutProjectCommentsInput = {
@@ -10246,6 +14330,15 @@ export type UserUncheckedUpdateWithoutProjectCommentsInput = {
   articleUploads?: Prisma.ArticleAttachmentUncheckedUpdateManyWithoutUploaderNestedInput
   auditEventsAuthored?: Prisma.AuditLogUncheckedUpdateManyWithoutActorNestedInput
   supportJobsRequested?: Prisma.SupportJobRunUncheckedUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedUpdateManyWithoutReviewerNestedInput
 }
 
 export type UserCreateWithoutProjectFilesInput = {
@@ -10308,6 +14401,15 @@ export type UserCreateWithoutProjectFilesInput = {
   articleUploads?: Prisma.ArticleAttachmentCreateNestedManyWithoutUploaderInput
   auditEventsAuthored?: Prisma.AuditLogCreateNestedManyWithoutActorInput
   supportJobsRequested?: Prisma.SupportJobRunCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewCreateNestedManyWithoutReviewerInput
 }
 
 export type UserUncheckedCreateWithoutProjectFilesInput = {
@@ -10370,6 +14472,15 @@ export type UserUncheckedCreateWithoutProjectFilesInput = {
   articleUploads?: Prisma.ArticleAttachmentUncheckedCreateNestedManyWithoutUploaderInput
   auditEventsAuthored?: Prisma.AuditLogUncheckedCreateNestedManyWithoutActorInput
   supportJobsRequested?: Prisma.SupportJobRunUncheckedCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedCreateNestedManyWithoutReviewerInput
 }
 
 export type UserCreateOrConnectWithoutProjectFilesInput = {
@@ -10448,6 +14559,15 @@ export type UserUpdateWithoutProjectFilesInput = {
   articleUploads?: Prisma.ArticleAttachmentUpdateManyWithoutUploaderNestedInput
   auditEventsAuthored?: Prisma.AuditLogUpdateManyWithoutActorNestedInput
   supportJobsRequested?: Prisma.SupportJobRunUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUpdateManyWithoutReviewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutProjectFilesInput = {
@@ -10510,6 +14630,15 @@ export type UserUncheckedUpdateWithoutProjectFilesInput = {
   articleUploads?: Prisma.ArticleAttachmentUncheckedUpdateManyWithoutUploaderNestedInput
   auditEventsAuthored?: Prisma.AuditLogUncheckedUpdateManyWithoutActorNestedInput
   supportJobsRequested?: Prisma.SupportJobRunUncheckedUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedUpdateManyWithoutReviewerNestedInput
 }
 
 export type UserCreateWithoutMaintenanceRequestsInput = {
@@ -10572,6 +14701,15 @@ export type UserCreateWithoutMaintenanceRequestsInput = {
   articleUploads?: Prisma.ArticleAttachmentCreateNestedManyWithoutUploaderInput
   auditEventsAuthored?: Prisma.AuditLogCreateNestedManyWithoutActorInput
   supportJobsRequested?: Prisma.SupportJobRunCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewCreateNestedManyWithoutReviewerInput
 }
 
 export type UserUncheckedCreateWithoutMaintenanceRequestsInput = {
@@ -10634,6 +14772,15 @@ export type UserUncheckedCreateWithoutMaintenanceRequestsInput = {
   articleUploads?: Prisma.ArticleAttachmentUncheckedCreateNestedManyWithoutUploaderInput
   auditEventsAuthored?: Prisma.AuditLogUncheckedCreateNestedManyWithoutActorInput
   supportJobsRequested?: Prisma.SupportJobRunUncheckedCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedCreateNestedManyWithoutReviewerInput
 }
 
 export type UserCreateOrConnectWithoutMaintenanceRequestsInput = {
@@ -10712,6 +14859,15 @@ export type UserUpdateWithoutMaintenanceRequestsInput = {
   articleUploads?: Prisma.ArticleAttachmentUpdateManyWithoutUploaderNestedInput
   auditEventsAuthored?: Prisma.AuditLogUpdateManyWithoutActorNestedInput
   supportJobsRequested?: Prisma.SupportJobRunUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUpdateManyWithoutReviewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutMaintenanceRequestsInput = {
@@ -10774,6 +14930,15 @@ export type UserUncheckedUpdateWithoutMaintenanceRequestsInput = {
   articleUploads?: Prisma.ArticleAttachmentUncheckedUpdateManyWithoutUploaderNestedInput
   auditEventsAuthored?: Prisma.AuditLogUncheckedUpdateManyWithoutActorNestedInput
   supportJobsRequested?: Prisma.SupportJobRunUncheckedUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedUpdateManyWithoutReviewerNestedInput
 }
 
 export type UserCreateWithoutSupportTicketsInput = {
@@ -10836,6 +15001,15 @@ export type UserCreateWithoutSupportTicketsInput = {
   articleUploads?: Prisma.ArticleAttachmentCreateNestedManyWithoutUploaderInput
   auditEventsAuthored?: Prisma.AuditLogCreateNestedManyWithoutActorInput
   supportJobsRequested?: Prisma.SupportJobRunCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewCreateNestedManyWithoutReviewerInput
 }
 
 export type UserUncheckedCreateWithoutSupportTicketsInput = {
@@ -10898,6 +15072,15 @@ export type UserUncheckedCreateWithoutSupportTicketsInput = {
   articleUploads?: Prisma.ArticleAttachmentUncheckedCreateNestedManyWithoutUploaderInput
   auditEventsAuthored?: Prisma.AuditLogUncheckedCreateNestedManyWithoutActorInput
   supportJobsRequested?: Prisma.SupportJobRunUncheckedCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedCreateNestedManyWithoutReviewerInput
 }
 
 export type UserCreateOrConnectWithoutSupportTicketsInput = {
@@ -10976,6 +15159,15 @@ export type UserUpdateWithoutSupportTicketsInput = {
   articleUploads?: Prisma.ArticleAttachmentUpdateManyWithoutUploaderNestedInput
   auditEventsAuthored?: Prisma.AuditLogUpdateManyWithoutActorNestedInput
   supportJobsRequested?: Prisma.SupportJobRunUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUpdateManyWithoutReviewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSupportTicketsInput = {
@@ -11038,6 +15230,15 @@ export type UserUncheckedUpdateWithoutSupportTicketsInput = {
   articleUploads?: Prisma.ArticleAttachmentUncheckedUpdateManyWithoutUploaderNestedInput
   auditEventsAuthored?: Prisma.AuditLogUncheckedUpdateManyWithoutActorNestedInput
   supportJobsRequested?: Prisma.SupportJobRunUncheckedUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedUpdateManyWithoutReviewerNestedInput
 }
 
 export type UserCreateWithoutTicketMessagesInput = {
@@ -11100,6 +15301,15 @@ export type UserCreateWithoutTicketMessagesInput = {
   articleUploads?: Prisma.ArticleAttachmentCreateNestedManyWithoutUploaderInput
   auditEventsAuthored?: Prisma.AuditLogCreateNestedManyWithoutActorInput
   supportJobsRequested?: Prisma.SupportJobRunCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewCreateNestedManyWithoutReviewerInput
 }
 
 export type UserUncheckedCreateWithoutTicketMessagesInput = {
@@ -11162,6 +15372,15 @@ export type UserUncheckedCreateWithoutTicketMessagesInput = {
   articleUploads?: Prisma.ArticleAttachmentUncheckedCreateNestedManyWithoutUploaderInput
   auditEventsAuthored?: Prisma.AuditLogUncheckedCreateNestedManyWithoutActorInput
   supportJobsRequested?: Prisma.SupportJobRunUncheckedCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedCreateNestedManyWithoutReviewerInput
 }
 
 export type UserCreateOrConnectWithoutTicketMessagesInput = {
@@ -11240,6 +15459,15 @@ export type UserUpdateWithoutTicketMessagesInput = {
   articleUploads?: Prisma.ArticleAttachmentUpdateManyWithoutUploaderNestedInput
   auditEventsAuthored?: Prisma.AuditLogUpdateManyWithoutActorNestedInput
   supportJobsRequested?: Prisma.SupportJobRunUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUpdateManyWithoutReviewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutTicketMessagesInput = {
@@ -11302,6 +15530,15 @@ export type UserUncheckedUpdateWithoutTicketMessagesInput = {
   articleUploads?: Prisma.ArticleAttachmentUncheckedUpdateManyWithoutUploaderNestedInput
   auditEventsAuthored?: Prisma.AuditLogUncheckedUpdateManyWithoutActorNestedInput
   supportJobsRequested?: Prisma.SupportJobRunUncheckedUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedUpdateManyWithoutReviewerNestedInput
 }
 
 export type UserCreateWithoutTicketAttachmentsInput = {
@@ -11364,6 +15601,15 @@ export type UserCreateWithoutTicketAttachmentsInput = {
   articleUploads?: Prisma.ArticleAttachmentCreateNestedManyWithoutUploaderInput
   auditEventsAuthored?: Prisma.AuditLogCreateNestedManyWithoutActorInput
   supportJobsRequested?: Prisma.SupportJobRunCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewCreateNestedManyWithoutReviewerInput
 }
 
 export type UserUncheckedCreateWithoutTicketAttachmentsInput = {
@@ -11426,6 +15672,15 @@ export type UserUncheckedCreateWithoutTicketAttachmentsInput = {
   articleUploads?: Prisma.ArticleAttachmentUncheckedCreateNestedManyWithoutUploaderInput
   auditEventsAuthored?: Prisma.AuditLogUncheckedCreateNestedManyWithoutActorInput
   supportJobsRequested?: Prisma.SupportJobRunUncheckedCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedCreateNestedManyWithoutReviewerInput
 }
 
 export type UserCreateOrConnectWithoutTicketAttachmentsInput = {
@@ -11504,6 +15759,15 @@ export type UserUpdateWithoutTicketAttachmentsInput = {
   articleUploads?: Prisma.ArticleAttachmentUpdateManyWithoutUploaderNestedInput
   auditEventsAuthored?: Prisma.AuditLogUpdateManyWithoutActorNestedInput
   supportJobsRequested?: Prisma.SupportJobRunUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUpdateManyWithoutReviewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutTicketAttachmentsInput = {
@@ -11566,6 +15830,15 @@ export type UserUncheckedUpdateWithoutTicketAttachmentsInput = {
   articleUploads?: Prisma.ArticleAttachmentUncheckedUpdateManyWithoutUploaderNestedInput
   auditEventsAuthored?: Prisma.AuditLogUncheckedUpdateManyWithoutActorNestedInput
   supportJobsRequested?: Prisma.SupportJobRunUncheckedUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedUpdateManyWithoutReviewerNestedInput
 }
 
 export type UserCreateWithoutHelpArticlesAuthoredInput = {
@@ -11628,6 +15901,15 @@ export type UserCreateWithoutHelpArticlesAuthoredInput = {
   articleUploads?: Prisma.ArticleAttachmentCreateNestedManyWithoutUploaderInput
   auditEventsAuthored?: Prisma.AuditLogCreateNestedManyWithoutActorInput
   supportJobsRequested?: Prisma.SupportJobRunCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewCreateNestedManyWithoutReviewerInput
 }
 
 export type UserUncheckedCreateWithoutHelpArticlesAuthoredInput = {
@@ -11690,6 +15972,15 @@ export type UserUncheckedCreateWithoutHelpArticlesAuthoredInput = {
   articleUploads?: Prisma.ArticleAttachmentUncheckedCreateNestedManyWithoutUploaderInput
   auditEventsAuthored?: Prisma.AuditLogUncheckedCreateNestedManyWithoutActorInput
   supportJobsRequested?: Prisma.SupportJobRunUncheckedCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedCreateNestedManyWithoutReviewerInput
 }
 
 export type UserCreateOrConnectWithoutHelpArticlesAuthoredInput = {
@@ -11768,6 +16059,15 @@ export type UserUpdateWithoutHelpArticlesAuthoredInput = {
   articleUploads?: Prisma.ArticleAttachmentUpdateManyWithoutUploaderNestedInput
   auditEventsAuthored?: Prisma.AuditLogUpdateManyWithoutActorNestedInput
   supportJobsRequested?: Prisma.SupportJobRunUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUpdateManyWithoutReviewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutHelpArticlesAuthoredInput = {
@@ -11830,6 +16130,15 @@ export type UserUncheckedUpdateWithoutHelpArticlesAuthoredInput = {
   articleUploads?: Prisma.ArticleAttachmentUncheckedUpdateManyWithoutUploaderNestedInput
   auditEventsAuthored?: Prisma.AuditLogUncheckedUpdateManyWithoutActorNestedInput
   supportJobsRequested?: Prisma.SupportJobRunUncheckedUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedUpdateManyWithoutReviewerNestedInput
 }
 
 export type UserCreateWithoutNotificationPreferenceInput = {
@@ -11892,6 +16201,15 @@ export type UserCreateWithoutNotificationPreferenceInput = {
   articleUploads?: Prisma.ArticleAttachmentCreateNestedManyWithoutUploaderInput
   auditEventsAuthored?: Prisma.AuditLogCreateNestedManyWithoutActorInput
   supportJobsRequested?: Prisma.SupportJobRunCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewCreateNestedManyWithoutReviewerInput
 }
 
 export type UserUncheckedCreateWithoutNotificationPreferenceInput = {
@@ -11954,6 +16272,15 @@ export type UserUncheckedCreateWithoutNotificationPreferenceInput = {
   articleUploads?: Prisma.ArticleAttachmentUncheckedCreateNestedManyWithoutUploaderInput
   auditEventsAuthored?: Prisma.AuditLogUncheckedCreateNestedManyWithoutActorInput
   supportJobsRequested?: Prisma.SupportJobRunUncheckedCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedCreateNestedManyWithoutReviewerInput
 }
 
 export type UserCreateOrConnectWithoutNotificationPreferenceInput = {
@@ -12032,6 +16359,15 @@ export type UserUpdateWithoutNotificationPreferenceInput = {
   articleUploads?: Prisma.ArticleAttachmentUpdateManyWithoutUploaderNestedInput
   auditEventsAuthored?: Prisma.AuditLogUpdateManyWithoutActorNestedInput
   supportJobsRequested?: Prisma.SupportJobRunUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUpdateManyWithoutReviewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutNotificationPreferenceInput = {
@@ -12094,6 +16430,15 @@ export type UserUncheckedUpdateWithoutNotificationPreferenceInput = {
   articleUploads?: Prisma.ArticleAttachmentUncheckedUpdateManyWithoutUploaderNestedInput
   auditEventsAuthored?: Prisma.AuditLogUncheckedUpdateManyWithoutActorNestedInput
   supportJobsRequested?: Prisma.SupportJobRunUncheckedUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedUpdateManyWithoutReviewerNestedInput
 }
 
 export type UserCreateWithoutDataExportJobsInput = {
@@ -12156,6 +16501,15 @@ export type UserCreateWithoutDataExportJobsInput = {
   articleUploads?: Prisma.ArticleAttachmentCreateNestedManyWithoutUploaderInput
   auditEventsAuthored?: Prisma.AuditLogCreateNestedManyWithoutActorInput
   supportJobsRequested?: Prisma.SupportJobRunCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewCreateNestedManyWithoutReviewerInput
 }
 
 export type UserUncheckedCreateWithoutDataExportJobsInput = {
@@ -12218,6 +16572,15 @@ export type UserUncheckedCreateWithoutDataExportJobsInput = {
   articleUploads?: Prisma.ArticleAttachmentUncheckedCreateNestedManyWithoutUploaderInput
   auditEventsAuthored?: Prisma.AuditLogUncheckedCreateNestedManyWithoutActorInput
   supportJobsRequested?: Prisma.SupportJobRunUncheckedCreateNestedManyWithoutRequestedByInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedCreateNestedManyWithoutSubmittedByInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedCreateNestedManyWithoutLastReviewedByInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutSubmittedByInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutLastReviewedByInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedCreateNestedManyWithoutRecordedByInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedCreateNestedManyWithoutSubmittedByInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedCreateNestedManyWithoutLastReviewedByInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedCreateNestedManyWithoutCapturedByInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedCreateNestedManyWithoutReviewerInput
 }
 
 export type UserCreateOrConnectWithoutDataExportJobsInput = {
@@ -12296,6 +16659,15 @@ export type UserUpdateWithoutDataExportJobsInput = {
   articleUploads?: Prisma.ArticleAttachmentUpdateManyWithoutUploaderNestedInput
   auditEventsAuthored?: Prisma.AuditLogUpdateManyWithoutActorNestedInput
   supportJobsRequested?: Prisma.SupportJobRunUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUpdateManyWithoutReviewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutDataExportJobsInput = {
@@ -12358,6 +16730,15 @@ export type UserUncheckedUpdateWithoutDataExportJobsInput = {
   articleUploads?: Prisma.ArticleAttachmentUncheckedUpdateManyWithoutUploaderNestedInput
   auditEventsAuthored?: Prisma.AuditLogUncheckedUpdateManyWithoutActorNestedInput
   supportJobsRequested?: Prisma.SupportJobRunUncheckedUpdateManyWithoutRequestedByNestedInput
+  blogPostsSubmitted?: Prisma.BlogPostUncheckedUpdateManyWithoutSubmittedByNestedInput
+  blogPostsLastReviewed?: Prisma.BlogPostUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  caseStudiesSubmitted?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutSubmittedByNestedInput
+  caseStudiesLastReviewed?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  clientApprovalsRecorded?: Prisma.ClientPublicationApprovalUncheckedUpdateManyWithoutRecordedByNestedInput
+  testimonialsSubmitted?: Prisma.TestimonialUncheckedUpdateManyWithoutSubmittedByNestedInput
+  testimonialsLastReviewed?: Prisma.TestimonialUncheckedUpdateManyWithoutLastReviewedByNestedInput
+  testimonialConsentsCaptured?: Prisma.TestimonialConsentUncheckedUpdateManyWithoutCapturedByNestedInput
+  moderationReviewsAuthored?: Prisma.ModerationReviewUncheckedUpdateManyWithoutReviewerNestedInput
 }
 
 
@@ -12404,6 +16785,15 @@ export type UserCountOutputType = {
   articleUploads: number
   auditEventsAuthored: number
   supportJobsRequested: number
+  blogPostsSubmitted: number
+  blogPostsLastReviewed: number
+  caseStudiesSubmitted: number
+  caseStudiesLastReviewed: number
+  clientApprovalsRecorded: number
+  testimonialsSubmitted: number
+  testimonialsLastReviewed: number
+  testimonialConsentsCaptured: number
+  moderationReviewsAuthored: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -12445,6 +16835,15 @@ export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.I
   articleUploads?: boolean | UserCountOutputTypeCountArticleUploadsArgs
   auditEventsAuthored?: boolean | UserCountOutputTypeCountAuditEventsAuthoredArgs
   supportJobsRequested?: boolean | UserCountOutputTypeCountSupportJobsRequestedArgs
+  blogPostsSubmitted?: boolean | UserCountOutputTypeCountBlogPostsSubmittedArgs
+  blogPostsLastReviewed?: boolean | UserCountOutputTypeCountBlogPostsLastReviewedArgs
+  caseStudiesSubmitted?: boolean | UserCountOutputTypeCountCaseStudiesSubmittedArgs
+  caseStudiesLastReviewed?: boolean | UserCountOutputTypeCountCaseStudiesLastReviewedArgs
+  clientApprovalsRecorded?: boolean | UserCountOutputTypeCountClientApprovalsRecordedArgs
+  testimonialsSubmitted?: boolean | UserCountOutputTypeCountTestimonialsSubmittedArgs
+  testimonialsLastReviewed?: boolean | UserCountOutputTypeCountTestimonialsLastReviewedArgs
+  testimonialConsentsCaptured?: boolean | UserCountOutputTypeCountTestimonialConsentsCapturedArgs
+  moderationReviewsAuthored?: boolean | UserCountOutputTypeCountModerationReviewsAuthoredArgs
 }
 
 /**
@@ -12723,6 +17122,69 @@ export type UserCountOutputTypeCountSupportJobsRequestedArgs<ExtArgs extends run
   where?: Prisma.SupportJobRunWhereInput
 }
 
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountBlogPostsSubmittedArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.BlogPostWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountBlogPostsLastReviewedArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.BlogPostWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountCaseStudiesSubmittedArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PortfolioCaseStudyWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountCaseStudiesLastReviewedArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PortfolioCaseStudyWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountClientApprovalsRecordedArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ClientPublicationApprovalWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountTestimonialsSubmittedArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.TestimonialWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountTestimonialsLastReviewedArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.TestimonialWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountTestimonialConsentsCapturedArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.TestimonialConsentWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountModerationReviewsAuthoredArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ModerationReviewWhereInput
+}
+
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -12785,6 +17247,15 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   articleUploads?: boolean | Prisma.User$articleUploadsArgs<ExtArgs>
   auditEventsAuthored?: boolean | Prisma.User$auditEventsAuthoredArgs<ExtArgs>
   supportJobsRequested?: boolean | Prisma.User$supportJobsRequestedArgs<ExtArgs>
+  blogPostsSubmitted?: boolean | Prisma.User$blogPostsSubmittedArgs<ExtArgs>
+  blogPostsLastReviewed?: boolean | Prisma.User$blogPostsLastReviewedArgs<ExtArgs>
+  caseStudiesSubmitted?: boolean | Prisma.User$caseStudiesSubmittedArgs<ExtArgs>
+  caseStudiesLastReviewed?: boolean | Prisma.User$caseStudiesLastReviewedArgs<ExtArgs>
+  clientApprovalsRecorded?: boolean | Prisma.User$clientApprovalsRecordedArgs<ExtArgs>
+  testimonialsSubmitted?: boolean | Prisma.User$testimonialsSubmittedArgs<ExtArgs>
+  testimonialsLastReviewed?: boolean | Prisma.User$testimonialsLastReviewedArgs<ExtArgs>
+  testimonialConsentsCaptured?: boolean | Prisma.User$testimonialConsentsCapturedArgs<ExtArgs>
+  moderationReviewsAuthored?: boolean | Prisma.User$moderationReviewsAuthoredArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -12897,6 +17368,15 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   articleUploads?: boolean | Prisma.User$articleUploadsArgs<ExtArgs>
   auditEventsAuthored?: boolean | Prisma.User$auditEventsAuthoredArgs<ExtArgs>
   supportJobsRequested?: boolean | Prisma.User$supportJobsRequestedArgs<ExtArgs>
+  blogPostsSubmitted?: boolean | Prisma.User$blogPostsSubmittedArgs<ExtArgs>
+  blogPostsLastReviewed?: boolean | Prisma.User$blogPostsLastReviewedArgs<ExtArgs>
+  caseStudiesSubmitted?: boolean | Prisma.User$caseStudiesSubmittedArgs<ExtArgs>
+  caseStudiesLastReviewed?: boolean | Prisma.User$caseStudiesLastReviewedArgs<ExtArgs>
+  clientApprovalsRecorded?: boolean | Prisma.User$clientApprovalsRecordedArgs<ExtArgs>
+  testimonialsSubmitted?: boolean | Prisma.User$testimonialsSubmittedArgs<ExtArgs>
+  testimonialsLastReviewed?: boolean | Prisma.User$testimonialsLastReviewedArgs<ExtArgs>
+  testimonialConsentsCaptured?: boolean | Prisma.User$testimonialConsentsCapturedArgs<ExtArgs>
+  moderationReviewsAuthored?: boolean | Prisma.User$moderationReviewsAuthoredArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -12946,6 +17426,15 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     articleUploads: Prisma.$ArticleAttachmentPayload<ExtArgs>[]
     auditEventsAuthored: Prisma.$AuditLogPayload<ExtArgs>[]
     supportJobsRequested: Prisma.$SupportJobRunPayload<ExtArgs>[]
+    blogPostsSubmitted: Prisma.$BlogPostPayload<ExtArgs>[]
+    blogPostsLastReviewed: Prisma.$BlogPostPayload<ExtArgs>[]
+    caseStudiesSubmitted: Prisma.$PortfolioCaseStudyPayload<ExtArgs>[]
+    caseStudiesLastReviewed: Prisma.$PortfolioCaseStudyPayload<ExtArgs>[]
+    clientApprovalsRecorded: Prisma.$ClientPublicationApprovalPayload<ExtArgs>[]
+    testimonialsSubmitted: Prisma.$TestimonialPayload<ExtArgs>[]
+    testimonialsLastReviewed: Prisma.$TestimonialPayload<ExtArgs>[]
+    testimonialConsentsCaptured: Prisma.$TestimonialConsentPayload<ExtArgs>[]
+    moderationReviewsAuthored: Prisma.$ModerationReviewPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -13402,6 +17891,15 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   articleUploads<T extends Prisma.User$articleUploadsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$articleUploadsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ArticleAttachmentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   auditEventsAuthored<T extends Prisma.User$auditEventsAuthoredArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$auditEventsAuthoredArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AuditLogPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   supportJobsRequested<T extends Prisma.User$supportJobsRequestedArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$supportJobsRequestedArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SupportJobRunPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  blogPostsSubmitted<T extends Prisma.User$blogPostsSubmittedArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$blogPostsSubmittedArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BlogPostPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  blogPostsLastReviewed<T extends Prisma.User$blogPostsLastReviewedArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$blogPostsLastReviewedArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BlogPostPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  caseStudiesSubmitted<T extends Prisma.User$caseStudiesSubmittedArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$caseStudiesSubmittedArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PortfolioCaseStudyPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  caseStudiesLastReviewed<T extends Prisma.User$caseStudiesLastReviewedArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$caseStudiesLastReviewedArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PortfolioCaseStudyPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  clientApprovalsRecorded<T extends Prisma.User$clientApprovalsRecordedArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$clientApprovalsRecordedArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ClientPublicationApprovalPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  testimonialsSubmitted<T extends Prisma.User$testimonialsSubmittedArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$testimonialsSubmittedArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TestimonialPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  testimonialsLastReviewed<T extends Prisma.User$testimonialsLastReviewedArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$testimonialsLastReviewedArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TestimonialPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  testimonialConsentsCaptured<T extends Prisma.User$testimonialConsentsCapturedArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$testimonialConsentsCapturedArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TestimonialConsentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  moderationReviewsAuthored<T extends Prisma.User$moderationReviewsAuthoredArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$moderationReviewsAuthoredArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ModerationReviewPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -14809,6 +19307,222 @@ export type User$supportJobsRequestedArgs<ExtArgs extends runtime.Types.Extensio
   take?: number
   skip?: number
   distinct?: Prisma.SupportJobRunScalarFieldEnum | Prisma.SupportJobRunScalarFieldEnum[]
+}
+
+/**
+ * User.blogPostsSubmitted
+ */
+export type User$blogPostsSubmittedArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the BlogPost
+   */
+  select?: Prisma.BlogPostSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the BlogPost
+   */
+  omit?: Prisma.BlogPostOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.BlogPostInclude<ExtArgs> | null
+  where?: Prisma.BlogPostWhereInput
+  orderBy?: Prisma.BlogPostOrderByWithRelationInput | Prisma.BlogPostOrderByWithRelationInput[]
+  cursor?: Prisma.BlogPostWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.BlogPostScalarFieldEnum | Prisma.BlogPostScalarFieldEnum[]
+}
+
+/**
+ * User.blogPostsLastReviewed
+ */
+export type User$blogPostsLastReviewedArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the BlogPost
+   */
+  select?: Prisma.BlogPostSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the BlogPost
+   */
+  omit?: Prisma.BlogPostOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.BlogPostInclude<ExtArgs> | null
+  where?: Prisma.BlogPostWhereInput
+  orderBy?: Prisma.BlogPostOrderByWithRelationInput | Prisma.BlogPostOrderByWithRelationInput[]
+  cursor?: Prisma.BlogPostWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.BlogPostScalarFieldEnum | Prisma.BlogPostScalarFieldEnum[]
+}
+
+/**
+ * User.caseStudiesSubmitted
+ */
+export type User$caseStudiesSubmittedArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the PortfolioCaseStudy
+   */
+  select?: Prisma.PortfolioCaseStudySelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the PortfolioCaseStudy
+   */
+  omit?: Prisma.PortfolioCaseStudyOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PortfolioCaseStudyInclude<ExtArgs> | null
+  where?: Prisma.PortfolioCaseStudyWhereInput
+  orderBy?: Prisma.PortfolioCaseStudyOrderByWithRelationInput | Prisma.PortfolioCaseStudyOrderByWithRelationInput[]
+  cursor?: Prisma.PortfolioCaseStudyWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.PortfolioCaseStudyScalarFieldEnum | Prisma.PortfolioCaseStudyScalarFieldEnum[]
+}
+
+/**
+ * User.caseStudiesLastReviewed
+ */
+export type User$caseStudiesLastReviewedArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the PortfolioCaseStudy
+   */
+  select?: Prisma.PortfolioCaseStudySelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the PortfolioCaseStudy
+   */
+  omit?: Prisma.PortfolioCaseStudyOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PortfolioCaseStudyInclude<ExtArgs> | null
+  where?: Prisma.PortfolioCaseStudyWhereInput
+  orderBy?: Prisma.PortfolioCaseStudyOrderByWithRelationInput | Prisma.PortfolioCaseStudyOrderByWithRelationInput[]
+  cursor?: Prisma.PortfolioCaseStudyWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.PortfolioCaseStudyScalarFieldEnum | Prisma.PortfolioCaseStudyScalarFieldEnum[]
+}
+
+/**
+ * User.clientApprovalsRecorded
+ */
+export type User$clientApprovalsRecordedArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the ClientPublicationApproval
+   */
+  select?: Prisma.ClientPublicationApprovalSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the ClientPublicationApproval
+   */
+  omit?: Prisma.ClientPublicationApprovalOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ClientPublicationApprovalInclude<ExtArgs> | null
+  where?: Prisma.ClientPublicationApprovalWhereInput
+  orderBy?: Prisma.ClientPublicationApprovalOrderByWithRelationInput | Prisma.ClientPublicationApprovalOrderByWithRelationInput[]
+  cursor?: Prisma.ClientPublicationApprovalWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ClientPublicationApprovalScalarFieldEnum | Prisma.ClientPublicationApprovalScalarFieldEnum[]
+}
+
+/**
+ * User.testimonialsSubmitted
+ */
+export type User$testimonialsSubmittedArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Testimonial
+   */
+  select?: Prisma.TestimonialSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Testimonial
+   */
+  omit?: Prisma.TestimonialOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.TestimonialInclude<ExtArgs> | null
+  where?: Prisma.TestimonialWhereInput
+  orderBy?: Prisma.TestimonialOrderByWithRelationInput | Prisma.TestimonialOrderByWithRelationInput[]
+  cursor?: Prisma.TestimonialWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.TestimonialScalarFieldEnum | Prisma.TestimonialScalarFieldEnum[]
+}
+
+/**
+ * User.testimonialsLastReviewed
+ */
+export type User$testimonialsLastReviewedArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Testimonial
+   */
+  select?: Prisma.TestimonialSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Testimonial
+   */
+  omit?: Prisma.TestimonialOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.TestimonialInclude<ExtArgs> | null
+  where?: Prisma.TestimonialWhereInput
+  orderBy?: Prisma.TestimonialOrderByWithRelationInput | Prisma.TestimonialOrderByWithRelationInput[]
+  cursor?: Prisma.TestimonialWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.TestimonialScalarFieldEnum | Prisma.TestimonialScalarFieldEnum[]
+}
+
+/**
+ * User.testimonialConsentsCaptured
+ */
+export type User$testimonialConsentsCapturedArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the TestimonialConsent
+   */
+  select?: Prisma.TestimonialConsentSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the TestimonialConsent
+   */
+  omit?: Prisma.TestimonialConsentOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.TestimonialConsentInclude<ExtArgs> | null
+  where?: Prisma.TestimonialConsentWhereInput
+  orderBy?: Prisma.TestimonialConsentOrderByWithRelationInput | Prisma.TestimonialConsentOrderByWithRelationInput[]
+  cursor?: Prisma.TestimonialConsentWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.TestimonialConsentScalarFieldEnum | Prisma.TestimonialConsentScalarFieldEnum[]
+}
+
+/**
+ * User.moderationReviewsAuthored
+ */
+export type User$moderationReviewsAuthoredArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the ModerationReview
+   */
+  select?: Prisma.ModerationReviewSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the ModerationReview
+   */
+  omit?: Prisma.ModerationReviewOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ModerationReviewInclude<ExtArgs> | null
+  where?: Prisma.ModerationReviewWhereInput
+  orderBy?: Prisma.ModerationReviewOrderByWithRelationInput | Prisma.ModerationReviewOrderByWithRelationInput[]
+  cursor?: Prisma.ModerationReviewWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ModerationReviewScalarFieldEnum | Prisma.ModerationReviewScalarFieldEnum[]
 }
 
 /**

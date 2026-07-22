@@ -8,6 +8,7 @@ import { authVerifyEmailRouter } from "./modules/auth-verify-email/auth-verify-e
 import { publicLegalRouter } from "./modules/public-legal/public-legal.route.js";
 import { portalRouter } from "./modules/portal/portal.route.js";
 import { supportRouter } from "./modules/support/support.route.js";
+import { moderationRouter } from "./modules/moderation/moderation.route.js";
 
 const router = Router();
 
@@ -27,8 +28,10 @@ router.use("/projects", projectsRouter);
 router.use("/customer", portalRouter);
 // Staff support console (S1–S7) — ADMIN/TEACHER-only, mounted separately
 // from the customer portal because the permission surface is different.
-router.use("/support", supportRouter);
-// Public legal document endpoint â€" intentionally unauthenticated.
+router.use("/support", supportRouter);// Staff moderation console (M1–M7) — ADMIN/MODERATOR-only, mounted
+// separately from support because it reviews outward-facing content
+// rather than customer tickets.
+router.use("/moderation", moderationRouter);// Public legal document endpoint â€" intentionally unauthenticated.
 router.use("/public/legal", publicLegalRouter);
 
 export const indexRouter = router;

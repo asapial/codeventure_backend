@@ -11,6 +11,7 @@
 
 export const Role = {
   ADMIN: 'ADMIN',
+  MODERATOR: 'MODERATOR',
   TEACHER: 'TEACHER',
   STUDENT: 'STUDENT'
 } as const
@@ -352,7 +353,16 @@ export const AuditEventType = {
   MACRO_APPLIED: 'MACRO_APPLIED',
   ARTICLE_PUBLISHED: 'ARTICLE_PUBLISHED',
   ARTICLE_REVISED: 'ARTICLE_REVISED',
-  CUSTOMER_FLAGGED: 'CUSTOMER_FLAGGED'
+  CUSTOMER_FLAGGED: 'CUSTOMER_FLAGGED',
+  CONTENT_APPROVED: 'CONTENT_APPROVED',
+  CONTENT_BLOCKED: 'CONTENT_BLOCKED',
+  CONTENT_CHANGES_REQUESTED: 'CONTENT_CHANGES_REQUESTED',
+  CONTENT_ESCALATED: 'CONTENT_ESCALATED',
+  MEDIA_QUARANTINED: 'MEDIA_QUARANTINED',
+  MEDIA_CLEARED: 'MEDIA_CLEARED',
+  TESTIMONIAL_CONSENT_VERIFIED: 'TESTIMONIAL_CONSENT_VERIFIED',
+  CLIENT_PUBLICATION_APPROVED: 'CLIENT_PUBLICATION_APPROVED',
+  CLIENT_PUBLICATION_REVOKED: 'CLIENT_PUBLICATION_REVOKED'
 } as const
 
 export type AuditEventType = (typeof AuditEventType)[keyof typeof AuditEventType]
@@ -377,3 +387,109 @@ export const HelpArticleStatus = {
 } as const
 
 export type HelpArticleStatus = (typeof HelpArticleStatus)[keyof typeof HelpArticleStatus]
+
+
+export const ModerationDecision = {
+  APPROVED: 'APPROVED',
+  CHANGES_REQUESTED: 'CHANGES_REQUESTED',
+  BLOCKED: 'BLOCKED',
+  ESCALATED: 'ESCALATED'
+} as const
+
+export type ModerationDecision = (typeof ModerationDecision)[keyof typeof ModerationDecision]
+
+
+export const ModerationStatus = {
+  QUEUED: 'QUEUED',
+  IN_REVIEW: 'IN_REVIEW',
+  DECIDED: 'DECIDED',
+  ESCALATED: 'ESCALATED',
+  CLOSED: 'CLOSED'
+} as const
+
+export type ModerationStatus = (typeof ModerationStatus)[keyof typeof ModerationStatus]
+
+
+export const ModerationReason = {
+  QUALITY: 'QUALITY',
+  ACCURACY: 'ACCURACY',
+  BRAND_VOICE: 'BRAND_VOICE',
+  COPYRIGHT: 'COPYRIGHT',
+  PRIVACY_PII: 'PRIVACY_PII',
+  SENSITIVE_TOPIC: 'SENSITIVE_TOPIC',
+  SPAM_PROMOTIONAL: 'SPAM_PROMOTIONAL',
+  OFF_TOPIC: 'OFF_TOPIC',
+  OUTDATED: 'OUTDATED',
+  LEGAL_DISCLOSURE_MISSING: 'LEGAL_DISCLOSURE_MISSING',
+  TESTIMONIAL_CONSENT_MISSING: 'TESTIMONIAL_CONSENT_MISSING',
+  MEDIA_INFECTED: 'MEDIA_INFECTED',
+  MEDIA_PROHIBITED: 'MEDIA_PROHIBITED',
+  ACCESSIBILITY: 'ACCESSIBILITY',
+  OTHER: 'OTHER'
+} as const
+
+export type ModerationReason = (typeof ModerationReason)[keyof typeof ModerationReason]
+
+
+export const ContentType = {
+  BLOG_POST: 'BLOG_POST',
+  PORTFOLIO_CASE_STUDY: 'PORTFOLIO_CASE_STUDY',
+  TESTIMONIAL: 'TESTIMONIAL',
+  MEDIA_ASSET: 'MEDIA_ASSET',
+  CLIENT_PUBLICATION: 'CLIENT_PUBLICATION'
+} as const
+
+export type ContentType = (typeof ContentType)[keyof typeof ContentType]
+
+
+export const RiskLevel = {
+  LOW: 'LOW',
+  MEDIUM: 'MEDIUM',
+  HIGH: 'HIGH',
+  CRITICAL: 'CRITICAL'
+} as const
+
+export type RiskLevel = (typeof RiskLevel)[keyof typeof RiskLevel]
+
+
+export const ClientDisplayScope = {
+  INTERNAL_ONLY: 'INTERNAL_ONLY',
+  PASSWORD_PROTECTED: 'PASSWORD_PROTECTED',
+  PUBLIC_REFERENCE: 'PUBLIC_REFERENCE',
+  PUBLIC_FEATURED: 'PUBLIC_FEATURED'
+} as const
+
+export type ClientDisplayScope = (typeof ClientDisplayScope)[keyof typeof ClientDisplayScope]
+
+
+export const TestimonialConsentScope = {
+  NOT_GRANTED: 'NOT_GRANTED',
+  INTERNAL_REFERENCE_ONLY: 'INTERNAL_REFERENCE_ONLY',
+  PUBLIC_REFERENCE: 'PUBLIC_REFERENCE',
+  PUBLIC_FEATURED: 'PUBLIC_FEATURED',
+  PUBLIC_WITH_NAME_AND_PHOTO: 'PUBLIC_WITH_NAME_AND_PHOTO',
+  PUBLIC_PAID_CASE_STUDY: 'PUBLIC_PAID_CASE_STUDY'
+} as const
+
+export type TestimonialConsentScope = (typeof TestimonialConsentScope)[keyof typeof TestimonialConsentScope]
+
+
+export const MediaScanStatus = {
+  PENDING: 'PENDING',
+  CLEAN: 'CLEAN',
+  INFECTED: 'INFECTED',
+  PROHIBITED_CONTENT: 'PROHIBITED_CONTENT',
+  SCAN_FAILED: 'SCAN_FAILED'
+} as const
+
+export type MediaScanStatus = (typeof MediaScanStatus)[keyof typeof MediaScanStatus]
+
+
+export const MediaVisibility = {
+  PRIVATE: 'PRIVATE',
+  INTERNAL_TEAM: 'INTERNAL_TEAM',
+  PUBLIC_REFERENCE: 'PUBLIC_REFERENCE',
+  PUBLIC_FEATURED: 'PUBLIC_FEATURED'
+} as const
+
+export type MediaVisibility = (typeof MediaVisibility)[keyof typeof MediaVisibility]

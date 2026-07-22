@@ -279,6 +279,13 @@ export type FileAssetWhereInput = {
   updatedAt?: Prisma.DateTimeFilter<"FileAsset"> | Date | string
   owner?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   organization?: Prisma.XOR<Prisma.OrganizationNullableScalarRelationFilter, Prisma.OrganizationWhereInput> | null
+  blogPostCovers?: Prisma.BlogPostListRelationFilter
+  portfolioCaseStudyHeroes?: Prisma.PortfolioCaseStudyListRelationFilter
+  testimonialAvatars?: Prisma.TestimonialListRelationFilter
+  testimonialConsentDocs?: Prisma.TestimonialConsentListRelationFilter
+  clientApprovalDocs?: Prisma.ClientPublicationApprovalListRelationFilter
+  scans?: Prisma.MalwareScanListRelationFilter
+  usages?: Prisma.FileUsageListRelationFilter
 }
 
 export type FileAssetOrderByWithRelationInput = {
@@ -297,6 +304,13 @@ export type FileAssetOrderByWithRelationInput = {
   updatedAt?: Prisma.SortOrder
   owner?: Prisma.UserOrderByWithRelationInput
   organization?: Prisma.OrganizationOrderByWithRelationInput
+  blogPostCovers?: Prisma.BlogPostOrderByRelationAggregateInput
+  portfolioCaseStudyHeroes?: Prisma.PortfolioCaseStudyOrderByRelationAggregateInput
+  testimonialAvatars?: Prisma.TestimonialOrderByRelationAggregateInput
+  testimonialConsentDocs?: Prisma.TestimonialConsentOrderByRelationAggregateInput
+  clientApprovalDocs?: Prisma.ClientPublicationApprovalOrderByRelationAggregateInput
+  scans?: Prisma.MalwareScanOrderByRelationAggregateInput
+  usages?: Prisma.FileUsageOrderByRelationAggregateInput
 }
 
 export type FileAssetWhereUniqueInput = Prisma.AtLeast<{
@@ -318,6 +332,13 @@ export type FileAssetWhereUniqueInput = Prisma.AtLeast<{
   updatedAt?: Prisma.DateTimeFilter<"FileAsset"> | Date | string
   owner?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   organization?: Prisma.XOR<Prisma.OrganizationNullableScalarRelationFilter, Prisma.OrganizationWhereInput> | null
+  blogPostCovers?: Prisma.BlogPostListRelationFilter
+  portfolioCaseStudyHeroes?: Prisma.PortfolioCaseStudyListRelationFilter
+  testimonialAvatars?: Prisma.TestimonialListRelationFilter
+  testimonialConsentDocs?: Prisma.TestimonialConsentListRelationFilter
+  clientApprovalDocs?: Prisma.ClientPublicationApprovalListRelationFilter
+  scans?: Prisma.MalwareScanListRelationFilter
+  usages?: Prisma.FileUsageListRelationFilter
 }, "id">
 
 export type FileAssetOrderByWithAggregationInput = {
@@ -374,6 +395,13 @@ export type FileAssetCreateInput = {
   updatedAt?: Date | string
   owner: Prisma.UserCreateNestedOneWithoutFileAssetsInput
   organization?: Prisma.OrganizationCreateNestedOneWithoutFileAssetsInput
+  blogPostCovers?: Prisma.BlogPostCreateNestedManyWithoutCoverAssetInput
+  portfolioCaseStudyHeroes?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutHeroAssetInput
+  testimonialAvatars?: Prisma.TestimonialCreateNestedManyWithoutAvatarAssetInput
+  testimonialConsentDocs?: Prisma.TestimonialConsentCreateNestedManyWithoutSignedAssetInput
+  clientApprovalDocs?: Prisma.ClientPublicationApprovalCreateNestedManyWithoutSignedDocumentInput
+  scans?: Prisma.MalwareScanCreateNestedManyWithoutFileAssetInput
+  usages?: Prisma.FileUsageCreateNestedManyWithoutFileAssetInput
 }
 
 export type FileAssetUncheckedCreateInput = {
@@ -390,6 +418,13 @@ export type FileAssetUncheckedCreateInput = {
   scanResult?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   updatedAt?: Date | string
+  blogPostCovers?: Prisma.BlogPostUncheckedCreateNestedManyWithoutCoverAssetInput
+  portfolioCaseStudyHeroes?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutHeroAssetInput
+  testimonialAvatars?: Prisma.TestimonialUncheckedCreateNestedManyWithoutAvatarAssetInput
+  testimonialConsentDocs?: Prisma.TestimonialConsentUncheckedCreateNestedManyWithoutSignedAssetInput
+  clientApprovalDocs?: Prisma.ClientPublicationApprovalUncheckedCreateNestedManyWithoutSignedDocumentInput
+  scans?: Prisma.MalwareScanUncheckedCreateNestedManyWithoutFileAssetInput
+  usages?: Prisma.FileUsageUncheckedCreateNestedManyWithoutFileAssetInput
 }
 
 export type FileAssetUpdateInput = {
@@ -406,6 +441,13 @@ export type FileAssetUpdateInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   owner?: Prisma.UserUpdateOneRequiredWithoutFileAssetsNestedInput
   organization?: Prisma.OrganizationUpdateOneWithoutFileAssetsNestedInput
+  blogPostCovers?: Prisma.BlogPostUpdateManyWithoutCoverAssetNestedInput
+  portfolioCaseStudyHeroes?: Prisma.PortfolioCaseStudyUpdateManyWithoutHeroAssetNestedInput
+  testimonialAvatars?: Prisma.TestimonialUpdateManyWithoutAvatarAssetNestedInput
+  testimonialConsentDocs?: Prisma.TestimonialConsentUpdateManyWithoutSignedAssetNestedInput
+  clientApprovalDocs?: Prisma.ClientPublicationApprovalUpdateManyWithoutSignedDocumentNestedInput
+  scans?: Prisma.MalwareScanUpdateManyWithoutFileAssetNestedInput
+  usages?: Prisma.FileUsageUpdateManyWithoutFileAssetNestedInput
 }
 
 export type FileAssetUncheckedUpdateInput = {
@@ -422,6 +464,13 @@ export type FileAssetUncheckedUpdateInput = {
   scanResult?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  blogPostCovers?: Prisma.BlogPostUncheckedUpdateManyWithoutCoverAssetNestedInput
+  portfolioCaseStudyHeroes?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutHeroAssetNestedInput
+  testimonialAvatars?: Prisma.TestimonialUncheckedUpdateManyWithoutAvatarAssetNestedInput
+  testimonialConsentDocs?: Prisma.TestimonialConsentUncheckedUpdateManyWithoutSignedAssetNestedInput
+  clientApprovalDocs?: Prisma.ClientPublicationApprovalUncheckedUpdateManyWithoutSignedDocumentNestedInput
+  scans?: Prisma.MalwareScanUncheckedUpdateManyWithoutFileAssetNestedInput
+  usages?: Prisma.FileUsageUncheckedUpdateManyWithoutFileAssetNestedInput
 }
 
 export type FileAssetCreateManyInput = {
@@ -478,6 +527,16 @@ export type FileAssetListRelationFilter = {
 
 export type FileAssetOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
+}
+
+export type FileAssetNullableScalarRelationFilter = {
+  is?: Prisma.FileAssetWhereInput | null
+  isNot?: Prisma.FileAssetWhereInput | null
+}
+
+export type FileAssetScalarRelationFilter = {
+  is?: Prisma.FileAssetWhereInput
+  isNot?: Prisma.FileAssetWhereInput
 }
 
 export type FileAssetCountOrderByAggregateInput = {
@@ -618,6 +677,114 @@ export type FileAssetUncheckedUpdateManyWithoutOrganizationNestedInput = {
   deleteMany?: Prisma.FileAssetScalarWhereInput | Prisma.FileAssetScalarWhereInput[]
 }
 
+export type FileAssetCreateNestedOneWithoutBlogPostCoversInput = {
+  create?: Prisma.XOR<Prisma.FileAssetCreateWithoutBlogPostCoversInput, Prisma.FileAssetUncheckedCreateWithoutBlogPostCoversInput>
+  connectOrCreate?: Prisma.FileAssetCreateOrConnectWithoutBlogPostCoversInput
+  connect?: Prisma.FileAssetWhereUniqueInput
+}
+
+export type FileAssetUpdateOneWithoutBlogPostCoversNestedInput = {
+  create?: Prisma.XOR<Prisma.FileAssetCreateWithoutBlogPostCoversInput, Prisma.FileAssetUncheckedCreateWithoutBlogPostCoversInput>
+  connectOrCreate?: Prisma.FileAssetCreateOrConnectWithoutBlogPostCoversInput
+  upsert?: Prisma.FileAssetUpsertWithoutBlogPostCoversInput
+  disconnect?: Prisma.FileAssetWhereInput | boolean
+  delete?: Prisma.FileAssetWhereInput | boolean
+  connect?: Prisma.FileAssetWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.FileAssetUpdateToOneWithWhereWithoutBlogPostCoversInput, Prisma.FileAssetUpdateWithoutBlogPostCoversInput>, Prisma.FileAssetUncheckedUpdateWithoutBlogPostCoversInput>
+}
+
+export type FileAssetCreateNestedOneWithoutPortfolioCaseStudyHeroesInput = {
+  create?: Prisma.XOR<Prisma.FileAssetCreateWithoutPortfolioCaseStudyHeroesInput, Prisma.FileAssetUncheckedCreateWithoutPortfolioCaseStudyHeroesInput>
+  connectOrCreate?: Prisma.FileAssetCreateOrConnectWithoutPortfolioCaseStudyHeroesInput
+  connect?: Prisma.FileAssetWhereUniqueInput
+}
+
+export type FileAssetUpdateOneWithoutPortfolioCaseStudyHeroesNestedInput = {
+  create?: Prisma.XOR<Prisma.FileAssetCreateWithoutPortfolioCaseStudyHeroesInput, Prisma.FileAssetUncheckedCreateWithoutPortfolioCaseStudyHeroesInput>
+  connectOrCreate?: Prisma.FileAssetCreateOrConnectWithoutPortfolioCaseStudyHeroesInput
+  upsert?: Prisma.FileAssetUpsertWithoutPortfolioCaseStudyHeroesInput
+  disconnect?: Prisma.FileAssetWhereInput | boolean
+  delete?: Prisma.FileAssetWhereInput | boolean
+  connect?: Prisma.FileAssetWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.FileAssetUpdateToOneWithWhereWithoutPortfolioCaseStudyHeroesInput, Prisma.FileAssetUpdateWithoutPortfolioCaseStudyHeroesInput>, Prisma.FileAssetUncheckedUpdateWithoutPortfolioCaseStudyHeroesInput>
+}
+
+export type FileAssetCreateNestedOneWithoutClientApprovalDocsInput = {
+  create?: Prisma.XOR<Prisma.FileAssetCreateWithoutClientApprovalDocsInput, Prisma.FileAssetUncheckedCreateWithoutClientApprovalDocsInput>
+  connectOrCreate?: Prisma.FileAssetCreateOrConnectWithoutClientApprovalDocsInput
+  connect?: Prisma.FileAssetWhereUniqueInput
+}
+
+export type FileAssetUpdateOneWithoutClientApprovalDocsNestedInput = {
+  create?: Prisma.XOR<Prisma.FileAssetCreateWithoutClientApprovalDocsInput, Prisma.FileAssetUncheckedCreateWithoutClientApprovalDocsInput>
+  connectOrCreate?: Prisma.FileAssetCreateOrConnectWithoutClientApprovalDocsInput
+  upsert?: Prisma.FileAssetUpsertWithoutClientApprovalDocsInput
+  disconnect?: Prisma.FileAssetWhereInput | boolean
+  delete?: Prisma.FileAssetWhereInput | boolean
+  connect?: Prisma.FileAssetWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.FileAssetUpdateToOneWithWhereWithoutClientApprovalDocsInput, Prisma.FileAssetUpdateWithoutClientApprovalDocsInput>, Prisma.FileAssetUncheckedUpdateWithoutClientApprovalDocsInput>
+}
+
+export type FileAssetCreateNestedOneWithoutTestimonialAvatarsInput = {
+  create?: Prisma.XOR<Prisma.FileAssetCreateWithoutTestimonialAvatarsInput, Prisma.FileAssetUncheckedCreateWithoutTestimonialAvatarsInput>
+  connectOrCreate?: Prisma.FileAssetCreateOrConnectWithoutTestimonialAvatarsInput
+  connect?: Prisma.FileAssetWhereUniqueInput
+}
+
+export type FileAssetUpdateOneWithoutTestimonialAvatarsNestedInput = {
+  create?: Prisma.XOR<Prisma.FileAssetCreateWithoutTestimonialAvatarsInput, Prisma.FileAssetUncheckedCreateWithoutTestimonialAvatarsInput>
+  connectOrCreate?: Prisma.FileAssetCreateOrConnectWithoutTestimonialAvatarsInput
+  upsert?: Prisma.FileAssetUpsertWithoutTestimonialAvatarsInput
+  disconnect?: Prisma.FileAssetWhereInput | boolean
+  delete?: Prisma.FileAssetWhereInput | boolean
+  connect?: Prisma.FileAssetWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.FileAssetUpdateToOneWithWhereWithoutTestimonialAvatarsInput, Prisma.FileAssetUpdateWithoutTestimonialAvatarsInput>, Prisma.FileAssetUncheckedUpdateWithoutTestimonialAvatarsInput>
+}
+
+export type FileAssetCreateNestedOneWithoutTestimonialConsentDocsInput = {
+  create?: Prisma.XOR<Prisma.FileAssetCreateWithoutTestimonialConsentDocsInput, Prisma.FileAssetUncheckedCreateWithoutTestimonialConsentDocsInput>
+  connectOrCreate?: Prisma.FileAssetCreateOrConnectWithoutTestimonialConsentDocsInput
+  connect?: Prisma.FileAssetWhereUniqueInput
+}
+
+export type FileAssetUpdateOneWithoutTestimonialConsentDocsNestedInput = {
+  create?: Prisma.XOR<Prisma.FileAssetCreateWithoutTestimonialConsentDocsInput, Prisma.FileAssetUncheckedCreateWithoutTestimonialConsentDocsInput>
+  connectOrCreate?: Prisma.FileAssetCreateOrConnectWithoutTestimonialConsentDocsInput
+  upsert?: Prisma.FileAssetUpsertWithoutTestimonialConsentDocsInput
+  disconnect?: Prisma.FileAssetWhereInput | boolean
+  delete?: Prisma.FileAssetWhereInput | boolean
+  connect?: Prisma.FileAssetWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.FileAssetUpdateToOneWithWhereWithoutTestimonialConsentDocsInput, Prisma.FileAssetUpdateWithoutTestimonialConsentDocsInput>, Prisma.FileAssetUncheckedUpdateWithoutTestimonialConsentDocsInput>
+}
+
+export type FileAssetCreateNestedOneWithoutScansInput = {
+  create?: Prisma.XOR<Prisma.FileAssetCreateWithoutScansInput, Prisma.FileAssetUncheckedCreateWithoutScansInput>
+  connectOrCreate?: Prisma.FileAssetCreateOrConnectWithoutScansInput
+  connect?: Prisma.FileAssetWhereUniqueInput
+}
+
+export type FileAssetUpdateOneRequiredWithoutScansNestedInput = {
+  create?: Prisma.XOR<Prisma.FileAssetCreateWithoutScansInput, Prisma.FileAssetUncheckedCreateWithoutScansInput>
+  connectOrCreate?: Prisma.FileAssetCreateOrConnectWithoutScansInput
+  upsert?: Prisma.FileAssetUpsertWithoutScansInput
+  connect?: Prisma.FileAssetWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.FileAssetUpdateToOneWithWhereWithoutScansInput, Prisma.FileAssetUpdateWithoutScansInput>, Prisma.FileAssetUncheckedUpdateWithoutScansInput>
+}
+
+export type FileAssetCreateNestedOneWithoutUsagesInput = {
+  create?: Prisma.XOR<Prisma.FileAssetCreateWithoutUsagesInput, Prisma.FileAssetUncheckedCreateWithoutUsagesInput>
+  connectOrCreate?: Prisma.FileAssetCreateOrConnectWithoutUsagesInput
+  connect?: Prisma.FileAssetWhereUniqueInput
+}
+
+export type FileAssetUpdateOneRequiredWithoutUsagesNestedInput = {
+  create?: Prisma.XOR<Prisma.FileAssetCreateWithoutUsagesInput, Prisma.FileAssetUncheckedCreateWithoutUsagesInput>
+  connectOrCreate?: Prisma.FileAssetCreateOrConnectWithoutUsagesInput
+  upsert?: Prisma.FileAssetUpsertWithoutUsagesInput
+  connect?: Prisma.FileAssetWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.FileAssetUpdateToOneWithWhereWithoutUsagesInput, Prisma.FileAssetUpdateWithoutUsagesInput>, Prisma.FileAssetUncheckedUpdateWithoutUsagesInput>
+}
+
 export type EnumFileAssetStatusFieldUpdateOperationsInput = {
   set?: $Enums.FileAssetStatus
 }
@@ -635,6 +802,13 @@ export type FileAssetCreateWithoutOwnerInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   organization?: Prisma.OrganizationCreateNestedOneWithoutFileAssetsInput
+  blogPostCovers?: Prisma.BlogPostCreateNestedManyWithoutCoverAssetInput
+  portfolioCaseStudyHeroes?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutHeroAssetInput
+  testimonialAvatars?: Prisma.TestimonialCreateNestedManyWithoutAvatarAssetInput
+  testimonialConsentDocs?: Prisma.TestimonialConsentCreateNestedManyWithoutSignedAssetInput
+  clientApprovalDocs?: Prisma.ClientPublicationApprovalCreateNestedManyWithoutSignedDocumentInput
+  scans?: Prisma.MalwareScanCreateNestedManyWithoutFileAssetInput
+  usages?: Prisma.FileUsageCreateNestedManyWithoutFileAssetInput
 }
 
 export type FileAssetUncheckedCreateWithoutOwnerInput = {
@@ -650,6 +824,13 @@ export type FileAssetUncheckedCreateWithoutOwnerInput = {
   scanResult?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   updatedAt?: Date | string
+  blogPostCovers?: Prisma.BlogPostUncheckedCreateNestedManyWithoutCoverAssetInput
+  portfolioCaseStudyHeroes?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutHeroAssetInput
+  testimonialAvatars?: Prisma.TestimonialUncheckedCreateNestedManyWithoutAvatarAssetInput
+  testimonialConsentDocs?: Prisma.TestimonialConsentUncheckedCreateNestedManyWithoutSignedAssetInput
+  clientApprovalDocs?: Prisma.ClientPublicationApprovalUncheckedCreateNestedManyWithoutSignedDocumentInput
+  scans?: Prisma.MalwareScanUncheckedCreateNestedManyWithoutFileAssetInput
+  usages?: Prisma.FileUsageUncheckedCreateNestedManyWithoutFileAssetInput
 }
 
 export type FileAssetCreateOrConnectWithoutOwnerInput = {
@@ -710,6 +891,13 @@ export type FileAssetCreateWithoutOrganizationInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   owner: Prisma.UserCreateNestedOneWithoutFileAssetsInput
+  blogPostCovers?: Prisma.BlogPostCreateNestedManyWithoutCoverAssetInput
+  portfolioCaseStudyHeroes?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutHeroAssetInput
+  testimonialAvatars?: Prisma.TestimonialCreateNestedManyWithoutAvatarAssetInput
+  testimonialConsentDocs?: Prisma.TestimonialConsentCreateNestedManyWithoutSignedAssetInput
+  clientApprovalDocs?: Prisma.ClientPublicationApprovalCreateNestedManyWithoutSignedDocumentInput
+  scans?: Prisma.MalwareScanCreateNestedManyWithoutFileAssetInput
+  usages?: Prisma.FileUsageCreateNestedManyWithoutFileAssetInput
 }
 
 export type FileAssetUncheckedCreateWithoutOrganizationInput = {
@@ -725,6 +913,13 @@ export type FileAssetUncheckedCreateWithoutOrganizationInput = {
   scanResult?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   updatedAt?: Date | string
+  blogPostCovers?: Prisma.BlogPostUncheckedCreateNestedManyWithoutCoverAssetInput
+  portfolioCaseStudyHeroes?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutHeroAssetInput
+  testimonialAvatars?: Prisma.TestimonialUncheckedCreateNestedManyWithoutAvatarAssetInput
+  testimonialConsentDocs?: Prisma.TestimonialConsentUncheckedCreateNestedManyWithoutSignedAssetInput
+  clientApprovalDocs?: Prisma.ClientPublicationApprovalUncheckedCreateNestedManyWithoutSignedDocumentInput
+  scans?: Prisma.MalwareScanUncheckedCreateNestedManyWithoutFileAssetInput
+  usages?: Prisma.FileUsageUncheckedCreateNestedManyWithoutFileAssetInput
 }
 
 export type FileAssetCreateOrConnectWithoutOrganizationInput = {
@@ -751,6 +946,734 @@ export type FileAssetUpdateWithWhereUniqueWithoutOrganizationInput = {
 export type FileAssetUpdateManyWithWhereWithoutOrganizationInput = {
   where: Prisma.FileAssetScalarWhereInput
   data: Prisma.XOR<Prisma.FileAssetUpdateManyMutationInput, Prisma.FileAssetUncheckedUpdateManyWithoutOrganizationInput>
+}
+
+export type FileAssetCreateWithoutBlogPostCoversInput = {
+  id?: string
+  fileName: string
+  mimeType: string
+  sizeBytes: number
+  checksum: string
+  storageKey: string
+  secureUrl?: string | null
+  status?: $Enums.FileAssetStatus
+  scanResult?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  owner: Prisma.UserCreateNestedOneWithoutFileAssetsInput
+  organization?: Prisma.OrganizationCreateNestedOneWithoutFileAssetsInput
+  portfolioCaseStudyHeroes?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutHeroAssetInput
+  testimonialAvatars?: Prisma.TestimonialCreateNestedManyWithoutAvatarAssetInput
+  testimonialConsentDocs?: Prisma.TestimonialConsentCreateNestedManyWithoutSignedAssetInput
+  clientApprovalDocs?: Prisma.ClientPublicationApprovalCreateNestedManyWithoutSignedDocumentInput
+  scans?: Prisma.MalwareScanCreateNestedManyWithoutFileAssetInput
+  usages?: Prisma.FileUsageCreateNestedManyWithoutFileAssetInput
+}
+
+export type FileAssetUncheckedCreateWithoutBlogPostCoversInput = {
+  id?: string
+  ownerId: string
+  organizationId?: string | null
+  fileName: string
+  mimeType: string
+  sizeBytes: number
+  checksum: string
+  storageKey: string
+  secureUrl?: string | null
+  status?: $Enums.FileAssetStatus
+  scanResult?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  portfolioCaseStudyHeroes?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutHeroAssetInput
+  testimonialAvatars?: Prisma.TestimonialUncheckedCreateNestedManyWithoutAvatarAssetInput
+  testimonialConsentDocs?: Prisma.TestimonialConsentUncheckedCreateNestedManyWithoutSignedAssetInput
+  clientApprovalDocs?: Prisma.ClientPublicationApprovalUncheckedCreateNestedManyWithoutSignedDocumentInput
+  scans?: Prisma.MalwareScanUncheckedCreateNestedManyWithoutFileAssetInput
+  usages?: Prisma.FileUsageUncheckedCreateNestedManyWithoutFileAssetInput
+}
+
+export type FileAssetCreateOrConnectWithoutBlogPostCoversInput = {
+  where: Prisma.FileAssetWhereUniqueInput
+  create: Prisma.XOR<Prisma.FileAssetCreateWithoutBlogPostCoversInput, Prisma.FileAssetUncheckedCreateWithoutBlogPostCoversInput>
+}
+
+export type FileAssetUpsertWithoutBlogPostCoversInput = {
+  update: Prisma.XOR<Prisma.FileAssetUpdateWithoutBlogPostCoversInput, Prisma.FileAssetUncheckedUpdateWithoutBlogPostCoversInput>
+  create: Prisma.XOR<Prisma.FileAssetCreateWithoutBlogPostCoversInput, Prisma.FileAssetUncheckedCreateWithoutBlogPostCoversInput>
+  where?: Prisma.FileAssetWhereInput
+}
+
+export type FileAssetUpdateToOneWithWhereWithoutBlogPostCoversInput = {
+  where?: Prisma.FileAssetWhereInput
+  data: Prisma.XOR<Prisma.FileAssetUpdateWithoutBlogPostCoversInput, Prisma.FileAssetUncheckedUpdateWithoutBlogPostCoversInput>
+}
+
+export type FileAssetUpdateWithoutBlogPostCoversInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  fileName?: Prisma.StringFieldUpdateOperationsInput | string
+  mimeType?: Prisma.StringFieldUpdateOperationsInput | string
+  sizeBytes?: Prisma.IntFieldUpdateOperationsInput | number
+  checksum?: Prisma.StringFieldUpdateOperationsInput | string
+  storageKey?: Prisma.StringFieldUpdateOperationsInput | string
+  secureUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumFileAssetStatusFieldUpdateOperationsInput | $Enums.FileAssetStatus
+  scanResult?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  owner?: Prisma.UserUpdateOneRequiredWithoutFileAssetsNestedInput
+  organization?: Prisma.OrganizationUpdateOneWithoutFileAssetsNestedInput
+  portfolioCaseStudyHeroes?: Prisma.PortfolioCaseStudyUpdateManyWithoutHeroAssetNestedInput
+  testimonialAvatars?: Prisma.TestimonialUpdateManyWithoutAvatarAssetNestedInput
+  testimonialConsentDocs?: Prisma.TestimonialConsentUpdateManyWithoutSignedAssetNestedInput
+  clientApprovalDocs?: Prisma.ClientPublicationApprovalUpdateManyWithoutSignedDocumentNestedInput
+  scans?: Prisma.MalwareScanUpdateManyWithoutFileAssetNestedInput
+  usages?: Prisma.FileUsageUpdateManyWithoutFileAssetNestedInput
+}
+
+export type FileAssetUncheckedUpdateWithoutBlogPostCoversInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  ownerId?: Prisma.StringFieldUpdateOperationsInput | string
+  organizationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fileName?: Prisma.StringFieldUpdateOperationsInput | string
+  mimeType?: Prisma.StringFieldUpdateOperationsInput | string
+  sizeBytes?: Prisma.IntFieldUpdateOperationsInput | number
+  checksum?: Prisma.StringFieldUpdateOperationsInput | string
+  storageKey?: Prisma.StringFieldUpdateOperationsInput | string
+  secureUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumFileAssetStatusFieldUpdateOperationsInput | $Enums.FileAssetStatus
+  scanResult?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  portfolioCaseStudyHeroes?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutHeroAssetNestedInput
+  testimonialAvatars?: Prisma.TestimonialUncheckedUpdateManyWithoutAvatarAssetNestedInput
+  testimonialConsentDocs?: Prisma.TestimonialConsentUncheckedUpdateManyWithoutSignedAssetNestedInput
+  clientApprovalDocs?: Prisma.ClientPublicationApprovalUncheckedUpdateManyWithoutSignedDocumentNestedInput
+  scans?: Prisma.MalwareScanUncheckedUpdateManyWithoutFileAssetNestedInput
+  usages?: Prisma.FileUsageUncheckedUpdateManyWithoutFileAssetNestedInput
+}
+
+export type FileAssetCreateWithoutPortfolioCaseStudyHeroesInput = {
+  id?: string
+  fileName: string
+  mimeType: string
+  sizeBytes: number
+  checksum: string
+  storageKey: string
+  secureUrl?: string | null
+  status?: $Enums.FileAssetStatus
+  scanResult?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  owner: Prisma.UserCreateNestedOneWithoutFileAssetsInput
+  organization?: Prisma.OrganizationCreateNestedOneWithoutFileAssetsInput
+  blogPostCovers?: Prisma.BlogPostCreateNestedManyWithoutCoverAssetInput
+  testimonialAvatars?: Prisma.TestimonialCreateNestedManyWithoutAvatarAssetInput
+  testimonialConsentDocs?: Prisma.TestimonialConsentCreateNestedManyWithoutSignedAssetInput
+  clientApprovalDocs?: Prisma.ClientPublicationApprovalCreateNestedManyWithoutSignedDocumentInput
+  scans?: Prisma.MalwareScanCreateNestedManyWithoutFileAssetInput
+  usages?: Prisma.FileUsageCreateNestedManyWithoutFileAssetInput
+}
+
+export type FileAssetUncheckedCreateWithoutPortfolioCaseStudyHeroesInput = {
+  id?: string
+  ownerId: string
+  organizationId?: string | null
+  fileName: string
+  mimeType: string
+  sizeBytes: number
+  checksum: string
+  storageKey: string
+  secureUrl?: string | null
+  status?: $Enums.FileAssetStatus
+  scanResult?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  blogPostCovers?: Prisma.BlogPostUncheckedCreateNestedManyWithoutCoverAssetInput
+  testimonialAvatars?: Prisma.TestimonialUncheckedCreateNestedManyWithoutAvatarAssetInput
+  testimonialConsentDocs?: Prisma.TestimonialConsentUncheckedCreateNestedManyWithoutSignedAssetInput
+  clientApprovalDocs?: Prisma.ClientPublicationApprovalUncheckedCreateNestedManyWithoutSignedDocumentInput
+  scans?: Prisma.MalwareScanUncheckedCreateNestedManyWithoutFileAssetInput
+  usages?: Prisma.FileUsageUncheckedCreateNestedManyWithoutFileAssetInput
+}
+
+export type FileAssetCreateOrConnectWithoutPortfolioCaseStudyHeroesInput = {
+  where: Prisma.FileAssetWhereUniqueInput
+  create: Prisma.XOR<Prisma.FileAssetCreateWithoutPortfolioCaseStudyHeroesInput, Prisma.FileAssetUncheckedCreateWithoutPortfolioCaseStudyHeroesInput>
+}
+
+export type FileAssetUpsertWithoutPortfolioCaseStudyHeroesInput = {
+  update: Prisma.XOR<Prisma.FileAssetUpdateWithoutPortfolioCaseStudyHeroesInput, Prisma.FileAssetUncheckedUpdateWithoutPortfolioCaseStudyHeroesInput>
+  create: Prisma.XOR<Prisma.FileAssetCreateWithoutPortfolioCaseStudyHeroesInput, Prisma.FileAssetUncheckedCreateWithoutPortfolioCaseStudyHeroesInput>
+  where?: Prisma.FileAssetWhereInput
+}
+
+export type FileAssetUpdateToOneWithWhereWithoutPortfolioCaseStudyHeroesInput = {
+  where?: Prisma.FileAssetWhereInput
+  data: Prisma.XOR<Prisma.FileAssetUpdateWithoutPortfolioCaseStudyHeroesInput, Prisma.FileAssetUncheckedUpdateWithoutPortfolioCaseStudyHeroesInput>
+}
+
+export type FileAssetUpdateWithoutPortfolioCaseStudyHeroesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  fileName?: Prisma.StringFieldUpdateOperationsInput | string
+  mimeType?: Prisma.StringFieldUpdateOperationsInput | string
+  sizeBytes?: Prisma.IntFieldUpdateOperationsInput | number
+  checksum?: Prisma.StringFieldUpdateOperationsInput | string
+  storageKey?: Prisma.StringFieldUpdateOperationsInput | string
+  secureUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumFileAssetStatusFieldUpdateOperationsInput | $Enums.FileAssetStatus
+  scanResult?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  owner?: Prisma.UserUpdateOneRequiredWithoutFileAssetsNestedInput
+  organization?: Prisma.OrganizationUpdateOneWithoutFileAssetsNestedInput
+  blogPostCovers?: Prisma.BlogPostUpdateManyWithoutCoverAssetNestedInput
+  testimonialAvatars?: Prisma.TestimonialUpdateManyWithoutAvatarAssetNestedInput
+  testimonialConsentDocs?: Prisma.TestimonialConsentUpdateManyWithoutSignedAssetNestedInput
+  clientApprovalDocs?: Prisma.ClientPublicationApprovalUpdateManyWithoutSignedDocumentNestedInput
+  scans?: Prisma.MalwareScanUpdateManyWithoutFileAssetNestedInput
+  usages?: Prisma.FileUsageUpdateManyWithoutFileAssetNestedInput
+}
+
+export type FileAssetUncheckedUpdateWithoutPortfolioCaseStudyHeroesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  ownerId?: Prisma.StringFieldUpdateOperationsInput | string
+  organizationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fileName?: Prisma.StringFieldUpdateOperationsInput | string
+  mimeType?: Prisma.StringFieldUpdateOperationsInput | string
+  sizeBytes?: Prisma.IntFieldUpdateOperationsInput | number
+  checksum?: Prisma.StringFieldUpdateOperationsInput | string
+  storageKey?: Prisma.StringFieldUpdateOperationsInput | string
+  secureUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumFileAssetStatusFieldUpdateOperationsInput | $Enums.FileAssetStatus
+  scanResult?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  blogPostCovers?: Prisma.BlogPostUncheckedUpdateManyWithoutCoverAssetNestedInput
+  testimonialAvatars?: Prisma.TestimonialUncheckedUpdateManyWithoutAvatarAssetNestedInput
+  testimonialConsentDocs?: Prisma.TestimonialConsentUncheckedUpdateManyWithoutSignedAssetNestedInput
+  clientApprovalDocs?: Prisma.ClientPublicationApprovalUncheckedUpdateManyWithoutSignedDocumentNestedInput
+  scans?: Prisma.MalwareScanUncheckedUpdateManyWithoutFileAssetNestedInput
+  usages?: Prisma.FileUsageUncheckedUpdateManyWithoutFileAssetNestedInput
+}
+
+export type FileAssetCreateWithoutClientApprovalDocsInput = {
+  id?: string
+  fileName: string
+  mimeType: string
+  sizeBytes: number
+  checksum: string
+  storageKey: string
+  secureUrl?: string | null
+  status?: $Enums.FileAssetStatus
+  scanResult?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  owner: Prisma.UserCreateNestedOneWithoutFileAssetsInput
+  organization?: Prisma.OrganizationCreateNestedOneWithoutFileAssetsInput
+  blogPostCovers?: Prisma.BlogPostCreateNestedManyWithoutCoverAssetInput
+  portfolioCaseStudyHeroes?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutHeroAssetInput
+  testimonialAvatars?: Prisma.TestimonialCreateNestedManyWithoutAvatarAssetInput
+  testimonialConsentDocs?: Prisma.TestimonialConsentCreateNestedManyWithoutSignedAssetInput
+  scans?: Prisma.MalwareScanCreateNestedManyWithoutFileAssetInput
+  usages?: Prisma.FileUsageCreateNestedManyWithoutFileAssetInput
+}
+
+export type FileAssetUncheckedCreateWithoutClientApprovalDocsInput = {
+  id?: string
+  ownerId: string
+  organizationId?: string | null
+  fileName: string
+  mimeType: string
+  sizeBytes: number
+  checksum: string
+  storageKey: string
+  secureUrl?: string | null
+  status?: $Enums.FileAssetStatus
+  scanResult?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  blogPostCovers?: Prisma.BlogPostUncheckedCreateNestedManyWithoutCoverAssetInput
+  portfolioCaseStudyHeroes?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutHeroAssetInput
+  testimonialAvatars?: Prisma.TestimonialUncheckedCreateNestedManyWithoutAvatarAssetInput
+  testimonialConsentDocs?: Prisma.TestimonialConsentUncheckedCreateNestedManyWithoutSignedAssetInput
+  scans?: Prisma.MalwareScanUncheckedCreateNestedManyWithoutFileAssetInput
+  usages?: Prisma.FileUsageUncheckedCreateNestedManyWithoutFileAssetInput
+}
+
+export type FileAssetCreateOrConnectWithoutClientApprovalDocsInput = {
+  where: Prisma.FileAssetWhereUniqueInput
+  create: Prisma.XOR<Prisma.FileAssetCreateWithoutClientApprovalDocsInput, Prisma.FileAssetUncheckedCreateWithoutClientApprovalDocsInput>
+}
+
+export type FileAssetUpsertWithoutClientApprovalDocsInput = {
+  update: Prisma.XOR<Prisma.FileAssetUpdateWithoutClientApprovalDocsInput, Prisma.FileAssetUncheckedUpdateWithoutClientApprovalDocsInput>
+  create: Prisma.XOR<Prisma.FileAssetCreateWithoutClientApprovalDocsInput, Prisma.FileAssetUncheckedCreateWithoutClientApprovalDocsInput>
+  where?: Prisma.FileAssetWhereInput
+}
+
+export type FileAssetUpdateToOneWithWhereWithoutClientApprovalDocsInput = {
+  where?: Prisma.FileAssetWhereInput
+  data: Prisma.XOR<Prisma.FileAssetUpdateWithoutClientApprovalDocsInput, Prisma.FileAssetUncheckedUpdateWithoutClientApprovalDocsInput>
+}
+
+export type FileAssetUpdateWithoutClientApprovalDocsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  fileName?: Prisma.StringFieldUpdateOperationsInput | string
+  mimeType?: Prisma.StringFieldUpdateOperationsInput | string
+  sizeBytes?: Prisma.IntFieldUpdateOperationsInput | number
+  checksum?: Prisma.StringFieldUpdateOperationsInput | string
+  storageKey?: Prisma.StringFieldUpdateOperationsInput | string
+  secureUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumFileAssetStatusFieldUpdateOperationsInput | $Enums.FileAssetStatus
+  scanResult?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  owner?: Prisma.UserUpdateOneRequiredWithoutFileAssetsNestedInput
+  organization?: Prisma.OrganizationUpdateOneWithoutFileAssetsNestedInput
+  blogPostCovers?: Prisma.BlogPostUpdateManyWithoutCoverAssetNestedInput
+  portfolioCaseStudyHeroes?: Prisma.PortfolioCaseStudyUpdateManyWithoutHeroAssetNestedInput
+  testimonialAvatars?: Prisma.TestimonialUpdateManyWithoutAvatarAssetNestedInput
+  testimonialConsentDocs?: Prisma.TestimonialConsentUpdateManyWithoutSignedAssetNestedInput
+  scans?: Prisma.MalwareScanUpdateManyWithoutFileAssetNestedInput
+  usages?: Prisma.FileUsageUpdateManyWithoutFileAssetNestedInput
+}
+
+export type FileAssetUncheckedUpdateWithoutClientApprovalDocsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  ownerId?: Prisma.StringFieldUpdateOperationsInput | string
+  organizationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fileName?: Prisma.StringFieldUpdateOperationsInput | string
+  mimeType?: Prisma.StringFieldUpdateOperationsInput | string
+  sizeBytes?: Prisma.IntFieldUpdateOperationsInput | number
+  checksum?: Prisma.StringFieldUpdateOperationsInput | string
+  storageKey?: Prisma.StringFieldUpdateOperationsInput | string
+  secureUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumFileAssetStatusFieldUpdateOperationsInput | $Enums.FileAssetStatus
+  scanResult?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  blogPostCovers?: Prisma.BlogPostUncheckedUpdateManyWithoutCoverAssetNestedInput
+  portfolioCaseStudyHeroes?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutHeroAssetNestedInput
+  testimonialAvatars?: Prisma.TestimonialUncheckedUpdateManyWithoutAvatarAssetNestedInput
+  testimonialConsentDocs?: Prisma.TestimonialConsentUncheckedUpdateManyWithoutSignedAssetNestedInput
+  scans?: Prisma.MalwareScanUncheckedUpdateManyWithoutFileAssetNestedInput
+  usages?: Prisma.FileUsageUncheckedUpdateManyWithoutFileAssetNestedInput
+}
+
+export type FileAssetCreateWithoutTestimonialAvatarsInput = {
+  id?: string
+  fileName: string
+  mimeType: string
+  sizeBytes: number
+  checksum: string
+  storageKey: string
+  secureUrl?: string | null
+  status?: $Enums.FileAssetStatus
+  scanResult?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  owner: Prisma.UserCreateNestedOneWithoutFileAssetsInput
+  organization?: Prisma.OrganizationCreateNestedOneWithoutFileAssetsInput
+  blogPostCovers?: Prisma.BlogPostCreateNestedManyWithoutCoverAssetInput
+  portfolioCaseStudyHeroes?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutHeroAssetInput
+  testimonialConsentDocs?: Prisma.TestimonialConsentCreateNestedManyWithoutSignedAssetInput
+  clientApprovalDocs?: Prisma.ClientPublicationApprovalCreateNestedManyWithoutSignedDocumentInput
+  scans?: Prisma.MalwareScanCreateNestedManyWithoutFileAssetInput
+  usages?: Prisma.FileUsageCreateNestedManyWithoutFileAssetInput
+}
+
+export type FileAssetUncheckedCreateWithoutTestimonialAvatarsInput = {
+  id?: string
+  ownerId: string
+  organizationId?: string | null
+  fileName: string
+  mimeType: string
+  sizeBytes: number
+  checksum: string
+  storageKey: string
+  secureUrl?: string | null
+  status?: $Enums.FileAssetStatus
+  scanResult?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  blogPostCovers?: Prisma.BlogPostUncheckedCreateNestedManyWithoutCoverAssetInput
+  portfolioCaseStudyHeroes?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutHeroAssetInput
+  testimonialConsentDocs?: Prisma.TestimonialConsentUncheckedCreateNestedManyWithoutSignedAssetInput
+  clientApprovalDocs?: Prisma.ClientPublicationApprovalUncheckedCreateNestedManyWithoutSignedDocumentInput
+  scans?: Prisma.MalwareScanUncheckedCreateNestedManyWithoutFileAssetInput
+  usages?: Prisma.FileUsageUncheckedCreateNestedManyWithoutFileAssetInput
+}
+
+export type FileAssetCreateOrConnectWithoutTestimonialAvatarsInput = {
+  where: Prisma.FileAssetWhereUniqueInput
+  create: Prisma.XOR<Prisma.FileAssetCreateWithoutTestimonialAvatarsInput, Prisma.FileAssetUncheckedCreateWithoutTestimonialAvatarsInput>
+}
+
+export type FileAssetUpsertWithoutTestimonialAvatarsInput = {
+  update: Prisma.XOR<Prisma.FileAssetUpdateWithoutTestimonialAvatarsInput, Prisma.FileAssetUncheckedUpdateWithoutTestimonialAvatarsInput>
+  create: Prisma.XOR<Prisma.FileAssetCreateWithoutTestimonialAvatarsInput, Prisma.FileAssetUncheckedCreateWithoutTestimonialAvatarsInput>
+  where?: Prisma.FileAssetWhereInput
+}
+
+export type FileAssetUpdateToOneWithWhereWithoutTestimonialAvatarsInput = {
+  where?: Prisma.FileAssetWhereInput
+  data: Prisma.XOR<Prisma.FileAssetUpdateWithoutTestimonialAvatarsInput, Prisma.FileAssetUncheckedUpdateWithoutTestimonialAvatarsInput>
+}
+
+export type FileAssetUpdateWithoutTestimonialAvatarsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  fileName?: Prisma.StringFieldUpdateOperationsInput | string
+  mimeType?: Prisma.StringFieldUpdateOperationsInput | string
+  sizeBytes?: Prisma.IntFieldUpdateOperationsInput | number
+  checksum?: Prisma.StringFieldUpdateOperationsInput | string
+  storageKey?: Prisma.StringFieldUpdateOperationsInput | string
+  secureUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumFileAssetStatusFieldUpdateOperationsInput | $Enums.FileAssetStatus
+  scanResult?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  owner?: Prisma.UserUpdateOneRequiredWithoutFileAssetsNestedInput
+  organization?: Prisma.OrganizationUpdateOneWithoutFileAssetsNestedInput
+  blogPostCovers?: Prisma.BlogPostUpdateManyWithoutCoverAssetNestedInput
+  portfolioCaseStudyHeroes?: Prisma.PortfolioCaseStudyUpdateManyWithoutHeroAssetNestedInput
+  testimonialConsentDocs?: Prisma.TestimonialConsentUpdateManyWithoutSignedAssetNestedInput
+  clientApprovalDocs?: Prisma.ClientPublicationApprovalUpdateManyWithoutSignedDocumentNestedInput
+  scans?: Prisma.MalwareScanUpdateManyWithoutFileAssetNestedInput
+  usages?: Prisma.FileUsageUpdateManyWithoutFileAssetNestedInput
+}
+
+export type FileAssetUncheckedUpdateWithoutTestimonialAvatarsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  ownerId?: Prisma.StringFieldUpdateOperationsInput | string
+  organizationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fileName?: Prisma.StringFieldUpdateOperationsInput | string
+  mimeType?: Prisma.StringFieldUpdateOperationsInput | string
+  sizeBytes?: Prisma.IntFieldUpdateOperationsInput | number
+  checksum?: Prisma.StringFieldUpdateOperationsInput | string
+  storageKey?: Prisma.StringFieldUpdateOperationsInput | string
+  secureUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumFileAssetStatusFieldUpdateOperationsInput | $Enums.FileAssetStatus
+  scanResult?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  blogPostCovers?: Prisma.BlogPostUncheckedUpdateManyWithoutCoverAssetNestedInput
+  portfolioCaseStudyHeroes?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutHeroAssetNestedInput
+  testimonialConsentDocs?: Prisma.TestimonialConsentUncheckedUpdateManyWithoutSignedAssetNestedInput
+  clientApprovalDocs?: Prisma.ClientPublicationApprovalUncheckedUpdateManyWithoutSignedDocumentNestedInput
+  scans?: Prisma.MalwareScanUncheckedUpdateManyWithoutFileAssetNestedInput
+  usages?: Prisma.FileUsageUncheckedUpdateManyWithoutFileAssetNestedInput
+}
+
+export type FileAssetCreateWithoutTestimonialConsentDocsInput = {
+  id?: string
+  fileName: string
+  mimeType: string
+  sizeBytes: number
+  checksum: string
+  storageKey: string
+  secureUrl?: string | null
+  status?: $Enums.FileAssetStatus
+  scanResult?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  owner: Prisma.UserCreateNestedOneWithoutFileAssetsInput
+  organization?: Prisma.OrganizationCreateNestedOneWithoutFileAssetsInput
+  blogPostCovers?: Prisma.BlogPostCreateNestedManyWithoutCoverAssetInput
+  portfolioCaseStudyHeroes?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutHeroAssetInput
+  testimonialAvatars?: Prisma.TestimonialCreateNestedManyWithoutAvatarAssetInput
+  clientApprovalDocs?: Prisma.ClientPublicationApprovalCreateNestedManyWithoutSignedDocumentInput
+  scans?: Prisma.MalwareScanCreateNestedManyWithoutFileAssetInput
+  usages?: Prisma.FileUsageCreateNestedManyWithoutFileAssetInput
+}
+
+export type FileAssetUncheckedCreateWithoutTestimonialConsentDocsInput = {
+  id?: string
+  ownerId: string
+  organizationId?: string | null
+  fileName: string
+  mimeType: string
+  sizeBytes: number
+  checksum: string
+  storageKey: string
+  secureUrl?: string | null
+  status?: $Enums.FileAssetStatus
+  scanResult?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  blogPostCovers?: Prisma.BlogPostUncheckedCreateNestedManyWithoutCoverAssetInput
+  portfolioCaseStudyHeroes?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutHeroAssetInput
+  testimonialAvatars?: Prisma.TestimonialUncheckedCreateNestedManyWithoutAvatarAssetInput
+  clientApprovalDocs?: Prisma.ClientPublicationApprovalUncheckedCreateNestedManyWithoutSignedDocumentInput
+  scans?: Prisma.MalwareScanUncheckedCreateNestedManyWithoutFileAssetInput
+  usages?: Prisma.FileUsageUncheckedCreateNestedManyWithoutFileAssetInput
+}
+
+export type FileAssetCreateOrConnectWithoutTestimonialConsentDocsInput = {
+  where: Prisma.FileAssetWhereUniqueInput
+  create: Prisma.XOR<Prisma.FileAssetCreateWithoutTestimonialConsentDocsInput, Prisma.FileAssetUncheckedCreateWithoutTestimonialConsentDocsInput>
+}
+
+export type FileAssetUpsertWithoutTestimonialConsentDocsInput = {
+  update: Prisma.XOR<Prisma.FileAssetUpdateWithoutTestimonialConsentDocsInput, Prisma.FileAssetUncheckedUpdateWithoutTestimonialConsentDocsInput>
+  create: Prisma.XOR<Prisma.FileAssetCreateWithoutTestimonialConsentDocsInput, Prisma.FileAssetUncheckedCreateWithoutTestimonialConsentDocsInput>
+  where?: Prisma.FileAssetWhereInput
+}
+
+export type FileAssetUpdateToOneWithWhereWithoutTestimonialConsentDocsInput = {
+  where?: Prisma.FileAssetWhereInput
+  data: Prisma.XOR<Prisma.FileAssetUpdateWithoutTestimonialConsentDocsInput, Prisma.FileAssetUncheckedUpdateWithoutTestimonialConsentDocsInput>
+}
+
+export type FileAssetUpdateWithoutTestimonialConsentDocsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  fileName?: Prisma.StringFieldUpdateOperationsInput | string
+  mimeType?: Prisma.StringFieldUpdateOperationsInput | string
+  sizeBytes?: Prisma.IntFieldUpdateOperationsInput | number
+  checksum?: Prisma.StringFieldUpdateOperationsInput | string
+  storageKey?: Prisma.StringFieldUpdateOperationsInput | string
+  secureUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumFileAssetStatusFieldUpdateOperationsInput | $Enums.FileAssetStatus
+  scanResult?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  owner?: Prisma.UserUpdateOneRequiredWithoutFileAssetsNestedInput
+  organization?: Prisma.OrganizationUpdateOneWithoutFileAssetsNestedInput
+  blogPostCovers?: Prisma.BlogPostUpdateManyWithoutCoverAssetNestedInput
+  portfolioCaseStudyHeroes?: Prisma.PortfolioCaseStudyUpdateManyWithoutHeroAssetNestedInput
+  testimonialAvatars?: Prisma.TestimonialUpdateManyWithoutAvatarAssetNestedInput
+  clientApprovalDocs?: Prisma.ClientPublicationApprovalUpdateManyWithoutSignedDocumentNestedInput
+  scans?: Prisma.MalwareScanUpdateManyWithoutFileAssetNestedInput
+  usages?: Prisma.FileUsageUpdateManyWithoutFileAssetNestedInput
+}
+
+export type FileAssetUncheckedUpdateWithoutTestimonialConsentDocsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  ownerId?: Prisma.StringFieldUpdateOperationsInput | string
+  organizationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fileName?: Prisma.StringFieldUpdateOperationsInput | string
+  mimeType?: Prisma.StringFieldUpdateOperationsInput | string
+  sizeBytes?: Prisma.IntFieldUpdateOperationsInput | number
+  checksum?: Prisma.StringFieldUpdateOperationsInput | string
+  storageKey?: Prisma.StringFieldUpdateOperationsInput | string
+  secureUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumFileAssetStatusFieldUpdateOperationsInput | $Enums.FileAssetStatus
+  scanResult?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  blogPostCovers?: Prisma.BlogPostUncheckedUpdateManyWithoutCoverAssetNestedInput
+  portfolioCaseStudyHeroes?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutHeroAssetNestedInput
+  testimonialAvatars?: Prisma.TestimonialUncheckedUpdateManyWithoutAvatarAssetNestedInput
+  clientApprovalDocs?: Prisma.ClientPublicationApprovalUncheckedUpdateManyWithoutSignedDocumentNestedInput
+  scans?: Prisma.MalwareScanUncheckedUpdateManyWithoutFileAssetNestedInput
+  usages?: Prisma.FileUsageUncheckedUpdateManyWithoutFileAssetNestedInput
+}
+
+export type FileAssetCreateWithoutScansInput = {
+  id?: string
+  fileName: string
+  mimeType: string
+  sizeBytes: number
+  checksum: string
+  storageKey: string
+  secureUrl?: string | null
+  status?: $Enums.FileAssetStatus
+  scanResult?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  owner: Prisma.UserCreateNestedOneWithoutFileAssetsInput
+  organization?: Prisma.OrganizationCreateNestedOneWithoutFileAssetsInput
+  blogPostCovers?: Prisma.BlogPostCreateNestedManyWithoutCoverAssetInput
+  portfolioCaseStudyHeroes?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutHeroAssetInput
+  testimonialAvatars?: Prisma.TestimonialCreateNestedManyWithoutAvatarAssetInput
+  testimonialConsentDocs?: Prisma.TestimonialConsentCreateNestedManyWithoutSignedAssetInput
+  clientApprovalDocs?: Prisma.ClientPublicationApprovalCreateNestedManyWithoutSignedDocumentInput
+  usages?: Prisma.FileUsageCreateNestedManyWithoutFileAssetInput
+}
+
+export type FileAssetUncheckedCreateWithoutScansInput = {
+  id?: string
+  ownerId: string
+  organizationId?: string | null
+  fileName: string
+  mimeType: string
+  sizeBytes: number
+  checksum: string
+  storageKey: string
+  secureUrl?: string | null
+  status?: $Enums.FileAssetStatus
+  scanResult?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  blogPostCovers?: Prisma.BlogPostUncheckedCreateNestedManyWithoutCoverAssetInput
+  portfolioCaseStudyHeroes?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutHeroAssetInput
+  testimonialAvatars?: Prisma.TestimonialUncheckedCreateNestedManyWithoutAvatarAssetInput
+  testimonialConsentDocs?: Prisma.TestimonialConsentUncheckedCreateNestedManyWithoutSignedAssetInput
+  clientApprovalDocs?: Prisma.ClientPublicationApprovalUncheckedCreateNestedManyWithoutSignedDocumentInput
+  usages?: Prisma.FileUsageUncheckedCreateNestedManyWithoutFileAssetInput
+}
+
+export type FileAssetCreateOrConnectWithoutScansInput = {
+  where: Prisma.FileAssetWhereUniqueInput
+  create: Prisma.XOR<Prisma.FileAssetCreateWithoutScansInput, Prisma.FileAssetUncheckedCreateWithoutScansInput>
+}
+
+export type FileAssetUpsertWithoutScansInput = {
+  update: Prisma.XOR<Prisma.FileAssetUpdateWithoutScansInput, Prisma.FileAssetUncheckedUpdateWithoutScansInput>
+  create: Prisma.XOR<Prisma.FileAssetCreateWithoutScansInput, Prisma.FileAssetUncheckedCreateWithoutScansInput>
+  where?: Prisma.FileAssetWhereInput
+}
+
+export type FileAssetUpdateToOneWithWhereWithoutScansInput = {
+  where?: Prisma.FileAssetWhereInput
+  data: Prisma.XOR<Prisma.FileAssetUpdateWithoutScansInput, Prisma.FileAssetUncheckedUpdateWithoutScansInput>
+}
+
+export type FileAssetUpdateWithoutScansInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  fileName?: Prisma.StringFieldUpdateOperationsInput | string
+  mimeType?: Prisma.StringFieldUpdateOperationsInput | string
+  sizeBytes?: Prisma.IntFieldUpdateOperationsInput | number
+  checksum?: Prisma.StringFieldUpdateOperationsInput | string
+  storageKey?: Prisma.StringFieldUpdateOperationsInput | string
+  secureUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumFileAssetStatusFieldUpdateOperationsInput | $Enums.FileAssetStatus
+  scanResult?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  owner?: Prisma.UserUpdateOneRequiredWithoutFileAssetsNestedInput
+  organization?: Prisma.OrganizationUpdateOneWithoutFileAssetsNestedInput
+  blogPostCovers?: Prisma.BlogPostUpdateManyWithoutCoverAssetNestedInput
+  portfolioCaseStudyHeroes?: Prisma.PortfolioCaseStudyUpdateManyWithoutHeroAssetNestedInput
+  testimonialAvatars?: Prisma.TestimonialUpdateManyWithoutAvatarAssetNestedInput
+  testimonialConsentDocs?: Prisma.TestimonialConsentUpdateManyWithoutSignedAssetNestedInput
+  clientApprovalDocs?: Prisma.ClientPublicationApprovalUpdateManyWithoutSignedDocumentNestedInput
+  usages?: Prisma.FileUsageUpdateManyWithoutFileAssetNestedInput
+}
+
+export type FileAssetUncheckedUpdateWithoutScansInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  ownerId?: Prisma.StringFieldUpdateOperationsInput | string
+  organizationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fileName?: Prisma.StringFieldUpdateOperationsInput | string
+  mimeType?: Prisma.StringFieldUpdateOperationsInput | string
+  sizeBytes?: Prisma.IntFieldUpdateOperationsInput | number
+  checksum?: Prisma.StringFieldUpdateOperationsInput | string
+  storageKey?: Prisma.StringFieldUpdateOperationsInput | string
+  secureUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumFileAssetStatusFieldUpdateOperationsInput | $Enums.FileAssetStatus
+  scanResult?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  blogPostCovers?: Prisma.BlogPostUncheckedUpdateManyWithoutCoverAssetNestedInput
+  portfolioCaseStudyHeroes?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutHeroAssetNestedInput
+  testimonialAvatars?: Prisma.TestimonialUncheckedUpdateManyWithoutAvatarAssetNestedInput
+  testimonialConsentDocs?: Prisma.TestimonialConsentUncheckedUpdateManyWithoutSignedAssetNestedInput
+  clientApprovalDocs?: Prisma.ClientPublicationApprovalUncheckedUpdateManyWithoutSignedDocumentNestedInput
+  usages?: Prisma.FileUsageUncheckedUpdateManyWithoutFileAssetNestedInput
+}
+
+export type FileAssetCreateWithoutUsagesInput = {
+  id?: string
+  fileName: string
+  mimeType: string
+  sizeBytes: number
+  checksum: string
+  storageKey: string
+  secureUrl?: string | null
+  status?: $Enums.FileAssetStatus
+  scanResult?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  owner: Prisma.UserCreateNestedOneWithoutFileAssetsInput
+  organization?: Prisma.OrganizationCreateNestedOneWithoutFileAssetsInput
+  blogPostCovers?: Prisma.BlogPostCreateNestedManyWithoutCoverAssetInput
+  portfolioCaseStudyHeroes?: Prisma.PortfolioCaseStudyCreateNestedManyWithoutHeroAssetInput
+  testimonialAvatars?: Prisma.TestimonialCreateNestedManyWithoutAvatarAssetInput
+  testimonialConsentDocs?: Prisma.TestimonialConsentCreateNestedManyWithoutSignedAssetInput
+  clientApprovalDocs?: Prisma.ClientPublicationApprovalCreateNestedManyWithoutSignedDocumentInput
+  scans?: Prisma.MalwareScanCreateNestedManyWithoutFileAssetInput
+}
+
+export type FileAssetUncheckedCreateWithoutUsagesInput = {
+  id?: string
+  ownerId: string
+  organizationId?: string | null
+  fileName: string
+  mimeType: string
+  sizeBytes: number
+  checksum: string
+  storageKey: string
+  secureUrl?: string | null
+  status?: $Enums.FileAssetStatus
+  scanResult?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  blogPostCovers?: Prisma.BlogPostUncheckedCreateNestedManyWithoutCoverAssetInput
+  portfolioCaseStudyHeroes?: Prisma.PortfolioCaseStudyUncheckedCreateNestedManyWithoutHeroAssetInput
+  testimonialAvatars?: Prisma.TestimonialUncheckedCreateNestedManyWithoutAvatarAssetInput
+  testimonialConsentDocs?: Prisma.TestimonialConsentUncheckedCreateNestedManyWithoutSignedAssetInput
+  clientApprovalDocs?: Prisma.ClientPublicationApprovalUncheckedCreateNestedManyWithoutSignedDocumentInput
+  scans?: Prisma.MalwareScanUncheckedCreateNestedManyWithoutFileAssetInput
+}
+
+export type FileAssetCreateOrConnectWithoutUsagesInput = {
+  where: Prisma.FileAssetWhereUniqueInput
+  create: Prisma.XOR<Prisma.FileAssetCreateWithoutUsagesInput, Prisma.FileAssetUncheckedCreateWithoutUsagesInput>
+}
+
+export type FileAssetUpsertWithoutUsagesInput = {
+  update: Prisma.XOR<Prisma.FileAssetUpdateWithoutUsagesInput, Prisma.FileAssetUncheckedUpdateWithoutUsagesInput>
+  create: Prisma.XOR<Prisma.FileAssetCreateWithoutUsagesInput, Prisma.FileAssetUncheckedCreateWithoutUsagesInput>
+  where?: Prisma.FileAssetWhereInput
+}
+
+export type FileAssetUpdateToOneWithWhereWithoutUsagesInput = {
+  where?: Prisma.FileAssetWhereInput
+  data: Prisma.XOR<Prisma.FileAssetUpdateWithoutUsagesInput, Prisma.FileAssetUncheckedUpdateWithoutUsagesInput>
+}
+
+export type FileAssetUpdateWithoutUsagesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  fileName?: Prisma.StringFieldUpdateOperationsInput | string
+  mimeType?: Prisma.StringFieldUpdateOperationsInput | string
+  sizeBytes?: Prisma.IntFieldUpdateOperationsInput | number
+  checksum?: Prisma.StringFieldUpdateOperationsInput | string
+  storageKey?: Prisma.StringFieldUpdateOperationsInput | string
+  secureUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumFileAssetStatusFieldUpdateOperationsInput | $Enums.FileAssetStatus
+  scanResult?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  owner?: Prisma.UserUpdateOneRequiredWithoutFileAssetsNestedInput
+  organization?: Prisma.OrganizationUpdateOneWithoutFileAssetsNestedInput
+  blogPostCovers?: Prisma.BlogPostUpdateManyWithoutCoverAssetNestedInput
+  portfolioCaseStudyHeroes?: Prisma.PortfolioCaseStudyUpdateManyWithoutHeroAssetNestedInput
+  testimonialAvatars?: Prisma.TestimonialUpdateManyWithoutAvatarAssetNestedInput
+  testimonialConsentDocs?: Prisma.TestimonialConsentUpdateManyWithoutSignedAssetNestedInput
+  clientApprovalDocs?: Prisma.ClientPublicationApprovalUpdateManyWithoutSignedDocumentNestedInput
+  scans?: Prisma.MalwareScanUpdateManyWithoutFileAssetNestedInput
+}
+
+export type FileAssetUncheckedUpdateWithoutUsagesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  ownerId?: Prisma.StringFieldUpdateOperationsInput | string
+  organizationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fileName?: Prisma.StringFieldUpdateOperationsInput | string
+  mimeType?: Prisma.StringFieldUpdateOperationsInput | string
+  sizeBytes?: Prisma.IntFieldUpdateOperationsInput | number
+  checksum?: Prisma.StringFieldUpdateOperationsInput | string
+  storageKey?: Prisma.StringFieldUpdateOperationsInput | string
+  secureUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumFileAssetStatusFieldUpdateOperationsInput | $Enums.FileAssetStatus
+  scanResult?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  blogPostCovers?: Prisma.BlogPostUncheckedUpdateManyWithoutCoverAssetNestedInput
+  portfolioCaseStudyHeroes?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutHeroAssetNestedInput
+  testimonialAvatars?: Prisma.TestimonialUncheckedUpdateManyWithoutAvatarAssetNestedInput
+  testimonialConsentDocs?: Prisma.TestimonialConsentUncheckedUpdateManyWithoutSignedAssetNestedInput
+  clientApprovalDocs?: Prisma.ClientPublicationApprovalUncheckedUpdateManyWithoutSignedDocumentNestedInput
+  scans?: Prisma.MalwareScanUncheckedUpdateManyWithoutFileAssetNestedInput
 }
 
 export type FileAssetCreateManyOwnerInput = {
@@ -781,6 +1704,13 @@ export type FileAssetUpdateWithoutOwnerInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   organization?: Prisma.OrganizationUpdateOneWithoutFileAssetsNestedInput
+  blogPostCovers?: Prisma.BlogPostUpdateManyWithoutCoverAssetNestedInput
+  portfolioCaseStudyHeroes?: Prisma.PortfolioCaseStudyUpdateManyWithoutHeroAssetNestedInput
+  testimonialAvatars?: Prisma.TestimonialUpdateManyWithoutAvatarAssetNestedInput
+  testimonialConsentDocs?: Prisma.TestimonialConsentUpdateManyWithoutSignedAssetNestedInput
+  clientApprovalDocs?: Prisma.ClientPublicationApprovalUpdateManyWithoutSignedDocumentNestedInput
+  scans?: Prisma.MalwareScanUpdateManyWithoutFileAssetNestedInput
+  usages?: Prisma.FileUsageUpdateManyWithoutFileAssetNestedInput
 }
 
 export type FileAssetUncheckedUpdateWithoutOwnerInput = {
@@ -796,6 +1726,13 @@ export type FileAssetUncheckedUpdateWithoutOwnerInput = {
   scanResult?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  blogPostCovers?: Prisma.BlogPostUncheckedUpdateManyWithoutCoverAssetNestedInput
+  portfolioCaseStudyHeroes?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutHeroAssetNestedInput
+  testimonialAvatars?: Prisma.TestimonialUncheckedUpdateManyWithoutAvatarAssetNestedInput
+  testimonialConsentDocs?: Prisma.TestimonialConsentUncheckedUpdateManyWithoutSignedAssetNestedInput
+  clientApprovalDocs?: Prisma.ClientPublicationApprovalUncheckedUpdateManyWithoutSignedDocumentNestedInput
+  scans?: Prisma.MalwareScanUncheckedUpdateManyWithoutFileAssetNestedInput
+  usages?: Prisma.FileUsageUncheckedUpdateManyWithoutFileAssetNestedInput
 }
 
 export type FileAssetUncheckedUpdateManyWithoutOwnerInput = {
@@ -841,6 +1778,13 @@ export type FileAssetUpdateWithoutOrganizationInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   owner?: Prisma.UserUpdateOneRequiredWithoutFileAssetsNestedInput
+  blogPostCovers?: Prisma.BlogPostUpdateManyWithoutCoverAssetNestedInput
+  portfolioCaseStudyHeroes?: Prisma.PortfolioCaseStudyUpdateManyWithoutHeroAssetNestedInput
+  testimonialAvatars?: Prisma.TestimonialUpdateManyWithoutAvatarAssetNestedInput
+  testimonialConsentDocs?: Prisma.TestimonialConsentUpdateManyWithoutSignedAssetNestedInput
+  clientApprovalDocs?: Prisma.ClientPublicationApprovalUpdateManyWithoutSignedDocumentNestedInput
+  scans?: Prisma.MalwareScanUpdateManyWithoutFileAssetNestedInput
+  usages?: Prisma.FileUsageUpdateManyWithoutFileAssetNestedInput
 }
 
 export type FileAssetUncheckedUpdateWithoutOrganizationInput = {
@@ -856,6 +1800,13 @@ export type FileAssetUncheckedUpdateWithoutOrganizationInput = {
   scanResult?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  blogPostCovers?: Prisma.BlogPostUncheckedUpdateManyWithoutCoverAssetNestedInput
+  portfolioCaseStudyHeroes?: Prisma.PortfolioCaseStudyUncheckedUpdateManyWithoutHeroAssetNestedInput
+  testimonialAvatars?: Prisma.TestimonialUncheckedUpdateManyWithoutAvatarAssetNestedInput
+  testimonialConsentDocs?: Prisma.TestimonialConsentUncheckedUpdateManyWithoutSignedAssetNestedInput
+  clientApprovalDocs?: Prisma.ClientPublicationApprovalUncheckedUpdateManyWithoutSignedDocumentNestedInput
+  scans?: Prisma.MalwareScanUncheckedUpdateManyWithoutFileAssetNestedInput
+  usages?: Prisma.FileUsageUncheckedUpdateManyWithoutFileAssetNestedInput
 }
 
 export type FileAssetUncheckedUpdateManyWithoutOrganizationInput = {
@@ -874,6 +1825,89 @@ export type FileAssetUncheckedUpdateManyWithoutOrganizationInput = {
 }
 
 
+/**
+ * Count Type FileAssetCountOutputType
+ */
+
+export type FileAssetCountOutputType = {
+  blogPostCovers: number
+  portfolioCaseStudyHeroes: number
+  testimonialAvatars: number
+  testimonialConsentDocs: number
+  clientApprovalDocs: number
+  scans: number
+  usages: number
+}
+
+export type FileAssetCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  blogPostCovers?: boolean | FileAssetCountOutputTypeCountBlogPostCoversArgs
+  portfolioCaseStudyHeroes?: boolean | FileAssetCountOutputTypeCountPortfolioCaseStudyHeroesArgs
+  testimonialAvatars?: boolean | FileAssetCountOutputTypeCountTestimonialAvatarsArgs
+  testimonialConsentDocs?: boolean | FileAssetCountOutputTypeCountTestimonialConsentDocsArgs
+  clientApprovalDocs?: boolean | FileAssetCountOutputTypeCountClientApprovalDocsArgs
+  scans?: boolean | FileAssetCountOutputTypeCountScansArgs
+  usages?: boolean | FileAssetCountOutputTypeCountUsagesArgs
+}
+
+/**
+ * FileAssetCountOutputType without action
+ */
+export type FileAssetCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the FileAssetCountOutputType
+   */
+  select?: Prisma.FileAssetCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * FileAssetCountOutputType without action
+ */
+export type FileAssetCountOutputTypeCountBlogPostCoversArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.BlogPostWhereInput
+}
+
+/**
+ * FileAssetCountOutputType without action
+ */
+export type FileAssetCountOutputTypeCountPortfolioCaseStudyHeroesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PortfolioCaseStudyWhereInput
+}
+
+/**
+ * FileAssetCountOutputType without action
+ */
+export type FileAssetCountOutputTypeCountTestimonialAvatarsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.TestimonialWhereInput
+}
+
+/**
+ * FileAssetCountOutputType without action
+ */
+export type FileAssetCountOutputTypeCountTestimonialConsentDocsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.TestimonialConsentWhereInput
+}
+
+/**
+ * FileAssetCountOutputType without action
+ */
+export type FileAssetCountOutputTypeCountClientApprovalDocsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ClientPublicationApprovalWhereInput
+}
+
+/**
+ * FileAssetCountOutputType without action
+ */
+export type FileAssetCountOutputTypeCountScansArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.MalwareScanWhereInput
+}
+
+/**
+ * FileAssetCountOutputType without action
+ */
+export type FileAssetCountOutputTypeCountUsagesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.FileUsageWhereInput
+}
+
 
 export type FileAssetSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -891,6 +1925,14 @@ export type FileAssetSelect<ExtArgs extends runtime.Types.Extensions.InternalArg
   updatedAt?: boolean
   owner?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   organization?: boolean | Prisma.FileAsset$organizationArgs<ExtArgs>
+  blogPostCovers?: boolean | Prisma.FileAsset$blogPostCoversArgs<ExtArgs>
+  portfolioCaseStudyHeroes?: boolean | Prisma.FileAsset$portfolioCaseStudyHeroesArgs<ExtArgs>
+  testimonialAvatars?: boolean | Prisma.FileAsset$testimonialAvatarsArgs<ExtArgs>
+  testimonialConsentDocs?: boolean | Prisma.FileAsset$testimonialConsentDocsArgs<ExtArgs>
+  clientApprovalDocs?: boolean | Prisma.FileAsset$clientApprovalDocsArgs<ExtArgs>
+  scans?: boolean | Prisma.FileAsset$scansArgs<ExtArgs>
+  usages?: boolean | Prisma.FileAsset$usagesArgs<ExtArgs>
+  _count?: boolean | Prisma.FileAssetCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["fileAsset"]>
 
 export type FileAssetSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -949,6 +1991,14 @@ export type FileAssetOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs 
 export type FileAssetInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   owner?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   organization?: boolean | Prisma.FileAsset$organizationArgs<ExtArgs>
+  blogPostCovers?: boolean | Prisma.FileAsset$blogPostCoversArgs<ExtArgs>
+  portfolioCaseStudyHeroes?: boolean | Prisma.FileAsset$portfolioCaseStudyHeroesArgs<ExtArgs>
+  testimonialAvatars?: boolean | Prisma.FileAsset$testimonialAvatarsArgs<ExtArgs>
+  testimonialConsentDocs?: boolean | Prisma.FileAsset$testimonialConsentDocsArgs<ExtArgs>
+  clientApprovalDocs?: boolean | Prisma.FileAsset$clientApprovalDocsArgs<ExtArgs>
+  scans?: boolean | Prisma.FileAsset$scansArgs<ExtArgs>
+  usages?: boolean | Prisma.FileAsset$usagesArgs<ExtArgs>
+  _count?: boolean | Prisma.FileAssetCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type FileAssetIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   owner?: boolean | Prisma.UserDefaultArgs<ExtArgs>
@@ -964,6 +2014,13 @@ export type $FileAssetPayload<ExtArgs extends runtime.Types.Extensions.InternalA
   objects: {
     owner: Prisma.$UserPayload<ExtArgs>
     organization: Prisma.$OrganizationPayload<ExtArgs> | null
+    blogPostCovers: Prisma.$BlogPostPayload<ExtArgs>[]
+    portfolioCaseStudyHeroes: Prisma.$PortfolioCaseStudyPayload<ExtArgs>[]
+    testimonialAvatars: Prisma.$TestimonialPayload<ExtArgs>[]
+    testimonialConsentDocs: Prisma.$TestimonialConsentPayload<ExtArgs>[]
+    clientApprovalDocs: Prisma.$ClientPublicationApprovalPayload<ExtArgs>[]
+    scans: Prisma.$MalwareScanPayload<ExtArgs>[]
+    usages: Prisma.$FileUsagePayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1375,6 +2432,13 @@ export interface Prisma__FileAssetClient<T, Null = never, ExtArgs extends runtim
   readonly [Symbol.toStringTag]: "PrismaPromise"
   owner<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   organization<T extends Prisma.FileAsset$organizationArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.FileAsset$organizationArgs<ExtArgs>>): Prisma.Prisma__OrganizationClient<runtime.Types.Result.GetResult<Prisma.$OrganizationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  blogPostCovers<T extends Prisma.FileAsset$blogPostCoversArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.FileAsset$blogPostCoversArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BlogPostPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  portfolioCaseStudyHeroes<T extends Prisma.FileAsset$portfolioCaseStudyHeroesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.FileAsset$portfolioCaseStudyHeroesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PortfolioCaseStudyPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  testimonialAvatars<T extends Prisma.FileAsset$testimonialAvatarsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.FileAsset$testimonialAvatarsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TestimonialPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  testimonialConsentDocs<T extends Prisma.FileAsset$testimonialConsentDocsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.FileAsset$testimonialConsentDocsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TestimonialConsentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  clientApprovalDocs<T extends Prisma.FileAsset$clientApprovalDocsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.FileAsset$clientApprovalDocsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ClientPublicationApprovalPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  scans<T extends Prisma.FileAsset$scansArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.FileAsset$scansArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MalwareScanPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  usages<T extends Prisma.FileAsset$usagesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.FileAsset$usagesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$FileUsagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1834,6 +2898,174 @@ export type FileAsset$organizationArgs<ExtArgs extends runtime.Types.Extensions.
    */
   include?: Prisma.OrganizationInclude<ExtArgs> | null
   where?: Prisma.OrganizationWhereInput
+}
+
+/**
+ * FileAsset.blogPostCovers
+ */
+export type FileAsset$blogPostCoversArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the BlogPost
+   */
+  select?: Prisma.BlogPostSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the BlogPost
+   */
+  omit?: Prisma.BlogPostOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.BlogPostInclude<ExtArgs> | null
+  where?: Prisma.BlogPostWhereInput
+  orderBy?: Prisma.BlogPostOrderByWithRelationInput | Prisma.BlogPostOrderByWithRelationInput[]
+  cursor?: Prisma.BlogPostWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.BlogPostScalarFieldEnum | Prisma.BlogPostScalarFieldEnum[]
+}
+
+/**
+ * FileAsset.portfolioCaseStudyHeroes
+ */
+export type FileAsset$portfolioCaseStudyHeroesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the PortfolioCaseStudy
+   */
+  select?: Prisma.PortfolioCaseStudySelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the PortfolioCaseStudy
+   */
+  omit?: Prisma.PortfolioCaseStudyOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PortfolioCaseStudyInclude<ExtArgs> | null
+  where?: Prisma.PortfolioCaseStudyWhereInput
+  orderBy?: Prisma.PortfolioCaseStudyOrderByWithRelationInput | Prisma.PortfolioCaseStudyOrderByWithRelationInput[]
+  cursor?: Prisma.PortfolioCaseStudyWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.PortfolioCaseStudyScalarFieldEnum | Prisma.PortfolioCaseStudyScalarFieldEnum[]
+}
+
+/**
+ * FileAsset.testimonialAvatars
+ */
+export type FileAsset$testimonialAvatarsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Testimonial
+   */
+  select?: Prisma.TestimonialSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Testimonial
+   */
+  omit?: Prisma.TestimonialOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.TestimonialInclude<ExtArgs> | null
+  where?: Prisma.TestimonialWhereInput
+  orderBy?: Prisma.TestimonialOrderByWithRelationInput | Prisma.TestimonialOrderByWithRelationInput[]
+  cursor?: Prisma.TestimonialWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.TestimonialScalarFieldEnum | Prisma.TestimonialScalarFieldEnum[]
+}
+
+/**
+ * FileAsset.testimonialConsentDocs
+ */
+export type FileAsset$testimonialConsentDocsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the TestimonialConsent
+   */
+  select?: Prisma.TestimonialConsentSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the TestimonialConsent
+   */
+  omit?: Prisma.TestimonialConsentOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.TestimonialConsentInclude<ExtArgs> | null
+  where?: Prisma.TestimonialConsentWhereInput
+  orderBy?: Prisma.TestimonialConsentOrderByWithRelationInput | Prisma.TestimonialConsentOrderByWithRelationInput[]
+  cursor?: Prisma.TestimonialConsentWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.TestimonialConsentScalarFieldEnum | Prisma.TestimonialConsentScalarFieldEnum[]
+}
+
+/**
+ * FileAsset.clientApprovalDocs
+ */
+export type FileAsset$clientApprovalDocsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the ClientPublicationApproval
+   */
+  select?: Prisma.ClientPublicationApprovalSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the ClientPublicationApproval
+   */
+  omit?: Prisma.ClientPublicationApprovalOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ClientPublicationApprovalInclude<ExtArgs> | null
+  where?: Prisma.ClientPublicationApprovalWhereInput
+  orderBy?: Prisma.ClientPublicationApprovalOrderByWithRelationInput | Prisma.ClientPublicationApprovalOrderByWithRelationInput[]
+  cursor?: Prisma.ClientPublicationApprovalWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ClientPublicationApprovalScalarFieldEnum | Prisma.ClientPublicationApprovalScalarFieldEnum[]
+}
+
+/**
+ * FileAsset.scans
+ */
+export type FileAsset$scansArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the MalwareScan
+   */
+  select?: Prisma.MalwareScanSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the MalwareScan
+   */
+  omit?: Prisma.MalwareScanOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.MalwareScanInclude<ExtArgs> | null
+  where?: Prisma.MalwareScanWhereInput
+  orderBy?: Prisma.MalwareScanOrderByWithRelationInput | Prisma.MalwareScanOrderByWithRelationInput[]
+  cursor?: Prisma.MalwareScanWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.MalwareScanScalarFieldEnum | Prisma.MalwareScanScalarFieldEnum[]
+}
+
+/**
+ * FileAsset.usages
+ */
+export type FileAsset$usagesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the FileUsage
+   */
+  select?: Prisma.FileUsageSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the FileUsage
+   */
+  omit?: Prisma.FileUsageOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.FileUsageInclude<ExtArgs> | null
+  where?: Prisma.FileUsageWhereInput
+  orderBy?: Prisma.FileUsageOrderByWithRelationInput | Prisma.FileUsageOrderByWithRelationInput[]
+  cursor?: Prisma.FileUsageWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.FileUsageScalarFieldEnum | Prisma.FileUsageScalarFieldEnum[]
 }
 
 /**
