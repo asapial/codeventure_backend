@@ -1,2 +1,2 @@
 import { describe, expect, it } from "vitest"; import { projectOperations } from "./projects.route";
-describe("A8 projects", () => { it("exposes directory and bulk operations", () => expect(projectOperations.map(x => `${x.method} ${x.path}`)).toEqual(["get /", "post /", "patch /bulk"])); });
+describe("A8-A9 projects", () => { const routes = projectOperations.map(x => `${x.method} ${x.path}`); it("exposes directory and bulk operations", () => expect(routes.slice(0, 3)).toEqual(["get /", "post /", "patch /bulk"])); it("supports workspace workflows", () => { expect(routes).toContain("post /:id/milestones"); expect(routes).toContain("post /:id/change-orders"); expect(routes).toContain("patch /:id/status"); }); });
