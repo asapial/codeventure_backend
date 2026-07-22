@@ -71,5 +71,10 @@ const createJob = async (kind: string, payload: Record<string, unknown>, ctx: Ad
   return { data: job, jobRef: job.id, requestId: ctx.requestId };
 });
 
-export const adminService = { list, get, create, update, createJob };
+const upsert = async (feature: AdminFeature, recordType: string, key: string, body: Record<string, unknown>, ctx: AdminMutationContext) => {
+  const current = await prisma.adminRecord.findFirst({ where: { feature, recordType, title: key, archivedAt: null }, select: { id: true, version: true } });
+  return current ? update(feature, current.id, "update", { ...body, version: body.version ?? current.version }, ctx) : create(feature, recordType, { ...body, title: key }, ctx);
+};
+
+export const adminService = { list, get, create, update, createJob, upsert };
 export { prisma };

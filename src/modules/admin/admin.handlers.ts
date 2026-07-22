@@ -14,4 +14,5 @@ export const createAdminHandlers = (feature: AdminFeature) => ({
   create: (recordType: string) => catchAsync(async (req: Request, res: Response) => ok(res, await adminService.create(feature, recordType, req.body, context(req)), status.CREATED)),
   update: (action: string, enqueueKind?: string) => catchAsync(async (req: Request, res: Response) => ok(res, await adminService.update(feature, first(req.params.id), action, req.body, context(req), enqueueKind))),
   job: (kind: string) => catchAsync(async (req: Request, res: Response) => ok(res, await adminService.createJob(kind, { ...req.body, ...req.params }, context(req)), status.ACCEPTED)),
+  upsert: (recordType: string, keyParam?: string) => catchAsync(async (req: Request, res: Response) => ok(res, await adminService.upsert(feature, recordType, keyParam ? first(req.params[keyParam]) : recordType, req.body, context(req)))),
 });
