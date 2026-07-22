@@ -9,6 +9,14 @@ import { billingRouter } from "./billing/billing.route.js";
 import { teamRouter } from "./team/team.route.js";
 import { contentRouter } from "./content/content.route.js";
 import { analyticsRouter } from "./analytics/analytics.route.js";
+import { settingsRouter } from "./settings/settings.route.js";
+import { integrationsRouter } from "./integrations/integrations.route.js";
+import { notificationsRouter } from "./notifications/notifications.route.js";
+import { featureFlagsRouter } from "./feature-flags/feature-flags.route.js";
+import { securityRouter } from "./security/security.route.js";
+import { auditLogRouter } from "./audit-log/audit-log.route.js";
+import { backupsRouter } from "./backups/backups.route.js";
+import { systemJobsRouter } from "./system-jobs/system-jobs.route.js";
 
 /** A1-A22 feature routers are mounted here as they are delivered. */
 const router = Router();
@@ -22,5 +30,13 @@ router.use(billingRouter);
 router.use(teamRouter);
 router.use(contentRouter);
 router.use(analyticsRouter);
+router.use(settingsRouter);
+router.use(integrationsRouter);
+router.use(notificationsRouter);
+router.use(featureFlagsRouter);
+router.use(securityRouter);
+router.use(auditLogRouter);
+router.use(backupsRouter);
+router.use(systemJobsRouter);
 
 export const adminRouter = router;
