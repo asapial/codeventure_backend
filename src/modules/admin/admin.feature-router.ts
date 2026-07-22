@@ -1,4 +1,7 @@
 import { Router, type RequestHandler } from "express";
+import status from "http-status";
+import type { ZodSchema } from "zod";
+import AppError from "../../errorHelpers/AppError";
 import { validateRequest } from "../../middleware/validateRequest";
 import { createAdminHandlers } from "./admin.handlers";
 import { requireAdmin, requirePermission, requireStepUp, type AdminPermission } from "./admin.policy";
@@ -10,6 +13,7 @@ export type AdminOperation = {
   kind: "list" | "get" | "create" | "update" | "job" | "upsert";
   permission: AdminPermission; action?: string; recordType?: string; job?: string;
   stepUp?: boolean; keyParam?: string;
+  providerEnv?: string;
 };
 
 export const createAdminFeatureRouter = (feature: AdminFeature, operations: readonly AdminOperation[]) => {
@@ -17,7 +21,8 @@ export const createAdminFeatureRouter = (feature: AdminFeature, operations: read
   for (const op of operations) {
     const middleware: RequestHandler[] = [requirePermission(op.permission)];
     if (op.stepUp) middleware.push(requireStepUp());
-    let handler: RequestHandler; let schema = adminBodySchema;
+    if (op.providerEnv) middleware.push((_req, _res, next) => process.env[op.providerEnv!] ? next() : next(new AppError(status.SERVICE_UNAVAILABLE, "The required provider is not configured.", { code: "PROVIDER_UNAVAILABLE" })));
+    let handler: RequestHandler; let schema: ZodSchema = adminBodySchema;
     if (op.kind === "list") { handler = handlers.list; schema = adminListSchema; }
     else if (op.kind === "get") { handler = handlers.get; schema = adminIdSchema; }
     else if (op.kind === "create") handler = handlers.create(op.recordType ?? feature);
