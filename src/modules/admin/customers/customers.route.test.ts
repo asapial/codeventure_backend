@@ -1,2 +1,2 @@
 import { describe, expect, it } from "vitest"; import { customerOperations } from "./customers.route";
-describe("A6 customers", () => { it("exposes directory actions", () => expect(customerOperations.map(x => `${x.method} ${x.path}`)).toEqual(["get /", "post /", "post /:id/invitations"])); });
+describe("A6-A7 customers", () => { const routes = customerOperations.map(x => `${x.method} ${x.path}`); it("exposes directory actions", () => expect(routes.slice(0, 3)).toEqual(["get /", "post /", "post /:id/invitations"])); it("guards detail controls", () => { expect(routes).toContain("post /:id/impersonation"); expect(routes).toContain("patch /:id/status"); expect(routes).toContain("get /:id"); }); });
