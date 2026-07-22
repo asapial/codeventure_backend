@@ -30,17 +30,17 @@
 /// "currently assigned to" answer is "the latest `SupportAssignment` for the
 /// ticket".
 model SupportAssignment {
-  id              String   @id @default(uuid())
-  ticketId        String
-  ticket          SupportTicket @relation(fields: [ticketId], references: [id], onDelete: Cascade)
-  agentId         String
-  agent           User     @relation("supportAssignments", fields: [agentId], references: [id], onDelete: Cascade)
+  id           String        @id @default(uuid())
+  ticketId     String
+  ticket       SupportTicket @relation(fields: [ticketId], references: [id], onDelete: Cascade)
+  agentId      String
+  agent        User          @relation("supportAssignments", fields: [agentId], references: [id], onDelete: Cascade)
   /// OPTIONAL: the round-robin / queue-routing rule that placed this assignment.
-  assignedById    String?
-  assignedBy      User?    @relation("supportAssigners", fields: [assignedById], references: [id], onDelete: SetNull)
-  reason          String?
-  isCurrent       Boolean  @default(true)
-  createdAt       DateTime @default(now())
+  assignedById String?
+  assignedBy   User?         @relation("supportAssigners", fields: [assignedById], references: [id], onDelete: SetNull)
+  reason       String?
+  isCurrent    Boolean       @default(true)
+  createdAt    DateTime      @default(now())
 
   @@index([ticketId, createdAt])
   @@index([agentId, createdAt])
@@ -50,16 +50,16 @@ model SupportAssignment {
 /// Notes a staff member leaves behind on a ticket. Always staff-private;
 /// customers never see these. `visibility` gates who among staff can see it.
 model InternalNote {
-  id            String   @id @default(uuid())
-  ticketId      String
-  ticket        SupportTicket @relation(fields: [ticketId], references: [id], onDelete: Cascade)
-  authorId      String
-  author        User     @relation("internalNoteAuthor", fields: [authorId], references: [id], onDelete: Cascade)
-  body          String
-  visibility    NoteVisibility @default(INTERNAL_TEAM)
-  pinned        Boolean  @default(false)
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
+  id         String         @id @default(uuid())
+  ticketId   String
+  ticket     SupportTicket  @relation(fields: [ticketId], references: [id], onDelete: Cascade)
+  authorId   String
+  author     User           @relation("internalNoteAuthor", fields: [authorId], references: [id], onDelete: Cascade)
+  body       String
+  visibility NoteVisibility @default(INTERNAL_TEAM)
+  pinned     Boolean        @default(false)
+  createdAt  DateTime       @default(now())
+  updatedAt  DateTime       @updatedAt
 
   @@index([ticketId, createdAt])
   @@map("internal_note")
@@ -68,11 +68,11 @@ model InternalNote {
 /// One row per escalation event on a ticket — captures the from→to
 /// priority/status transition and the reason the agent gave.
 model EscalationEvent {
-  id            String   @id @default(uuid())
+  id            String         @id @default(uuid())
   ticketId      String
-  ticket        SupportTicket @relation(fields: [ticketId], references: [id], onDelete: Cascade)
+  ticket        SupportTicket  @relation(fields: [ticketId], references: [id], onDelete: Cascade)
   triggeredById String
-  triggeredBy   User     @relation("escalationTriggeredBy", fields: [triggeredById], references: [id], onDelete: Cascade)
+  triggeredBy   User           @relation("escalationTriggeredBy", fields: [triggeredById], references: [id], onDelete: Cascade)
   fromPriority  TicketPriority
   toPriority    TicketPriority
   reason        String
@@ -80,7 +80,7 @@ model EscalationEvent {
   severity      SlaSeverity
   /// Optional: how long (in minutes) the agent expects to need.
   etaMinutes    Int?
-  createdAt     DateTime @default(now())
+  createdAt     DateTime       @default(now())
 
   @@index([ticketId, createdAt])
   @@index([severity, createdAt])
@@ -91,21 +91,21 @@ model EscalationEvent {
 /// `organizationId` matches the org (or the global "default" row whose
 /// `organizationId` is null).
 model SlaPolicy {
-  id                  String   @id @default(uuid())
-  organizationId      String?
-  organization        Organization? @relation(fields: [organizationId], references: [id], onDelete: Cascade)
-  name                String
+  id                   String        @id @default(uuid())
+  organizationId       String?
+  organization         Organization? @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  name                 String
   /// SLA severity this policy applies to (one row per severity per org is OK).
-  severity            SlaSeverity
+  severity             SlaSeverity
   /// First-response target, in minutes.
   firstResponseMinutes Int
   /// Resolution target, in minutes.
   resolutionMinutes    Int
   /// Optional: business-hours-only window (e.g. "MON-FRI 09:00-18:00" TZ string).
-  businessHoursTz     String?
-  isDefault           Boolean  @default(false)
-  createdAt           DateTime @default(now())
-  updatedAt           DateTime @updatedAt
+  businessHoursTz      String?
+  isDefault            Boolean       @default(false)
+  createdAt            DateTime      @default(now())
+  updatedAt            DateTime      @updatedAt
 
   @@index([organizationId, severity])
   @@map("sla_policy")
@@ -114,17 +114,17 @@ model SlaPolicy {
 /// Agent-saved reply template ("macro"). Hot-keyed insertable snippets that
 /// appear in the workspace reply box.
 model CannedResponse {
-  id          String   @id @default(uuid())
-  authorId    String
-  author      User     @relation("cannedResponseAuthor", fields: [authorId], references: [id], onDelete: Cascade)
-  title       String
-  shortcut    String   @unique // e.g. "/refund-issued"
-  body        String
-  category    String?
-  usageCount  Int      @default(0)
-  archived    Boolean  @default(false)
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  id         String   @id @default(uuid())
+  authorId   String
+  author     User     @relation("cannedResponseAuthor", fields: [authorId], references: [id], onDelete: Cascade)
+  title      String
+  shortcut   String   @unique // e.g. "/refund-issued"
+  body       String
+  category   String?
+  usageCount Int      @default(0)
+  archived   Boolean  @default(false)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
 
   @@index([authorId, archived])
   @@map("canned_response")
@@ -134,28 +134,28 @@ model CannedResponse {
 /// upserted on each profile view. Lives separately from `Organization` so
 /// write traffic doesn't churn the org table.
 model OrganizationSupportProfile {
-  id                  String   @id @default(uuid())
-  organizationId      String   @unique
-  organization        Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
-  healthScore         Int      @default(100) // 0..100
-  status              AccountStatus @default(ACTIVE)
+  id                    String        @id @default(uuid())
+  organizationId        String        @unique
+  organization          Organization  @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  healthScore           Int           @default(100) // 0..100
+  status                AccountStatus @default(ACTIVE)
   /// Average first-response minutes over the last 30 days.
-  avgFirstResponseMin Int?
+  avgFirstResponseMin   Int?
   /// Average resolution minutes over the last 30 days.
-  avgResolutionMin    Int?
+  avgResolutionMin      Int?
   /// CSAT (1..5) over the last 30 days; nullable if no surveys yet.
-  csatScore           Float?
+  csatScore             Float?
   /// Renewal or churn risk index, 0..100.
-  churnRisk           Int      @default(0)
-  openTicketCount     Int      @default(0)
-  awaitingCustomerCount Int    @default(0)
-  overdueInvoiceCount Int      @default(0)
+  churnRisk             Int           @default(0)
+  openTicketCount       Int           @default(0)
+  awaitingCustomerCount Int           @default(0)
+  overdueInvoiceCount   Int           @default(0)
   /// Last agent who touched this profile.
-  lastTouchedById     String?
-  lastTouchedBy       User?    @relation("profileLastTouchedBy", fields: [lastTouchedById], references: [id], onDelete: SetNull)
-  lastTouchedAt       DateTime?
-  createdAt           DateTime @default(now())
-  updatedAt           DateTime @updatedAt
+  lastTouchedById       String?
+  lastTouchedBy         User?         @relation("profileLastTouchedBy", fields: [lastTouchedById], references: [id], onDelete: SetNull)
+  lastTouchedAt         DateTime?
+  createdAt             DateTime      @default(now())
+  updatedAt             DateTime      @updatedAt
 
   @@map("organization_support_profile")
 }
@@ -163,20 +163,20 @@ model OrganizationSupportProfile {
 /// Per-org activity feed (auditable CSAT surveys, contract signings,
 /// escalations, etc.) that the S5 profile page renders in a timeline.
 model CustomerActivityLog {
-  id              String   @id @default(uuid())
-  organizationId  String
-  organization    Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
-  actorId         String?
-  actor           User?    @relation("activityActor", fields: [actorId], references: [id], onDelete: SetNull)
+  id             String       @id @default(uuid())
+  organizationId String
+  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  actorId        String?
+  actor          User?        @relation("activityActor", fields: [actorId], references: [id], onDelete: SetNull)
   /// Mirrors AuditEventType semantically but scoped to customer-facing
   /// moments (e.g. CSAT_RECEIVED, CONTRACT_RENEWED, PLAN_UPGRADED).
-  kind            String
-  title           String
-  description     String?
+  kind           String
+  title          String
+  description    String?
   /// Optional link target inside the support console, e.g. "/tickets/:id".
-  href            String?
-  metadata        Json?
-  createdAt       DateTime @default(now())
+  href           String?
+  metadata       Json?
+  createdAt      DateTime     @default(now())
 
   @@index([organizationId, createdAt])
   @@map("customer_activity_log")
@@ -185,17 +185,17 @@ model CustomerActivityLog {
 /// Versioned content revision for a help article. Every save creates a new
 /// row; the "current" version is read from `HelpArticle.body` directly.
 model ContentRevision {
-  id            String   @id @default(uuid())
-  articleId     String
-  article       HelpArticle @relation(fields: [articleId], references: [id], onDelete: Cascade)
-  authorId      String
-  author        User     @relation("contentRevisionAuthor", fields: [authorId], references: [id], onDelete: Cascade)
-  version       Int
-  title         String
-  excerpt       String?
-  body          String
-  changeNote    String?
-  createdAt     DateTime @default(now())
+  id         String      @id @default(uuid())
+  articleId  String
+  article    HelpArticle @relation(fields: [articleId], references: [id], onDelete: Cascade)
+  authorId   String
+  author     User        @relation("contentRevisionAuthor", fields: [authorId], references: [id], onDelete: Cascade)
+  version    Int
+  title      String
+  excerpt    String?
+  body       String
+  changeNote String?
+  createdAt  DateTime    @default(now())
 
   @@unique([articleId, version])
   @@map("content_revision")
@@ -203,14 +203,14 @@ model ContentRevision {
 
 /// Per-customer helpfulness feedback on a help article.
 model KnowledgeFeedback {
-  id            String   @id @default(uuid())
-  articleId     String
-  article       HelpArticle @relation(fields: [articleId], references: [id], onDelete: Cascade)
-  userId        String?
-  user          User?    @relation("knowledgeFeedbackUser", fields: [userId], references: [id], onDelete: SetNull)
-  wasHelpful    Boolean
-  comment       String?
-  createdAt     DateTime @default(now())
+  id         String      @id @default(uuid())
+  articleId  String
+  article    HelpArticle @relation(fields: [articleId], references: [id], onDelete: Cascade)
+  userId     String?
+  user       User?       @relation("knowledgeFeedbackUser", fields: [userId], references: [id], onDelete: SetNull)
+  wasHelpful Boolean
+  comment    String?
+  createdAt  DateTime    @default(now())
 
   @@index([articleId, createdAt])
   @@map("knowledge_feedback")
@@ -218,17 +218,17 @@ model KnowledgeFeedback {
 
 /// Asset attached to a help article (image, PDF, video link, etc.).
 model ArticleAttachment {
-  id            String   @id @default(uuid())
-  articleId     String
-  article       HelpArticle @relation(fields: [articleId], references: [id], onDelete: Cascade)
-  uploaderId    String
-  uploader      User     @relation("articleAttachmentUploader", fields: [uploaderId], references: [id], onDelete: Cascade)
-  fileName      String
-  mimeType      String
-  sizeBytes     Int
-  storageKey    String
-  altText       String?
-  createdAt     DateTime @default(now())
+  id         String      @id @default(uuid())
+  articleId  String
+  article    HelpArticle @relation(fields: [articleId], references: [id], onDelete: Cascade)
+  uploaderId String
+  uploader   User        @relation("articleAttachmentUploader", fields: [uploaderId], references: [id], onDelete: Cascade)
+  fileName   String
+  mimeType   String
+  sizeBytes  Int
+  storageKey String
+  altText    String?
+  createdAt  DateTime    @default(now())
 
   @@index([articleId])
   @@map("article_attachment")
@@ -237,20 +237,20 @@ model ArticleAttachment {
 /// One row per UTC day per organization. Rollup populated by the nightly
 /// `JobRun` to drive S7 reports without scanning raw events.
 model SupportMetricDaily {
-  id                  String   @id @default(uuid())
+  id                  String       @id @default(uuid())
   organizationId      String
   organization        Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
-  day                 DateTime @db.Date
-  ticketsOpened       Int      @default(0)
-  ticketsResolved     Int      @default(0)
-  ticketsEscalated    Int      @default(0)
-  ticketsReopened     Int      @default(0)
+  day                 DateTime     @db.Date
+  ticketsOpened       Int          @default(0)
+  ticketsResolved     Int          @default(0)
+  ticketsEscalated    Int          @default(0)
+  ticketsReopened     Int          @default(0)
   avgFirstResponseMin Int?
   avgResolutionMin    Int?
-  backlogOpen         Int      @default(0)
-  csatResponses       Int      @default(0)
+  backlogOpen         Int          @default(0)
+  csatResponses       Int          @default(0)
   csatAverage         Float?
-  createdAt           DateTime @default(now())
+  createdAt           DateTime     @default(now())
 
   @@unique([organizationId, day])
   @@index([day])
@@ -261,25 +261,25 @@ model SupportMetricDaily {
 /// `CustomerActivityLog` because it's an internal compliance / forensics log,
 /// not a customer-visible timeline.
 model AuditLog {
-  id            String   @id @default(uuid())
-  actorId       String?
-  actor         User?    @relation("auditActor", fields: [actorId], references: [id], onDelete: SetNull)
-  kind          AuditEventType
+  id              String         @id @default(uuid())
+  actorId         String?
+  actor           User?          @relation("auditActor", fields: [actorId], references: [id], onDelete: SetNull)
+  kind            AuditEventType
   /// Free-form target reference, e.g. `ticket:abc-123` or `article:slug-x`.
-  targetRef     String
+  targetRef       String
   /// Optional ticket scope — used by ticket-scoped audit reads in S3.
-  ticketId      String?
-  ticket        SupportTicket? @relation(fields: [ticketId], references: [id], onDelete: SetNull)
+  ticketId        String?
+  ticket          SupportTicket? @relation(fields: [ticketId], references: [id], onDelete: SetNull)
   /// Optional organization scope.
-  organizationId String?
-  organization  Organization? @relation(fields: [organizationId], references: [id], onDelete: SetNull)
+  organizationId  String?
+  organization    Organization?  @relation(fields: [organizationId], references: [id], onDelete: SetNull)
   /// Snapshot of the relevant fields before/after for forensic diffs.
-  beforeJson    Json?
-  afterJson     Json?
-  metadata      Json?
+  beforeJson      Json?
+  afterJson       Json?
+  metadata        Json?
   /// Convenience: did this action involve customer-visible data?
-  customerVisible Boolean @default(false)
-  createdAt     DateTime @default(now())
+  customerVisible Boolean        @default(false)
+  createdAt       DateTime       @default(now())
 
   @@index([actorId, createdAt])
   @@index([organizationId, kind, createdAt])
@@ -293,18 +293,18 @@ model AuditLog {
 /// auth.prisma `JobRun` queue model because the run lifecycle here is
 /// long-lived and observable from the UI.
 model SupportJobRun {
-  id            String   @id @default(uuid())
-  kind          String   // "metrics.rollup", "macro.import", "report.export"
+  id            String       @id @default(uuid())
+  kind          String // "metrics.rollup", "macro.import", "report.export"
   status        JobRunStatus @default(QUEUED)
   requestedById String?
-  requestedBy   User?    @relation("supportJobRunRequester", fields: [requestedById], references: [id], onDelete: SetNull)
+  requestedBy   User?        @relation("supportJobRunRequester", fields: [requestedById], references: [id], onDelete: SetNull)
   parameters    Json?
   resultJson    Json?
   errorMessage  String?
   startedAt     DateTime?
   finishedAt    DateTime?
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
 
   @@index([kind, status, createdAt])
   @@index([requestedById, createdAt])
@@ -315,23 +315,23 @@ model SupportJobRun {
 
 /// Captures the wizard progress + finalised payload. One per user.
 model OnboardingProfile {
-  id          String   @id @default(uuid())
-  userId      String   @unique
-  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  id     String @id @default(uuid())
+  userId String @unique
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   status      OnboardingStatus @default(NOT_STARTED)
   currentStep Int              @default(0)
 
-  companyName      String?
-  businessType     String?
-  websiteUrl       String?
-  billingAddress   Json?
-  primaryContact   Json?
-  brandAssetIds    String[]      @default([])
-  timezone         String?
-  locale           String?
-  communication    CommunicationPreference @default(EMAIL)
-  completedAt      DateTime?
+  companyName    String?
+  businessType   String?
+  websiteUrl     String?
+  billingAddress Json?
+  primaryContact Json?
+  brandAssetIds  String[]                @default([])
+  timezone       String?
+  locale         String?
+  communication  CommunicationPreference @default(EMAIL)
+  completedAt    DateTime?
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -342,17 +342,17 @@ model OnboardingProfile {
 /// Brand assets uploaded during onboarding (logo, fonts, palette). Public
 /// `secureUrl` is a short-lived signed URL — never persist the raw path.
 model BrandProfile {
-  id              String   @id @default(uuid())
-  organizationId  String
-  organization    Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  id             String       @id @default(uuid())
+  organizationId String
+  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
 
-  logoAssetId     String?
-  primaryColor    String?
-  secondaryColor  String?
-  fontFamily      String?
-  voiceNotes      String?
-  updatedAt       DateTime @updatedAt
-  createdAt       DateTime @default(now())
+  logoAssetId    String?
+  primaryColor   String?
+  secondaryColor String?
+  fontFamily     String?
+  voiceNotes     String?
+  updatedAt      DateTime @updatedAt
+  createdAt      DateTime @default(now())
 
   @@index([organizationId])
   @@map("brand_profile")
@@ -361,23 +361,33 @@ model BrandProfile {
 /// Private file uploaded by the customer (brand assets, contracts, etc.).
 /// `checksum` is SHA-256; `status` transitions PENDING → READY after scan.
 model FileAsset {
-  id           String   @id @default(uuid())
-  ownerId      String
-  owner        User     @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  id             String        @id @default(uuid())
+  ownerId        String
+  owner          User          @relation(fields: [ownerId], references: [id], onDelete: Cascade)
   organizationId String?
-  organization Organization? @relation(fields: [organizationId], references: [id], onDelete: SetNull)
+  organization   Organization? @relation(fields: [organizationId], references: [id], onDelete: SetNull)
 
-  fileName     String
-  mimeType     String
-  sizeBytes    Int
-  checksum     String
-  storageKey   String
-  secureUrl    String?
-  status       FileAssetStatus @default(PENDING)
-  scanResult   Json?
+  fileName   String
+  mimeType   String
+  sizeBytes  Int
+  checksum   String
+  storageKey String
+  secureUrl  String?
+  status     FileAssetStatus @default(PENDING)
+  scanResult Json?
 
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Moderation module (M6) back-relations — what surfaces use this file
+  // and what scans have been run against it.
+  blogPostCovers           BlogPost[]                  @relation("BlogPostCover")
+  portfolioCaseStudyHeroes PortfolioCaseStudy[]        @relation("portfolioCaseStudyHero")
+  testimonialAvatars       Testimonial[]               @relation("testimonialAvatar")
+  testimonialConsentDocs   TestimonialConsent[]        @relation("testimonialConsentDoc")
+  clientApprovalDocs       ClientPublicationApproval[] @relation("clientApprovalDoc")
+  scans                    MalwareScan[]               @relation("fileAssetScans")
+  usages                   FileUsage[]                 @relation("fileAssetUsages")
 
   @@index([ownerId, createdAt])
   @@index([organizationId])
@@ -388,18 +398,18 @@ model FileAsset {
 
 /// Per-project milestone surfaced to the customer workspace.
 model ProjectMilestone {
-  id          String   @id @default(uuid())
-  projectId   String
-  project     Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  id        String  @id @default(uuid())
+  projectId String
+  project   Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
 
   title       String
   description String?
   phase       ProjectPhase
-  orderIndex  Int      @default(0)
+  orderIndex  Int          @default(0)
   dueAt       DateTime?
   completedAt DateTime?
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
 
   @@index([projectId, orderIndex])
   @@index([dueAt])
@@ -409,9 +419,9 @@ model ProjectMilestone {
 /// Approval request sent to the customer. Each `respond` becomes an
 /// `ApprovalResponse` row for auditability.
 model ApprovalRequest {
-  id              String   @id @default(uuid())
-  projectId       String
-  project         Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  id        String  @id @default(uuid())
+  projectId String
+  project   Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
 
   /// The exact artifact (or version) the customer is approving.
   artifactRef     String
@@ -424,11 +434,11 @@ model ApprovalRequest {
 
   /// Monotonic version bumped on every state change. Used by the customer
   /// portal to reject stale responses with HTTP 409.
-  version         Int      @default(0)
+  version Int @default(0)
 
-  responses       ApprovalResponse[]
-  createdAt       DateTime @default(now())
-  updatedAt       DateTime @updatedAt
+  responses ApprovalResponse[]
+  createdAt DateTime           @default(now())
+  updatedAt DateTime           @updatedAt
 
   @@index([projectId, status])
   @@index([status, dueAt])
@@ -436,16 +446,16 @@ model ApprovalRequest {
 }
 
 model ApprovalResponse {
-  id              String   @id @default(uuid())
-  approvalId      String
-  approval        ApprovalRequest @relation(fields: [approvalId], references: [id], onDelete: Cascade)
+  id         String          @id @default(uuid())
+  approvalId String
+  approval   ApprovalRequest @relation(fields: [approvalId], references: [id], onDelete: Cascade)
 
-  responderId     String
-  responder       User     @relation(fields: [responderId], references: [id], onDelete: Cascade)
+  responderId String
+  responder   User   @relation(fields: [responderId], references: [id], onDelete: Cascade)
 
-  decision        ApprovalStatus
-  comment         String?
-  createdAt       DateTime @default(now())
+  decision  ApprovalStatus
+  comment   String?
+  createdAt DateTime       @default(now())
 
   @@index([approvalId])
   @@map("approval_response")
@@ -453,19 +463,19 @@ model ApprovalResponse {
 
 /// Change request initiated by the customer, including projected impact.
 model ChangeRequest {
-  id              String   @id @default(uuid())
-  projectId       String
-  project         Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  id        String  @id @default(uuid())
+  projectId String
+  project   Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
 
-  title           String
-  description     String
-  estimatedCost   Decimal? @db.Decimal(12, 2)
-  estimatedDays   Int?
+  title         String
+  description   String
+  estimatedCost Decimal?       @db.Decimal(12, 2)
+  estimatedDays Int?
   /// Customer's self-reported impact: LOW | MEDIUM | HIGH.
-  impact          String?  @default("MEDIUM")
-  status          ApprovalStatus @default(PENDING)
-  createdAt       DateTime @default(now())
-  updatedAt       DateTime @updatedAt
+  impact        String?        @default("MEDIUM")
+  status        ApprovalStatus @default(PENDING)
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
 
   @@index([projectId, status])
   @@map("change_request")
@@ -473,14 +483,14 @@ model ChangeRequest {
 
 /// Comment on a project workspace.
 model ProjectComment {
-  id           String   @id @default(uuid())
-  projectId    String
-  project      Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
-  authorId     String
-  author       User     @relation("projectCommentAuthor", fields: [authorId], references: [id], onDelete: Cascade)
+  id        String  @id @default(uuid())
+  projectId String
+  project   Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  authorId  String
+  author    User    @relation("projectCommentAuthor", fields: [authorId], references: [id], onDelete: Cascade)
 
-  body         String
-  createdAt    DateTime @default(now())
+  body      String
+  createdAt DateTime @default(now())
 
   @@index([projectId, createdAt])
   @@map("project_comment")
@@ -488,19 +498,19 @@ model ProjectComment {
 
 /// Versioned project file (deliverable artifact).
 model ProjectFile {
-  id           String   @id @default(uuid())
-  projectId    String
-  project      Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
-  uploaderId   String
-  uploader     User     @relation(fields: [uploaderId], references: [id], onDelete: Cascade)
+  id         String  @id @default(uuid())
+  projectId  String
+  project    Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  uploaderId String
+  uploader   User    @relation(fields: [uploaderId], references: [id], onDelete: Cascade)
 
-  fileName     String
-  mimeType     String
-  sizeBytes    Int
-  version      Int      @default(1)
-  storageKey   String
-  secureUrl    String?
-  createdAt    DateTime @default(now())
+  fileName   String
+  mimeType   String
+  sizeBytes  Int
+  version    Int      @default(1)
+  storageKey String
+  secureUrl  String?
+  createdAt  DateTime @default(now())
 
   @@index([projectId, createdAt])
   @@map("project_file")
@@ -509,57 +519,58 @@ model ProjectFile {
 // ── C5: Maintenance & care ─────────────────────────────────────────────────
 
 model MaintenancePlan {
-  id              String   @id @default(uuid())
-  name            String
-  description     String?
-  priceMonthly    Decimal  @db.Decimal(12, 2)
-  currency        String   @default("USD")
-  includedHours   Decimal  @db.Decimal(8, 2)
-  isActive        Boolean  @default(true)
-  createdAt       DateTime @default(now())
-  updatedAt       DateTime @updatedAt
+  id            String   @id @default(uuid())
+  name          String
+  description   String?
+  priceMonthly  Decimal  @db.Decimal(12, 2)
+  currency      String   @default("USD")
+  includedHours Decimal  @db.Decimal(8, 2)
+  isActive      Boolean  @default(true)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
 
-  subscriptions   MaintenanceSubscription[]
+  subscriptions MaintenanceSubscription[]
+
   @@map("maintenance_plan")
 }
 
 model MaintenanceSubscription {
-  id            String   @id @default(uuid())
+  id             String                        @id @default(uuid())
   organizationId String
-  organization  Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
-  planId        String
-  plan          MaintenancePlan @relation(fields: [planId], references: [id])
-  websiteUrl    String
-  cadence       MaintenanceCadence
-  status        MaintenanceSubscriptionStatus @default(ACTIVE)
-  periodStart   DateTime
-  periodEnd     DateTime?
-  includedHours Decimal  @db.Decimal(8, 2)
-  usedHours     Decimal  @db.Decimal(8, 2) @default(0)
+  organization   Organization                  @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  planId         String
+  plan           MaintenancePlan               @relation(fields: [planId], references: [id])
+  websiteUrl     String
+  cadence        MaintenanceCadence
+  status         MaintenanceSubscriptionStatus @default(ACTIVE)
+  periodStart    DateTime
+  periodEnd      DateTime?
+  includedHours  Decimal                       @db.Decimal(8, 2)
+  usedHours      Decimal                       @default(0) @db.Decimal(8, 2)
 
-  requests      MaintenanceRequest[]
-  reports       MaintenanceReport[]
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
+  requests  MaintenanceRequest[]
+  reports   MaintenanceReport[]
+  createdAt DateTime             @default(now())
+  updatedAt DateTime             @updatedAt
 
   @@index([organizationId, status])
   @@map("maintenance_subscription")
 }
 
 model MaintenanceRequest {
-  id              String   @id @default(uuid())
-  subscriptionId  String
-  subscription    MaintenanceSubscription @relation(fields: [subscriptionId], references: [id], onDelete: Cascade)
-  requesterId     String
-  requester       User     @relation(fields: [requesterId], references: [id], onDelete: Cascade)
+  id             String                  @id @default(uuid())
+  subscriptionId String
+  subscription   MaintenanceSubscription @relation(fields: [subscriptionId], references: [id], onDelete: Cascade)
+  requesterId    String
+  requester      User                    @relation(fields: [requesterId], references: [id], onDelete: Cascade)
 
-  requestType     MaintenanceRequestType
-  priority        TicketPriority @default(NORMAL)
-  title           String
-  description     String
-  status          TicketStatus @default(OPEN)
-  createdAt       DateTime @default(now())
-  updatedAt       DateTime @updatedAt
+  requestType MaintenanceRequestType
+  priority    TicketPriority         @default(NORMAL)
+  title       String
+  description String
+  status      TicketStatus           @default(OPEN)
+  createdAt   DateTime               @default(now())
+  updatedAt   DateTime               @updatedAt
 
   @@index([subscriptionId, status])
   @@index([requesterId, createdAt])
@@ -567,16 +578,16 @@ model MaintenanceRequest {
 }
 
 model MaintenanceReport {
-  id              String   @id @default(uuid())
+  id              String                  @id @default(uuid())
   subscriptionId  String
   subscription    MaintenanceSubscription @relation(fields: [subscriptionId], references: [id], onDelete: Cascade)
   periodStart     DateTime
   periodEnd       DateTime
   summary         String
   workCompleted   Json
-  backupsVerified Boolean  @default(false)
+  backupsVerified Boolean                 @default(false)
   securityChecks  Json
-  createdAt       DateTime @default(now())
+  createdAt       DateTime                @default(now())
 
   @@index([subscriptionId, periodStart])
   @@map("maintenance_report")
@@ -585,81 +596,81 @@ model MaintenanceReport {
 // ── C6: Billing ────────────────────────────────────────────────────────────
 
 model BillingProfile {
-  id              String   @id @default(uuid())
-  organizationId  String   @unique
-  organization    Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  id             String       @id @default(uuid())
+  organizationId String       @unique
+  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
 
-  legalName       String?
-  taxId           String?
-  billingEmail    String?
-  paymentProvider String?
+  legalName           String?
+  taxId               String?
+  billingEmail        String?
+  paymentProvider     String?
   paymentMethodMasked String?
-  currency        String   @default("USD")
+  currency            String  @default("USD")
 
-  createdAt       DateTime @default(now())
-  updatedAt       DateTime @updatedAt
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   @@map("billing_profile")
 }
 
 model Quote {
-  id              String   @id @default(uuid())
-  organizationId  String
-  organization    Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  id             String       @id @default(uuid())
+  organizationId String
+  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
 
-  quoteNumber     String   @unique
-  title           String
-  amount          Decimal  @db.Decimal(12, 2)
-  currency        String   @default("USD")
-  validUntil      DateTime
-  status          ApprovalStatus @default(PENDING)
-  signedAt        DateTime?
-  createdAt       DateTime @default(now())
-  updatedAt       DateTime @updatedAt
+  quoteNumber String         @unique
+  title       String
+  amount      Decimal        @db.Decimal(12, 2)
+  currency    String         @default("USD")
+  validUntil  DateTime
+  status      ApprovalStatus @default(PENDING)
+  signedAt    DateTime?
+  createdAt   DateTime       @default(now())
+  updatedAt   DateTime       @updatedAt
 
   @@index([organizationId, status])
   @@map("quote")
 }
 
 model Contract {
-  id              String   @id @default(uuid())
-  organizationId  String
-  organization    Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  id             String       @id @default(uuid())
+  organizationId String
+  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
 
-  contractNumber  String   @unique
-  title           String
-  status          ApprovalStatus @default(PENDING)
-  signedAt        DateTime?
-  storageKey      String
-  createdAt       DateTime @default(now())
-  updatedAt       DateTime @updatedAt
+  contractNumber String         @unique
+  title          String
+  status         ApprovalStatus @default(PENDING)
+  signedAt       DateTime?
+  storageKey     String
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
 
   @@index([organizationId, status])
   @@map("contract")
 }
 
 model Invoice {
-  id              String   @id @default(uuid())
-  organizationId  String
-  organization    Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  id             String       @id @default(uuid())
+  organizationId String
+  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
 
-  invoiceNumber   String   @unique
-  status          InvoiceStatus @default(DRAFT)
-  currency        String   @default("USD")
-  subtotal        Decimal  @db.Decimal(12, 2)
-  tax             Decimal  @db.Decimal(12, 2) @default(0)
-  discount        Decimal  @db.Decimal(12, 2) @default(0)
-  total           Decimal  @db.Decimal(12, 2)
-  balance         Decimal  @db.Decimal(12, 2)
-  dueAt           DateTime
-  paidAt          DateTime?
-  storageKey      String?
+  invoiceNumber String        @unique
+  status        InvoiceStatus @default(DRAFT)
+  currency      String        @default("USD")
+  subtotal      Decimal       @db.Decimal(12, 2)
+  tax           Decimal       @default(0) @db.Decimal(12, 2)
+  discount      Decimal       @default(0) @db.Decimal(12, 2)
+  total         Decimal       @db.Decimal(12, 2)
+  balance       Decimal       @db.Decimal(12, 2)
+  dueAt         DateTime
+  paidAt        DateTime?
+  storageKey    String?
 
-  items           InvoiceItem[]
-  payments        Payment[]
+  items    InvoiceItem[]
+  payments Payment[]
 
-  createdAt       DateTime @default(now())
-  updatedAt       DateTime @updatedAt
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   @@index([organizationId, status])
   @@index([dueAt])
@@ -667,49 +678,50 @@ model Invoice {
 }
 
 model InvoiceItem {
-  id          String   @id @default(uuid())
-  invoiceId   String
-  invoice     Invoice  @relation(fields: [invoiceId], references: [id], onDelete: Cascade)
+  id        String  @id @default(uuid())
+  invoiceId String
+  invoice   Invoice @relation(fields: [invoiceId], references: [id], onDelete: Cascade)
 
   description String
   quantity    Int
-  unitPrice   Decimal  @db.Decimal(12, 2)
-  amount      Decimal  @db.Decimal(12, 2)
-  orderIndex  Int      @default(0)
+  unitPrice   Decimal @db.Decimal(12, 2)
+  amount      Decimal @db.Decimal(12, 2)
+  orderIndex  Int     @default(0)
 
   @@index([invoiceId, orderIndex])
   @@map("invoice_item")
 }
 
 model Payment {
-  id            String   @id @default(uuid())
-  invoiceId     String
-  invoice       Invoice  @relation(fields: [invoiceId], references: [id], onDelete: Cascade)
+  id        String  @id @default(uuid())
+  invoiceId String
+  invoice   Invoice @relation(fields: [invoiceId], references: [id], onDelete: Cascade)
 
   /// Idempotency key from the client to prevent duplicate charges.
-  idempotencyKey String  @unique
-  amount        Decimal  @db.Decimal(12, 2)
-  currency      String   @default("USD")
-  status        String
-  provider      String
-  providerRef   String?
-  createdAt     DateTime @default(now())
+  idempotencyKey String   @unique
+  amount         Decimal  @db.Decimal(12, 2)
+  currency       String   @default("USD")
+  status         String
+  provider       String
+  providerRef    String?
+  createdAt      DateTime @default(now())
 
-  attempts      PaymentAttempt[]
+  attempts PaymentAttempt[]
+
   @@index([invoiceId])
   @@map("payment")
 }
 
 model PaymentAttempt {
-  id          String   @id @default(uuid())
-  paymentId   String
-  payment     Payment  @relation(fields: [paymentId], references: [id], onDelete: Cascade)
+  id        String  @id @default(uuid())
+  paymentId String
+  payment   Payment @relation(fields: [paymentId], references: [id], onDelete: Cascade)
 
-  status      String
-  errorCode   String?
+  status       String
+  errorCode    String?
   errorMessage String?
-  metadata    Json?
-  createdAt   DateTime @default(now())
+  metadata     Json?
+  createdAt    DateTime @default(now())
 
   @@index([paymentId])
   @@map("payment_attempt")
@@ -718,31 +730,31 @@ model PaymentAttempt {
 // ── C7/C8: Support ─────────────────────────────────────────────────────────
 
 model SupportTicket {
-  id              String   @id @default(uuid())
-  organizationId  String
-  organization    Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
-  requesterId     String
-  requester       User     @relation(fields: [requesterId], references: [id], onDelete: Cascade)
-  projectId       String?
-  project         Project? @relation(fields: [projectId], references: [id], onDelete: SetNull)
+  id             String       @id @default(uuid())
+  organizationId String
+  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  requesterId    String
+  requester      User         @relation(fields: [requesterId], references: [id], onDelete: Cascade)
+  projectId      String?
+  project        Project?     @relation(fields: [projectId], references: [id], onDelete: SetNull)
 
-  ticketNumber    String   @unique
-  subject         String
-  category        String
-  priority        TicketPriority @default(NORMAL)
-  status          TicketStatus @default(OPEN)
-  resolvedAt      DateTime?
-  slaDueAt        DateTime?
+  ticketNumber String         @unique
+  subject      String
+  category     String
+  priority     TicketPriority @default(NORMAL)
+  status       TicketStatus   @default(OPEN)
+  resolvedAt   DateTime?
+  slaDueAt     DateTime?
 
-  messages        TicketMessage[]
-  attachments     TicketAttachment[]
+  messages           TicketMessage[]
+  attachments        TicketAttachment[]
   supportAssignments SupportAssignment[]
-  internalNotes   InternalNote[]
-  escalations     EscalationEvent[]
-  auditLogs       AuditLog[]
+  internalNotes      InternalNote[]
+  escalations        EscalationEvent[]
+  auditLogs          AuditLog[]
 
-  createdAt       DateTime @default(now())
-  updatedAt       DateTime @updatedAt
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   @@index([organizationId, status])
   @@index([requesterId, createdAt])
@@ -750,54 +762,54 @@ model SupportTicket {
 }
 
 model TicketMessage {
-  id          String   @id @default(uuid())
-  ticketId    String
-  ticket      SupportTicket @relation(fields: [ticketId], references: [id], onDelete: Cascade)
-  authorId    String
-  author      User     @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  id       String        @id @default(uuid())
+  ticketId String
+  ticket   SupportTicket @relation(fields: [ticketId], references: [id], onDelete: Cascade)
+  authorId String
+  author   User          @relation(fields: [authorId], references: [id], onDelete: Cascade)
 
-  body        String
-  visibility  TicketMessageVisibility @default(CUSTOMER)
-  createdAt   DateTime @default(now())
+  body       String
+  visibility TicketMessageVisibility @default(CUSTOMER)
+  createdAt  DateTime                @default(now())
 
   @@index([ticketId, createdAt])
   @@map("ticket_message")
 }
 
 model TicketAttachment {
-  id          String   @id @default(uuid())
-  ticketId    String
-  ticket      SupportTicket @relation(fields: [ticketId], references: [id], onDelete: Cascade)
-  uploaderId  String
-  uploader    User     @relation(fields: [uploaderId], references: [id], onDelete: Cascade)
+  id         String        @id @default(uuid())
+  ticketId   String
+  ticket     SupportTicket @relation(fields: [ticketId], references: [id], onDelete: Cascade)
+  uploaderId String
+  uploader   User          @relation(fields: [uploaderId], references: [id], onDelete: Cascade)
 
-  fileName    String
-  mimeType    String
-  sizeBytes   Int
-  storageKey  String
-  createdAt   DateTime @default(now())
+  fileName   String
+  mimeType   String
+  sizeBytes  Int
+  storageKey String
+  createdAt  DateTime @default(now())
 
   @@index([ticketId])
   @@map("ticket_attachment")
 }
 
 model HelpArticle {
-  id          String   @id @default(uuid())
-  slug        String   @unique
-  title       String
-  excerpt     String?
-  body        String
-  category    String
-  searchTokens String  // precomputed lowercased haystack
-  status      HelpArticleStatus @default(PUBLISHED)
-  publishedAt DateTime?
-  authorId    String?
-  author      User?    @relation("helpArticleAuthor", fields: [authorId], references: [id], onDelete: SetNull)
-  viewCount   Int      @default(0)
-  helpfulYes  Int      @default(0)
-  helpfulNo   Int      @default(0)
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  id           String            @id @default(uuid())
+  slug         String            @unique
+  title        String
+  excerpt      String?
+  body         String
+  category     String
+  searchTokens String // precomputed lowercased haystack
+  status       HelpArticleStatus @default(PUBLISHED)
+  publishedAt  DateTime?
+  authorId     String?
+  author       User?             @relation("helpArticleAuthor", fields: [authorId], references: [id], onDelete: SetNull)
+  viewCount    Int               @default(0)
+  helpfulYes   Int               @default(0)
+  helpfulNo    Int               @default(0)
+  createdAt    DateTime          @default(now())
+  updatedAt    DateTime          @updatedAt
 
   revisions   ContentRevision[]
   attachments ArticleAttachment[]
@@ -811,19 +823,19 @@ model HelpArticle {
 // ── C9: Notifications (extending the existing Notification model) ───────────
 
 model NotificationPreference {
-  id          String   @id @default(uuid())
-  userId      String   @unique
-  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  id     String @id @default(uuid())
+  userId String @unique
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  emailProject    Boolean @default(true)
-  emailApproval   Boolean @default(true)
-  emailInvoice    Boolean @default(true)
-  emailSupport    Boolean @default(true)
+  emailProject     Boolean @default(true)
+  emailApproval    Boolean @default(true)
+  emailInvoice     Boolean @default(true)
+  emailSupport     Boolean @default(true)
   emailMaintenance Boolean @default(true)
-  emailSecurity   Boolean @default(true)
+  emailSecurity    Boolean @default(true)
 
-  updatedAt   DateTime @updatedAt
-  createdAt   DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  createdAt DateTime @default(now())
 
   @@map("notification_preference")
 }
@@ -831,15 +843,15 @@ model NotificationPreference {
 // ── C10: Settings (sessions + data export + 2FA) ────────────────────────────
 
 model DataExportJob {
-  id              String   @id @default(uuid())
-  userId          String
-  user            User     @relation("dataExportJobs", fields: [userId], references: [id], onDelete: Cascade)
+  id     String @id @default(uuid())
+  userId String
+  user   User   @relation("dataExportJobs", fields: [userId], references: [id], onDelete: Cascade)
 
-  status          DataExportStatus @default(QUEUED)
-  storageKey      String?
-  requestedAt     DateTime @default(now())
-  readyAt         DateTime?
-  expiresAt       DateTime?
+  status      DataExportStatus @default(QUEUED)
+  storageKey  String?
+  requestedAt DateTime         @default(now())
+  readyAt     DateTime?
+  expiresAt   DateTime?
 
   @@index([userId, requestedAt])
   @@map("data_export_job")

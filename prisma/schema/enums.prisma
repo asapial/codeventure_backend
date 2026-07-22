@@ -1,7 +1,11 @@
 // System role — kept for backward compatibility with BetterAuth's User table.
 // Drives platform-wide capability gates (e.g. admin console, teacher tools).
+// MODERATOR is added for the M1â€"M7 Moderator Dashboard area; it grants
+// access to the staff-only moderation console without elevating the user
+// to a full ADMIN (RBAC: MODERATOR > STUDENT, MODERATOR < ADMIN).
 enum Role {
   ADMIN
+  MODERATOR
   TEACHER
   STUDENT
 }
@@ -287,7 +291,10 @@ enum SlaSeverity {
   CRITICAL
 }
 
-/// Audit trail event category for the support console (S7 reports).
+/// Audit trail event category for the support console (S7 reports) and the
+/// staff-only moderation console (M1–M7). The 9 moderation kinds listed last
+/// are added so the M7 audit timeline can filter by `kind IN (...)` without
+/// a polymorphic metadata column.
 enum AuditEventType {
   TICKET_CREATED
   TICKET_ASSIGNED
@@ -304,6 +311,15 @@ enum AuditEventType {
   ARTICLE_PUBLISHED
   ARTICLE_REVISED
   CUSTOMER_FLAGGED
+  CONTENT_APPROVED
+  CONTENT_BLOCKED
+  CONTENT_CHANGES_REQUESTED
+  CONTENT_ESCALATED
+  MEDIA_QUARANTINED
+  MEDIA_CLEARED
+  TESTIMONIAL_CONSENT_VERIFIED
+  CLIENT_PUBLICATION_APPROVED
+  CLIENT_PUBLICATION_REVOKED
 }
 
 /// Async report / nightly-rollup job lifecycle.
@@ -321,4 +337,107 @@ enum HelpArticleStatus {
   IN_REVIEW
   PUBLISHED
   ARCHIVED
+}
+
+// ----------------------------------------------------------------------------
+// Moderation module enums (M1â€"M7)
+//
+// Distinct from the support module enums above. These describe the
+// staff-only content-moderation surface (blog, portfolio, testimonials,
+// media-library reviews and the audit timeline).
+// ----------------------------------------------------------------------------
+
+/// Final outcome of a single review action. The reviewer always records a
+/// reason when the decision is `BLOCKED` or `CHANGES_REQUESTED`.
+enum ModerationDecision {
+  APPROVED
+  CHANGES_REQUESTED
+  BLOCKED
+  ESCALATED
+}
+
+/// Lifecycle of a moderation case. New items enter `QUEUED` and move
+/// through `IN_REVIEW` once a moderator claims them.
+enum ModerationStatus {
+  QUEUED
+  IN_REVIEW
+  DECIDED
+  ESCALATED
+  CLOSED
+}
+
+/// Categorical reason for a moderation outcome. Drives roll-ups in the
+/// M1 KPI dashboard and the M7 audit timeline.
+enum ModerationReason {
+  QUALITY
+  ACCURACY
+  BRAND_VOICE
+  COPYRIGHT
+  PRIVACY_PII
+  SENSITIVE_TOPIC
+  SPAM_PROMOTIONAL
+  OFF_TOPIC
+  OUTDATED
+  LEGAL_DISCLOSURE_MISSING
+  TESTIMONIAL_CONSENT_MISSING
+  MEDIA_INFECTED
+  MEDIA_PROHIBITED
+  ACCESSIBILITY
+  OTHER
+}
+
+/// What kind of content the review case refers to. Mirrors the
+/// reviewer's mental model rather than any single table.
+enum ContentType {
+  BLOG_POST
+  PORTFOLIO_CASE_STUDY
+  TESTIMONIAL
+  MEDIA_ASSET
+  CLIENT_PUBLICATION
+}
+
+/// Risk band the reviewer applies to a case at submission time.
+enum RiskLevel {
+  LOW
+  MEDIUM
+  HIGH
+  CRITICAL
+}
+
+/// Scope of audience that the moderator approves a portfolio piece
+/// (or client publication) for. Used by M4 + M2 to gate "go live" actions.
+enum ClientDisplayScope {
+  INTERNAL_ONLY
+  PASSWORD_PROTECTED
+  PUBLIC_REFERENCE
+  PUBLIC_FEATURED
+}
+
+/// What the testimonial author has consented to. M5 stores the broadest
+/// consent scope so re-permissioning later is just a status change.
+enum TestimonialConsentScope {
+  NOT_GRANTED
+  INTERNAL_REFERENCE_ONLY
+  PUBLIC_REFERENCE
+  PUBLIC_FEATURED
+  PUBLIC_WITH_NAME_AND_PHOTO
+  PUBLIC_PAID_CASE_STUDY
+}
+
+/// Result of a malware / prohibited-content scan on a media asset.
+enum MediaScanStatus {
+  PENDING
+  CLEAN
+  INFECTED
+  PROHIBITED_CONTENT
+  SCAN_FAILED
+}
+
+/// Who can see a media asset after moderation. Mirrors the upload
+/// owner's intent so the moderator can downgrade if required.
+enum MediaVisibility {
+  PRIVATE
+  INTERNAL_TEAM
+  PUBLIC_REFERENCE
+  PUBLIC_FEATURED
 }

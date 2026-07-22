@@ -1,0 +1,309 @@
+// ----------------------------------------------------------------------------
+// Moderation module (M1–M7)
+//
+// Staff-only content moderation surface for the public marketing site.
+// Every model here is referenced (read+write) by the `/api/v1/moderation/*`
+// endpoints and is FK-anchored to existing models:
+//
+//   - `User`                 (reviewer / submitter)
+//   - `FileAsset`            (media-library attachments)
+//   - `AuditLog`             (append-only compliance trail; we *emit* rows,
+//                             never redefine)
+//   - `ContentRevision`      (every blog/portfolio save creates a new rev)
+//
+// Indexes are tuned for the hot queries surfaced by the M2 unified queue:
+//   - list/filter by (status, contentType, createdAt desc)
+//   - per-author lookups (submittedById, reviewerId)
+//   - cross-cutting audit (targetRef)
+//
+// Each row also carries a monotonic `version` so the API can reject
+// stale PATCH submissions with HTTP 409 (the same optimistic-concurrency
+// pattern used by ApprovalRequest / Project in portal.prisma).
+// ----------------------------------------------------------------------------
+
+// ─── M3: Blog post review cases ─────────────────────────────────────────────
+
+/// Blog post reviewable by a moderator. Mirrors the public BlogPost
+/// "shape" we expose, but is internal — a single ModerationReview row
+/// per blog post (1:1, enforced by `postSlug @unique`).
+model BlogPost {
+  id           String     @id @default(uuid())
+  /// Public-facing slug; unique so re-submission updates the same row.
+  postSlug     String     @unique
+  title        String
+  authorName   String
+  /// Word count at the time the post was queued for review.
+  wordCount    Int        @default(0)
+  /// ISO 3166-1 alpha-2 region(s) the post references, comma-separated.
+  regions      String?
+  /// Cover image asset id (FK to FileAsset) — nullable.
+  coverAssetId String?
+  coverAsset   FileAsset? @relation("BlogPostCover", fields: [coverAssetId], references: [id], onDelete: SetNull)
+
+  /// Queue state (mirrors ModerationStatus but kept per-row so partial
+  /// states per surface remain independent).
+  status           ModerationStatus  @default(QUEUED)
+  riskLevel        RiskLevel         @default(MEDIUM)
+  /// Optional most-recent reason for the current state.
+  lastReasonCode   ModerationReason?
+  lastReasonNote   String?
+  lastReviewedAt   DateTime?
+  lastReviewedById String?
+  lastReviewedBy   User?             @relation("blogPostLastReviewer", fields: [lastReviewedById], references: [id], onDelete: SetNull)
+
+  /// Optimistic-concurrency guard. Bumped on every PATCH.
+  version         Int     @default(0)
+  /// Idempotency key carried from the latest reviewer request, for
+  /// replay-safe decision endpoints.
+  lastDecisionKey String?
+
+  submittedById String?
+  submittedBy   User?    @relation("blogPostSubmitter", fields: [submittedById], references: [id], onDelete: SetNull)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  reviews ModerationReview[] @relation("blogPostReviews")
+
+  @@index([status, createdAt])
+  @@index([status, riskLevel, createdAt])
+  @@index([lastReviewedById, lastReviewedAt])
+  @@map("blog_post")
+}
+
+// ─── M4: Portfolio case study review cases ────────────────────────────────
+
+/// Portfolio case study reviewable by a moderator. Carries the consent
+/// scope the client has granted for public display.
+model PortfolioCaseStudy {
+  id          String     @id @default(uuid())
+  caseSlug    String     @unique
+  title       String
+  clientName  String
+  industry    String?
+  /// Tag list as a comma-separated string (cheap, no join).
+  tags        String?
+  /// The featured media asset (FK). Nullable.
+  heroAssetId String?
+  heroAsset   FileAsset? @relation("portfolioCaseStudyHero", fields: [heroAssetId], references: [id], onDelete: SetNull)
+
+  status           ModerationStatus   @default(QUEUED)
+  riskLevel        RiskLevel          @default(MEDIUM)
+  /// The broadest display scope the client agreed to in the contract.
+  consentScope     ClientDisplayScope @default(INTERNAL_ONLY)
+  /// If the client has not (yet) signed off, this is the last reason.
+  consentMissing   Boolean            @default(false)
+  lastReasonCode   ModerationReason?
+  lastReasonNote   String?
+  lastReviewedAt   DateTime?
+  lastReviewedById String?
+  lastReviewedBy   User?              @relation("portfolioCaseStudyLastReviewer", fields: [lastReviewedById], references: [id], onDelete: SetNull)
+
+  version         Int     @default(0)
+  lastDecisionKey String?
+
+  submittedById String?
+  submittedBy   User?    @relation("portfolioCaseStudySubmitter", fields: [submittedById], references: [id], onDelete: SetNull)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  reviews         ModerationReview[]          @relation("portfolioCaseStudyReviews")
+  clientApprovals ClientPublicationApproval[]
+
+  @@index([status, createdAt])
+  @@index([consentScope, status])
+  @@index([lastReviewedById, lastReviewedAt])
+  @@map("portfolio_case_study")
+}
+
+/// A single client's signed-off scope for one case study. One row per
+/// (caseStudyId, clientName) pair. Used by M4 + M2 to decide whether a
+/// case may be promoted to "public-featured".
+model ClientPublicationApproval {
+  id                    String             @id @default(uuid())
+  caseStudyId           String
+  caseStudy             PortfolioCaseStudy @relation(fields: [caseStudyId], references: [id], onDelete: Cascade)
+  clientName            String
+  approvedScope         ClientDisplayScope
+  approvedAt            DateTime           @default(now())
+  /// Optional expiry of the consent (e.g. 12 months from signature).
+  expiresAt             DateTime?
+  signedDocumentAssetId String?
+  signedDocument        FileAsset?         @relation("clientApprovalDoc", fields: [signedDocumentAssetId], references: [id], onDelete: SetNull)
+
+  recordedById String?
+  recordedBy   User?    @relation("clientApprovalRecorder", fields: [recordedById], references: [id], onDelete: SetNull)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@index([caseStudyId, approvedAt])
+  @@index([clientName, approvedAt])
+  @@map("client_publication_approval")
+}
+
+// ─── M5: Testimonial review cases ─────────────────────────────────────────
+
+/// Customer testimonial reviewable by a moderator. The author has
+/// already given a `TestimonialConsent` row, so consent scope is denormalised
+/// here for fast filter UX.
+model Testimonial {
+  id              String     @id @default(uuid())
+  /// Public-facing handle; unique per testimonial for stable references.
+  handle          String     @unique
+  customerName    String
+  customerCompany String?
+  customerRole    String?
+  rating          Int // 1..5
+  body            String
+  /// Country (ISO 3166-1 alpha-2) of the author — used for M2 filter chips.
+  countryCode     String?
+  /// Asset the author supplied as their avatar (FK).
+  avatarAssetId   String?
+  avatarAsset     FileAsset? @relation("testimonialAvatar", fields: [avatarAssetId], references: [id], onDelete: SetNull)
+
+  status           ModerationStatus        @default(QUEUED)
+  consentScope     TestimonialConsentScope @default(NOT_GRANTED)
+  consentVerified  Boolean                 @default(false)
+  lastReasonCode   ModerationReason?
+  lastReasonNote   String?
+  lastReviewedAt   DateTime?
+  lastReviewedById String?
+  lastReviewedBy   User?                   @relation("testimonialLastReviewer", fields: [lastReviewedById], references: [id], onDelete: SetNull)
+
+  version         Int     @default(0)
+  lastDecisionKey String?
+
+  submittedById String?
+  submittedBy   User?    @relation("testimonialSubmitter", fields: [submittedById], references: [id], onDelete: SetNull)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  reviews ModerationReview[]   @relation("testimonialReviews")
+  consent TestimonialConsent[]
+
+  @@index([status, createdAt])
+  @@index([consentScope, status])
+  @@index([rating])
+  @@index([lastReviewedById, lastReviewedAt])
+  @@map("testimonial")
+}
+
+/// Author-side consent record. Many rows over the life of one
+/// testimonial (renewals, scope changes). M5 surfaces the most recent
+/// row in the audit panel.
+model TestimonialConsent {
+  id            String                  @id @default(uuid())
+  testimonialId String
+  testimonial   Testimonial             @relation(fields: [testimonialId], references: [id], onDelete: Cascade)
+  scope         TestimonialConsentScope
+  /// Whether the consent has been verified by a moderator (e.g. the
+  /// uploaded signed PDF was checked).
+  verified      Boolean                 @default(false)
+  /// Optional FK to the signed consent PDF (FileAsset).
+  signedAssetId String?
+  signedAsset   FileAsset?              @relation("testimonialConsentDoc", fields: [signedAssetId], references: [id], onDelete: SetNull)
+  ipAddress     String?
+  userAgent     String?
+  capturedAt    DateTime                @default(now())
+  capturedById  String?
+  capturedBy    User?                   @relation("testimonialConsentCapturer", fields: [capturedById], references: [id], onDelete: SetNull)
+
+  createdAt DateTime @default(now())
+
+  @@index([testimonialId, capturedAt])
+  @@map("testimonial_consent")
+}
+
+// ─── M6: Media library review cases ────────────────────────────────────────
+
+/// Thin row that points a moderation case at a FileAsset. We don't
+/// re-declare the file metadata (size, mime, checksum) here — those
+/// live on `FileAsset` and are joined in for the M6 list/detail views.
+model MalwareScan {
+  id          String          @id @default(uuid())
+  fileAssetId String
+  fileAsset   FileAsset       @relation("fileAssetScans", fields: [fileAssetId], references: [id], onDelete: Cascade)
+  status      MediaScanStatus @default(PENDING)
+  /// Vendor-provided summary; never free text from the user.
+  vendor      String?
+  vendorRef   String?
+  /// Diagnostic JSON (e.g. signature id, threat category). No PII.
+  resultJson  Json?
+  startedAt   DateTime        @default(now())
+  completedAt DateTime?
+
+  @@index([fileAssetId, startedAt])
+  @@index([status, completedAt])
+  @@map("malware_scan")
+}
+
+/// Many-to-many between FileAsset and the surfaces that use it
+/// (BlogPost.coverAsset, PortfolioCaseStudy.heroAsset, Testimonial.avatar,
+/// etc). We model usage as a join so the M6 page can answer "what uses
+/// this file?" without scanning each surface table.
+model FileUsage {
+  id          String          @id @default(uuid())
+  fileAssetId String
+  fileAsset   FileAsset       @relation("fileAssetUsages", fields: [fileAssetId], references: [id], onDelete: Cascade)
+  /// Discriminator: which surface uses this file.
+  surface     ContentType
+  /// Free-form reference id (e.g. "blog_post:<uuid>") for forensic drill-in.
+  surfaceRef  String
+  /// The current visibility the surface has published at.
+  visibility  MediaVisibility @default(PRIVATE)
+  createdAt   DateTime        @default(now())
+
+  @@unique([fileAssetId, surface, surfaceRef])
+  @@index([surface, surfaceRef])
+  @@map("file_usage")
+}
+
+// ─── M2 / M7: The unified review case + the audit trail ────────────────────
+
+/// One row per review decision. Multiple reviews per surface item are
+/// allowed (re-review after changes, escalation to leadership, etc).
+model ModerationReview {
+  id                 String              @id @default(uuid())
+  /// What content this review pertains to.
+  contentType        ContentType
+  /// Polymorphic FK: exactly one of the four `*Id` columns below is set.
+  blogPostId         String?
+  blogPost           BlogPost?           @relation("blogPostReviews", fields: [blogPostId], references: [id], onDelete: Cascade)
+  caseStudyId        String?
+  caseStudy          PortfolioCaseStudy? @relation("portfolioCaseStudyReviews", fields: [caseStudyId], references: [id], onDelete: Cascade)
+  testimonialId      String?
+  testimonial        Testimonial?        @relation("testimonialReviews", fields: [testimonialId], references: [id], onDelete: Cascade)
+  /// M6 / M2: a free-form target ref (e.g. "file_asset:<uuid>") so we
+  /// don't need a 4th polymorphic FK.
+  fileAssetTargetRef String?
+
+  /// Who decided.
+  reviewerId String
+  reviewer   User   @relation("moderationReviewer", fields: [reviewerId], references: [id], onDelete: Cascade)
+
+  /// The decision recorded.
+  decision        ModerationDecision
+  /// Optional categorical reason — required when decision is BLOCKED or
+  /// CHANGES_REQUESTED (enforced at the service layer).
+  reasonCode      ModerationReason?
+  reasonNote      String?
+  /// Snapshot of the row's version at the time of the decision. Used by
+  /// the service to detect a stale PATCH.
+  expectedVersion Int
+  /// Idempotency key the client supplied. Unique per reviewer.
+  idempotencyKey  String?
+
+  /// A free-form set of state-changes the review caused (e.g. "consent:
+  /// INTERNAL_REFERENCE_ONLY -> PUBLIC_REFERENCE"). Stored as JSON for
+  /// forensic diffs in M7.
+  changeSet Json?
+
+  createdAt DateTime @default(now())
+
+  @@unique([reviewerId, idempotencyKey])
+  @@index([contentType, createdAt])
+  @@index([reviewerId, createdAt])
+  @@index([blogPostId, createdAt])
+  @@index([caseStudyId, createdAt])
+  @@index([testimonialId, createdAt])
+  @@map("moderation_review")
+}

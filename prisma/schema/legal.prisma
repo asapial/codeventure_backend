@@ -3,32 +3,32 @@
 // served by the public endpoint.
 
 model LegalDocument {
-  id                String              @id @default(uuid())
-  type              LegalDocumentType   @unique
-  slug              String              @unique
-  title             String
-  status            LegalDocumentStatus @default(DRAFT)
-  currentVersionId  String?             @unique
-  currentVersion    LegalDocumentVersion? @relation("CurrentVersion", fields: [currentVersionId], references: [id], onDelete: SetNull)
-  versions          LegalDocumentVersion[] @relation("DocumentVersions")
-  publishedAt       DateTime?
-  createdAt         DateTime            @default(now())
-  updatedAt         DateTime            @updatedAt
+  id               String                 @id @default(uuid())
+  type             LegalDocumentType      @unique
+  slug             String                 @unique
+  title            String
+  status           LegalDocumentStatus    @default(DRAFT)
+  currentVersionId String?                @unique
+  currentVersion   LegalDocumentVersion?  @relation("CurrentVersion", fields: [currentVersionId], references: [id], onDelete: SetNull)
+  versions         LegalDocumentVersion[] @relation("DocumentVersions")
+  publishedAt      DateTime?
+  createdAt        DateTime               @default(now())
+  updatedAt        DateTime               @updatedAt
 
   @@map("legal_document")
 }
 
 model LegalDocumentVersion {
-  id                 String   @id @default(uuid())
-  documentId         String
-  document           LegalDocument @relation("DocumentVersions", fields: [documentId], references: [id], onDelete: Cascade)
-  version            Int
-  body               String   // markdown / rich text
-  effectiveAt        DateTime
-  requiresReconsent  Boolean  @default(false)
-  createdAt          DateTime @default(now())
-  currentOfDocument  LegalDocument? @relation("CurrentVersion")
-  consents           UserConsent[]
+  id                String         @id @default(uuid())
+  documentId        String
+  document          LegalDocument  @relation("DocumentVersions", fields: [documentId], references: [id], onDelete: Cascade)
+  version           Int
+  body              String // markdown / rich text
+  effectiveAt       DateTime
+  requiresReconsent Boolean        @default(false)
+  createdAt         DateTime       @default(now())
+  currentOfDocument LegalDocument? @relation("CurrentVersion")
+  consents          UserConsent[]
 
   @@unique([documentId, version])
   @@index([documentId])
@@ -36,14 +36,14 @@ model LegalDocumentVersion {
 }
 
 model UserConsent {
-  id                  String   @id @default(uuid())
-  userId              String
-  user                User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  documentVersionId   String
-  documentVersion     LegalDocumentVersion @relation(fields: [documentVersionId], references: [id], onDelete: Cascade)
-  consentedAt         DateTime @default(now())
-  ipAddress           String?
-  userAgent           String?
+  id                String               @id @default(uuid())
+  userId            String
+  user              User                 @relation(fields: [userId], references: [id], onDelete: Cascade)
+  documentVersionId String
+  documentVersion   LegalDocumentVersion @relation(fields: [documentVersionId], references: [id], onDelete: Cascade)
+  consentedAt       DateTime             @default(now())
+  ipAddress         String?
+  userAgent         String?
 
   @@unique([userId, documentVersionId])
   @@index([userId])

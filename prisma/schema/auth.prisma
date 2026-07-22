@@ -1,78 +1,92 @@
 model User {
-  id            String    @id
+  id            String  @id
   name          String
   email         String
-  emailVerified Boolean   @default(false)
+  emailVerified Boolean @default(false)
   image         String?
 
   // App-level identity & state
-  password      String?
-  role          Role      @default(STUDENT)
-  accountRole   AccountRole @default(OWNER)
-  isActive      Boolean   @default(true)
-  isDeleted     Boolean   @default(false)
+  password    String?
+  role        Role        @default(STUDENT)
+  accountRole AccountRole @default(OWNER)
+  isActive    Boolean     @default(true)
+  isDeleted   Boolean     @default(false)
 
   // Marketing / portfolio metadata (optional)
-  jobTitle      String?
-  bio           String?
-  location      String?
+  jobTitle String?
+  bio      String?
+  location String?
 
   // Two-factor authentication state (P16).
   // When `twoFactorEnabled` flips from true→false we wipe out any pending
   // challenges, recovery codes, etc. (handled in service layer).
-  twoFactorEnabled     Boolean   @default(false)
-  twoFactorMethod      TwoFactorMethod?
-  twoFactorEnrolledAt  DateTime?
-  twoFactorSecret      String?  // TOTP secret, encrypted at rest in prod
+  twoFactorEnabled    Boolean          @default(false)
+  twoFactorMethod     TwoFactorMethod?
+  twoFactorEnrolledAt DateTime?
+  twoFactorSecret     String? // TOTP secret, encrypted at rest in prod
 
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @updatedAt
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
-  sessions                Session[]
-  accounts                Account[]
-  passwordResetTokens     PasswordResetToken[]
-  ownedProjects           Project[]              @relation("ProjectOwner")
-  projectMemberships      ProjectMember[]
-  activityEvents          ActivityEvent[]        @relation("ActivityActor")
-  accountMemberships      AccountMembership[]
-  authChallenges          AuthChallenge[]
-  otpCodes                OtpCode[]
-  recoveryCodes           RecoveryCode[]
-  loginDevices            LoginDevice[]
-  securityAlerts          SecurityAlert[]
-  notifications           Notification[]
-  customerProfile         CustomerProfile?
-  consents                UserConsent[]
-  orgMemberships          OrganizationMember[]
-  invitationsCreated      Invitation[]           @relation("InvitationCreatedBy")
+  sessions            Session[]
+  accounts            Account[]
+  passwordResetTokens PasswordResetToken[]
+  ownedProjects       Project[]            @relation("ProjectOwner")
+  projectMemberships  ProjectMember[]
+  activityEvents      ActivityEvent[]      @relation("ActivityActor")
+  accountMemberships  AccountMembership[]
+  authChallenges      AuthChallenge[]
+  otpCodes            OtpCode[]
+  recoveryCodes       RecoveryCode[]
+  loginDevices        LoginDevice[]
+  securityAlerts      SecurityAlert[]
+  notifications       Notification[]
+  customerProfile     CustomerProfile?
+  consents            UserConsent[]
+  orgMemberships      OrganizationMember[]
+  invitationsCreated  Invitation[]         @relation("InvitationCreatedBy")
 
   // Customer portal relations (C1–C10)
-  onboarding              OnboardingProfile?
-  approvalResponses       ApprovalResponse[]
-  projectComments         ProjectComment[]       @relation("projectCommentAuthor")
-  projectFiles            ProjectFile[]
-  fileAssets              FileAsset[]
-  maintenanceRequests     MaintenanceRequest[]
-  supportTickets          SupportTicket[]
-  ticketMessages          TicketMessage[]
-  ticketAttachments       TicketAttachment[]
-  notificationPreference  NotificationPreference?
-  dataExportJobs          DataExportJob[]        @relation("dataExportJobs")
+  onboarding             OnboardingProfile?
+  approvalResponses      ApprovalResponse[]
+  projectComments        ProjectComment[]        @relation("projectCommentAuthor")
+  projectFiles           ProjectFile[]
+  fileAssets             FileAsset[]
+  maintenanceRequests    MaintenanceRequest[]
+  supportTickets         SupportTicket[]
+  ticketMessages         TicketMessage[]
+  ticketAttachments      TicketAttachment[]
+  notificationPreference NotificationPreference?
+  dataExportJobs         DataExportJob[]         @relation("dataExportJobs")
 
   // Support module relations (S1–S7)
-  helpArticlesAuthored    HelpArticle[]          @relation("helpArticleAuthor")
-  supportAssignments      SupportAssignment[]     @relation("supportAssignments")
-  supportAssignmentsMade  SupportAssignment[]     @relation("supportAssigners")
-  internalNotesAuthored   InternalNote[]         @relation("internalNoteAuthor")
-  escalationsTriggered    EscalationEvent[]      @relation("escalationTriggeredBy")
-  cannedResponsesAuthored CannedResponse[]       @relation("cannedResponseAuthor")
-  supportProfilesTouched  OrganizationSupportProfile[] @relation("profileLastTouchedBy")
-  customerActivityEvents  CustomerActivityLog[]  @relation("activityActor")
-  contentRevisionsAuthored ContentRevision[]     @relation("contentRevisionAuthor")
-  knowledgeFeedback       KnowledgeFeedback[]    @relation("knowledgeFeedbackUser")
-  articleUploads          ArticleAttachment[]    @relation("articleAttachmentUploader")
-  auditEventsAuthored     AuditLog[]             @relation("auditActor")
-  supportJobsRequested    SupportJobRun[]        @relation("supportJobRunRequester")
+  helpArticlesAuthored     HelpArticle[]                @relation("helpArticleAuthor")
+  supportAssignments       SupportAssignment[]          @relation("supportAssignments")
+  supportAssignmentsMade   SupportAssignment[]          @relation("supportAssigners")
+  internalNotesAuthored    InternalNote[]               @relation("internalNoteAuthor")
+  escalationsTriggered     EscalationEvent[]            @relation("escalationTriggeredBy")
+  cannedResponsesAuthored  CannedResponse[]             @relation("cannedResponseAuthor")
+  supportProfilesTouched   OrganizationSupportProfile[] @relation("profileLastTouchedBy")
+  customerActivityEvents   CustomerActivityLog[]        @relation("activityActor")
+  contentRevisionsAuthored ContentRevision[]            @relation("contentRevisionAuthor")
+  knowledgeFeedback        KnowledgeFeedback[]          @relation("knowledgeFeedbackUser")
+  articleUploads           ArticleAttachment[]          @relation("articleAttachmentUploader")
+  auditEventsAuthored      AuditLog[]                   @relation("auditActor")
+  supportJobsRequested     SupportJobRun[]              @relation("supportJobRunRequester")
+
+  // Moderation module relations (M1–M7) — back-relations for BlogPost,
+  // PortfolioCaseStudy, ClientPublicationApproval, Testimonial,
+  // TestimonialConsent, ModerationReview, and MalwareScan/FileUsage
+  // owners (which are referenced from FileAsset, not User).
+  blogPostsSubmitted          BlogPost[]                  @relation("blogPostSubmitter")
+  blogPostsLastReviewed       BlogPost[]                  @relation("blogPostLastReviewer")
+  caseStudiesSubmitted        PortfolioCaseStudy[]        @relation("portfolioCaseStudySubmitter")
+  caseStudiesLastReviewed     PortfolioCaseStudy[]        @relation("portfolioCaseStudyLastReviewer")
+  clientApprovalsRecorded     ClientPublicationApproval[] @relation("clientApprovalRecorder")
+  testimonialsSubmitted       Testimonial[]               @relation("testimonialSubmitter")
+  testimonialsLastReviewed    Testimonial[]               @relation("testimonialLastReviewer")
+  testimonialConsentsCaptured TestimonialConsent[]        @relation("testimonialConsentCapturer")
+  moderationReviewsAuthored   ModerationReview[]          @relation("moderationReviewer")
 
   @@unique([email])
   @@map("user")
@@ -130,13 +144,13 @@ model Verification {
 // `tokenHash` stores SHA-256(token) so the raw token in the email link
 // can never be reversed from the DB row.
 model PasswordResetToken {
-  id         String   @id @default(uuid())
-  userId     String
-  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  tokenHash  String   @unique
-  expiresAt  DateTime
-  usedAt     DateTime?
-  createdAt  DateTime @default(now())
+  id        String    @id @default(uuid())
+  userId    String
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  tokenHash String    @unique
+  expiresAt DateTime
+  usedAt    DateTime?
+  createdAt DateTime  @default(now())
 
   @@index([userId])
   @@index([expiresAt])
@@ -151,23 +165,23 @@ model PasswordResetToken {
 /// `twoFactorEnabled = true`. Stores the *opaque* challengeToken that the
 /// client uses when posting the verification code.
 model AuthChallenge {
-  id              String           @id @default(uuid())
-  userId          String
-  user            User             @relation(fields: [userId], references: [id], onDelete: Cascade)
-  method          TwoFactorMethod
+  id            String          @id @default(uuid())
+  userId        String
+  user          User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  method        TwoFactorMethod
   /// Opaque token the client sends with /auth/2fa/verify. We store the SHA-256
   /// of the token; the raw token never persists.
-  challengeHash   String           @unique
-  attempts        Int              @default(0)
-  maxAttempts     Int              @default(5)
-  expiresAt       DateTime
-  consumedAt      DateTime?
-  ipAddress       String?
-  userAgent       String?
-  createdAt       DateTime         @default(now())
+  challengeHash String          @unique
+  attempts      Int             @default(0)
+  maxAttempts   Int             @default(5)
+  expiresAt     DateTime
+  consumedAt    DateTime?
+  ipAddress     String?
+  userAgent     String?
+  createdAt     DateTime        @default(now())
 
-  otp             OtpCode?
-  recoveryUses    RecoveryCodeUse[]
+  otp          OtpCode?
+  recoveryUses RecoveryCodeUse[]
 
   @@index([userId])
   @@index([expiresAt])
@@ -177,20 +191,20 @@ model AuthChallenge {
 /// One-time codes sent via email or generated by an authenticator app.
 /// `codeHash` is SHA-256(code) so DB compromise doesn't reveal usable codes.
 model OtpCode {
-  id            String      @id @default(uuid())
-  userId        String?
-  user          User?       @relation(fields: [userId], references: [id], onDelete: Cascade)
-  purpose       OtpPurpose
-  codeHash      String
+  id          String         @id @default(uuid())
+  userId      String?
+  user        User?          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  purpose     OtpPurpose
+  codeHash    String
   /// For EMAIL_OTP / EMAIL_VERIFY we only persist the hash and the recipient.
-  recipient     String?
+  recipient   String?
   /// Null until verified; null also for TOTP (server just compares fresh code).
-  consumedAt    DateTime?
-  expiresAt     DateTime
-  attempts      Int         @default(0)
-  challengeId   String?     @unique
-  challenge     AuthChallenge? @relation(fields: [challengeId], references: [id], onDelete: SetNull)
-  createdAt     DateTime    @default(now())
+  consumedAt  DateTime?
+  expiresAt   DateTime
+  attempts    Int            @default(0)
+  challengeId String?        @unique
+  challenge   AuthChallenge? @relation(fields: [challengeId], references: [id], onDelete: SetNull)
+  createdAt   DateTime       @default(now())
 
   @@index([userId])
   @@index([purpose, expiresAt])
@@ -200,14 +214,14 @@ model OtpCode {
 /// One-shot recovery codes generated when 2FA is enabled. We store the hash
 /// only; the plaintext is shown to the user ONCE.
 model RecoveryCode {
-  id           String      @id @default(uuid())
-  userId       String
-  user         User        @relation(fields: [userId], references: [id], onDelete: Cascade)
-  codeHash     String      @unique
-  usedAt       DateTime?
-  createdAt    DateTime    @default(now())
+  id        String    @id @default(uuid())
+  userId    String
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  codeHash  String    @unique
+  usedAt    DateTime?
+  createdAt DateTime  @default(now())
 
-  uses         RecoveryCodeUse[]
+  uses RecoveryCodeUse[]
 
   @@index([userId])
   @@map("recovery_code")
@@ -215,12 +229,12 @@ model RecoveryCode {
 
 /// Audit row for when a recovery code is consumed.
 model RecoveryCodeUse {
-  id              String         @id @default(uuid())
-  recoveryCodeId  String
-  recoveryCode    RecoveryCode   @relation(fields: [recoveryCodeId], references: [id], onDelete: Cascade)
-  challengeId     String
-  challenge       AuthChallenge  @relation(fields: [challengeId], references: [id], onDelete: Cascade)
-  usedAt          DateTime       @default(now())
+  id             String        @id @default(uuid())
+  recoveryCodeId String
+  recoveryCode   RecoveryCode  @relation(fields: [recoveryCodeId], references: [id], onDelete: Cascade)
+  challengeId    String
+  challenge      AuthChallenge @relation(fields: [challengeId], references: [id], onDelete: Cascade)
+  usedAt         DateTime      @default(now())
 
   @@index([recoveryCodeId])
   @@index([challengeId])
@@ -230,15 +244,15 @@ model RecoveryCodeUse {
 /// Per-device login record. Used for "trusted device" UX and for revoking
 /// sessions on password reset.
 model LoginDevice {
-  id            String   @id @default(uuid())
-  userId        String
-  user          User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  fingerprint   String
-  userAgent     String?
-  ipAddress     String?
-  trusted       Boolean  @default(false)
-  lastSeenAt    DateTime @default(now())
-  createdAt     DateTime @default(now())
+  id          String   @id @default(uuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  fingerprint String
+  userAgent   String?
+  ipAddress   String?
+  trusted     Boolean  @default(false)
+  lastSeenAt  DateTime @default(now())
+  createdAt   DateTime @default(now())
 
   @@unique([userId, fingerprint])
   @@index([userId])
@@ -247,14 +261,14 @@ model LoginDevice {
 
 /// Cooldown / lockout marker shown to the user as a SecurityAlert banner.
 model SecurityAlert {
-  id          String   @id @default(uuid())
-  userId      String?
-  user        User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
-  kind        String   // "OTP_LOCKED", "MANY_FAILURES", "DEVICE_NEW", "PASSWORD_CHANGED"
-  message     String
-  metadata    Json?
+  id             String    @id @default(uuid())
+  userId         String?
+  user           User?     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  kind           String // "OTP_LOCKED", "MANY_FAILURES", "DEVICE_NEW", "PASSWORD_CHANGED"
+  message        String
+  metadata       Json?
   acknowledgedAt DateTime?
-  createdAt   DateTime @default(now())
+  createdAt      DateTime  @default(now())
 
   @@index([userId, createdAt])
   @@map("security_alert")
@@ -263,15 +277,15 @@ model SecurityAlert {
 /// Outbound notification — email / push / in-app. Persisted for the
 /// notification centre page (separate from SecurityAlert which is incident-style).
 model Notification {
-  id          String   @id @default(uuid())
-  userId      String
-  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  kind        String
-  title       String
-  body        String
-  href        String?
-  readAt      DateTime?
-  createdAt   DateTime @default(now())
+  id        String    @id @default(uuid())
+  userId    String
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  kind      String
+  title     String
+  body      String
+  href      String?
+  readAt    DateTime?
+  createdAt DateTime  @default(now())
 
   @@index([userId, createdAt])
   @@map("notification")
@@ -281,16 +295,16 @@ model Notification {
 /// fan-out) is enqueued so it can be retried by a worker without blocking
 /// the HTTP response.
 model JobRun {
-  id            String   @id @default(uuid())
-  kind          String   // "EMAIL_SEND", "TWO_FACTOR_OTP", "..."
-  payload       Json
-  attempts      Int      @default(0)
-  maxAttempts   Int      @default(5)
-  runAfter      DateTime @default(now())
-  completedAt   DateTime?
-  failedAt      DateTime?
-  lastError     String?
-  createdAt     DateTime @default(now())
+  id          String    @id @default(uuid())
+  kind        String // "EMAIL_SEND", "TWO_FACTOR_OTP", "..."
+  payload     Json
+  attempts    Int       @default(0)
+  maxAttempts Int       @default(5)
+  runAfter    DateTime  @default(now())
+  completedAt DateTime?
+  failedAt    DateTime?
+  lastError   String?
+  createdAt   DateTime  @default(now())
 
   @@index([runAfter])
   @@index([completedAt])
