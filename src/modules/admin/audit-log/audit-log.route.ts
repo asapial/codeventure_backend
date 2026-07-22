@@ -6,7 +6,7 @@ router.get("/audit-log", requirePermission("audit.read"), validateRequest(adminL
   const page = Number(req.query.page ?? 1); const pageSize = Number(req.query.pageSize ?? 25); const q = typeof req.query.q === "string" ? req.query.q : undefined;
   const where = q ? { OR: [{ action: { contains: q, mode: "insensitive" as const } }, { targetId: { contains: q, mode: "insensitive" as const } }, { requestId: { contains: q, mode: "insensitive" as const } }] } : {};
   const [data, total] = await prisma.$transaction([prisma.adminAuditLog.findMany({ where, orderBy: { createdAt: "desc" }, skip: (page - 1) * pageSize, take: pageSize }), prisma.adminAuditLog.count({ where })]);
-  res.json({ data, meta: { page, pageSize, total, totalPages: Math.ceil(total / pageSize), requestId: req.id } });
+  res.json({ data: data.map(row => ({ id: row.id, feature: "audit-log", recordType: "audit-event", organizationId: row.organizationId, title: row.action, status: row.outcome, data: { actorId: row.actorId, targetType: row.targetType, targetId: row.targetId, requestId: row.requestId }, version: 1, createdAt: row.createdAt.toISOString(), updatedAt: row.createdAt.toISOString() })), meta: { page, pageSize, total, totalPages: Math.ceil(total / pageSize), requestId: req.id } });
 }));
 router.post("/audit-log/export", requirePermission("audit.read"), validateRequest(adminBodySchema), handlers.job("audit.export"));
 export const auditLogRouter = router;
