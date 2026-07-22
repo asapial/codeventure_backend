@@ -1,0 +1,107 @@
+/// Production persistence shared by the A1-A22 admin console. Domain records
+/// keep a stable feature/type discriminator while their bounded, validated
+/// payload remains JSON so new operational fields do not require unsafe
+/// one-off tables or untyped controller logic.
+model AdminRecord {
+  id             String    @id @default(uuid())
+  feature        String
+  recordType     String
+  organizationId String?
+  title          String
+  status         String
+  data           Json
+  version        Int       @default(1)
+  archivedAt     DateTime?
+  createdById    String?
+  updatedById    String?
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+
+  @@index([feature, recordType, status, createdAt])
+  @@index([organizationId, feature, updatedAt])
+  @@index([title])
+  @@map("admin_record")
+}
+
+model AdminAuditLog {
+  id             String   @id @default(uuid())
+  actorId        String?
+  actorRole      String?
+  action         String
+  targetType     String
+  targetId       String
+  organizationId String?
+  requestId      String
+  outcome        String
+  beforeJson     Json?
+  afterJson      Json?
+  metadata       Json?
+  createdAt      DateTime @default(now())
+
+  @@index([actorId, createdAt])
+  @@index([action, targetType, createdAt])
+  @@index([organizationId, createdAt])
+  @@index([requestId])
+  @@map("admin_audit_log")
+}
+
+model AdminIdempotencyKey {
+  id          String   @id @default(uuid())
+  actorId     String
+  scope       String
+  keyHash     String
+  requestHash String
+  statusCode  Int
+  response    Json
+  expiresAt   DateTime
+  createdAt   DateTime @default(now())
+
+  @@unique([actorId, scope, keyHash])
+  @@index([expiresAt])
+  @@map("admin_idempotency_key")
+}
+
+model AdminPermissionGrant {
+  id         String   @id @default(uuid())
+  userId     String
+  permission String
+  grantedBy  String?
+  createdAt  DateTime @default(now())
+
+  @@unique([userId, permission])
+  @@index([permission])
+  @@map("admin_permission_grant")
+}
+
+model AdminOutboxJob {
+  id             String    @id @default(uuid())
+  kind           String
+  queue          String    @default("admin")
+  status         String    @default("QUEUED")
+  payload        Json
+  attempts       Int       @default(0)
+  maxAttempts    Int       @default(5)
+  requestedById  String?
+  idempotencyKey String?
+  scheduledAt    DateTime  @default(now())
+  startedAt      DateTime?
+  completedAt    DateTime?
+  failedAt       DateTime?
+  errorCode      String?
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+
+  @@unique([kind, idempotencyKey])
+  @@index([queue, status, scheduledAt])
+  @@map("admin_outbox_job")
+}
+
+model AdminQueueControl {
+  name      String   @id
+  paused    Boolean  @default(false)
+  version   Int      @default(1)
+  updatedBy String?
+  updatedAt DateTime @updatedAt
+
+  @@map("admin_queue_control")
+}

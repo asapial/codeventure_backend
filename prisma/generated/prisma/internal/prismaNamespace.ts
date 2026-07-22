@@ -384,6 +384,12 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 
 
 export const ModelName = {
+  AdminRecord: 'AdminRecord',
+  AdminAuditLog: 'AdminAuditLog',
+  AdminIdempotencyKey: 'AdminIdempotencyKey',
+  AdminPermissionGrant: 'AdminPermissionGrant',
+  AdminOutboxJob: 'AdminOutboxJob',
+  AdminQueueControl: 'AdminQueueControl',
   User: 'User',
   Session: 'Session',
   Account: 'Account',
@@ -473,10 +479,454 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "session" | "account" | "verification" | "passwordResetToken" | "authChallenge" | "otpCode" | "recoveryCode" | "recoveryCodeUse" | "loginDevice" | "securityAlert" | "notification" | "jobRun" | "customerProfile" | "organization" | "organizationMember" | "invitation" | "referralSource" | "project" | "projectMember" | "deliverable" | "activityEvent" | "billingSummary" | "accountMembership" | "legalDocument" | "legalDocumentVersion" | "userConsent" | "blogPost" | "portfolioCaseStudy" | "clientPublicationApproval" | "testimonial" | "testimonialConsent" | "malwareScan" | "fileUsage" | "moderationReview" | "supportAssignment" | "internalNote" | "escalationEvent" | "slaPolicy" | "cannedResponse" | "organizationSupportProfile" | "customerActivityLog" | "contentRevision" | "knowledgeFeedback" | "articleAttachment" | "supportMetricDaily" | "auditLog" | "supportJobRun" | "onboardingProfile" | "brandProfile" | "fileAsset" | "projectMilestone" | "approvalRequest" | "approvalResponse" | "changeRequest" | "projectComment" | "projectFile" | "maintenancePlan" | "maintenanceSubscription" | "maintenanceRequest" | "maintenanceReport" | "billingProfile" | "quote" | "contract" | "invoice" | "invoiceItem" | "payment" | "paymentAttempt" | "supportTicket" | "ticketMessage" | "ticketAttachment" | "helpArticle" | "notificationPreference" | "dataExportJob"
+    modelProps: "adminRecord" | "adminAuditLog" | "adminIdempotencyKey" | "adminPermissionGrant" | "adminOutboxJob" | "adminQueueControl" | "user" | "session" | "account" | "verification" | "passwordResetToken" | "authChallenge" | "otpCode" | "recoveryCode" | "recoveryCodeUse" | "loginDevice" | "securityAlert" | "notification" | "jobRun" | "customerProfile" | "organization" | "organizationMember" | "invitation" | "referralSource" | "project" | "projectMember" | "deliverable" | "activityEvent" | "billingSummary" | "accountMembership" | "legalDocument" | "legalDocumentVersion" | "userConsent" | "blogPost" | "portfolioCaseStudy" | "clientPublicationApproval" | "testimonial" | "testimonialConsent" | "malwareScan" | "fileUsage" | "moderationReview" | "supportAssignment" | "internalNote" | "escalationEvent" | "slaPolicy" | "cannedResponse" | "organizationSupportProfile" | "customerActivityLog" | "contentRevision" | "knowledgeFeedback" | "articleAttachment" | "supportMetricDaily" | "auditLog" | "supportJobRun" | "onboardingProfile" | "brandProfile" | "fileAsset" | "projectMilestone" | "approvalRequest" | "approvalResponse" | "changeRequest" | "projectComment" | "projectFile" | "maintenancePlan" | "maintenanceSubscription" | "maintenanceRequest" | "maintenanceReport" | "billingProfile" | "quote" | "contract" | "invoice" | "invoiceItem" | "payment" | "paymentAttempt" | "supportTicket" | "ticketMessage" | "ticketAttachment" | "helpArticle" | "notificationPreference" | "dataExportJob"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
+    AdminRecord: {
+      payload: Prisma.$AdminRecordPayload<ExtArgs>
+      fields: Prisma.AdminRecordFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.AdminRecordFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdminRecordPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.AdminRecordFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdminRecordPayload>
+        }
+        findFirst: {
+          args: Prisma.AdminRecordFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdminRecordPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.AdminRecordFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdminRecordPayload>
+        }
+        findMany: {
+          args: Prisma.AdminRecordFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdminRecordPayload>[]
+        }
+        create: {
+          args: Prisma.AdminRecordCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdminRecordPayload>
+        }
+        createMany: {
+          args: Prisma.AdminRecordCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.AdminRecordCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdminRecordPayload>[]
+        }
+        delete: {
+          args: Prisma.AdminRecordDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdminRecordPayload>
+        }
+        update: {
+          args: Prisma.AdminRecordUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdminRecordPayload>
+        }
+        deleteMany: {
+          args: Prisma.AdminRecordDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.AdminRecordUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.AdminRecordUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdminRecordPayload>[]
+        }
+        upsert: {
+          args: Prisma.AdminRecordUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdminRecordPayload>
+        }
+        aggregate: {
+          args: Prisma.AdminRecordAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateAdminRecord>
+        }
+        groupBy: {
+          args: Prisma.AdminRecordGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AdminRecordGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.AdminRecordCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AdminRecordCountAggregateOutputType> | number
+        }
+      }
+    }
+    AdminAuditLog: {
+      payload: Prisma.$AdminAuditLogPayload<ExtArgs>
+      fields: Prisma.AdminAuditLogFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.AdminAuditLogFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdminAuditLogPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.AdminAuditLogFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdminAuditLogPayload>
+        }
+        findFirst: {
+          args: Prisma.AdminAuditLogFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdminAuditLogPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.AdminAuditLogFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdminAuditLogPayload>
+        }
+        findMany: {
+          args: Prisma.AdminAuditLogFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdminAuditLogPayload>[]
+        }
+        create: {
+          args: Prisma.AdminAuditLogCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdminAuditLogPayload>
+        }
+        createMany: {
+          args: Prisma.AdminAuditLogCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.AdminAuditLogCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdminAuditLogPayload>[]
+        }
+        delete: {
+          args: Prisma.AdminAuditLogDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdminAuditLogPayload>
+        }
+        update: {
+          args: Prisma.AdminAuditLogUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdminAuditLogPayload>
+        }
+        deleteMany: {
+          args: Prisma.AdminAuditLogDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.AdminAuditLogUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.AdminAuditLogUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdminAuditLogPayload>[]
+        }
+        upsert: {
+          args: Prisma.AdminAuditLogUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdminAuditLogPayload>
+        }
+        aggregate: {
+          args: Prisma.AdminAuditLogAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateAdminAuditLog>
+        }
+        groupBy: {
+          args: Prisma.AdminAuditLogGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AdminAuditLogGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.AdminAuditLogCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AdminAuditLogCountAggregateOutputType> | number
+        }
+      }
+    }
+    AdminIdempotencyKey: {
+      payload: Prisma.$AdminIdempotencyKeyPayload<ExtArgs>
+      fields: Prisma.AdminIdempotencyKeyFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.AdminIdempotencyKeyFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdminIdempotencyKeyPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.AdminIdempotencyKeyFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdminIdempotencyKeyPayload>
+        }
+        findFirst: {
+          args: Prisma.AdminIdempotencyKeyFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdminIdempotencyKeyPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.AdminIdempotencyKeyFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdminIdempotencyKeyPayload>
+        }
+        findMany: {
+          args: Prisma.AdminIdempotencyKeyFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdminIdempotencyKeyPayload>[]
+        }
+        create: {
+          args: Prisma.AdminIdempotencyKeyCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdminIdempotencyKeyPayload>
+        }
+        createMany: {
+          args: Prisma.AdminIdempotencyKeyCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.AdminIdempotencyKeyCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdminIdempotencyKeyPayload>[]
+        }
+        delete: {
+          args: Prisma.AdminIdempotencyKeyDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdminIdempotencyKeyPayload>
+        }
+        update: {
+          args: Prisma.AdminIdempotencyKeyUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdminIdempotencyKeyPayload>
+        }
+        deleteMany: {
+          args: Prisma.AdminIdempotencyKeyDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.AdminIdempotencyKeyUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.AdminIdempotencyKeyUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdminIdempotencyKeyPayload>[]
+        }
+        upsert: {
+          args: Prisma.AdminIdempotencyKeyUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdminIdempotencyKeyPayload>
+        }
+        aggregate: {
+          args: Prisma.AdminIdempotencyKeyAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateAdminIdempotencyKey>
+        }
+        groupBy: {
+          args: Prisma.AdminIdempotencyKeyGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AdminIdempotencyKeyGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.AdminIdempotencyKeyCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AdminIdempotencyKeyCountAggregateOutputType> | number
+        }
+      }
+    }
+    AdminPermissionGrant: {
+      payload: Prisma.$AdminPermissionGrantPayload<ExtArgs>
+      fields: Prisma.AdminPermissionGrantFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.AdminPermissionGrantFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdminPermissionGrantPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.AdminPermissionGrantFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdminPermissionGrantPayload>
+        }
+        findFirst: {
+          args: Prisma.AdminPermissionGrantFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdminPermissionGrantPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.AdminPermissionGrantFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdminPermissionGrantPayload>
+        }
+        findMany: {
+          args: Prisma.AdminPermissionGrantFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdminPermissionGrantPayload>[]
+        }
+        create: {
+          args: Prisma.AdminPermissionGrantCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdminPermissionGrantPayload>
+        }
+        createMany: {
+          args: Prisma.AdminPermissionGrantCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.AdminPermissionGrantCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdminPermissionGrantPayload>[]
+        }
+        delete: {
+          args: Prisma.AdminPermissionGrantDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdminPermissionGrantPayload>
+        }
+        update: {
+          args: Prisma.AdminPermissionGrantUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdminPermissionGrantPayload>
+        }
+        deleteMany: {
+          args: Prisma.AdminPermissionGrantDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.AdminPermissionGrantUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.AdminPermissionGrantUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdminPermissionGrantPayload>[]
+        }
+        upsert: {
+          args: Prisma.AdminPermissionGrantUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdminPermissionGrantPayload>
+        }
+        aggregate: {
+          args: Prisma.AdminPermissionGrantAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateAdminPermissionGrant>
+        }
+        groupBy: {
+          args: Prisma.AdminPermissionGrantGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AdminPermissionGrantGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.AdminPermissionGrantCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AdminPermissionGrantCountAggregateOutputType> | number
+        }
+      }
+    }
+    AdminOutboxJob: {
+      payload: Prisma.$AdminOutboxJobPayload<ExtArgs>
+      fields: Prisma.AdminOutboxJobFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.AdminOutboxJobFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdminOutboxJobPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.AdminOutboxJobFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdminOutboxJobPayload>
+        }
+        findFirst: {
+          args: Prisma.AdminOutboxJobFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdminOutboxJobPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.AdminOutboxJobFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdminOutboxJobPayload>
+        }
+        findMany: {
+          args: Prisma.AdminOutboxJobFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdminOutboxJobPayload>[]
+        }
+        create: {
+          args: Prisma.AdminOutboxJobCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdminOutboxJobPayload>
+        }
+        createMany: {
+          args: Prisma.AdminOutboxJobCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.AdminOutboxJobCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdminOutboxJobPayload>[]
+        }
+        delete: {
+          args: Prisma.AdminOutboxJobDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdminOutboxJobPayload>
+        }
+        update: {
+          args: Prisma.AdminOutboxJobUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdminOutboxJobPayload>
+        }
+        deleteMany: {
+          args: Prisma.AdminOutboxJobDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.AdminOutboxJobUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.AdminOutboxJobUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdminOutboxJobPayload>[]
+        }
+        upsert: {
+          args: Prisma.AdminOutboxJobUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdminOutboxJobPayload>
+        }
+        aggregate: {
+          args: Prisma.AdminOutboxJobAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateAdminOutboxJob>
+        }
+        groupBy: {
+          args: Prisma.AdminOutboxJobGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AdminOutboxJobGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.AdminOutboxJobCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AdminOutboxJobCountAggregateOutputType> | number
+        }
+      }
+    }
+    AdminQueueControl: {
+      payload: Prisma.$AdminQueueControlPayload<ExtArgs>
+      fields: Prisma.AdminQueueControlFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.AdminQueueControlFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdminQueueControlPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.AdminQueueControlFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdminQueueControlPayload>
+        }
+        findFirst: {
+          args: Prisma.AdminQueueControlFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdminQueueControlPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.AdminQueueControlFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdminQueueControlPayload>
+        }
+        findMany: {
+          args: Prisma.AdminQueueControlFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdminQueueControlPayload>[]
+        }
+        create: {
+          args: Prisma.AdminQueueControlCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdminQueueControlPayload>
+        }
+        createMany: {
+          args: Prisma.AdminQueueControlCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.AdminQueueControlCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdminQueueControlPayload>[]
+        }
+        delete: {
+          args: Prisma.AdminQueueControlDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdminQueueControlPayload>
+        }
+        update: {
+          args: Prisma.AdminQueueControlUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdminQueueControlPayload>
+        }
+        deleteMany: {
+          args: Prisma.AdminQueueControlDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.AdminQueueControlUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.AdminQueueControlUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdminQueueControlPayload>[]
+        }
+        upsert: {
+          args: Prisma.AdminQueueControlUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdminQueueControlPayload>
+        }
+        aggregate: {
+          args: Prisma.AdminQueueControlAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateAdminQueueControl>
+        }
+        groupBy: {
+          args: Prisma.AdminQueueControlGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AdminQueueControlGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.AdminQueueControlCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AdminQueueControlCountAggregateOutputType> | number
+        }
+      }
+    }
     User: {
       payload: Prisma.$UserPayload<ExtArgs>
       fields: Prisma.UserFieldRefs
@@ -5992,6 +6442,103 @@ export const TransactionIsolationLevel = runtime.makeStrictEnum({
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
+export const AdminRecordScalarFieldEnum = {
+  id: 'id',
+  feature: 'feature',
+  recordType: 'recordType',
+  organizationId: 'organizationId',
+  title: 'title',
+  status: 'status',
+  data: 'data',
+  version: 'version',
+  archivedAt: 'archivedAt',
+  createdById: 'createdById',
+  updatedById: 'updatedById',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type AdminRecordScalarFieldEnum = (typeof AdminRecordScalarFieldEnum)[keyof typeof AdminRecordScalarFieldEnum]
+
+
+export const AdminAuditLogScalarFieldEnum = {
+  id: 'id',
+  actorId: 'actorId',
+  actorRole: 'actorRole',
+  action: 'action',
+  targetType: 'targetType',
+  targetId: 'targetId',
+  organizationId: 'organizationId',
+  requestId: 'requestId',
+  outcome: 'outcome',
+  beforeJson: 'beforeJson',
+  afterJson: 'afterJson',
+  metadata: 'metadata',
+  createdAt: 'createdAt'
+} as const
+
+export type AdminAuditLogScalarFieldEnum = (typeof AdminAuditLogScalarFieldEnum)[keyof typeof AdminAuditLogScalarFieldEnum]
+
+
+export const AdminIdempotencyKeyScalarFieldEnum = {
+  id: 'id',
+  actorId: 'actorId',
+  scope: 'scope',
+  keyHash: 'keyHash',
+  requestHash: 'requestHash',
+  statusCode: 'statusCode',
+  response: 'response',
+  expiresAt: 'expiresAt',
+  createdAt: 'createdAt'
+} as const
+
+export type AdminIdempotencyKeyScalarFieldEnum = (typeof AdminIdempotencyKeyScalarFieldEnum)[keyof typeof AdminIdempotencyKeyScalarFieldEnum]
+
+
+export const AdminPermissionGrantScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  permission: 'permission',
+  grantedBy: 'grantedBy',
+  createdAt: 'createdAt'
+} as const
+
+export type AdminPermissionGrantScalarFieldEnum = (typeof AdminPermissionGrantScalarFieldEnum)[keyof typeof AdminPermissionGrantScalarFieldEnum]
+
+
+export const AdminOutboxJobScalarFieldEnum = {
+  id: 'id',
+  kind: 'kind',
+  queue: 'queue',
+  status: 'status',
+  payload: 'payload',
+  attempts: 'attempts',
+  maxAttempts: 'maxAttempts',
+  requestedById: 'requestedById',
+  idempotencyKey: 'idempotencyKey',
+  scheduledAt: 'scheduledAt',
+  startedAt: 'startedAt',
+  completedAt: 'completedAt',
+  failedAt: 'failedAt',
+  errorCode: 'errorCode',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type AdminOutboxJobScalarFieldEnum = (typeof AdminOutboxJobScalarFieldEnum)[keyof typeof AdminOutboxJobScalarFieldEnum]
+
+
+export const AdminQueueControlScalarFieldEnum = {
+  name: 'name',
+  paused: 'paused',
+  version: 'version',
+  updatedBy: 'updatedBy',
+  updatedAt: 'updatedAt'
+} as const
+
+export type AdminQueueControlScalarFieldEnum = (typeof AdminQueueControlScalarFieldEnum)[keyof typeof AdminQueueControlScalarFieldEnum]
+
+
 export const UserScalarFieldEnum = {
   id: 'id',
   name: 'name',
@@ -6025,6 +6572,7 @@ export const SessionScalarFieldEnum = {
   updatedAt: 'updatedAt',
   ipAddress: 'ipAddress',
   userAgent: 'userAgent',
+  stepUpVerifiedAt: 'stepUpVerifiedAt',
   userId: 'userId'
 } as const
 
@@ -7171,19 +7719,19 @@ export const SortOrder = {
 export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
 
 
+export const JsonNullValueInput = {
+  JsonNull: JsonNull
+} as const
+
+export type JsonNullValueInput = (typeof JsonNullValueInput)[keyof typeof JsonNullValueInput]
+
+
 export const NullableJsonNullValueInput = {
   DbNull: DbNull,
   JsonNull: JsonNull
 } as const
 
 export type NullableJsonNullValueInput = (typeof NullableJsonNullValueInput)[keyof typeof NullableJsonNullValueInput]
-
-
-export const JsonNullValueInput = {
-  JsonNull: JsonNull
-} as const
-
-export type JsonNullValueInput = (typeof JsonNullValueInput)[keyof typeof JsonNullValueInput]
 
 
 export const QueryMode = {
@@ -7194,14 +7742,6 @@ export const QueryMode = {
 export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
 
 
-export const NullsOrder = {
-  first: 'first',
-  last: 'last'
-} as const
-
-export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
-
-
 export const JsonNullValueFilter = {
   DbNull: DbNull,
   JsonNull: JsonNull,
@@ -7209,6 +7749,14 @@ export const JsonNullValueFilter = {
 } as const
 
 export type JsonNullValueFilter = (typeof JsonNullValueFilter)[keyof typeof JsonNullValueFilter]
+
+
+export const NullsOrder = {
+  first: 'first',
+  last: 'last'
+} as const
+
+export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 
 
 
@@ -7228,6 +7776,48 @@ export type StringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 
  * Reference to a field of type 'String[]'
  */
 export type ListStringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String[]'>
+    
+
+
+/**
+ * Reference to a field of type 'Json'
+ */
+export type JsonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Json'>
+    
+
+
+/**
+ * Reference to a field of type 'QueryMode'
+ */
+export type EnumQueryModeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'QueryMode'>
+    
+
+
+/**
+ * Reference to a field of type 'Int'
+ */
+export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
+    
+
+
+/**
+ * Reference to a field of type 'Int[]'
+ */
+export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
+    
+
+
+/**
+ * Reference to a field of type 'DateTime'
+ */
+export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
+    
+
+
+/**
+ * Reference to a field of type 'DateTime[]'
+ */
+export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
     
 
 
@@ -7281,34 +7871,6 @@ export type ListEnumTwoFactorMethodFieldRefInput<$PrismaModel> = FieldRefInputTy
 
 
 /**
- * Reference to a field of type 'DateTime'
- */
-export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
-    
-
-
-/**
- * Reference to a field of type 'DateTime[]'
- */
-export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
-    
-
-
-/**
- * Reference to a field of type 'Int'
- */
-export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
-    
-
-
-/**
- * Reference to a field of type 'Int[]'
- */
-export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
-    
-
-
-/**
  * Reference to a field of type 'OtpPurpose'
  */
 export type EnumOtpPurposeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'OtpPurpose'>
@@ -7319,20 +7881,6 @@ export type EnumOtpPurposeFieldRefInput<$PrismaModel> = FieldRefInputType<$Prism
  * Reference to a field of type 'OtpPurpose[]'
  */
 export type ListEnumOtpPurposeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'OtpPurpose[]'>
-    
-
-
-/**
- * Reference to a field of type 'Json'
- */
-export type JsonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Json'>
-    
-
-
-/**
- * Reference to a field of type 'QueryMode'
- */
-export type EnumQueryModeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'QueryMode'>
     
 
 
@@ -7949,6 +8497,12 @@ export type PrismaClientOptions = ({
   queryPlanCacheMaxSize?: number
 }
 export type GlobalOmitConfig = {
+  adminRecord?: Prisma.AdminRecordOmit
+  adminAuditLog?: Prisma.AdminAuditLogOmit
+  adminIdempotencyKey?: Prisma.AdminIdempotencyKeyOmit
+  adminPermissionGrant?: Prisma.AdminPermissionGrantOmit
+  adminOutboxJob?: Prisma.AdminOutboxJobOmit
+  adminQueueControl?: Prisma.AdminQueueControlOmit
   user?: Prisma.UserOmit
   session?: Prisma.SessionOmit
   account?: Prisma.AccountOmit

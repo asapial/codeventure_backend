@@ -93,15 +93,18 @@ model User {
 }
 
 model Session {
-  id        String   @id
-  expiresAt DateTime
-  token     String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  ipAddress String?
-  userAgent String?
-  userId    String
-  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  id               String    @id
+  expiresAt        DateTime
+  token            String
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+  ipAddress        String?
+  userAgent        String?
+  /// Set only after a successful password/2FA re-authentication. Admin
+  /// high-impact actions must not infer step-up freshness from session age.
+  stepUpVerifiedAt DateTime?
+  userId           String
+  user             User      @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([token])
   @@index([userId])

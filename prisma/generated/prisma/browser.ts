@@ -18,6 +18,39 @@ export { Prisma }
 export * as $Enums from './enums'
 export * from './enums';
 /**
+ * Model AdminRecord
+ * Production persistence shared by the A1-A22 admin console. Domain records
+ * keep a stable feature/type discriminator while their bounded, validated
+ * payload remains JSON so new operational fields do not require unsafe
+ * one-off tables or untyped controller logic.
+ */
+export type AdminRecord = Prisma.AdminRecordModel
+/**
+ * Model AdminAuditLog
+ * 
+ */
+export type AdminAuditLog = Prisma.AdminAuditLogModel
+/**
+ * Model AdminIdempotencyKey
+ * 
+ */
+export type AdminIdempotencyKey = Prisma.AdminIdempotencyKeyModel
+/**
+ * Model AdminPermissionGrant
+ * 
+ */
+export type AdminPermissionGrant = Prisma.AdminPermissionGrantModel
+/**
+ * Model AdminOutboxJob
+ * 
+ */
+export type AdminOutboxJob = Prisma.AdminOutboxJobModel
+/**
+ * Model AdminQueueControl
+ * 
+ */
+export type AdminQueueControl = Prisma.AdminQueueControlModel
+/**
  * Model User
  * 
  */

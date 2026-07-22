@@ -8,6 +8,12 @@
  *
  * 🟢 You can import this file directly.
  */
+export type * from './models/AdminRecord'
+export type * from './models/AdminAuditLog'
+export type * from './models/AdminIdempotencyKey'
+export type * from './models/AdminPermissionGrant'
+export type * from './models/AdminOutboxJob'
+export type * from './models/AdminQueueControl'
 export type * from './models/User'
 export type * from './models/Session'
 export type * from './models/Account'

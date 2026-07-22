@@ -51,6 +51,12 @@ export const AnyNull = runtime.AnyNull
 
 
 export const ModelName = {
+  AdminRecord: 'AdminRecord',
+  AdminAuditLog: 'AdminAuditLog',
+  AdminIdempotencyKey: 'AdminIdempotencyKey',
+  AdminPermissionGrant: 'AdminPermissionGrant',
+  AdminOutboxJob: 'AdminOutboxJob',
+  AdminQueueControl: 'AdminQueueControl',
   User: 'User',
   Session: 'Session',
   Account: 'Account',
@@ -143,6 +149,103 @@ export const TransactionIsolationLevel = runtime.makeStrictEnum({
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
+export const AdminRecordScalarFieldEnum = {
+  id: 'id',
+  feature: 'feature',
+  recordType: 'recordType',
+  organizationId: 'organizationId',
+  title: 'title',
+  status: 'status',
+  data: 'data',
+  version: 'version',
+  archivedAt: 'archivedAt',
+  createdById: 'createdById',
+  updatedById: 'updatedById',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type AdminRecordScalarFieldEnum = (typeof AdminRecordScalarFieldEnum)[keyof typeof AdminRecordScalarFieldEnum]
+
+
+export const AdminAuditLogScalarFieldEnum = {
+  id: 'id',
+  actorId: 'actorId',
+  actorRole: 'actorRole',
+  action: 'action',
+  targetType: 'targetType',
+  targetId: 'targetId',
+  organizationId: 'organizationId',
+  requestId: 'requestId',
+  outcome: 'outcome',
+  beforeJson: 'beforeJson',
+  afterJson: 'afterJson',
+  metadata: 'metadata',
+  createdAt: 'createdAt'
+} as const
+
+export type AdminAuditLogScalarFieldEnum = (typeof AdminAuditLogScalarFieldEnum)[keyof typeof AdminAuditLogScalarFieldEnum]
+
+
+export const AdminIdempotencyKeyScalarFieldEnum = {
+  id: 'id',
+  actorId: 'actorId',
+  scope: 'scope',
+  keyHash: 'keyHash',
+  requestHash: 'requestHash',
+  statusCode: 'statusCode',
+  response: 'response',
+  expiresAt: 'expiresAt',
+  createdAt: 'createdAt'
+} as const
+
+export type AdminIdempotencyKeyScalarFieldEnum = (typeof AdminIdempotencyKeyScalarFieldEnum)[keyof typeof AdminIdempotencyKeyScalarFieldEnum]
+
+
+export const AdminPermissionGrantScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  permission: 'permission',
+  grantedBy: 'grantedBy',
+  createdAt: 'createdAt'
+} as const
+
+export type AdminPermissionGrantScalarFieldEnum = (typeof AdminPermissionGrantScalarFieldEnum)[keyof typeof AdminPermissionGrantScalarFieldEnum]
+
+
+export const AdminOutboxJobScalarFieldEnum = {
+  id: 'id',
+  kind: 'kind',
+  queue: 'queue',
+  status: 'status',
+  payload: 'payload',
+  attempts: 'attempts',
+  maxAttempts: 'maxAttempts',
+  requestedById: 'requestedById',
+  idempotencyKey: 'idempotencyKey',
+  scheduledAt: 'scheduledAt',
+  startedAt: 'startedAt',
+  completedAt: 'completedAt',
+  failedAt: 'failedAt',
+  errorCode: 'errorCode',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type AdminOutboxJobScalarFieldEnum = (typeof AdminOutboxJobScalarFieldEnum)[keyof typeof AdminOutboxJobScalarFieldEnum]
+
+
+export const AdminQueueControlScalarFieldEnum = {
+  name: 'name',
+  paused: 'paused',
+  version: 'version',
+  updatedBy: 'updatedBy',
+  updatedAt: 'updatedAt'
+} as const
+
+export type AdminQueueControlScalarFieldEnum = (typeof AdminQueueControlScalarFieldEnum)[keyof typeof AdminQueueControlScalarFieldEnum]
+
+
 export const UserScalarFieldEnum = {
   id: 'id',
   name: 'name',
@@ -176,6 +279,7 @@ export const SessionScalarFieldEnum = {
   updatedAt: 'updatedAt',
   ipAddress: 'ipAddress',
   userAgent: 'userAgent',
+  stepUpVerifiedAt: 'stepUpVerifiedAt',
   userId: 'userId'
 } as const
 
@@ -1322,19 +1426,19 @@ export const SortOrder = {
 export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
 
 
+export const JsonNullValueInput = {
+  JsonNull: JsonNull
+} as const
+
+export type JsonNullValueInput = (typeof JsonNullValueInput)[keyof typeof JsonNullValueInput]
+
+
 export const NullableJsonNullValueInput = {
   DbNull: DbNull,
   JsonNull: JsonNull
 } as const
 
 export type NullableJsonNullValueInput = (typeof NullableJsonNullValueInput)[keyof typeof NullableJsonNullValueInput]
-
-
-export const JsonNullValueInput = {
-  JsonNull: JsonNull
-} as const
-
-export type JsonNullValueInput = (typeof JsonNullValueInput)[keyof typeof JsonNullValueInput]
 
 
 export const QueryMode = {
@@ -1345,14 +1449,6 @@ export const QueryMode = {
 export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
 
 
-export const NullsOrder = {
-  first: 'first',
-  last: 'last'
-} as const
-
-export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
-
-
 export const JsonNullValueFilter = {
   DbNull: DbNull,
   JsonNull: JsonNull,
@@ -1360,4 +1456,12 @@ export const JsonNullValueFilter = {
 } as const
 
 export type JsonNullValueFilter = (typeof JsonNullValueFilter)[keyof typeof JsonNullValueFilter]
+
+
+export const NullsOrder = {
+  first: 'first',
+  last: 'last'
+} as const
+
+export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 

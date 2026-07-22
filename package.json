@@ -8,6 +8,7 @@
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
     "test:ui": "vitest --ui",
+    "contracts:check": "vitest run src/modules/admin/admin.contract.test.ts",
     "test:ai": "npx tsx src/scripts/testAiResponse.ts",
     "dev": "npx tsx watch src/server.ts",
     "seeding": "npx tsx src/scripts/seedingAdmin.ts",
