@@ -98,6 +98,3 @@ export const recordAudit = async (input: AdminAuditInput, tx: AdminTransaction |
   }, select: { id: true } });
 
 export const hashAdminValue = (value: string) => createHash("sha256").update(value).digest("hex");
-
-/** Compatibility shim for pre-foundation tests; production auditing never buffers. */
-export const drainInMemoryAudit = (): AdminAuditInput[] => [];
